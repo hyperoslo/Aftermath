@@ -1,0 +1,16 @@
+PODS:
+  - Uniflow (0.1.0)
+
+DEPENDENCIES:
+  - Uniflow (from `../../`)
+
+EXTERNAL SOURCES:
+  Uniflow:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Uniflow: 13e280ed9d889c689275bb9ab06342ad981a7f4b
+
+PODFILE CHECKSUM: 12985e8d79f4ea6f636f6e7e2e4defb16d7b4786
+
+COCOAPODS: 1.0.1
