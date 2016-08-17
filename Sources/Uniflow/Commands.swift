@@ -5,6 +5,6 @@ public protocol Command: Identifiable {
 public protocol CommandBuilder {
   associatedtype T: Command
 
-  func buildAction() throws -> T
+  func buildCommand() throws -> T
 }
 
