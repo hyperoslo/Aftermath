@@ -1,1 +1,3 @@
-public protocol State: Identifiable {}
+public protocol State: Identifiable {
+  init()
+}

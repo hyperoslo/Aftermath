@@ -1,4 +1,4 @@
-public class Engine {
+public class Domain {
 
   static var input: Inputable = Input()
   static var output: Outputable = Output()

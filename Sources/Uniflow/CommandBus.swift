@@ -2,6 +2,10 @@ import Foundation
 
 //@noescape
 
+//var token: String {
+//  return NSUUID().UUIDString
+//}
+
 public protocol CommandDispatcher {
   func execute<T: Command>(command: T)
   func handle<T: Command>(type: T.Type, handler: T -> Void) -> String
@@ -17,10 +21,6 @@ final class CommandBus: CommandDispatcher {
   //var middlewares: [CommandMiddleware] = []
   private var mutex = pthread_mutex_t()
 
-  var token: String {
-    return NSUUID().UUIDString
-  }
-
   deinit {
     disposeAll()
   }
@@ -28,13 +28,14 @@ final class CommandBus: CommandDispatcher {
   func execute<T: Command>(command: T) {
     pthread_mutex_lock(&mutex)
 
-    let commandListeners = listeners.values.filter({ $0.identifier == T.identifier })
-
-    for listener in commandListeners {
-      listener.status = .Pending
-      listener.handler(command)
-      listener.status = .Handled
+    guard let listener = listeners[T.identifier] else {
+      // TODO: Handle no listeners
+      return
     }
+
+    listener.status = .Pending
+    listener.handler(command)
+    listener.status = .Handled
 
     pthread_mutex_unlock(&mutex)
   }
@@ -42,9 +43,10 @@ final class CommandBus: CommandDispatcher {
   func handle<T: Command>(type: T.Type, handler: T -> Void) -> DisposalToken {
     pthread_mutex_lock(&mutex)
 
-    let disposalToken = token
+    let token = T.identifier
 
-    listeners[token] = CommandListener(identifier: T.identifier) { command in
+    // TODO: Warning if already exists
+    listeners[token] = CommandListener { command in
       guard let command = command as? T else {
         return
       }
@@ -54,7 +56,7 @@ final class CommandBus: CommandDispatcher {
 
     pthread_mutex_unlock(&mutex)
 
-    return disposalToken
+    return token
   }
 
   func dispose(token: String) {
@@ -77,12 +79,10 @@ enum CommandStatus {
 
 class CommandListener {
 
-  let identifier: String
   let handler: (Any) -> Void
   var status = CommandStatus.Pending
 
-  init(identifier: String, handler: (Any) -> Void) {
-    self.identifier = identifier
+  init(handler: (Any) -> Void) {
     self.handler = handler
   }
 }
