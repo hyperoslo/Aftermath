@@ -1,10 +1,11 @@
-public protocol Command: Identifiable {
-  associatedtype T: State
+public protocol AnyCommand: Identifiable {}
+
+public protocol Command: AnyCommand {
+  associatedtype StateType: State
 }
 
 public protocol CommandBuilder {
-  associatedtype T: Command
+  associatedtype CommandType: Command
 
-  func buildCommand() throws -> T
+  func buildCommand() throws -> CommandType
 }
-

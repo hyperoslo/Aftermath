@@ -1,1 +1,1 @@
-public protocol State: Equatable, Identifiable {}
+public protocol State: Identifiable {}

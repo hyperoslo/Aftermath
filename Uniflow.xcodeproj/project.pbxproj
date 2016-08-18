@@ -17,6 +17,10 @@
 		D579C3DF1D650BEA00EDD4A8 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3DD1D650BEA00EDD4A8 /* Protocols.swift */; };
 		D579C3E01D650C0700EDD4A8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3D41D650B6E00EDD4A8 /* Tests.swift */; };
 		D579C3E11D650C0800EDD4A8 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3D41D650B6E00EDD4A8 /* Tests.swift */; };
+		D579C3E31D65106C00EDD4A8 /* CommandBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3E21D65106C00EDD4A8 /* CommandBus.swift */; };
+		D579C3E41D65106C00EDD4A8 /* CommandBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3E21D65106C00EDD4A8 /* CommandBus.swift */; };
+		D579C3E91D65292C00EDD4A8 /* CommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3E81D65292C00EDD4A8 /* CommandMiddleware.swift */; };
+		D579C3EA1D65292C00EDD4A8 /* CommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3E81D65292C00EDD4A8 /* CommandMiddleware.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Uniflow.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Uniflow.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +54,8 @@
 		D579C3D71D650BB700EDD4A8 /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		D579C3DA1D650BCE00EDD4A8 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		D579C3DD1D650BEA00EDD4A8 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D579C3E21D65106C00EDD4A8 /* CommandBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandBus.swift; sourceTree = "<group>"; };
+		D579C3E81D65292C00EDD4A8 /* CommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandMiddleware.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Uniflow-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Uniflow-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +103,8 @@
 				D579C3D71D650BB700EDD4A8 /* Engine.swift */,
 				D579C3DA1D650BCE00EDD4A8 /* State.swift */,
 				D579C3DD1D650BEA00EDD4A8 /* Protocols.swift */,
+				D579C3E21D65106C00EDD4A8 /* CommandBus.swift */,
+				D579C3E81D65292C00EDD4A8 /* CommandMiddleware.swift */,
 			);
 			path = Uniflow;
 			sourceTree = "<group>";
@@ -341,8 +349,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D579C3DE1D650BEA00EDD4A8 /* Protocols.swift in Sources */,
+				D579C3E31D65106C00EDD4A8 /* CommandBus.swift in Sources */,
 				D579C3D11D650B6000EDD4A8 /* Commands.swift in Sources */,
 				D579C3D81D650BB700EDD4A8 /* Engine.swift in Sources */,
+				D579C3E91D65292C00EDD4A8 /* CommandMiddleware.swift in Sources */,
 				D579C3DB1D650BCE00EDD4A8 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,8 +370,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D579C3DF1D650BEA00EDD4A8 /* Protocols.swift in Sources */,
+				D579C3E41D65106C00EDD4A8 /* CommandBus.swift in Sources */,
 				D579C3D21D650B6000EDD4A8 /* Commands.swift in Sources */,
 				D579C3D91D650BB700EDD4A8 /* Engine.swift in Sources */,
+				D579C3EA1D65292C00EDD4A8 /* CommandMiddleware.swift in Sources */,
 				D579C3DC1D650BCE00EDD4A8 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
