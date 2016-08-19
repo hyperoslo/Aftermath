@@ -4,6 +4,8 @@ import Foundation
 
 public protocol CommandDispatcher: Disposer {
 
+  var middlewares: [CommandMiddleware] { get set }
+
   func use<T: CommandHandler>(handler: T) -> DisposalToken
   func execute(command: AnyCommand)
 }
