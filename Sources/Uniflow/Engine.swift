@@ -1,20 +1,14 @@
-public class Domain {
+public class Engine {
 
-  static var input: Inputable = Input()
-  static var output: Outputable = Output()
-}
+  static var commandBus: CommandDispatcher = CommandBus()
+  static var eventBus: EventDispatcher = EventBus()
+  static var errorHandler: ErrorHandler?
 
-public protocol Inputable {
+  public static func pipeCommands(through middlewares: [CommandMiddleware]) {
 
-}
+  }
 
-class Input: Inputable {
+  public static func pipeEvents(through middlewares: [EventMiddleware]) {
 
-}
-
-public protocol Outputable {
-}
-
-class Output: Outputable {
-
+  }
 }
