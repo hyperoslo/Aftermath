@@ -4,6 +4,8 @@ import Foundation
 
 public protocol EventDispatcher: Disposer {
 
+  var middlewares: [EventMiddleware] { get set }
+
   func publish(event: AnyEvent)
   func listen<T: Projection>(to type: T.Type, listener: Event<T> -> Void) -> String
 }
