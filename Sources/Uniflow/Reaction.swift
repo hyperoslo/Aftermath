@@ -1,23 +1,42 @@
-// MARK: - Middleware helper
+// MARK: - Reaction
 
-struct Middleware<T> {
+public struct Reaction<T: Projection> {
 
-  typealias Publish = (T) throws -> Void
-  typealias PublishCombination = (Publish) throws -> Publish
+  public typealias Progress = () -> Void
+  public typealias Done = (T) -> Void
+  public typealias Fail = (ErrorType) -> Void
 
-  let intercept: (T, execute: Publish, next: Publish) throws -> Void
+  public var progress: Progress?
+  public var done: Done?
+  public var fail: Fail?
 
-  func compose(execute: Publish) throws -> PublishCombination {
-    return try respond { next, command in
-      return try self.intercept(command, execute: execute, next: next)
-    }
+  public init(progress: Progress? = nil, done: Done? = nil, fail: Fail? = nil) {
+    self.progress = progress
+    self.done = done
+    self.fail = fail
   }
 
-  func respond(handle: (Publish, T) throws -> Void) throws -> PublishCombination {
-    return { next in
-      return { command in
-        try handle(next, command)
-      }
+  func invoke(with event: Event<T>) {
+    switch event {
+    case .Progress:
+      progress?()
+    case .Success(let projection):
+      done?(projection)
+    case .Error(let error):
+      fail?(error)
+    }
+  }
+}
+
+// MARK: - Reaction producer
+
+public protocol ReactionProducer {}
+
+public extension ReactionProducer {
+
+  func react<T: Projection>(reaction: Reaction<T>) {
+    Engine.eventBus.listen(to: T.self) { event in
+      reaction.invoke(with: event)
     }
   }
 }
