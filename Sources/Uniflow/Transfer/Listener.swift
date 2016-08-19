@@ -1,9 +1,16 @@
-//
-//  Listener.swift
-//  Uniflow
-//
-//  Created by Vadym Markov on 19/08/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
-//
+class Listener {
 
-import Foundation
+  enum Status {
+    case Pending
+    case Issued
+  }
+
+  let identifier: String
+  let callback: (Any) throws -> Void
+  var status = Status.Pending
+
+  init(identifier: String, callback: (Any) throws -> Void) {
+    self.identifier = identifier
+    self.callback = callback
+  }
+}
