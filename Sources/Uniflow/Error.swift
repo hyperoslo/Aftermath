@@ -1,9 +1,16 @@
-//
-//  Error.swift
-//  Uniflow
-//
-//  Created by Vadym Markov on 19/08/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
-//
+public protocol ErrorHandler {
+  func handleError(error: ErrorType)
+}
 
-import Foundation
+public enum Error: ErrorType {
+  case CommandDispatcherDeallocated
+  case EventDispatcherDeallocated
+  case InvalidCommandType
+}
+
+public enum Warning: ErrorType {
+  case NoCommandHandlers(command: AnyCommand)
+  case NoEventListeners(event: AnyEvent)
+  case DuplicatedCommandHandler(command: AnyCommand.Type, handler: Any)
+  case DuplicatedEventListener(event: AnyEvent)
+}
