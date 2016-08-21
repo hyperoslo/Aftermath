@@ -3,15 +3,9 @@ import XCTest
 
 class EventTests: XCTestCase {
 
-  override func setUp() {
-    super.setUp()
-  }
-
-  override func tearDown() {
-    super.tearDown()
-  }
-
-  func testExample() {
-
+  func testIsFrameworkError() {
+    XCTAssertTrue(Error.InvalidCommandType.isFrameworkError)
+    XCTAssertTrue(Warning.NoCommandHandlers(command: TestCommand()).isFrameworkError)
+    XCTAssertFalse(TestError.Test.isFrameworkError)
   }
 }
