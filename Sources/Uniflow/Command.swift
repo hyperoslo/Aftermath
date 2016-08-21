@@ -52,18 +52,6 @@ extension CommandHandler {
   public func publish(event: Event<CommandType.ProjectionType>) {
     Engine.sharedInstance.eventBus.publish(event)
   }
-
-  func process(command: CommandType) {
-    let event: Event<CommandType.ProjectionType>
-
-    do {
-      event = try handle(command)
-    } catch {
-      event = Event.Error(error)
-    }
-
-    publish(event)
-  }
 }
 
 // MARK: - Command middleware
