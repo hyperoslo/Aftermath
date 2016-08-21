@@ -29,6 +29,8 @@
 		D579C4001D66F44E00EDD4A8 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C3FE1D66F44E00EDD4A8 /* Listener.swift */; };
 		D579C4051D673E4200EDD4A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4041D673E4200EDD4A8 /* Error.swift */; };
 		D579C4061D673E4200EDD4A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4041D673E4200EDD4A8 /* Error.swift */; };
+		D579C40A1D68921800EDD4A8 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4071D68920600EDD4A8 /* EngineTests.swift */; };
+		D579C40B1D68921900EDD4A8 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4071D68920600EDD4A8 /* EngineTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Uniflow.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Uniflow.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,7 @@
 		D579C3F81D66EFEC00EDD4A8 /* Disposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disposer.swift; sourceTree = "<group>"; };
 		D579C3FE1D66F44E00EDD4A8 /* Listener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		D579C4041D673E4200EDD4A8 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		D579C4071D68920600EDD4A8 /* EngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Uniflow-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Uniflow-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +130,7 @@
 			children = (
 				D579C3D31D650B6E00EDD4A8 /* Helpers */,
 				D579C3D41D650B6E00EDD4A8 /* Tests.swift */,
+				D579C4071D68920600EDD4A8 /* EngineTests.swift */,
 			);
 			name = Uniflow;
 			path = Tests/Uniflow;
@@ -390,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D579C3E01D650C0700EDD4A8 /* Tests.swift in Sources */,
+				D579C40A1D68921800EDD4A8 /* EngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D579C3E11D650C0800EDD4A8 /* Tests.swift in Sources */,
+				D579C40B1D68921900EDD4A8 /* EngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

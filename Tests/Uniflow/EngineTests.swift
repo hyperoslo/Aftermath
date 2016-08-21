@@ -1,9 +1,26 @@
-//
-//  EngineTests.swift
-//  Uniflow
-//
-//  Created by Vadym Markov on 20/08/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
-//
+import XCTest
+@testable import Uniflow
 
-import Foundation
+class EngineTests: XCTestCase {
+
+  var engine: Engine!
+
+  override func setUp() {
+    super.setUp()
+    engine = Engine()
+  }
+
+  override func tearDown() {
+    super.tearDown()
+  }
+
+  func testPipeCommands() {
+    XCTAssertTrue(engine.commandBus.middlewares.isEmpty)
+
+    //engine.pipeCommands(through: [])
+  }
+
+  func testPipeEvents() {
+    XCTAssertTrue(engine.eventBus.middlewares.isEmpty)
+  }
+}
