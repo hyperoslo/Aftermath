@@ -17,7 +17,13 @@ class EngineTests: XCTestCase {
   func testPipeCommands() {
     XCTAssertTrue(engine.commandBus.middlewares.isEmpty)
 
-    //engine.pipeCommands(through: [])
+    engine.pipeCommands(through: [
+      LogCommandMiddleware(),
+      AdditionCommandMiddleware(),
+      AbortCommandMiddleware()]
+    )
+
+    XCTAssertEqual(engine.commandBus.middlewares.count, 3)
   }
 
   func testPipeEvents() {
