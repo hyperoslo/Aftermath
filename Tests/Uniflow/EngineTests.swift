@@ -14,6 +14,8 @@ class EngineTests: XCTestCase {
     super.tearDown()
   }
 
+  // MARK: - Tests
+
   func testPipeCommands() {
     XCTAssertTrue(engine.commandBus.middlewares.isEmpty)
 
@@ -28,5 +30,13 @@ class EngineTests: XCTestCase {
 
   func testPipeEvents() {
     XCTAssertTrue(engine.eventBus.middlewares.isEmpty)
+
+    engine.pipeEvents(through: [
+      LogEventMiddleware(),
+      ErrorEventMiddleware(),
+      AbortEventMiddleware()]
+    )
+
+    XCTAssertEqual(engine.eventBus.middlewares.count, 3)
   }
 }
