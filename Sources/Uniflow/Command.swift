@@ -35,19 +35,19 @@ public extension CommandProducer where Self: ReactionProducer {
 // MARK: - Command handling
 
 public protocol CommandHandler {
-  associatedtype T: Command
+  associatedtype CommandType: Command
 
-  func handle(command: T) throws -> Event<T.ProjectionType>
+  func handle(command: CommandType) throws -> Event<CommandType.ProjectionType>
 }
 
 extension CommandHandler {
 
-  public func publish(event: Event<T.ProjectionType>) {
+  public func publish(event: Event<CommandType.ProjectionType>) {
     Engine.sharedInstance.eventBus.publish(event)
   }
 
-  func process(command: T) {
-    let event: Event<T.ProjectionType>
+  func process(command: CommandType) {
+    let event: Event<CommandType.ProjectionType>
 
     do {
       event = try handle(command)
