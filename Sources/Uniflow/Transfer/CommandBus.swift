@@ -39,7 +39,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
         throw Error.InvalidCommandType
       }
 
-      handler.process(command)
+      try handler.handle(command)
     }
 
     pthread_mutex_unlock(&mutex)
@@ -66,6 +66,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
       try call(command)
     } catch {
       Engine.sharedInstance.errorHandler?.handleError(error)
+      handleError(error, on: command)
     }
   }
 
@@ -82,5 +83,16 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
     listener.status = .Issued
 
     pthread_mutex_unlock(&mutex)
+  }
+
+  // MARK: - Error handling
+
+  func handleError(error: ErrorType, on command: AnyCommand) {
+    guard !error.isFrameworkError else {
+      return
+    }
+
+    let errorEvent = command.dynamicType.buildErrorEvent(error)
+    Engine.sharedInstance.eventBus.publish(errorEvent)
   }
 }
