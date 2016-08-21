@@ -27,15 +27,15 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
   func use<T: CommandHandler>(handler: T) -> DisposalToken {
     pthread_mutex_lock(&mutex)
 
-    let token = T.T.identifier
+    let token = T.CommandType.identifier
 
     if let listener = listeners[token] {
-      let warning = Warning.DuplicatedCommandHandler(command: T.T.self, handler: listener)
+      let warning = Warning.DuplicatedCommandHandler(command: T.CommandType.self, handler: listener)
       Engine.sharedInstance.errorHandler?.handleError(warning)
     }
 
     listeners[token] = Listener(identifier: token) { command in
-      guard let command = command as? T.T else {
+      guard let command = command as? T.CommandType else {
         throw Error.InvalidCommandType
       }
 
