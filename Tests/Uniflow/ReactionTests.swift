@@ -61,6 +61,9 @@ class ReactionTests: XCTestCase {
   }
 
   func testInvokeWithError() {
+    let event = Event<Calculator>.Error(TestError.Test)
+    reaction.invoke(with: event)
 
+    XCTAssertEqual(callback, .Error)
   }
 }
