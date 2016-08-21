@@ -6,6 +6,10 @@ struct Calculator: Projection {
   let result: Int
 }
 
+struct TestCommand: Command {
+  typealias ProjectionType = Calculator
+}
+
 struct SubtractionCommand: Command {
   typealias ProjectionType = Calculator
 
