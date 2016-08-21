@@ -1,9 +1,16 @@
 // MARK: - Commands
 
-public protocol AnyCommand: Identifiable {}
+public protocol AnyCommand: Identifiable, ErrorEventBuilder {}
 
 public protocol Command: AnyCommand {
   associatedtype ProjectionType: Projection
+}
+
+public extension Command {
+
+  static func buildErrorEvent(error: ErrorType) -> AnyEvent {
+    return Event<ProjectionType>.Error(error)
+  }
 }
 
 // MARK: - Command builder
