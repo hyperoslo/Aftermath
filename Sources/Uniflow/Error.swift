@@ -6,6 +6,7 @@ public enum Error: ErrorType {
   case CommandDispatcherDeallocated
   case EventDispatcherDeallocated
   case InvalidCommandType
+  case InvalidEventType
 }
 
 public enum Warning: ErrorType {
@@ -13,4 +14,11 @@ public enum Warning: ErrorType {
   case NoEventListeners(event: AnyEvent)
   case DuplicatedCommandHandler(command: AnyCommand.Type, handler: Any)
   case DuplicatedEventListener(event: AnyEvent)
+}
+
+extension ErrorType {
+
+  var isFrameworkError: Bool {
+    return (self is Error) || (self is Warning)
+  }
 }
