@@ -35,7 +35,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
     listeners[token] = Listener(identifier: T.identifier) { event in
       guard let event = event as? Event<T> else {
-        return
+        throw Error.InvalidEventType
       }
 
       listener(event)
@@ -48,7 +48,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
   // MARK: - Dispatch
 
-  func publish(command: AnyEvent) {
+  func publish(event: AnyEvent) {
     let middlewares = self.middlewares.reverse()
 
     do {
@@ -62,9 +62,10 @@ final class EventBus: EventDispatcher, MutexDisposer {
         return try middleware.compose(weakSelf.publish)(function)
       }
 
-      try call(command)
+      try call(event)
     } catch {
       Engine.sharedInstance.errorHandler?.handleError(error)
+      handleError(error, on: event)
     }
   }
 
@@ -85,5 +86,17 @@ final class EventBus: EventDispatcher, MutexDisposer {
     }
 
     pthread_mutex_unlock(&mutex)
+  }
+
+  // MARK: - Error handling
+
+  func handleError(error: ErrorType, on event: AnyEvent) {
+    guard !error.isFrameworkError else {
+      return
+    }
+
+    do {
+      try perform(event.dynamicType.buildErrorEvent(error))
+    } catch {}
   }
 }
