@@ -35,7 +35,7 @@ public protocol ReactionProducer {}
 public extension ReactionProducer {
 
   func react<T: Projection>(reaction: Reaction<T>) {
-    Engine.eventBus.listen(to: T.self) { event in
+    Engine.sharedInstance.eventBus.listen(to: T.self) { event in
       reaction.invoke(with: event)
     }
   }

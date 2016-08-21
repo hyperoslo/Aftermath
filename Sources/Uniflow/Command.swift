@@ -21,7 +21,7 @@ public protocol CommandProducer {}
 public extension CommandProducer {
 
   func execute<T: Command>(command: T) {
-    Engine.commandBus.execute(command)
+    Engine.sharedInstance.commandBus.execute(command)
   }
 }
 
@@ -43,7 +43,7 @@ public protocol CommandHandler {
 extension CommandHandler {
 
   public func publish(event: Event<T.ProjectionType>) {
-    Engine.eventBus.publish(event)
+    Engine.sharedInstance.eventBus.publish(event)
   }
 
   func process(command: T) {

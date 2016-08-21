@@ -64,7 +64,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
       try call(command)
     } catch {
-      Engine.errorHandler?.handleError(error)
+      Engine.sharedInstance.errorHandler?.handleError(error)
     }
   }
 

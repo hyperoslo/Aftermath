@@ -31,7 +31,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
     if let listener = listeners[token] {
       let warning = Warning.DuplicatedCommandHandler(command: T.T.self, handler: listener)
-      Engine.errorHandler?.handleError(warning)
+      Engine.sharedInstance.errorHandler?.handleError(warning)
     }
 
     listeners[token] = Listener(identifier: token) { command in
@@ -65,7 +65,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
       try call(command)
     } catch {
-      Engine.errorHandler?.handleError(error)
+      Engine.sharedInstance.errorHandler?.handleError(error)
     }
   }
 
