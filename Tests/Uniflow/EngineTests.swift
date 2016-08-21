@@ -16,6 +16,10 @@ class EngineTests: XCTestCase {
 
   // MARK: - Tests
 
+  func testInit() {
+    XCTAssertNil(engine.errorHandler)
+  }
+
   func testPipeCommands() {
     XCTAssertTrue(engine.commandBus.middlewares.isEmpty)
 
