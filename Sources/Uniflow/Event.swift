@@ -1,11 +1,19 @@
 public protocol Projection: Identifiable {}
 
-public protocol AnyEvent: Identifiable {}
+public protocol ErrorEventBuilder {
+  static func buildErrorEvent(error: ErrorType) -> AnyEvent
+}
+
+public protocol AnyEvent: Identifiable, ErrorEventBuilder {}
 
 public enum Event<T: Projection>: AnyEvent {
   case Progress
   case Success(T)
   case Error(ErrorType)
+
+  public static func buildErrorEvent(error: ErrorType) -> AnyEvent {
+    return Error(error)
+  }
 }
 
 public extension Event {
@@ -22,13 +30,13 @@ public typealias PublishCombination = (Publish) throws -> Publish
 
 public protocol EventMiddleware {
 
-  func intercept(command: AnyEvent, execute: Publish, next: Publish) throws
-  func compose(execute: Publish) throws -> PublishCombination
+  func intercept(event: AnyEvent, publish: Publish, next: Publish) throws
+  func compose(publish: Publish) throws -> PublishCombination
 }
 
 public extension EventMiddleware {
 
-  func compose(execute: Publish) throws -> PublishCombination {
-    return try Middleware(intercept: intercept).compose(execute)
+  func compose(publish: Publish) throws -> PublishCombination {
+    return try Middleware(intercept: intercept).compose(publish)
   }
 }
