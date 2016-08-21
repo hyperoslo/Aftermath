@@ -3,10 +3,27 @@ import XCTest
 
 class ReactionTests: XCTestCase {
 
+  enum Callback: Int {
+    case Progress, Success, Error
+  }
+
   var reaction: Reaction<Calculator>!
+  var callback: Callback?
 
   override func setUp() {
     super.setUp()
+
+    callback = nil
+    reaction = Reaction(
+      progress: {
+        self.callback = .Progress
+      },
+      done: { result in
+        self.callback = .Success
+      },
+      fail: { error in
+        self.callback = .Error
+      })
   }
 
   override func tearDown() {
@@ -24,13 +41,23 @@ class ReactionTests: XCTestCase {
   }
 
   func testInitWithParameters() {
-    reaction = Reaction(
-      progress: {},
-      done: { result in },
-      fail: { error in })
-
     XCTAssertNotNil(reaction.progress)
     XCTAssertNotNil(reaction.done)
     XCTAssertNotNil(reaction.fail)
+  }
+
+  func testInvokeWithProgress() {
+    let reactionEvent = Event<Calculator>.Progress
+    reaction.invoke(with: reactionEvent)
+
+    XCTAssertEqual(callback, .Progress)
+  }
+
+  func testInvokeWithSuccess() {
+
+  }
+
+  func testInvokeWithError() {
+
   }
 }
