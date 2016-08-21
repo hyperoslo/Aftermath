@@ -47,14 +47,17 @@ class ReactionTests: XCTestCase {
   }
 
   func testInvokeWithProgress() {
-    let reactionEvent = Event<Calculator>.Progress
-    reaction.invoke(with: reactionEvent)
+    let event = Event<Calculator>.Progress
+    reaction.invoke(with: event)
 
     XCTAssertEqual(callback, .Progress)
   }
 
   func testInvokeWithSuccess() {
+    let event = Event<Calculator>.Success(Calculator(result: 11))
+    reaction.invoke(with: event)
 
+    XCTAssertEqual(callback, .Success)
   }
 
   func testInvokeWithError() {
