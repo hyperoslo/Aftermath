@@ -2,10 +2,15 @@ public class Engine {
 
   public static let sharedInstance = Engine()
 
-  var commandBus: CommandDispatcher = CommandBus()
+  lazy var commandBus: CommandDispatcher = CommandBus(eventDispatcher: self.eventBus)
   var eventBus: EventDispatcher = EventBus()
 
-  public var errorHandler: ErrorHandler?
+  public var errorHandler: ErrorHandler? {
+    didSet {
+      commandBus.errorHandler = errorHandler
+      eventBus.errorHandler = errorHandler
+    }
+  }
 
   // MARK: - Middleware
 
