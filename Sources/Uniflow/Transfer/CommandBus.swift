@@ -4,8 +4,11 @@ import Foundation
 
 public protocol CommandDispatcher: Disposer {
 
+  var eventDispatcher: EventDispatcher { get }
+  var errorHandler: ErrorHandler? { get set }
   var middlewares: [CommandMiddleware] { get set }
 
+  init(eventDispatcher: EventDispatcher)
   func use<T: CommandHandler>(handler: T) -> DisposalToken
   func execute(command: AnyCommand)
 }
@@ -14,9 +17,17 @@ public protocol CommandDispatcher: Disposer {
 
 final class CommandBus: CommandDispatcher, MutexDisposer {
 
+  let eventDispatcher: EventDispatcher
+  var errorHandler: ErrorHandler?
   var listeners: [DisposalToken: Listener] = [:]
   var middlewares: [CommandMiddleware] = []
   var mutex = pthread_mutex_t()
+
+  // MARK: - Initialization
+
+  init(eventDispatcher: EventDispatcher) {
+    self.eventDispatcher = eventDispatcher
+  }
 
   deinit {
     disposeAll()
@@ -29,17 +40,22 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
     let token = T.CommandType.identifier
 
-    if let listener = listeners[token] {
-      let warning = Warning.DuplicatedCommandHandler(command: T.CommandType.self, handler: listener)
-      Engine.sharedInstance.errorHandler?.handleError(warning)
+    if listeners[token] != nil {
+      let warning = Warning.DuplicatedCommandHandler(command: T.CommandType.self)
+      errorHandler?.handleError(warning)
     }
 
-    listeners[token] = Listener(identifier: token) { command in
+    listeners[token] = Listener(identifier: token) { [weak self] command in
+      guard let weakSelf = self else {
+        throw Error.CommandDispatcherDeallocated
+      }
+
       guard let command = command as? T.CommandType else {
         throw Error.InvalidCommandType
       }
 
-      try handler.publish(handler.handle(command))
+      let event = try handler.handle(command)
+      weakSelf.eventDispatcher.publish(event)
     }
 
     pthread_mutex_unlock(&mutex)
@@ -65,7 +81,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
       try call(command)
     } catch {
-      Engine.sharedInstance.errorHandler?.handleError(error)
+      errorHandler?.handleError(error)
       handleError(error, on: command)
     }
   }
@@ -93,6 +109,6 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
     }
 
     let errorEvent = command.dynamicType.buildErrorEvent(error)
-    Engine.sharedInstance.eventBus.publish(errorEvent)
+    eventDispatcher.publish(errorEvent)
   }
 }
