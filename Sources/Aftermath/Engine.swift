@@ -12,6 +12,11 @@ public class Engine {
     }
   }
 
+  deinit {
+    commandBus.disposeAll()
+    eventBus.disposeAll()
+  }
+
   // MARK: - Middleware
 
   public func pipeCommands(through middlewares: [CommandMiddleware]) {
