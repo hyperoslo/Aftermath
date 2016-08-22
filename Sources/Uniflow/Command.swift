@@ -36,6 +36,7 @@ public extension CommandProducer where Self: ReactionProducer {
 
   func execute<T: Command>(command: T, reaction: Reaction<T.ProjectionType>) {
     react(reaction)
+    execute(command)
   }
 }
 
