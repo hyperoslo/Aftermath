@@ -3,10 +3,12 @@ import XCTest
 
 class ReactionProducerTests: XCTestCase {
 
-  var producer: ReactionProducer!
+  var controller: Controller!
 
   override func setUp() {
     super.setUp()
+    Engine.sharedInstance.eventBus.disposeAll()
+    controller = Controller()
   }
 
   override func tearDown() {
@@ -15,7 +17,27 @@ class ReactionProducerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testInit() {
-    
+  func testReactWithProgress() {
+    controller.react(controller.reaction)
+    let event = Event<Calculator>.Progress
+    Engine.sharedInstance.eventBus.publish(event)
+
+    XCTAssertEqual(controller.state, .Progress)
+  }
+
+  func testReactWithSuccess() {
+    controller.react(controller.reaction)
+    let event = Event<Calculator>.Success(Calculator(result: 11))
+    Engine.sharedInstance.eventBus.publish(event)
+
+    XCTAssertEqual(controller.state, .Success)
+  }
+
+  func testReactWithError() {
+    controller.react(controller.reaction)
+    let event = Event<Calculator>.Error(TestError.Test)
+    Engine.sharedInstance.eventBus.publish(event)
+
+    XCTAssertEqual(controller.state, .Error)
   }
 }
