@@ -24,11 +24,17 @@ struct AdditionCommand: Command {
 
 struct TestCommandHandler: CommandHandler {
 
-  var callback: (TestCommand -> Void)?
+  let result: String
+  var callback: (TestCommand -> Void)
+
+  init(result: String, callback: (TestCommand -> Void)) {
+    self.result = result
+    self.callback = callback
+  }
 
   func handle(command: TestCommand) throws -> Event<String> {
-    callback?(command)
-    return Event.Success("success")
+    callback(command)
+    return Event.Success(result)
   }
 }
 

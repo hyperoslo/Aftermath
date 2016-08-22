@@ -3,16 +3,17 @@ import XCTest
 
 class CommandProducerTests: XCTestCase {
 
-  var producer: CommandProducer!
+  var producer: Controller!
   var commandHandler: TestCommandHandler!
   var executedCommand: TestCommand?
+  let result = "test"
 
   override func setUp() {
     super.setUp()
 
     producer = Controller()
     executedCommand = nil
-    commandHandler = TestCommandHandler { executedCommand in
+    commandHandler = TestCommandHandler(result: result) { executedCommand in
       self.executedCommand = executedCommand
     }
 
@@ -22,6 +23,7 @@ class CommandProducerTests: XCTestCase {
   override func tearDown() {
     super.tearDown()
     Engine.sharedInstance.commandBus.disposeAll()
+    Engine.sharedInstance.eventBus.disposeAll()
   }
 
   // MARK: - Tests
@@ -31,6 +33,20 @@ class CommandProducerTests: XCTestCase {
     XCTAssertNotNil(executedCommand)
   }
 
-  func testExecuteWithReaction() {
+  func testExecuteWithAnotherCommand() {
+    producer.execute(AdditionCommand(value1: 1, value2: 3))
+    XCTAssertNil(executedCommand)
+  }
+
+  func testExecuteReaction() {
+    var string: String?
+
+    producer.execute(TestCommand(), reaction: Reaction(
+      done: { result in
+        string = result
+      }))
+
+    XCTAssertNotNil(executedCommand)
+    XCTAssertEqual(string, result)
   }
 }
