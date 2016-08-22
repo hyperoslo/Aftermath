@@ -7,6 +7,7 @@ class CommandBusTests: XCTestCase {
   var eventBus: EventBus!
   var errorHandler: ErrorManager!
   var commandHandler: TestCommandHandler!
+  var controller: Controller!
   var executedCommand: TestCommand?
 
   override func setUp() {
@@ -14,6 +15,7 @@ class CommandBusTests: XCTestCase {
 
     eventBus = EventBus()
     errorHandler = ErrorManager()
+    controller = Controller()
     commandBus = CommandBus(eventDispatcher: eventBus)
     commandBus.errorHandler = errorHandler
 
@@ -143,10 +145,32 @@ class CommandBusTests: XCTestCase {
   }
 
   func testHandleError() {
-    
+    var reactionError: ErrorType?
+
+    eventBus.listen(to: String.self) { event in
+      let reaction = Reaction<String>(fail: { error in
+        reactionError = error
+      })
+
+      reaction.invoke(with: event)
+    }
+
+    commandBus.handleError(TestError.Test, on: TestCommand())
+    XCTAssertTrue(reactionError is TestError)
   }
 
-  func testHandleErrorWithNotFrameworkError() {
+  func testHandleErrorWithFrameworkError() {
+    var reactionError: ErrorType?
 
+    eventBus.listen(to: String.self) { event in
+      let reaction = Reaction<String>(fail: { error in
+        reactionError = error
+      })
+
+      reaction.invoke(with: event)
+    }
+
+    commandBus.handleError(Error.InvalidCommandType, on: TestCommand())
+    XCTAssertNil(reactionError)
   }
 }
