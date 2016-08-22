@@ -29,6 +29,7 @@ class CommandBusTests: XCTestCase {
   override func tearDown() {
     super.tearDown()
     commandBus.disposeAll()
+    eventBus.disposeAll()
   }
 
   // MARK: - Tests
@@ -147,7 +148,7 @@ class CommandBusTests: XCTestCase {
   func testHandleError() {
     var reactionError: ErrorType?
 
-    eventBus.listen(to: String.self) { event in
+    eventBus.listen { (event: Event<String>) in
       let reaction = Reaction<String>(fail: { error in
         reactionError = error
       })
@@ -162,7 +163,7 @@ class CommandBusTests: XCTestCase {
   func testHandleErrorWithFrameworkError() {
     var reactionError: ErrorType?
 
-    eventBus.listen(to: String.self) { event in
+    eventBus.listen { (event: Event<String>) in
       let reaction = Reaction<String>(fail: { error in
         reactionError = error
       })
