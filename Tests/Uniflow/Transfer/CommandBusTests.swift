@@ -55,7 +55,7 @@ class CommandBusTests: XCTestCase {
         XCTFail("Invalid error was thrown: \(error)")
       }
     } else {
-      XCTFail("Duplicated command warning want's thrown")
+      XCTFail("Duplicated command warning wasnt's thrown")
     }
   }
 
@@ -64,7 +64,32 @@ class CommandBusTests: XCTestCase {
   }
 
   func testPerform() {
+    let token = commandBus.use(commandHandler)
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
 
+    commandBus.execute(TestCommand())
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Issued)
+    XCTAssertNotNil(executedCommand)
+  }
+
+  func testPerformWithoutListeners() {
+    let token = commandBus.use(commandHandler)
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+
+    commandBus.execute(AdditionCommand(value1: 1, value2: 3))
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+    XCTAssertNil(executedCommand)
+
+    if let error = errorHandler.lastError as? Warning {
+      switch error {
+      case .NoCommandHandlers(let command):
+        XCTAssertTrue(command is AdditionCommand)
+      default:
+        XCTFail("Invalid error was thrown: \(error)")
+      }
+    } else {
+      XCTFail("No command handlers warning wasnt's thrown")
+    }
   }
 
   func testHandleError() {
