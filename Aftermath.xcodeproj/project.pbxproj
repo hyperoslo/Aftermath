@@ -63,6 +63,8 @@
 		D57462EC1D6BA9C300E0C876 /* CommandSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462EA1D6BA9C300E0C876 /* CommandSteps.swift */; };
 		D57462EE1D6BABA900E0C876 /* EventSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462ED1D6BABA900E0C876 /* EventSteps.swift */; };
 		D57462EF1D6BABA900E0C876 /* EventSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462ED1D6BABA900E0C876 /* EventSteps.swift */; };
+		D57462F11D6BAE3300E0C876 /* CommandMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F01D6BAE3300E0C876 /* CommandMiddlewareTests.swift */; };
+		D57462F21D6BAE3300E0C876 /* CommandMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F01D6BAE3300E0C876 /* CommandMiddlewareTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Aftermath.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Aftermath.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,7 @@
 		D57462BA1D6BA3A800E0C876 /* CommandBusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandBusTests.swift; sourceTree = "<group>"; };
 		D57462EA1D6BA9C300E0C876 /* CommandSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSteps.swift; sourceTree = "<group>"; };
 		D57462ED1D6BABA900E0C876 /* EventSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSteps.swift; sourceTree = "<group>"; };
+		D57462F01D6BAE3300E0C876 /* CommandMiddlewareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandMiddlewareTests.swift; sourceTree = "<group>"; };
 		D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandHandlerTests.swift; sourceTree = "<group>"; };
 		D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProducerTests.swift; sourceTree = "<group>"; };
 		D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
@@ -196,6 +199,7 @@
 				D57462B91D6BA3A800E0C876 /* MutexDisposerTests.swift */,
 				D57462BA1D6BA3A800E0C876 /* CommandBusTests.swift */,
 				D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */,
+				D57462F01D6BAE3300E0C876 /* CommandMiddlewareTests.swift */,
 				D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */,
 				D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */,
 				D579C45B1D6B9CEB00EDD4A8 /* EngineTests.swift */,
@@ -458,6 +462,7 @@
 				D574626F1D6BA0A300E0C876 /* Events.swift in Sources */,
 				D57462D81D6BA3BD00E0C876 /* ReactionTests.swift in Sources */,
 				D57462D61D6BA3BD00E0C876 /* IdentifiableTests.swift in Sources */,
+				D57462F11D6BAE3300E0C876 /* CommandMiddlewareTests.swift in Sources */,
 				D57462CC1D6BA3BD00E0C876 /* EventBusTests.swift in Sources */,
 				D57462EB1D6BA9C300E0C876 /* CommandSteps.swift in Sources */,
 				D574626E1D6BA0A300E0C876 /* Commands.swift in Sources */,
@@ -500,6 +505,7 @@
 				D57462721D6BA0A400E0C876 /* Events.swift in Sources */,
 				D57462E91D6BA3BF00E0C876 /* ReactionTests.swift in Sources */,
 				D57462E71D6BA3BF00E0C876 /* IdentifiableTests.swift in Sources */,
+				D57462F21D6BAE3300E0C876 /* CommandMiddlewareTests.swift in Sources */,
 				D57462DD1D6BA3BF00E0C876 /* EventBusTests.swift in Sources */,
 				D57462EC1D6BA9C300E0C876 /* CommandSteps.swift in Sources */,
 				D57462711D6BA0A400E0C876 /* Commands.swift in Sources */,
