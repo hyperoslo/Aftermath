@@ -1,4 +1,4 @@
-@testable import Uniflow
+@testable import Aftermath
 
 // MARK: - Commands
 

@@ -1,5 +1,5 @@
 import XCTest
-@testable import Uniflow
+@testable import Aftermath
 
 class EventTests: XCTestCase {
 

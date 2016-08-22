@@ -1,6 +1,6 @@
-// Uniflow Mac Playground
+// Aftermath Mac Playground
 
 import Cocoa
-import Uniflow
+import Aftermath
 
 var str = "Hello, playground"

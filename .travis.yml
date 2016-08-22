@@ -7,7 +7,7 @@ before_install:
 - travis_wait 35 carthage bootstrap --platform iOS,Mac
 
 script:
-- xcodebuild clean build -project Uniflow.xcodeproj -scheme Uniflow-iOS -sdk iphonesimulator
-- xcodebuild test -project Uniflow.xcodeproj -scheme Uniflow-iOS -sdk iphonesimulator
-- xcodebuild clean build -project Uniflow.xcodeproj -scheme Uniflow-Mac -sdk macosx
-- xcodebuild test -project Uniflow.xcodeproj -scheme Uniflow-Mac -sdk macosx
+- xcodebuild clean build -project Aftermath.xcodeproj -scheme Aftermath-iOS -sdk iphonesimulator
+- xcodebuild test -project Aftermath.xcodeproj -scheme Aftermath-iOS -sdk iphonesimulator
+- xcodebuild clean build -project Aftermath.xcodeproj -scheme Aftermath-Mac -sdk macosx
+- xcodebuild test -project Aftermath.xcodeproj -scheme Aftermath-Mac -sdk macosx

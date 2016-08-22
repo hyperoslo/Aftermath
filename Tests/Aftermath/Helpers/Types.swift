@@ -1,5 +1,5 @@
 import Foundation
-@testable import Uniflow
+@testable import Aftermath
 
 extension String: Projection {}
 
