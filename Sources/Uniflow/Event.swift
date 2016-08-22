@@ -1,4 +1,4 @@
-public protocol Projection: Identifiable {}
+// MARK: - Events
 
 public protocol ErrorEventBuilder {
   static func buildErrorEvent(error: ErrorType) -> AnyEvent
@@ -19,7 +19,7 @@ public enum Event<T: Projection>: AnyEvent {
 public extension Event {
 
   static var identifier: String {
-    return String(self) + T.identifier
+    return T.identifier
   }
 }
 
