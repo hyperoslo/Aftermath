@@ -39,4 +39,8 @@ class EngineTests: XCTestCase {
 
     XCTAssertEqual(engine.eventBus.middlewares.count, 3)
   }
+
+  func testUse() {
+
+  }
 }

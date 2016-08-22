@@ -55,6 +55,10 @@
 		D579C42D1D6AEEE600EDD4A8 /* CommandProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C42B1D6AEEE600EDD4A8 /* CommandProducerTests.swift */; };
 		D579C42F1D6AEF2D00EDD4A8 /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C42E1D6AEF2D00EDD4A8 /* CommandHandlerTests.swift */; };
 		D579C4301D6AEF2D00EDD4A8 /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C42E1D6AEF2D00EDD4A8 /* CommandHandlerTests.swift */; };
+		D579C4321D6AFC7800EDD4A8 /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4311D6AFC7800EDD4A8 /* CommandBusTests.swift */; };
+		D579C4331D6AFC7800EDD4A8 /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4311D6AFC7800EDD4A8 /* CommandBusTests.swift */; };
+		D579C4351D6AFD4A00EDD4A8 /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4341D6AFD4A00EDD4A8 /* EventBusTests.swift */; };
+		D579C4361D6AFD4A00EDD4A8 /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4341D6AFD4A00EDD4A8 /* EventBusTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Uniflow.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Uniflow.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +111,8 @@
 		D579C4281D6AEE4C00EDD4A8 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D579C42B1D6AEEE600EDD4A8 /* CommandProducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProducerTests.swift; sourceTree = "<group>"; };
 		D579C42E1D6AEF2D00EDD4A8 /* CommandHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandHandlerTests.swift; sourceTree = "<group>"; };
+		D579C4311D6AFC7800EDD4A8 /* CommandBusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandBusTests.swift; sourceTree = "<group>"; };
+		D579C4341D6AFD4A00EDD4A8 /* EventBusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusTests.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Uniflow-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Uniflow-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +223,8 @@
 			children = (
 				D579C41F1D6AEA9100EDD4A8 /* ListenerTests.swift */,
 				D579C4221D6AECB200EDD4A8 /* MutexDisposerTests.swift */,
+				D579C4311D6AFC7800EDD4A8 /* CommandBusTests.swift */,
+				D579C4341D6AFD4A00EDD4A8 /* EventBusTests.swift */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -459,8 +467,10 @@
 				D579C40A1D68921800EDD4A8 /* EngineTests.swift in Sources */,
 				D579C4101D6A365200EDD4A8 /* ReactionTests.swift in Sources */,
 				D579C41C1D6AE9A200EDD4A8 /* IdentifiableTests.swift in Sources */,
+				D579C4321D6AFC7800EDD4A8 /* CommandBusTests.swift in Sources */,
 				D579C4161D6AE32B00EDD4A8 /* EventTests.swift in Sources */,
 				D579C4261D6AED0D00EDD4A8 /* Types.swift in Sources */,
+				D579C4351D6AFD4A00EDD4A8 /* EventBusTests.swift in Sources */,
 				D579C42F1D6AEF2D00EDD4A8 /* CommandHandlerTests.swift in Sources */,
 				D579C40D1D6A068500EDD4A8 /* Commands.swift in Sources */,
 			);
@@ -497,8 +507,10 @@
 				D579C40B1D68921900EDD4A8 /* EngineTests.swift in Sources */,
 				D579C4111D6A365200EDD4A8 /* ReactionTests.swift in Sources */,
 				D579C41D1D6AE9A200EDD4A8 /* IdentifiableTests.swift in Sources */,
+				D579C4331D6AFC7800EDD4A8 /* CommandBusTests.swift in Sources */,
 				D579C4171D6AE32B00EDD4A8 /* EventTests.swift in Sources */,
 				D579C4271D6AED0D00EDD4A8 /* Types.swift in Sources */,
+				D579C4361D6AFD4A00EDD4A8 /* EventBusTests.swift in Sources */,
 				D579C4301D6AEF2D00EDD4A8 /* CommandHandlerTests.swift in Sources */,
 				D579C40E1D6A068500EDD4A8 /* Commands.swift in Sources */,
 			);
