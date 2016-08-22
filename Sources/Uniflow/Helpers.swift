@@ -1,4 +1,4 @@
-// MARK: - Identifiable
+// MARK: - Protocols
 
 public protocol Identifiable {
 
@@ -11,6 +11,8 @@ public extension Identifiable {
     return String(self)
   }
 }
+
+public protocol Projection: Identifiable {}
 
 // MARK: - Middleware
 
