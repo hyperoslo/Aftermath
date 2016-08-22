@@ -7,8 +7,12 @@ class ReactionProducerTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    Engine.sharedInstance.eventBus.disposeAll()
     controller = Controller()
+  }
+
+  override func tearDown() {
+    super.tearDown()
+    Engine.sharedInstance.eventBus.disposeAll()
   }
 
   // MARK: - Tests

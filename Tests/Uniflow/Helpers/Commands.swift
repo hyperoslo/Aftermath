@@ -3,7 +3,7 @@
 // MARK: - Commands
 
 struct TestCommand: Command {
-  typealias ProjectionType = Calculator
+  typealias ProjectionType = String
 }
 
 struct SubtractionCommand: Command {
@@ -18,6 +18,18 @@ struct AdditionCommand: Command {
 
   let value1: Int
   let value2: Int
+}
+
+// MARK: - Command handlers
+
+struct TestCommandHandler: CommandHandler {
+
+  var callback: (TestCommand -> Void)?
+
+  func handle(command: TestCommand) throws -> Event<String> {
+    callback?(command)
+    return Event.Success("success")
+  }
 }
 
 // MARK: - Command middleware

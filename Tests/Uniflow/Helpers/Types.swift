@@ -22,7 +22,7 @@ class TestDisposer: MutexDisposer {
 
 // MARK: - Reactions
 
-class Controller: ReactionProducer {
+class Controller: CommandProducer, ReactionProducer {
 
   var reaction: Reaction<Calculator>!
   var state: State?
