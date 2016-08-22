@@ -78,6 +78,23 @@ class EventBusTests: XCTestCase {
     }
   }
 
+  func testPublishWithMiddleware() {
+    var executed = false
+    let middleware = LogEventMiddleware { _ in
+      executed = true
+    }
+
+    let token = eventBus.listen(listener)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+
+    eventBus.middlewares.append(middleware)
+    eventBus.publish(Event<Calculator>.Progress)
+
+    XCTAssertEqual(eventBus.listeners[token]?.status, .Issued)
+    XCTAssertEqual(state, .Progress)
+    XCTAssertTrue(executed)
+  }
+
   func testPeform() {
 
   }
