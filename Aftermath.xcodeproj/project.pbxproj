@@ -69,14 +69,14 @@
 			containerPortal = D5B2E8961C3A780C00C0327D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D5B2E89E1C3A780C00C0327D;
-			remoteInfo = Uniflow;
+			remoteInfo = Aftermath;
 		};
 		D5C6294B1C3A7FAA007F7B7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D5B2E8961C3A780C00C0327D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D5C6293F1C3A7FAA007F7B7C;
-			remoteInfo = "Uniflow-Mac";
+			remoteInfo = "Aftermath-Mac";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -236,7 +236,7 @@
 				D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */,
 				D558F0521D5DC562000AF754 /* Project */,
 				D5C629691C3A809D007F7B7C /* Sources */,
-				D5C6298F1C3A8BDA007F7B7C /* UniflowTests */,
+				D5C6298F1C3A8BDA007F7B7C /* AftermathTests */,
 				D5B2E8A01C3A780C00C0327D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -260,12 +260,12 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		D5C6298F1C3A8BDA007F7B7C /* UniflowTests */ = {
+		D5C6298F1C3A8BDA007F7B7C /* AftermathTests */ = {
 			isa = PBXGroup;
 			children = (
 				D579C4571D6B9CEB00EDD4A8 /* Aftermath */,
 			);
-			path = UniflowTests;
+			path = AftermathTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +302,7 @@
 			dependencies = (
 			);
 			name = "Aftermath-iOS";
-			productName = Uniflow;
+			productName = Aftermath;
 			productReference = D5B2E89F1C3A780C00C0327D /* Aftermath.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -320,7 +320,7 @@
 				D5B2E8AC1C3A780C00C0327D /* PBXTargetDependency */,
 			);
 			name = "Aftermath-iOS-Tests";
-			productName = UniflowTests;
+			productName = AftermathTests;
 			productReference = D5B2E8A91C3A780C00C0327D /* Aftermath.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -338,7 +338,7 @@
 			dependencies = (
 			);
 			name = "Aftermath-Mac";
-			productName = "Uniflow-Mac";
+			productName = "Aftermath-Mac";
 			productReference = D5C629401C3A7FAA007F7B7C /* Aftermath.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -356,7 +356,7 @@
 				D5C6294C1C3A7FAA007F7B7C /* PBXTargetDependency */,
 			);
 			name = "Aftermath-Mac-Tests";
-			productName = "Uniflow-MacTests";
+			productName = "Aftermath-MacTests";
 			productReference = D5C629491C3A7FAA007F7B7C /* Aftermath.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};

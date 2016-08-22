@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5C7F74E1C3BC9CE008CDDBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5C7F74C1C3BC9CE008CDDBA /* LaunchScreen.storyboard */; };
-		D5C7F75B1C3BCA1E008CDDBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */; };
-		D5C7F75C1C3BCA1E008CDDBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7F7591C3BCA1E008CDDBA /* AppDelegate.swift */; };
-		D5C7F75D1C3BCA1E008CDDBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7F75A1C3BCA1E008CDDBA /* ViewController.swift */; };
-		E01F3BA98F93816F129F4BBB /* Pods_UniflowDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F33268E3B87D03116CCB92B /* Pods_UniflowDemo.framework */; };
+		5A373EF063D8E70F9635AE3D /* Pods_AftermathDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0713B3D775FDAB4DA31713F6 /* Pods_AftermathDemo.framework */; };
+		D54313C91D6B9FBD00670AF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54313C11D6B9FBD00670AF2 /* LaunchScreen.storyboard */; };
+		D54313CB1D6B9FBD00670AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54313C51D6B9FBD00670AF2 /* Assets.xcassets */; };
+		D54313CC1D6B9FBD00670AF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54313C71D6B9FBD00670AF2 /* AppDelegate.swift */; };
+		D54313CD1D6B9FBD00670AF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54313C81D6B9FBD00670AF2 /* ViewController.swift */; };
+		E01F3BA98F93816F129F4BBB /* Pods_AftermathDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F33268E3B87D03116CCB92B /* Pods_AftermathDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		714092CDEFC7EAA8ED00F0CF /* Pods-UniflowDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniflowDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UniflowDemo/Pods-UniflowDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		7F33268E3B87D03116CCB92B /* Pods_UniflowDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniflowDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C38A938247BC892DF9E4A9FA /* Pods-UniflowDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniflowDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UniflowDemo/Pods-UniflowDemo.release.xcconfig"; sourceTree = "<group>"; };
-		D5C7F7401C3BC9CE008CDDBA /* UniflowDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniflowDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5C7F74D1C3BC9CE008CDDBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D5C7F74F1C3BC9CE008CDDBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D5C7F7591C3BCA1E008CDDBA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5C7F75A1C3BCA1E008CDDBA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0713B3D775FDAB4DA31713F6 /* Pods_AftermathDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30EE3F0C3ACC6A8C5346DEAB /* Pods-AftermathDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		714092CDEFC7EAA8ED00F0CF /* Pods-AftermathDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7F33268E3B87D03116CCB92B /* Pods_AftermathDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C38A938247BC892DF9E4A9FA /* Pods-AftermathDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D54313C21D6B9FBD00670AF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D54313C31D6B9FBD00670AF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54313C51D6B9FBD00670AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D54313C71D6B9FBD00670AF2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D54313C81D6B9FBD00670AF2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D5C7F7401C3BC9CE008CDDBA /* AftermathDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AftermathDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3FE4B252E36F15A27A58E77 /* Pods-AftermathDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01F3BA98F93816F129F4BBB /* Pods_UniflowDemo.framework in Frameworks */,
+				E01F3BA98F93816F129F4BBB /* Pods_AftermathDemo.framework in Frameworks */,
+				5A373EF063D8E70F9635AE3D /* Pods_AftermathDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,16 +46,46 @@
 		345A698D4DCB59325AFF249A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				714092CDEFC7EAA8ED00F0CF /* Pods-UniflowDemo.debug.xcconfig */,
-				C38A938247BC892DF9E4A9FA /* Pods-UniflowDemo.release.xcconfig */,
+				714092CDEFC7EAA8ED00F0CF /* Pods-AftermathDemo.debug.xcconfig */,
+				C38A938247BC892DF9E4A9FA /* Pods-AftermathDemo.release.xcconfig */,
+				30EE3F0C3ACC6A8C5346DEAB /* Pods-AftermathDemo.debug.xcconfig */,
+				F3FE4B252E36F15A27A58E77 /* Pods-AftermathDemo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D54313C01D6B9FBC00670AF2 /* AftermathDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D54313C11D6B9FBD00670AF2 /* LaunchScreen.storyboard */,
+				D54313C31D6B9FBD00670AF2 /* Info.plist */,
+				D54313C41D6B9FBD00670AF2 /* Resources */,
+				D54313C61D6B9FBD00670AF2 /* Sources */,
+			);
+			path = AftermathDemo;
+			sourceTree = "<group>";
+		};
+		D54313C41D6B9FBD00670AF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D54313C51D6B9FBD00670AF2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D54313C61D6B9FBD00670AF2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D54313C71D6B9FBD00670AF2 /* AppDelegate.swift */,
+				D54313C81D6B9FBD00670AF2 /* ViewController.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		D5C7F7371C3BC9CE008CDDBA = {
 			isa = PBXGroup;
 			children = (
-				D5C7F7421C3BC9CE008CDDBA /* UniflowDemo */,
+				D54313C01D6B9FBC00670AF2 /* AftermathDemo */,
 				D5C7F7411C3BC9CE008CDDBA /* Products */,
 				345A698D4DCB59325AFF249A /* Pods */,
 				F269D6AEF53F82EB31A69383 /* Frameworks */,
@@ -60,51 +95,16 @@
 		D5C7F7411C3BC9CE008CDDBA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5C7F7401C3BC9CE008CDDBA /* UniflowDemo.app */,
+				D5C7F7401C3BC9CE008CDDBA /* AftermathDemo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D5C7F7421C3BC9CE008CDDBA /* UniflowDemo */ = {
-			isa = PBXGroup;
-			children = (
-				D5C7F7561C3BCA1E008CDDBA /* Resources */,
-				D5C7F7581C3BCA1E008CDDBA /* Sources */,
-				D5C7F7551C3BC9EA008CDDBA /* Supporting Files */,
-			);
-			path = UniflowDemo;
-			sourceTree = "<group>";
-		};
-		D5C7F7551C3BC9EA008CDDBA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D5C7F74C1C3BC9CE008CDDBA /* LaunchScreen.storyboard */,
-				D5C7F74F1C3BC9CE008CDDBA /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D5C7F7561C3BCA1E008CDDBA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		D5C7F7581C3BCA1E008CDDBA /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				D5C7F7591C3BCA1E008CDDBA /* AppDelegate.swift */,
-				D5C7F75A1C3BCA1E008CDDBA /* ViewController.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		F269D6AEF53F82EB31A69383 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7F33268E3B87D03116CCB92B /* Pods_UniflowDemo.framework */,
+				7F33268E3B87D03116CCB92B /* Pods_AftermathDemo.framework */,
+				0713B3D775FDAB4DA31713F6 /* Pods_AftermathDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,9 +112,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5C7F73F1C3BC9CE008CDDBA /* UniflowDemo */ = {
+		D5C7F73F1C3BC9CE008CDDBA /* AftermathDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "UniflowDemo" */;
+			buildConfigurationList = D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "AftermathDemo" */;
 			buildPhases = (
 				892B48B85A68D79ECB870FDB /* [CP] Check Pods Manifest.lock */,
 				D5C7F73C1C3BC9CE008CDDBA /* Sources */,
@@ -127,9 +127,9 @@
 			);
 			dependencies = (
 			);
-			name = UniflowDemo;
-			productName = UniflowDemo;
-			productReference = D5C7F7401C3BC9CE008CDDBA /* UniflowDemo.app */;
+			name = AftermathDemo;
+			productName = AftermathDemo;
+			productReference = D5C7F7401C3BC9CE008CDDBA /* AftermathDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -147,7 +147,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D5C7F73B1C3BC9CE008CDDBA /* Build configuration list for PBXProject "UniflowDemo" */;
+			buildConfigurationList = D5C7F73B1C3BC9CE008CDDBA /* Build configuration list for PBXProject "AftermathDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -160,7 +160,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5C7F73F1C3BC9CE008CDDBA /* UniflowDemo */,
+				D5C7F73F1C3BC9CE008CDDBA /* AftermathDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -170,8 +170,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C7F75B1C3BCA1E008CDDBA /* Assets.xcassets in Resources */,
-				D5C7F74E1C3BC9CE008CDDBA /* LaunchScreen.storyboard in Resources */,
+				D54313CB1D6B9FBD00670AF2 /* Assets.xcassets in Resources */,
+				D54313C91D6B9FBD00670AF2 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +190,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UniflowDemo/Pods-UniflowDemo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		892B48B85A68D79ECB870FDB /* [CP] Check Pods Manifest.lock */ = {
@@ -220,7 +220,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UniflowDemo/Pods-UniflowDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -230,18 +230,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C7F75D1C3BCA1E008CDDBA /* ViewController.swift in Sources */,
-				D5C7F75C1C3BCA1E008CDDBA /* AppDelegate.swift in Sources */,
+				D54313CD1D6B9FBD00670AF2 /* ViewController.swift in Sources */,
+				D54313CC1D6B9FBD00670AF2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D5C7F74C1C3BC9CE008CDDBA /* LaunchScreen.storyboard */ = {
+		D54313C11D6B9FBD00670AF2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D5C7F74D1C3BC9CE008CDDBA /* Base */,
+				D54313C21D6B9FBD00670AF2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -332,32 +332,32 @@
 		};
 		D5C7F7531C3BC9CE008CDDBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 714092CDEFC7EAA8ED00F0CF /* Pods-UniflowDemo.debug.xcconfig */;
+			baseConfigurationReference = 30EE3F0C3ACC6A8C5346DEAB /* Pods-AftermathDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = UniflowDemo/Info.plist;
+				INFOPLIST_FILE = AftermathDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.UniflowDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathDemo;
+				PRODUCT_NAME = AftermathDemo;
 			};
 			name = Debug;
 		};
 		D5C7F7541C3BC9CE008CDDBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C38A938247BC892DF9E4A9FA /* Pods-UniflowDemo.release.xcconfig */;
+			baseConfigurationReference = F3FE4B252E36F15A27A58E77 /* Pods-AftermathDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = UniflowDemo/Info.plist;
+				INFOPLIST_FILE = AftermathDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.UniflowDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathDemo;
+				PRODUCT_NAME = AftermathDemo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5C7F73B1C3BC9CE008CDDBA /* Build configuration list for PBXProject "UniflowDemo" */ = {
+		D5C7F73B1C3BC9CE008CDDBA /* Build configuration list for PBXProject "AftermathDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5C7F7501C3BC9CE008CDDBA /* Debug */,
@@ -366,7 +366,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "UniflowDemo" */ = {
+		D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "AftermathDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5C7F7531C3BC9CE008CDDBA /* Debug */,
