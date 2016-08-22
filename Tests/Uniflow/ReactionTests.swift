@@ -3,26 +3,22 @@ import XCTest
 
 class ReactionTests: XCTestCase {
 
-  enum Callback: Int {
-    case Progress, Success, Error
-  }
-
   var reaction: Reaction<Calculator>!
-  var callback: Callback?
+  var state: State?
 
   override func setUp() {
     super.setUp()
 
-    callback = nil
+    state = nil
     reaction = Reaction(
       progress: {
-        self.callback = .Progress
+        self.state = .Progress
       },
       done: { result in
-        self.callback = .Success
+        self.state = .Success
       },
       fail: { error in
-        self.callback = .Error
+        self.state = .Error
       })
   }
 
@@ -50,20 +46,20 @@ class ReactionTests: XCTestCase {
     let event = Event<Calculator>.Progress
     reaction.invoke(with: event)
 
-    XCTAssertEqual(callback, .Progress)
+    XCTAssertEqual(state, .Progress)
   }
 
   func testInvokeWithSuccess() {
     let event = Event<Calculator>.Success(Calculator(result: 11))
     reaction.invoke(with: event)
 
-    XCTAssertEqual(callback, .Success)
+    XCTAssertEqual(state, .Success)
   }
 
   func testInvokeWithError() {
     let event = Event<Calculator>.Error(TestError.Test)
     reaction.invoke(with: event)
 
-    XCTAssertEqual(callback, .Error)
+    XCTAssertEqual(state, .Error)
   }
 }
