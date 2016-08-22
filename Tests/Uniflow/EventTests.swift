@@ -3,16 +3,6 @@ import XCTest
 
 class EventTests: XCTestCase {
 
-  var event: Event<String>!
-
-  override func setUp() {
-    super.setUp()
-  }
-
-  override func tearDown() {
-    super.tearDown()
-  }
-
   // MARK: - Tests
 
   func testBuildErrorEvent() {
