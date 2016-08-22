@@ -39,7 +39,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
         throw Error.InvalidCommandType
       }
 
-      try handler.handle(command)
+      try handler.publish(handler.handle(command))
     }
 
     pthread_mutex_unlock(&mutex)
