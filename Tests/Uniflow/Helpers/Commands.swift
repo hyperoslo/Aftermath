@@ -25,15 +25,15 @@ struct AdditionCommand: Command {
 struct TestCommandHandler: CommandHandler {
 
   let result: String
-  var callback: (TestCommand -> Void)
+  var callback: (TestCommand -> Void)?
 
-  init(result: String, callback: (TestCommand -> Void)) {
+  init(result: String = "", callback: (TestCommand -> Void)? = nil) {
     self.result = result
     self.callback = callback
   }
 
   func handle(command: TestCommand) throws -> Event<String> {
-    callback(command)
+    callback?(command)
     return Event.Success(result)
   }
 }
