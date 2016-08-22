@@ -89,7 +89,20 @@ class CommandBusTests: XCTestCase {
   }
 
   func testExecuteWithMiddleware() {
+    var executed = false
+    let middleware = LogCommandMiddleware { _ in
+      executed = true
+    }
 
+    let token = commandBus.use(commandHandler)
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+
+    commandBus.middlewares.append(middleware)
+    commandBus.execute(TestCommand())
+
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Issued)
+    XCTAssertNotNil(executedCommand)
+    XCTAssertTrue(executed)
   }
 
   func testPerform() {
@@ -130,7 +143,7 @@ class CommandBusTests: XCTestCase {
   }
 
   func testHandleError() {
-
+    
   }
 
   func testHandleErrorWithNotFrameworkError() {
