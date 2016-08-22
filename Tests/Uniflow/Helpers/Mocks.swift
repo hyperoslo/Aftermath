@@ -106,3 +106,28 @@ struct ErrorEventMiddleware: EventMiddleware {
 enum TestError: ErrorType {
   case Test
 }
+
+// MARK: - Reactions
+
+enum State: Int {
+  case Progress, Success, Error
+}
+
+class Controller: ReactionProducer {
+
+  var reaction: Reaction<Calculator>!
+  var state: State?
+
+  init() {
+    reaction = Reaction(
+      progress: {
+        self.state = .Progress
+      },
+      done: { result in
+        self.state = .Success
+      },
+      fail: { error in
+        self.state = .Error
+    })
+  }
+}
