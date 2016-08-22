@@ -45,6 +45,10 @@
 		D579C41D1D6AE9A200EDD4A8 /* IdentifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C41B1D6AE9A200EDD4A8 /* IdentifiableTests.swift */; };
 		D579C4201D6AEA9100EDD4A8 /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C41F1D6AEA9100EDD4A8 /* ListenerTests.swift */; };
 		D579C4211D6AEA9100EDD4A8 /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C41F1D6AEA9100EDD4A8 /* ListenerTests.swift */; };
+		D579C4231D6AECB200EDD4A8 /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4221D6AECB200EDD4A8 /* MutexDisposerTests.swift */; };
+		D579C4241D6AECB200EDD4A8 /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4221D6AECB200EDD4A8 /* MutexDisposerTests.swift */; };
+		D579C4261D6AED0D00EDD4A8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4251D6AED0D00EDD4A8 /* Types.swift */; };
+		D579C4271D6AED0D00EDD4A8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4251D6AED0D00EDD4A8 /* Types.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Uniflow.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Uniflow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Uniflow.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +96,8 @@
 		D579C4181D6AE68700EDD4A8 /* CommandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
 		D579C41B1D6AE9A200EDD4A8 /* IdentifiableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableTests.swift; sourceTree = "<group>"; };
 		D579C41F1D6AEA9100EDD4A8 /* ListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenerTests.swift; sourceTree = "<group>"; };
+		D579C4221D6AECB200EDD4A8 /* MutexDisposerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutexDisposerTests.swift; sourceTree = "<group>"; };
+		D579C4251D6AED0D00EDD4A8 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Uniflow-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Uniflow-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Uniflow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Uniflow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				D579C40C1D6A068500EDD4A8 /* Mocks.swift */,
+				D579C4251D6AED0D00EDD4A8 /* Types.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				D579C41F1D6AEA9100EDD4A8 /* ListenerTests.swift */,
+				D579C4221D6AECB200EDD4A8 /* MutexDisposerTests.swift */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -433,10 +441,12 @@
 				D579C4131D6A3B8100EDD4A8 /* ReactionProducerTests.swift in Sources */,
 				D579C4191D6AE68700EDD4A8 /* CommandTests.swift in Sources */,
 				D579C4201D6AEA9100EDD4A8 /* ListenerTests.swift in Sources */,
+				D579C4231D6AECB200EDD4A8 /* MutexDisposerTests.swift in Sources */,
 				D579C40A1D68921800EDD4A8 /* EngineTests.swift in Sources */,
 				D579C4101D6A365200EDD4A8 /* ReactionTests.swift in Sources */,
 				D579C41C1D6AE9A200EDD4A8 /* IdentifiableTests.swift in Sources */,
 				D579C4161D6AE32B00EDD4A8 /* EventTests.swift in Sources */,
+				D579C4261D6AED0D00EDD4A8 /* Types.swift in Sources */,
 				D579C40D1D6A068500EDD4A8 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,10 +476,12 @@
 				D579C4141D6A3B8100EDD4A8 /* ReactionProducerTests.swift in Sources */,
 				D579C41A1D6AE68700EDD4A8 /* CommandTests.swift in Sources */,
 				D579C4211D6AEA9100EDD4A8 /* ListenerTests.swift in Sources */,
+				D579C4241D6AECB200EDD4A8 /* MutexDisposerTests.swift in Sources */,
 				D579C40B1D68921900EDD4A8 /* EngineTests.swift in Sources */,
 				D579C4111D6A365200EDD4A8 /* ReactionTests.swift in Sources */,
 				D579C41D1D6AE9A200EDD4A8 /* IdentifiableTests.swift in Sources */,
 				D579C4171D6AE32B00EDD4A8 /* EventTests.swift in Sources */,
+				D579C4271D6AED0D00EDD4A8 /* Types.swift in Sources */,
 				D579C40E1D6A068500EDD4A8 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

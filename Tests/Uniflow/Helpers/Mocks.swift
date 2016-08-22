@@ -1,19 +1,5 @@
 @testable import Uniflow
 
-extension String: Projection {}
-
-struct Calculator: Projection {
-  let result: Int
-}
-
-enum State: Int {
-  case Progress, Success, Error
-}
-
-enum TestError: ErrorType {
-  case Test
-}
-
 // MARK: - Commands
 
 struct TestCommand: Command {

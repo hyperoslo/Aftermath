@@ -11,10 +11,6 @@ class ReactionProducerTests: XCTestCase {
     controller = Controller()
   }
 
-  override func tearDown() {
-    super.tearDown()
-  }
-
   // MARK: - Tests
 
   func testReactWithProgress() {

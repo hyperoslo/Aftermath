@@ -10,10 +10,6 @@ class EngineTests: XCTestCase {
     engine = Engine()
   }
 
-  override func tearDown() {
-    super.tearDown()
-  }
-
   // MARK: - Tests
 
   func testInit() {
