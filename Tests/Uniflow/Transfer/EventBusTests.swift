@@ -16,4 +16,20 @@ class EventBusTests: XCTestCase {
   }
 
   // MARK: - Tests
+
+  func testListen() {
+
+  }
+
+  func testPublish() {
+
+  }
+
+  func testPeform() {
+
+  }
+
+  func testHandleError() {
+
+  }
 }

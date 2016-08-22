@@ -20,6 +20,14 @@ class TestDisposer: MutexDisposer {
   var mutex = pthread_mutex_t()
 }
 
+class ErrorManager: ErrorHandler {
+  var lastError: ErrorType?
+
+  func handleError(error: ErrorType) {
+    self.lastError = error
+  }
+}
+
 // MARK: - Reactions
 
 class Controller: CommandProducer, ReactionProducer {
