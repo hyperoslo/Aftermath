@@ -95,8 +95,42 @@ class EventBusTests: XCTestCase {
     XCTAssertTrue(executed)
   }
 
-  func testPeform() {
+  func testPerform() {
+    let token = eventBus.listen(listener)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
 
+    do {
+      try eventBus.perform(Event<Calculator>.Progress)
+      XCTAssertEqual(eventBus.listeners[token]?.status, .Issued)
+      XCTAssertEqual(state, .Progress)
+    } catch {
+      XCTFail("Event bus perform failed with error: \(error)")
+    }
+  }
+
+  func testPerformWithoutListeners() {
+    let token = eventBus.listen(listener)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+
+    do {
+      try eventBus.perform(Event<String>.Progress)
+      XCTFail("Perform may fail with error")
+    } catch {
+      XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+      XCTAssertNil(state)
+      XCTAssertNil(errorHandler.lastError)
+
+      if let error = error as? Warning {
+        switch error {
+        case .NoEventListeners(let event):
+          XCTAssertTrue(event is Event<String>)
+        default:
+          XCTFail("Invalid error was thrown: \(error)")
+        }
+      } else {
+        XCTFail("Invalid error was thrown: \(error)")
+      }
+    }
   }
 
   func testHandleError() {

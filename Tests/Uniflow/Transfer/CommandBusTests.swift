@@ -131,6 +131,7 @@ class CommandBusTests: XCTestCase {
     } catch {
       XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
       XCTAssertNil(executedCommand)
+      XCTAssertNil(errorHandler.lastError)
 
       if let error = error as? Warning {
         switch error {
