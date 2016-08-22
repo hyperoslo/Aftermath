@@ -58,7 +58,7 @@ class CommandBusTests: XCTestCase {
         XCTFail("Invalid error was thrown: \(error)")
       }
     } else {
-      XCTFail("Duplicated command warning wasnt's thrown")
+      XCTFail("No duplicated command warning was thrown")
     }
   }
 
@@ -87,7 +87,7 @@ class CommandBusTests: XCTestCase {
         XCTFail("Invalid error was thrown: \(error)")
       }
     } else {
-      XCTFail("No command handlers warning wasnt's thrown")
+      XCTFail("No command handlers warning was thrown")
     }
   }
 
