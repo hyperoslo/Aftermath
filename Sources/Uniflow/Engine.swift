@@ -16,4 +16,10 @@ public class Engine {
   public func pipeEvents(through middlewares: [EventMiddleware]) {
     eventBus.middlewares = middlewares
   }
+
+  // MARK: - Command handling
+
+  public func use<T: CommandHandler>(handler: T) -> DisposalToken {
+    return commandBus.use(handler)
+  }
 }
