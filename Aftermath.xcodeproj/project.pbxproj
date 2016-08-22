@@ -7,37 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D579C46B1D6B9CEB00EDD4A8 /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */; };
-		D579C46C1D6B9CEB00EDD4A8 /* CommandProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */; };
-		D579C46D1D6B9CEB00EDD4A8 /* CommandProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */; };
-		D579C46E1D6B9CEB00EDD4A8 /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */; };
-		D579C46F1D6B9CEB00EDD4A8 /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */; };
-		D579C4701D6B9CEB00EDD4A8 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45B1D6B9CEB00EDD4A8 /* EngineTests.swift */; };
-		D579C4711D6B9CEB00EDD4A8 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45B1D6B9CEB00EDD4A8 /* EngineTests.swift */; };
-		D579C4721D6B9CEB00EDD4A8 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45C1D6B9CEB00EDD4A8 /* ErrorTests.swift */; };
-		D579C4731D6B9CEB00EDD4A8 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45C1D6B9CEB00EDD4A8 /* ErrorTests.swift */; };
-		D579C4741D6B9CEB00EDD4A8 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45D1D6B9CEB00EDD4A8 /* EventTests.swift */; };
-		D579C4751D6B9CEB00EDD4A8 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45D1D6B9CEB00EDD4A8 /* EventTests.swift */; };
-		D579C4761D6B9CEB00EDD4A8 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45F1D6B9CEB00EDD4A8 /* Commands.swift */; };
-		D579C4771D6B9CEB00EDD4A8 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45F1D6B9CEB00EDD4A8 /* Commands.swift */; };
-		D579C4781D6B9CEB00EDD4A8 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4601D6B9CEB00EDD4A8 /* Events.swift */; };
-		D579C4791D6B9CEB00EDD4A8 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4601D6B9CEB00EDD4A8 /* Events.swift */; };
-		D579C47A1D6B9CEB00EDD4A8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4611D6B9CEB00EDD4A8 /* Types.swift */; };
-		D579C47B1D6B9CEB00EDD4A8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4611D6B9CEB00EDD4A8 /* Types.swift */; };
-		D579C47C1D6B9CEB00EDD4A8 /* IdentifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */; };
-		D579C47D1D6B9CEB00EDD4A8 /* IdentifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */; };
-		D579C47E1D6B9CEB00EDD4A8 /* ReactionProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */; };
-		D579C47F1D6B9CEB00EDD4A8 /* ReactionProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */; };
-		D579C4801D6B9CEB00EDD4A8 /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */; };
-		D579C4811D6B9CEB00EDD4A8 /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */; };
-		D579C4821D6B9CEB00EDD4A8 /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4661D6B9CEB00EDD4A8 /* CommandBusTests.swift */; };
-		D579C4831D6B9CEB00EDD4A8 /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4661D6B9CEB00EDD4A8 /* CommandBusTests.swift */; };
-		D579C4841D6B9CEB00EDD4A8 /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4671D6B9CEB00EDD4A8 /* EventBusTests.swift */; };
-		D579C4851D6B9CEB00EDD4A8 /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4671D6B9CEB00EDD4A8 /* EventBusTests.swift */; };
-		D579C4861D6B9CEB00EDD4A8 /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4681D6B9CEB00EDD4A8 /* ListenerTests.swift */; };
-		D579C4871D6B9CEB00EDD4A8 /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4681D6B9CEB00EDD4A8 /* ListenerTests.swift */; };
-		D579C4881D6B9CEB00EDD4A8 /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4691D6B9CEB00EDD4A8 /* MutexDisposerTests.swift */; };
-		D579C4891D6B9CEB00EDD4A8 /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4691D6B9CEB00EDD4A8 /* MutexDisposerTests.swift */; };
+		D574625C1D6BA09900E0C876 /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */; };
+		D574625D1D6BA09900E0C876 /* CommandProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */; };
+		D574625E1D6BA09900E0C876 /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */; };
+		D574625F1D6BA09900E0C876 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45B1D6B9CEB00EDD4A8 /* EngineTests.swift */; };
+		D57462601D6BA09900E0C876 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45C1D6B9CEB00EDD4A8 /* ErrorTests.swift */; };
+		D57462611D6BA09900E0C876 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45D1D6B9CEB00EDD4A8 /* EventTests.swift */; };
+		D57462621D6BA09A00E0C876 /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */; };
+		D57462631D6BA09A00E0C876 /* CommandProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */; };
+		D57462641D6BA09A00E0C876 /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */; };
+		D57462651D6BA09A00E0C876 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45B1D6B9CEB00EDD4A8 /* EngineTests.swift */; };
+		D57462661D6BA09A00E0C876 /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45C1D6B9CEB00EDD4A8 /* ErrorTests.swift */; };
+		D57462671D6BA09A00E0C876 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45D1D6B9CEB00EDD4A8 /* EventTests.swift */; };
+		D574626E1D6BA0A300E0C876 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45F1D6B9CEB00EDD4A8 /* Commands.swift */; };
+		D574626F1D6BA0A300E0C876 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4601D6B9CEB00EDD4A8 /* Events.swift */; };
+		D57462701D6BA0A300E0C876 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4611D6B9CEB00EDD4A8 /* Types.swift */; };
+		D57462711D6BA0A400E0C876 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45F1D6B9CEB00EDD4A8 /* Commands.swift */; };
+		D57462721D6BA0A400E0C876 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4601D6B9CEB00EDD4A8 /* Events.swift */; };
+		D57462731D6BA0A400E0C876 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4611D6B9CEB00EDD4A8 /* Types.swift */; };
+		D574627A1D6BA0AC00E0C876 /* IdentifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */; };
+		D574627B1D6BA0AC00E0C876 /* ReactionProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */; };
+		D574627C1D6BA0AC00E0C876 /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */; };
+		D574627D1D6BA0AD00E0C876 /* IdentifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */; };
+		D574627E1D6BA0AD00E0C876 /* ReactionProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */; };
+		D574627F1D6BA0AD00E0C876 /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */; };
+		D57462881D6BA0B600E0C876 /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4661D6B9CEB00EDD4A8 /* CommandBusTests.swift */; };
+		D57462891D6BA0B600E0C876 /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4671D6B9CEB00EDD4A8 /* EventBusTests.swift */; };
+		D574628A1D6BA0B600E0C876 /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4681D6B9CEB00EDD4A8 /* ListenerTests.swift */; };
+		D574628B1D6BA0B600E0C876 /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4691D6B9CEB00EDD4A8 /* MutexDisposerTests.swift */; };
+		D574628C1D6BA0B700E0C876 /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4661D6B9CEB00EDD4A8 /* CommandBusTests.swift */; };
+		D574628D1D6BA0B700E0C876 /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4671D6B9CEB00EDD4A8 /* EventBusTests.swift */; };
+		D574628E1D6BA0B700E0C876 /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4681D6B9CEB00EDD4A8 /* ListenerTests.swift */; };
+		D574628F1D6BA0B700E0C876 /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4691D6B9CEB00EDD4A8 /* MutexDisposerTests.swift */; };
 		D579C48A1D6B9CFB00EDD4A8 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4381D6B9CD400EDD4A8 /* Command.swift */; };
 		D579C48B1D6B9CFB00EDD4A8 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4391D6B9CD400EDD4A8 /* Engine.swift */; };
 		D579C48C1D6B9CFB00EDD4A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C43A1D6B9CD400EDD4A8 /* Error.swift */; };
@@ -58,7 +59,6 @@
 		D579C49B1D6B9D0400EDD4A8 /* Disposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4401D6B9CD400EDD4A8 /* Disposer.swift */; };
 		D579C49C1D6B9D0400EDD4A8 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4411D6B9CD400EDD4A8 /* EventBus.swift */; };
 		D579C49D1D6B9D0400EDD4A8 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4421D6B9CD400EDD4A8 /* Listener.swift */; };
-		D579C49E1D6B9E9D00EDD4A8 /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Aftermath.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Aftermath.framework */; };
 /* End PBXBuildFile section */
@@ -114,9 +114,9 @@
 		D579C4681D6B9CEB00EDD4A8 /* ListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenerTests.swift; sourceTree = "<group>"; };
 		D579C4691D6B9CEB00EDD4A8 /* MutexDisposerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutexDisposerTests.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Aftermath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Aftermath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5B2E8A91C3A780C00C0327D /* Aftermath.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aftermath.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5B2E8A91C3A780C00C0327D /* Aftermath-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Aftermath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Aftermath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5C629491C3A7FAA007F7B7C /* Aftermath.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aftermath.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-Mac-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,9 +245,9 @@
 			isa = PBXGroup;
 			children = (
 				D5B2E89F1C3A780C00C0327D /* Aftermath.framework */,
-				D5B2E8A91C3A780C00C0327D /* Aftermath.xctest */,
+				D5B2E8A91C3A780C00C0327D /* Aftermath-iOS-Tests.xctest */,
 				D5C629401C3A7FAA007F7B7C /* Aftermath.framework */,
-				D5C629491C3A7FAA007F7B7C /* Aftermath.xctest */,
+				D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 			);
 			name = "Aftermath-iOS-Tests";
 			productName = AftermathTests;
-			productReference = D5B2E8A91C3A780C00C0327D /* Aftermath.xctest */;
+			productReference = D5B2E8A91C3A780C00C0327D /* Aftermath-iOS-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D5C6293F1C3A7FAA007F7B7C /* Aftermath-Mac */ = {
@@ -357,7 +357,7 @@
 			);
 			name = "Aftermath-Mac-Tests";
 			productName = "Aftermath-MacTests";
-			productReference = D5C629491C3A7FAA007F7B7C /* Aftermath.xctest */;
+			productReference = D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -457,22 +457,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D579C4741D6B9CEB00EDD4A8 /* EventTests.swift in Sources */,
-				D579C4761D6B9CEB00EDD4A8 /* Commands.swift in Sources */,
-				D579C47A1D6B9CEB00EDD4A8 /* Types.swift in Sources */,
-				D579C46C1D6B9CEB00EDD4A8 /* CommandProducerTests.swift in Sources */,
-				D579C49E1D6B9E9D00EDD4A8 /* CommandHandlerTests.swift in Sources */,
-				D579C47E1D6B9CEB00EDD4A8 /* ReactionProducerTests.swift in Sources */,
-				D579C4781D6B9CEB00EDD4A8 /* Events.swift in Sources */,
-				D579C4861D6B9CEB00EDD4A8 /* ListenerTests.swift in Sources */,
-				D579C4881D6B9CEB00EDD4A8 /* MutexDisposerTests.swift in Sources */,
-				D579C4721D6B9CEB00EDD4A8 /* ErrorTests.swift in Sources */,
-				D579C4801D6B9CEB00EDD4A8 /* ReactionTests.swift in Sources */,
-				D579C46E1D6B9CEB00EDD4A8 /* CommandTests.swift in Sources */,
-				D579C4821D6B9CEB00EDD4A8 /* CommandBusTests.swift in Sources */,
-				D579C47C1D6B9CEB00EDD4A8 /* IdentifiableTests.swift in Sources */,
-				D579C4841D6B9CEB00EDD4A8 /* EventBusTests.swift in Sources */,
-				D579C4701D6B9CEB00EDD4A8 /* EngineTests.swift in Sources */,
+				D57462611D6BA09900E0C876 /* EventTests.swift in Sources */,
+				D57462891D6BA0B600E0C876 /* EventBusTests.swift in Sources */,
+				D574628B1D6BA0B600E0C876 /* MutexDisposerTests.swift in Sources */,
+				D574627B1D6BA0AC00E0C876 /* ReactionProducerTests.swift in Sources */,
+				D574625D1D6BA09900E0C876 /* CommandProducerTests.swift in Sources */,
+				D57462601D6BA09900E0C876 /* ErrorTests.swift in Sources */,
+				D574627C1D6BA0AC00E0C876 /* ReactionTests.swift in Sources */,
+				D574627A1D6BA0AC00E0C876 /* IdentifiableTests.swift in Sources */,
+				D574625C1D6BA09900E0C876 /* CommandHandlerTests.swift in Sources */,
+				D574626F1D6BA0A300E0C876 /* Events.swift in Sources */,
+				D574628A1D6BA0B600E0C876 /* ListenerTests.swift in Sources */,
+				D574626E1D6BA0A300E0C876 /* Commands.swift in Sources */,
+				D57462881D6BA0B600E0C876 /* CommandBusTests.swift in Sources */,
+				D57462701D6BA0A300E0C876 /* Types.swift in Sources */,
+				D574625E1D6BA09900E0C876 /* CommandTests.swift in Sources */,
+				D574625F1D6BA09900E0C876 /* EngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,22 +497,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D579C4751D6B9CEB00EDD4A8 /* EventTests.swift in Sources */,
-				D579C4771D6B9CEB00EDD4A8 /* Commands.swift in Sources */,
-				D579C47B1D6B9CEB00EDD4A8 /* Types.swift in Sources */,
-				D579C46D1D6B9CEB00EDD4A8 /* CommandProducerTests.swift in Sources */,
-				D579C47F1D6B9CEB00EDD4A8 /* ReactionProducerTests.swift in Sources */,
-				D579C4791D6B9CEB00EDD4A8 /* Events.swift in Sources */,
-				D579C4871D6B9CEB00EDD4A8 /* ListenerTests.swift in Sources */,
-				D579C4891D6B9CEB00EDD4A8 /* MutexDisposerTests.swift in Sources */,
-				D579C4731D6B9CEB00EDD4A8 /* ErrorTests.swift in Sources */,
-				D579C4811D6B9CEB00EDD4A8 /* ReactionTests.swift in Sources */,
-				D579C46B1D6B9CEB00EDD4A8 /* CommandHandlerTests.swift in Sources */,
-				D579C46F1D6B9CEB00EDD4A8 /* CommandTests.swift in Sources */,
-				D579C4831D6B9CEB00EDD4A8 /* CommandBusTests.swift in Sources */,
-				D579C47D1D6B9CEB00EDD4A8 /* IdentifiableTests.swift in Sources */,
-				D579C4851D6B9CEB00EDD4A8 /* EventBusTests.swift in Sources */,
-				D579C4711D6B9CEB00EDD4A8 /* EngineTests.swift in Sources */,
+				D57462671D6BA09A00E0C876 /* EventTests.swift in Sources */,
+				D574628D1D6BA0B700E0C876 /* EventBusTests.swift in Sources */,
+				D574628F1D6BA0B700E0C876 /* MutexDisposerTests.swift in Sources */,
+				D574627E1D6BA0AD00E0C876 /* ReactionProducerTests.swift in Sources */,
+				D57462631D6BA09A00E0C876 /* CommandProducerTests.swift in Sources */,
+				D57462661D6BA09A00E0C876 /* ErrorTests.swift in Sources */,
+				D574627F1D6BA0AD00E0C876 /* ReactionTests.swift in Sources */,
+				D574627D1D6BA0AD00E0C876 /* IdentifiableTests.swift in Sources */,
+				D57462621D6BA09A00E0C876 /* CommandHandlerTests.swift in Sources */,
+				D57462721D6BA0A400E0C876 /* Events.swift in Sources */,
+				D574628E1D6BA0B700E0C876 /* ListenerTests.swift in Sources */,
+				D57462711D6BA0A400E0C876 /* Commands.swift in Sources */,
+				D574628C1D6BA0B700E0C876 /* CommandBusTests.swift in Sources */,
+				D57462731D6BA0A400E0C876 /* Types.swift in Sources */,
+				D57462641D6BA09A00E0C876 /* CommandTests.swift in Sources */,
+				D57462651D6BA09A00E0C876 /* EngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,7 +666,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Info-Tests-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathTests;
-				PRODUCT_NAME = Aftermath;
+				PRODUCT_NAME = "Aftermath-iOS-Tests";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -679,7 +679,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Info-Tests-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathTests;
-				PRODUCT_NAME = Aftermath;
+				PRODUCT_NAME = "Aftermath-iOS-Tests";
 			};
 			name = Release;
 		};
@@ -738,7 +738,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.Aftermath-MacTests";
-				PRODUCT_NAME = Aftermath;
+				PRODUCT_NAME = "Aftermath-Mac-Tests";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -753,7 +753,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.Aftermath-MacTests";
-				PRODUCT_NAME = Aftermath;
+				PRODUCT_NAME = "Aftermath-Mac-Tests";
 				SDKROOT = macosx;
 			};
 			name = Release;
