@@ -4,6 +4,7 @@ import Foundation
 
 public protocol EventDispatcher: Disposer {
 
+  var errorHandler: ErrorHandler? { get set }
   var middlewares: [EventMiddleware] { get set }
 
   func publish(event: AnyEvent)
@@ -14,6 +15,7 @@ public protocol EventDispatcher: Disposer {
 
 final class EventBus: EventDispatcher, MutexDisposer {
 
+  var errorHandler: ErrorHandler?
   var listeners: [DisposalToken: Listener] = [:]
   var middlewares: [EventMiddleware] = []
   var mutex = pthread_mutex_t()
@@ -64,7 +66,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
       try call(event)
     } catch {
-      Engine.sharedInstance.errorHandler?.handleError(error)
+      errorHandler?.handleError(error)
       handleError(error, on: event)
     }
   }
