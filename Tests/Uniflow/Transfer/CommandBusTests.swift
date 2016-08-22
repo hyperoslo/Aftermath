@@ -60,10 +60,6 @@ class CommandBusTests: XCTestCase {
   }
 
   func testExecute() {
-
-  }
-
-  func testPerform() {
     let token = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
 
@@ -72,7 +68,7 @@ class CommandBusTests: XCTestCase {
     XCTAssertNotNil(executedCommand)
   }
 
-  func testPerformWithoutListeners() {
+  func testExecuteWithoutListeners() {
     let token = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
 
@@ -92,7 +88,52 @@ class CommandBusTests: XCTestCase {
     }
   }
 
+  func testExecuteWithMiddleware() {
+
+  }
+
+  func testPerform() {
+    let token = commandBus.use(commandHandler)
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+
+    do {
+      try commandBus.perform(TestCommand())
+      XCTAssertEqual(commandBus.listeners[token]?.status, .Issued)
+      XCTAssertNotNil(executedCommand)
+    } catch {
+      XCTFail("Command bus perform failed with error: \(error)")
+    }
+  }
+
+  func testPerformWithoutListeners() {
+    let token = commandBus.use(commandHandler)
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+
+    do {
+      try commandBus.perform(AdditionCommand(value1: 1, value2: 3))
+      XCTFail("Perform may fail with error")
+    } catch {
+      XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+      XCTAssertNil(executedCommand)
+
+      if let error = error as? Warning {
+        switch error {
+        case .NoCommandHandlers(let command):
+          XCTAssertTrue(command is AdditionCommand)
+        default:
+          XCTFail("Invalid error was thrown: \(error)")
+        }
+      } else {
+        XCTFail("Invalid error was thrown: \(error)")
+      }
+    }
+  }
+
   func testHandleError() {
+
+  }
+
+  func testHandleErrorWithNotFrameworkError() {
 
   }
 }
