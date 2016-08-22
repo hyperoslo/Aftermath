@@ -1,10 +1,20 @@
 @testable import Uniflow
 
-// MARK: - Commands
+extension String: Projection {}
 
 struct Calculator: Projection {
   let result: Int
 }
+
+enum State: Int {
+  case Progress, Success, Error
+}
+
+enum TestError: ErrorType {
+  case Test
+}
+
+// MARK: - Commands
 
 struct TestCommand: Command {
   typealias ProjectionType = Calculator
@@ -103,15 +113,7 @@ struct ErrorEventMiddleware: EventMiddleware {
   }
 }
 
-enum TestError: ErrorType {
-  case Test
-}
-
 // MARK: - Reactions
-
-enum State: Int {
-  case Progress, Success, Error
-}
 
 class Controller: ReactionProducer {
 

@@ -1,7 +1,7 @@
 import XCTest
 @testable import Uniflow
 
-class EventTests: XCTestCase {
+class ErrorTests: XCTestCase {
 
   func testIsFrameworkError() {
     XCTAssertTrue(Error.InvalidCommandType.isFrameworkError)
