@@ -12,7 +12,7 @@ public enum Error: ErrorType {
 public enum Warning: ErrorType {
   case NoCommandHandlers(command: AnyCommand)
   case NoEventListeners(event: AnyEvent)
-  case DuplicatedCommandHandler(command: AnyCommand.Type, handler: Any)
+  case DuplicatedCommandHandler(command: AnyCommand.Type)
 }
 
 extension ErrorType {
