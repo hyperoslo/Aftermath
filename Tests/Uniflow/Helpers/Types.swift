@@ -19,3 +19,24 @@ class TestDisposer: MutexDisposer {
   var listeners: [DisposalToken: Listener] = [:]
   var mutex = pthread_mutex_t()
 }
+
+// MARK: - Reactions
+
+class Controller: ReactionProducer {
+
+  var reaction: Reaction<Calculator>!
+  var state: State?
+
+  init() {
+    reaction = Reaction(
+      progress: {
+        self.state = .Progress
+      },
+      done: { result in
+        self.state = .Success
+      },
+      fail: { error in
+        self.state = .Error
+    })
+  }
+}
