@@ -8,6 +8,7 @@ class EventBusTests: XCTestCase {
   var reaction: Reaction<Calculator>!
   var listener: (Event<Calculator> -> Void)!
   var state: State?
+  var lastError: ErrorType?
 
   override func setUp() {
     super.setUp()
@@ -25,11 +26,15 @@ class EventBusTests: XCTestCase {
       },
       fail: { error in
         self.state = .Error
+        self.lastError = error
     })
 
     listener = { event in
       self.reaction.invoke(with: event)
     }
+
+    state = nil
+    lastError = nil
   }
 
   override func tearDown() {
@@ -134,6 +139,16 @@ class EventBusTests: XCTestCase {
   }
 
   func testHandleError() {
+    eventBus.listen(listener)
+    eventBus.handleError(TestError.Test, on: Event<Calculator>.Progress)
+    XCTAssertEqual(state, .Error)
+    XCTAssertTrue(lastError is TestError)
+  }
 
+  func testHandleErrorWithFrameworkError() {
+    eventBus.listen(listener)
+    eventBus.handleError(Error.InvalidEventType, on: Event<Calculator>.Progress)
+    XCTAssertNil(state)
+    XCTAssertNil(lastError)
   }
 }
