@@ -90,4 +90,26 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     assertMiddlewareStep(4, expected: (middleware: m3, event: errorEvent))
     assertReactionStep(5, expected: errorEvent)
   }
+
+  func testAbort() {
+    var m1 = LogEventMiddleware()
+    var m2 = AbortEventMiddleware()
+    var m3 = LogEventMiddleware()
+    let event = Event.Success(Calculator(result: 11))
+
+    m1.callback = addMiddlewareStep(m1)
+    m2.callback = addMiddlewareStep(m2)
+    m3.callback = addMiddlewareStep(m3)
+
+    eventBus.middlewares = [m1, m2, m3]
+    eventBus.listen(listener)
+    eventBus.publish(event)
+
+    XCTAssertEqual(eventSteps.count, 2)
+    XCTAssertEqual(result, 0)
+    XCTAssertNil(error)
+
+    assertMiddlewareStep(0, expected: (middleware: m1, event: event))
+    assertMiddlewareStep(1, expected: (middleware: m2, event: event))
+  }
 }
