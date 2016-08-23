@@ -39,4 +39,10 @@ public extension ReactionProducer {
       reaction.invoke(with: event)
     }
   }
+
+  func react<T: Projection>(progress progress: Reaction<T>.Progress? = nil,
+             done: Reaction<T>.Done,
+             fail: Reaction<T>.Fail? = nil) {
+    react(Reaction<T>(progress: progress, done: done, fail: fail))
+  }
 }
