@@ -33,6 +33,14 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual(controller.state, .Success)
   }
 
+  func testReactWithSuccessClosure() {
+    controller.react(done: controller.reaction.done!)
+    let event = Event<Calculator>.Success(Calculator(result: 11))
+    Engine.sharedInstance.eventBus.publish(event)
+
+    XCTAssertEqual(controller.state, .Success)
+  }
+
   func testReactWithError() {
     controller.react(controller.reaction)
     let event = Event<Calculator>.Error(TestError.Test)
