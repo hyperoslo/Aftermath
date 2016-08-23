@@ -38,6 +38,34 @@ struct TestCommandHandler: CommandHandler {
   }
 }
 
+struct AdditionCommandHandler: CommandHandler {
+
+  var callback: (AnyCommand -> Void)?
+
+  init(result: String = "", callback: (AnyCommand -> Void)? = nil) {
+    self.callback = callback
+  }
+
+  func handle(command: AdditionCommand) throws -> Event<Calculator> {
+    callback?(command)
+    return Event.Success(Calculator(result: command.value1 + command.value2))
+  }
+}
+
+struct SubtractionCommandHandler: CommandHandler {
+
+  var callback: (AnyCommand -> Void)?
+
+  init(result: String = "", callback: (AnyCommand -> Void)? = nil) {
+    self.callback = callback
+  }
+
+  func handle(command: SubtractionCommand) throws -> Event<Calculator> {
+    callback?(command)
+    return Event.Success(Calculator(result: command.value1 - command.value2))
+  }
+}
+
 // MARK: - Command middleware
 
 struct LogCommandMiddleware: CommandMiddleware {
