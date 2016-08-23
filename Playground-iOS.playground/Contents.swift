@@ -1,3 +1,3 @@
-// Uniflow iOS Playground
+// Aftermath iOS Playground
 
 import UIKit
