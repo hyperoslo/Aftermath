@@ -236,7 +236,7 @@
 				D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */,
 				D558F0521D5DC562000AF754 /* Project */,
 				D5C629691C3A809D007F7B7C /* Sources */,
-				D5C6298F1C3A8BDA007F7B7C /* AftermathTests */,
+				D5C6298F1C3A8BDA007F7B7C /* Tests */,
 				D5B2E8A01C3A780C00C0327D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -260,11 +260,12 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		D5C6298F1C3A8BDA007F7B7C /* AftermathTests */ = {
+		D5C6298F1C3A8BDA007F7B7C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D579C4571D6B9CEB00EDD4A8 /* Aftermath */,
 			);
+			name = Tests;
 			path = AftermathTests;
 			sourceTree = "<group>";
 		};
