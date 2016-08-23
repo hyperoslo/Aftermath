@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D5C629481C3A7FAA007F7B7C"
-               BuildableName = "Aftermath.xctest"
+               BuildableName = "Aftermath-Mac-Tests.xctest"
                BlueprintName = "Aftermath-Mac-Tests"
                ReferencedContainer = "container:Aftermath.xcodeproj">
             </BuildableReference>
