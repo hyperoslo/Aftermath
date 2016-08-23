@@ -8,7 +8,7 @@
 
 ## Description
 
-**Aftermath** description.
+**Aftermath** is stateless message-driven micro-framework in Swift.
 
 ## Usage
 
