@@ -17,7 +17,11 @@ class ListenerTests: XCTestCase {
     XCTAssertEqual(listener.identifier, "id")
     XCTAssertEqual(listener.status, Listener.Status.Pending)
 
-    try! listener.callback("test")
-    XCTAssertEqual(string, "test")
+    do {
+      try listener.callback("test")
+      XCTAssertEqual(string, "test")
+    } catch {
+      XCTFail("Listener failed with error: \(error)")
+    }
   }
 }
