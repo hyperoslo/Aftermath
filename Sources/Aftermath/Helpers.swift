@@ -8,7 +8,7 @@ public protocol Identifiable {
 public extension Identifiable {
 
   static var identifier: String {
-    return String(self)
+    return String(reflecting: self)
   }
 }
 

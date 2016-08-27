@@ -6,7 +6,7 @@ class IdentifiableTests: XCTestCase {
   // MARK: - Tests
 
   func testIdentifier() {
-    XCTAssertEqual(String.identifier, String(String))
-    XCTAssertEqual(TestCommand.identifier, String(TestCommand))
+    XCTAssertEqual(String.identifier, String(reflecting: String.self))
+    XCTAssertEqual(TestCommand.identifier, String(reflecting: TestCommand.self))
   }
 }
