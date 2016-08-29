@@ -11,6 +11,8 @@ PODS:
   - Cartography (0.6.0)
   - Compass (3.0.0)
   - CryptoSwift (0.5.2)
+  - Fashion (1.1.0):
+    - Sugar
   - Hue (1.2.0)
   - Imaginary (0.1.0):
     - Cache
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - AftermathCompass (from `https://github.com/hyperoslo/AftermathCompass`)
   - Cache (from `https://github.com/hyperoslo/Cache`)
   - Cartography
+  - Fashion
   - Hue
   - Imaginary (from `https://github.com/hyperoslo/Imaginary`)
   - Malibu
@@ -66,6 +69,7 @@ SPEC CHECKSUMS:
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   Compass: 5bb05fc2b873e9d5b1efda5752649b6a0a993843
   CryptoSwift: c1ef79f901b86099a6fe8b3c7524cf9f3f3c8c40
+  Fashion: 82f2bb05505e3aea0977a2c23f5d8692e06f12a9
   Hue: 0705083b7aff40334033373e6293ec1215285ac2
   Imaginary: 62a9ce1e6d7831ede429c8221a183f03ec2a90bc
   Malibu: 49454a9ce422ad8e230f4699a43d88264a4d7e06
@@ -74,6 +78,6 @@ SPEC CHECKSUMS:
   Tailor: 135708d29cef05d8f83e61ce8c07171c8fcfc865
   When: 033104df132ebfa75f4d3a9ba3e7a9865a573a1c
 
-PODFILE CHECKSUM: 39726c05fd64a59a84c28d2770afbfccbc180435
+PODFILE CHECKSUM: aebe9c158d096800aee1fa252e60da4a40f9f168
 
 COCOAPODS: 1.0.1
