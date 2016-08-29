@@ -1,5 +1,5 @@
 import UIKit
-import Aftermath
+import Hue
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,15 +11,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return controller
     }()
 
-  lazy var viewController: ViewController = {
-    let controller = ViewController()
+  lazy var viewController: WelcomeController = {
+    let controller = WelcomeController()
     return controller
-    }()
+  }()
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
+
+    UINavigationBar.appearance().tintColor = UIColor(hex: "F57D2D")
 
     return true
   }
