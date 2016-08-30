@@ -1,9 +1,8 @@
 import Foundation
 @testable import Aftermath
 
-extension String: Projection {}
 
-struct Calculator: Projection {
+struct Calculator {
   let result: Int
 }
 

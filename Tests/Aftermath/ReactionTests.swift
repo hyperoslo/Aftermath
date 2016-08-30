@@ -43,21 +43,21 @@ class ReactionTests: XCTestCase {
   }
 
   func testInvokeWithProgress() {
-    let event = Event<Calculator>.Progress
+    let event = Event<AdditionCommand>.Progress
     reaction.invoke(with: event)
 
     XCTAssertEqual(state, .Progress)
   }
 
   func testInvokeWithSuccess() {
-    let event = Event<Calculator>.Success(Calculator(result: 11))
+    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
     reaction.invoke(with: event)
 
     XCTAssertEqual(state, .Success)
   }
 
   func testInvokeWithError() {
-    let event = Event<Calculator>.Error(TestError.Test)
+    let event = Event<AdditionCommand>.Error(TestError.Test)
     reaction.invoke(with: event)
 
     XCTAssertEqual(state, .Error)

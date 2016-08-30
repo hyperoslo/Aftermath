@@ -25,7 +25,8 @@ class CommandHandlerTests: XCTestCase {
   // MARK: - Tests
 
   func testPublish() {
-    controller.react(Reaction<String>(progress: { self.executed = true }))
+    controller.react(to: TestCommand.self, with: Reaction<String>(
+      progress: { self.executed = true }))
 
     XCTAssertFalse(executed)
     commandHandler.publish(Event.Progress)

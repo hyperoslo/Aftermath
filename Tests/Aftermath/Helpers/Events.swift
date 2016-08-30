@@ -28,14 +28,14 @@ struct ErrorEventMiddleware: EventMiddleware {
   func intercept(event: AnyEvent, publish: Publish, next: Publish) throws {
     callback?(event)
 
-    guard let calcEvent = event as? Event<Calculator> else {
+    guard let additionEvent = event as? Event<AdditionCommand> else {
       try next(event)
       return
     }
 
-    switch calcEvent {
+    switch additionEvent {
     case .Success:
-      try publish(Event<Calculator>.Error(TestError.Test))
+      try publish(Event<AdditionCommand>.Error(TestError.Test))
     default:
       try next(event)
     }

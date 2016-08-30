@@ -6,7 +6,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
   var eventSteps: [EventStep] = []
   var eventBus: EventBus!
   var reaction: Reaction<Calculator>!
-  var listener: (Event<Calculator> -> Void)!
+  var listener: (Event<AdditionCommand> -> Void)!
   var result = 0
   var error: ErrorType?
 
@@ -46,13 +46,13 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
   func testNext() {
     var m1 = LogEventMiddleware()
     var m2 = LogEventMiddleware()
-    let event = Event.Success(Calculator(result: 11))
+    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
 
     eventBus.middlewares = [m1, m2]
-    eventBus.listen(listener)
+    eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.publish(event)
 
     XCTAssertEqual(eventSteps.count, 3)
@@ -68,15 +68,15 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     var m1 = LogEventMiddleware()
     var m2 = ErrorEventMiddleware()
     var m3 = LogEventMiddleware()
-    let successEvent = Event.Success(Calculator(result: 11))
-    let errorEvent = Event<Calculator>.Error(TestError.Test)
+    let successEvent = Event<AdditionCommand>.Success(Calculator(result: 11))
+    let errorEvent = Event<AdditionCommand>.Error(TestError.Test)
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
     m3.callback = addMiddlewareStep(m3)
 
     eventBus.middlewares = [m1, m2, m3]
-    eventBus.listen(listener)
+    eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.publish(successEvent)
 
     XCTAssertEqual(eventSteps.count, 6)
@@ -95,14 +95,14 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     var m1 = LogEventMiddleware()
     var m2 = AbortEventMiddleware()
     var m3 = LogEventMiddleware()
-    let event = Event.Success(Calculator(result: 11))
+    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
     m3.callback = addMiddlewareStep(m3)
 
     eventBus.middlewares = [m1, m2, m3]
-    eventBus.listen(listener)
+    eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.publish(event)
 
     XCTAssertEqual(eventSteps.count, 2)
