@@ -8,7 +8,7 @@ public protocol EventDispatcher: Disposer {
   var middlewares: [EventMiddleware] { get set }
 
   func publish(event: AnyEvent)
-  func listen<T: Command>(to command: T.Type, listener: Event<T> -> Void) -> String
+  func listen<T: Command>(to command: T.Type, listener: Event<T> -> Void) -> DisposalToken
 }
 
 // MARK: - Event bus
@@ -30,7 +30,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
   // MARK: - Register
 
-  func listen<T: Command>(to command: T.Type, listener: Event<T> -> Void) -> String {
+  func listen<T: Command>(to command: T.Type, listener: Event<T> -> Void) -> DisposalToken {
     pthread_mutex_lock(&mutex)
 
     let token = newToken
