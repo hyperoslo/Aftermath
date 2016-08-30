@@ -10,6 +10,10 @@ final class UsersPresenter: SpotsPresenter, ReactionProducer, CommandProducer {
     spots = [ListSpot()]
   }
 
+  deinit {
+    disposeAll()
+  }
+
   func subscribe(controller: SpotsController) {
     // removal token
     react(

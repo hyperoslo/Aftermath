@@ -67,6 +67,10 @@
 		D57462F21D6BAE3300E0C876 /* CommandMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F01D6BAE3300E0C876 /* CommandMiddlewareTests.swift */; };
 		D57462F41D6BB63300E0C876 /* EventMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F31D6BB63300E0C876 /* EventMiddlewareTests.swift */; };
 		D57462F51D6BB63300E0C876 /* EventMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F31D6BB63300E0C876 /* EventMiddlewareTests.swift */; };
+		D59CC11A1D76141400D72C39 /* ReactionDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1191D76141400D72C39 /* ReactionDisposer.swift */; };
+		D59CC11B1D76142400D72C39 /* ReactionDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1191D76141400D72C39 /* ReactionDisposer.swift */; };
+		D59CC11D1D76145600D72C39 /* ReactionDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */; };
+		D59CC11E1D76145600D72C39 /* ReactionDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Aftermath.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Aftermath.framework */; };
 /* End PBXBuildFile section */
@@ -125,6 +129,8 @@
 		D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableTests.swift; sourceTree = "<group>"; };
 		D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionProducerTests.swift; sourceTree = "<group>"; };
 		D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionTests.swift; sourceTree = "<group>"; };
+		D59CC1191D76141400D72C39 /* ReactionDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionDisposer.swift; sourceTree = "<group>"; };
+		D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionDisposerTests.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Aftermath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Aftermath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Aftermath-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Aftermath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Aftermath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +195,7 @@
 				D57462A01D6BA37D00E0C876 /* Helpers.swift */,
 				D57462A11D6BA37D00E0C876 /* Listener.swift */,
 				D57462A21D6BA37D00E0C876 /* Reaction.swift */,
+				D59CC1191D76141400D72C39 /* ReactionDisposer.swift */,
 			);
 			path = Aftermath;
 			sourceTree = "<group>";
@@ -212,6 +219,7 @@
 				D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */,
 				D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */,
 				D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */,
+				D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */,
 			);
 			name = Aftermath;
 			path = Tests/Aftermath;
@@ -451,6 +459,7 @@
 				D57462A81D6BA37D00E0C876 /* Event.swift in Sources */,
 				D57462A91D6BA37D00E0C876 /* EventBus.swift in Sources */,
 				D57462A31D6BA37D00E0C876 /* Command.swift in Sources */,
+				D59CC11A1D76141400D72C39 /* ReactionDisposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +469,7 @@
 			files = (
 				D57462D11D6BA3BD00E0C876 /* CommandProducerTests.swift in Sources */,
 				D57462D71D6BA3BD00E0C876 /* ReactionProducerTests.swift in Sources */,
+				D59CC11D1D76145600D72C39 /* ReactionDisposerTests.swift in Sources */,
 				D57462D21D6BA3BD00E0C876 /* CommandTests.swift in Sources */,
 				D57462CE1D6BA3BD00E0C876 /* MutexDisposerTests.swift in Sources */,
 				D57462EE1D6BABA900E0C876 /* EventSteps.swift in Sources */,
@@ -495,6 +505,7 @@
 				D57462B21D6BA38600E0C876 /* Event.swift in Sources */,
 				D57462B31D6BA38600E0C876 /* EventBus.swift in Sources */,
 				D57462AD1D6BA38600E0C876 /* Command.swift in Sources */,
+				D59CC11B1D76142400D72C39 /* ReactionDisposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +515,7 @@
 			files = (
 				D57462E21D6BA3BF00E0C876 /* CommandProducerTests.swift in Sources */,
 				D57462E81D6BA3BF00E0C876 /* ReactionProducerTests.swift in Sources */,
+				D59CC11E1D76145600D72C39 /* ReactionDisposerTests.swift in Sources */,
 				D57462E31D6BA3BF00E0C876 /* CommandTests.swift in Sources */,
 				D57462DF1D6BA3BF00E0C876 /* MutexDisposerTests.swift in Sources */,
 				D57462EF1D6BABA900E0C876 /* EventSteps.swift in Sources */,
