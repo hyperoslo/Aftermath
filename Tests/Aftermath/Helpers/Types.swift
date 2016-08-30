@@ -33,6 +33,7 @@ class Controller: CommandProducer, ReactionProducer {
 
   var reaction: Reaction<Calculator>!
   var state: State?
+  var completed = false
 
   init() {
     reaction = Reaction(
@@ -44,6 +45,10 @@ class Controller: CommandProducer, ReactionProducer {
       },
       fail: { error in
         self.state = .Error
-    })
+      },
+      complete: {
+        self.completed = true
+      }
+    )
   }
 }
