@@ -5,6 +5,7 @@ public protocol ErrorEventBuilder {
 }
 
 public protocol AnyEvent: Identifiable, ErrorEventBuilder {
+  var inProgress: Bool { get }
   var result: Any? { get }
   var error: ErrorType? { get }
 }
@@ -15,6 +16,19 @@ public enum Event<T: Command>: AnyEvent {
   case Error(ErrorType)
 
   // MARK: - Helpers
+
+  public var inProgress: Bool {
+    var value = false
+
+    switch self {
+    case .Progress:
+      value = true
+    default:
+      break
+    }
+
+    return value
+  }
 
   public var result: Any? {
     var value: Any?

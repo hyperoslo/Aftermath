@@ -58,10 +58,6 @@ public extension CommandHandler {
     return Event.Progress
   }
 
-  func publish(event: Event<CommandType>) {
-    Engine.sharedInstance.eventBus.publish(event)
-  }
-
   func wait() {
     publish(progress)
   }
@@ -72,6 +68,10 @@ public extension CommandHandler {
 
   func reject(error: ErrorType) {
     publish(Event.Error(error))
+  }
+
+  func publish(event: Event<CommandType>) {
+    Engine.sharedInstance.eventBus.publish(event)
   }
 }
 

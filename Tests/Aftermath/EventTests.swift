@@ -10,6 +10,17 @@ class EventTests: XCTestCase {
     XCTAssertTrue(errorEvent is Event<TestCommand>)
   }
 
+  func testInProgress() {
+    let progressEvent = Event<TestCommand>.Progress
+    XCTAssertTrue(progressEvent.inProgress)
+
+    let successEvent = Event<TestCommand>.Success("Success")
+    XCTAssertFalse(successEvent.inProgress)
+
+    let errorEvent = Event<TestCommand>.Error(TestError.Test)
+    XCTAssertFalse(errorEvent.inProgress)
+  }
+
   func testResult() {
     let progressEvent = Event<TestCommand>.Progress
     XCTAssertNil(progressEvent.result)
