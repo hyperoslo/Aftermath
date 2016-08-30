@@ -4,6 +4,7 @@ public class Engine {
 
   lazy var commandBus: CommandDispatcher = CommandBus(eventDispatcher: self.eventBus)
   var eventBus: EventDispatcher = EventBus()
+  lazy var reactionDisposer: ReactionDisposer = ReactionDisposer(eventBus: self.eventBus)
 
   public var errorHandler: ErrorHandler? {
     didSet {
@@ -13,8 +14,7 @@ public class Engine {
   }
 
   deinit {
-    commandBus.disposeAll()
-    eventBus.disposeAll()
+    invalidate()
   }
 
   // MARK: - Middleware
@@ -31,5 +31,11 @@ public class Engine {
 
   public func use<T: CommandHandler>(handler: T) -> DisposalToken {
     return commandBus.use(handler)
+  }
+
+  public func invalidate() {
+    commandBus.disposeAll()
+    eventBus.disposeAll()
+    reactionDisposer.disposeAll()
   }
 }

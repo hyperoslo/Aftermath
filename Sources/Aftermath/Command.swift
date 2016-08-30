@@ -3,13 +3,17 @@
 public protocol AnyCommand: Identifiable, ErrorEventBuilder {}
 
 public protocol Command: AnyCommand {
-  associatedtype ProjectionType: Projection
+  associatedtype Output
 }
 
 public extension Command {
 
   static func buildErrorEvent(error: ErrorType) -> AnyEvent {
-    return Event<ProjectionType>.Error(error)
+    return buildEvent(self, error: error)
+  }
+
+  private static func buildEvent<T: Command>(type: T.Type, error: ErrorType) -> AnyEvent {
+    return Event<T>.Error(error)
   }
 }
 
@@ -34,8 +38,8 @@ public extension CommandProducer {
 
 public extension CommandProducer where Self: ReactionProducer {
 
-  func execute<T: Command>(command: T, reaction: Reaction<T.ProjectionType>) {
-    react(reaction)
+  func execute<T: Command>(command: T, reaction: Reaction<T.Output>) {
+    react(to: T.self, with: reaction)
     execute(command)
   }
 }
@@ -45,12 +49,28 @@ public extension CommandProducer where Self: ReactionProducer {
 public protocol CommandHandler {
   associatedtype CommandType: Command
 
-  func handle(command: CommandType) throws -> Event<CommandType.ProjectionType>
+  func handle(command: CommandType) throws -> Event<CommandType>
 }
 
-extension CommandHandler {
+public extension CommandHandler {
 
-  public func publish(event: Event<CommandType.ProjectionType>) {
+  var progress: Event<CommandType> {
+    return Event.Progress
+  }
+
+  func wait() {
+    publish(progress)
+  }
+
+  func fulfill(output: CommandType.Output) {
+    publish(Event.Success(output))
+  }
+
+  func reject(error: ErrorType) {
+    publish(Event.Error(error))
+  }
+
+  func publish(event: Event<CommandType>) {
     Engine.sharedInstance.eventBus.publish(event)
   }
 }

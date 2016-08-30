@@ -149,7 +149,7 @@ class CommandBusTests: XCTestCase {
   func testHandleError() {
     var reactionError: ErrorType?
 
-    eventBus.listen { (event: Event<String>) in
+    eventBus.listen(to: TestCommand.self) { event in
       let reaction = Reaction<String>(fail: { error in
         reactionError = error
       })
@@ -164,7 +164,7 @@ class CommandBusTests: XCTestCase {
   func testHandleErrorWithFrameworkError() {
     var reactionError: ErrorType?
 
-    eventBus.listen { (event: Event<String>) in
+    eventBus.listen(to: TestCommand.self) { event in
       let reaction = Reaction<String>(fail: { error in
         reactionError = error
       })

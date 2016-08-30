@@ -1,9 +1,8 @@
 import Foundation
 @testable import Aftermath
 
-extension String: Projection {}
 
-struct Calculator: Projection {
+struct Calculator {
   let result: Int
 }
 
@@ -34,6 +33,7 @@ class Controller: CommandProducer, ReactionProducer {
 
   var reaction: Reaction<Calculator>!
   var state: State?
+  var completed = false
 
   init() {
     reaction = Reaction(
@@ -45,6 +45,12 @@ class Controller: CommandProducer, ReactionProducer {
       },
       fail: { error in
         self.state = .Error
-    })
+      },
+      complete: {
+        self.completed = true
+      }
+    )
   }
 }
+
+class TestReactionProducer: ReactionProducer {}
