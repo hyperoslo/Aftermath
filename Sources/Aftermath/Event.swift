@@ -5,8 +5,8 @@ public protocol ErrorEventBuilder {
 }
 
 public protocol AnyEvent: Identifiable, ErrorEventBuilder {
-
   var result: Any? { get }
+  var error: ErrorType? { get }
 }
 
 public enum Event<T: Command>: AnyEvent {
