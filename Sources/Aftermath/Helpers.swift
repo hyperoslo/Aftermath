@@ -12,8 +12,6 @@ public extension Identifiable {
   }
 }
 
-public protocol Projection: Identifiable {}
-
 // MARK: - Middleware
 
 struct Middleware<T> {
