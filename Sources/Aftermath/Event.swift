@@ -4,12 +4,43 @@ public protocol ErrorEventBuilder {
   static func buildErrorEvent(error: ErrorType) -> AnyEvent
 }
 
-public protocol AnyEvent: Identifiable, ErrorEventBuilder {}
+public protocol AnyEvent: Identifiable, ErrorEventBuilder {
 
-public enum Event<T: Projection>: AnyEvent {
+  var result: Any? { get }
+}
+
+public enum Event<T: Command>: AnyEvent {
   case Progress
-  case Success(T)
+  case Success(T.Result)
   case Error(ErrorType)
+
+  // MARK: - Helpers
+
+  public var result: Any? {
+    var value: Any?
+
+    switch self {
+    case .Success(let result):
+      value = result
+    default:
+      break
+    }
+
+    return value
+  }
+
+  public var error: ErrorType? {
+    var value: ErrorType?
+
+    switch self {
+    case .Error(let error):
+      value = error
+    default:
+      break
+    }
+
+    return value
+  }
 
   public static func buildErrorEvent(error: ErrorType) -> AnyEvent {
     return Error(error)
