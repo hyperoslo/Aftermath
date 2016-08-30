@@ -2,7 +2,7 @@ import UIKit
 import Spots
 import Aftermath
 
-final class PostsMediator: SpotsPresenter, ReactionProducer, CommandProducer {
+final class PostsPresenter: SpotsPresenter, ReactionProducer, CommandProducer {
 
   let spots: [Spotable]
 
@@ -30,7 +30,7 @@ final class PostsMediator: SpotsPresenter, ReactionProducer, CommandProducer {
   }
 }
 
-extension PostsMediator: SpotsRefreshDelegate {
+extension PostsPresenter: SpotsRefreshDelegate {
 
   func spotsDidReload(refreshControl: UIRefreshControl, completion: Completion) {
     execute(PostsStory.Command())

@@ -3,21 +3,12 @@ import Cartography
 
 class WelcomeController: UIViewController {
 
-  lazy var imageView: UIImageView = {
-    let image = UIImage(named: "hyperLogo")
-    let imageView = UIImageView(image: image)
-
-    return imageView
-  }()
+  lazy var imageView: UIImageView = UIImageView(styles: Styles.WelcomeImage)
 
   lazy var button: UIButton = { [unowned self] in
     let button = UIButton(type: .System)
-    button.backgroundColor = UIColor(hex: "F57D2D")
-    button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    button.titleLabel?.font = UIFont.systemFontOfSize(18)
-    button.setTitle(NSLocalizedString("Enter", comment: "").uppercaseString,
-                    forState: .Normal)
-
+    button.stylize(Styles.WelcomeButton)
+    button.setTitle(NSLocalizedString("Enter", comment: "").uppercaseString, forState: .Normal)
     button.addTarget(self, action: #selector(buttonDidPress), forControlEvents: .TouchUpInside)
 
     return button
@@ -28,9 +19,8 @@ class WelcomeController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.stylize(Styles.Content)
     title = "Aftermath"
-    view.backgroundColor = UIColor.whiteColor()
-
     [imageView, button].forEach { view.addSubview($0) }
     configureConstrains()
   }
