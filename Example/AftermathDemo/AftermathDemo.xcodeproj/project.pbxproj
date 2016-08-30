@@ -11,10 +11,25 @@
 		D54313C91D6B9FBD00670AF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54313C11D6B9FBD00670AF2 /* LaunchScreen.storyboard */; };
 		D54313CB1D6B9FBD00670AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54313C51D6B9FBD00670AF2 /* Assets.xcassets */; };
 		D54313CC1D6B9FBD00670AF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54313C71D6B9FBD00670AF2 /* AppDelegate.swift */; };
-		D5A983051D7456F000B0F790 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983041D7456F000B0F790 /* WelcomeController.swift */; };
-		D5A983071D74570B00B0F790 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983061D74570B00B0F790 /* MainController.swift */; };
-		D5A983091D74572900B0F790 /* PostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983081D74572900B0F790 /* PostsController.swift */; };
-		D5A9830B1D74629800B0F790 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9830A1D74629800B0F790 /* UsersController.swift */; };
+		D59CC1051D74F7DF00D72C39 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1041D74F7DF00D72C39 /* Post.swift */; };
+		D59CC1081D74FBAA00D72C39 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1071D74FBAA00D72C39 /* Requests.swift */; };
+		D59CC10B1D75031400D72C39 /* PostsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10A1D75031400D72C39 /* PostsStory.swift */; };
+		D59CC10D1D75031B00D72C39 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10C1D75031B00D72C39 /* PostsPresenter.swift */; };
+		D59CC10F1D7504C200D72C39 /* AftermathConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10E1D7504C200D72C39 /* AftermathConfigurator.swift */; };
+		D59CC1121D7571E000D72C39 /* UsersStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1111D7571E000D72C39 /* UsersStory.swift */; };
+		D59CC1141D7571ED00D72C39 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1131D7571ED00D72C39 /* UsersPresenter.swift */; };
+		D59CC1161D75725000D72C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1151D75725000D72C39 /* User.swift */; };
+		D5A983111D74EBBB00B0F790 /* AftermathController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9830E1D74EBBB00B0F790 /* AftermathController.swift */; };
+		D5A983121D74EBBB00B0F790 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9830F1D74EBBB00B0F790 /* MainController.swift */; };
+		D5A983131D74EBBB00B0F790 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983101D74EBBB00B0F790 /* WelcomeController.swift */; };
+		D5A983161D74EBFF00B0F790 /* FashionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983151D74EBFF00B0F790 /* FashionConfigurator.swift */; };
+		D5A983181D74EC1D00B0F790 /* CompassConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983171D74EC1D00B0F790 /* CompassConfigurator.swift */; };
+		D5A9831A1D74EC2700B0F790 /* SpotsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983191D74EC2700B0F790 /* SpotsConfigurator.swift */; };
+		D5A9831C1D74EC3300B0F790 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9831B1D74EC3300B0F790 /* Configurator.swift */; };
+		D5A9831E1D74ED5500B0F790 /* MalibuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9831D1D74ED5500B0F790 /* MalibuConfigurator.swift */; };
+		D5A983211D74EE7500B0F790 /* SystemStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983201D74EE7500B0F790 /* SystemStylesheet.swift */; };
+		D5A983231D74EFE200B0F790 /* MainStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983221D74EFE200B0F790 /* MainStylesheet.swift */; };
+		D5A983261D74F5D700B0F790 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983251D74F5D700B0F790 /* TableCell.swift */; };
 		E01F3BA98F93816F129F4BBB /* Pods_AftermathDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F33268E3B87D03116CCB92B /* Pods_AftermathDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,10 +43,25 @@
 		D54313C31D6B9FBD00670AF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D54313C51D6B9FBD00670AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54313C71D6B9FBD00670AF2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5A983041D7456F000B0F790 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
-		D5A983061D74570B00B0F790 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		D5A983081D74572900B0F790 /* PostsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsController.swift; sourceTree = "<group>"; };
-		D5A9830A1D74629800B0F790 /* UsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
+		D59CC1041D74F7DF00D72C39 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		D59CC1071D74FBAA00D72C39 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		D59CC10A1D75031400D72C39 /* PostsStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsStory.swift; sourceTree = "<group>"; };
+		D59CC10C1D75031B00D72C39 /* PostsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
+		D59CC10E1D7504C200D72C39 /* AftermathConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftermathConfigurator.swift; sourceTree = "<group>"; };
+		D59CC1111D7571E000D72C39 /* UsersStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersStory.swift; sourceTree = "<group>"; };
+		D59CC1131D7571ED00D72C39 /* UsersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
+		D59CC1151D75725000D72C39 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D5A9830E1D74EBBB00B0F790 /* AftermathController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftermathController.swift; sourceTree = "<group>"; };
+		D5A9830F1D74EBBB00B0F790 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		D5A983101D74EBBB00B0F790 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		D5A983151D74EBFF00B0F790 /* FashionConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FashionConfigurator.swift; sourceTree = "<group>"; };
+		D5A983171D74EC1D00B0F790 /* CompassConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassConfigurator.swift; sourceTree = "<group>"; };
+		D5A983191D74EC2700B0F790 /* SpotsConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotsConfigurator.swift; sourceTree = "<group>"; };
+		D5A9831B1D74EC3300B0F790 /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		D5A9831D1D74ED5500B0F790 /* MalibuConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalibuConfigurator.swift; sourceTree = "<group>"; };
+		D5A983201D74EE7500B0F790 /* SystemStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemStylesheet.swift; sourceTree = "<group>"; };
+		D5A983221D74EFE200B0F790 /* MainStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStylesheet.swift; sourceTree = "<group>"; };
+		D5A983251D74F5D700B0F790 /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		D5C7F7401C3BC9CE008CDDBA /* AftermathDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AftermathDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FE4B252E36F15A27A58E77 /* Pods-AftermathDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathDemo/Pods-AftermathDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,21 +112,92 @@
 		D54313C61D6B9FBD00670AF2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D5A983031D7456E300B0F790 /* Controllers */,
+				D59CC1061D74FBA300D72C39 /* Networking */,
+				D59CC1031D74F7D800D72C39 /* Models */,
+				D5A983241D74F5CC00B0F790 /* Views */,
+				D5A9831F1D74EE6900B0F790 /* Styles */,
+				D5A983141D74EBE600B0F790 /* Configuration */,
+				D5A9830D1D74EBBB00B0F790 /* Screens */,
 				D54313C71D6B9FBD00670AF2 /* AppDelegate.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		D5A983031D7456E300B0F790 /* Controllers */ = {
+		D59CC1031D74F7D800D72C39 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D5A983041D7456F000B0F790 /* WelcomeController.swift */,
-				D5A983061D74570B00B0F790 /* MainController.swift */,
-				D5A983081D74572900B0F790 /* PostsController.swift */,
-				D5A9830A1D74629800B0F790 /* UsersController.swift */,
+				D59CC1041D74F7DF00D72C39 /* Post.swift */,
+				D59CC1151D75725000D72C39 /* User.swift */,
 			);
-			path = Controllers;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D59CC1061D74FBA300D72C39 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D59CC1071D74FBAA00D72C39 /* Requests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D59CC1091D75030B00D72C39 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				D59CC10A1D75031400D72C39 /* PostsStory.swift */,
+				D59CC10C1D75031B00D72C39 /* PostsPresenter.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		D59CC1101D7571CB00D72C39 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				D59CC1111D7571E000D72C39 /* UsersStory.swift */,
+				D59CC1131D7571ED00D72C39 /* UsersPresenter.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		D5A9830D1D74EBBB00B0F790 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D59CC1101D7571CB00D72C39 /* Users */,
+				D59CC1091D75030B00D72C39 /* Posts */,
+				D5A9830E1D74EBBB00B0F790 /* AftermathController.swift */,
+				D5A9830F1D74EBBB00B0F790 /* MainController.swift */,
+				D5A983101D74EBBB00B0F790 /* WelcomeController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		D5A983141D74EBE600B0F790 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D5A983151D74EBFF00B0F790 /* FashionConfigurator.swift */,
+				D5A983171D74EC1D00B0F790 /* CompassConfigurator.swift */,
+				D5A983191D74EC2700B0F790 /* SpotsConfigurator.swift */,
+				D5A9831B1D74EC3300B0F790 /* Configurator.swift */,
+				D5A9831D1D74ED5500B0F790 /* MalibuConfigurator.swift */,
+				D59CC10E1D7504C200D72C39 /* AftermathConfigurator.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		D5A9831F1D74EE6900B0F790 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D5A983201D74EE7500B0F790 /* SystemStylesheet.swift */,
+				D5A983221D74EFE200B0F790 /* MainStylesheet.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		D5A983241D74F5CC00B0F790 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5A983251D74F5D700B0F790 /* TableCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D5C7F7371C3BC9CE008CDDBA = {
@@ -247,11 +348,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5A983071D74570B00B0F790 /* MainController.swift in Sources */,
-				D5A9830B1D74629800B0F790 /* UsersController.swift in Sources */,
-				D5A983051D7456F000B0F790 /* WelcomeController.swift in Sources */,
+				D59CC1121D7571E000D72C39 /* UsersStory.swift in Sources */,
+				D59CC10D1D75031B00D72C39 /* PostsPresenter.swift in Sources */,
+				D5A983211D74EE7500B0F790 /* SystemStylesheet.swift in Sources */,
+				D5A9831E1D74ED5500B0F790 /* MalibuConfigurator.swift in Sources */,
+				D5A983111D74EBBB00B0F790 /* AftermathController.swift in Sources */,
+				D59CC1081D74FBAA00D72C39 /* Requests.swift in Sources */,
+				D5A983121D74EBBB00B0F790 /* MainController.swift in Sources */,
+				D59CC10B1D75031400D72C39 /* PostsStory.swift in Sources */,
+				D59CC1161D75725000D72C39 /* User.swift in Sources */,
+				D59CC1051D74F7DF00D72C39 /* Post.swift in Sources */,
+				D59CC10F1D7504C200D72C39 /* AftermathConfigurator.swift in Sources */,
+				D5A9831A1D74EC2700B0F790 /* SpotsConfigurator.swift in Sources */,
+				D5A983231D74EFE200B0F790 /* MainStylesheet.swift in Sources */,
+				D5A983261D74F5D700B0F790 /* TableCell.swift in Sources */,
+				D5A983131D74EBBB00B0F790 /* WelcomeController.swift in Sources */,
 				D54313CC1D6B9FBD00670AF2 /* AppDelegate.swift in Sources */,
-				D5A983091D74572900B0F790 /* PostsController.swift in Sources */,
+				D5A983161D74EBFF00B0F790 /* FashionConfigurator.swift in Sources */,
+				D5A9831C1D74EC3300B0F790 /* Configurator.swift in Sources */,
+				D5A983181D74EC1D00B0F790 /* CompassConfigurator.swift in Sources */,
+				D59CC1141D7571ED00D72C39 /* UsersPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

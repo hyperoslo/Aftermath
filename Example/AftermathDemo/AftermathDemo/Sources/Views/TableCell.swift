@@ -1,9 +1,36 @@
-//
-//  TableCell.swift
-//  AftermathDemo
-//
-//  Created by Vadym Markov on 30/08/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
-//
+import UIKit
+import Brick
+import Spots
 
-import Foundation
+class TableCell: UITableViewCell, SpotConfigurable {
+
+  var size = CGSize(width: 0, height: 64)
+
+  // MARK: - Initialization
+
+  override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
+    super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: - Layout
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+  }
+
+  // MARK: - Configuration
+
+  func configure(inout item: ViewModel) {
+    //accessoryType = .None
+
+    detailTextLabel?.text = item.subtitle
+    textLabel?.text = item.title
+    styles = item.meta("styles", "")
+
+    item.size.height = size.height
+  }
+}

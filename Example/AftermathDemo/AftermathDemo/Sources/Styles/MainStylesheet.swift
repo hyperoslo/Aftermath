@@ -1,9 +1,35 @@
-//
-//  MainStylesheet.swift
-//  AftermathDemo
-//
-//  Created by Vadym Markov on 30/08/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
-//
+import UIKit
+import Fashion
+import Hue
 
-import Foundation
+enum Styles: String {
+  case Content
+  case WelcomeButton
+  case WelcomeImage
+}
+
+extension Styles: StringConvertible {
+
+  var string: String {
+    return rawValue
+  }
+}
+
+struct MainStylesheet: Stylesheet {
+
+  func define() {
+    register(Styles.Content) { (view: UIView) in
+      view.backgroundColor = UIColor.whiteColor()
+    }
+
+    register(Styles.WelcomeButton) { (button: UIButton) in
+      button.backgroundColor = Colors.tint
+      button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+      button.titleLabel?.font = UIFont.systemFontOfSize(18)
+    }
+
+    register(Styles.WelcomeImage) { (imageView: UIImageView) in
+      imageView.image = UIImage(named: "hyperLogo")
+    }
+  }
+}
