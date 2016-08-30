@@ -3,7 +3,7 @@ import UIKit
 class MainController: UITabBarController {
 
   lazy var postsController: UINavigationController = {
-    let controller = AftermathController(presenter: PostsPresenter())
+    let controller = PostsController()
     let navigationController = UINavigationController(rootViewController: controller)
     controller.view.stylize(Styles.Content)
     controller.tabBarItem.title = "Wall"
@@ -13,7 +13,7 @@ class MainController: UITabBarController {
   }()
 
   lazy var usersController: UINavigationController = {
-    let controller = AftermathController(presenter: UsersPresenter())
+    let controller = UsersController()
     let navigationController = UINavigationController(rootViewController: controller)
     controller.view.stylize(Styles.Content)
     controller.tabBarItem.title = "Users"

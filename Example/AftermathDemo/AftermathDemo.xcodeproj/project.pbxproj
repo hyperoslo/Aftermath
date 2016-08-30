@@ -14,12 +14,11 @@
 		D59CC1051D74F7DF00D72C39 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1041D74F7DF00D72C39 /* Post.swift */; };
 		D59CC1081D74FBAA00D72C39 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1071D74FBAA00D72C39 /* Requests.swift */; };
 		D59CC10B1D75031400D72C39 /* PostsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10A1D75031400D72C39 /* PostsStory.swift */; };
-		D59CC10D1D75031B00D72C39 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10C1D75031B00D72C39 /* PostsPresenter.swift */; };
+		D59CC10D1D75031B00D72C39 /* PostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10C1D75031B00D72C39 /* PostsController.swift */; };
 		D59CC10F1D7504C200D72C39 /* AftermathConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC10E1D7504C200D72C39 /* AftermathConfigurator.swift */; };
 		D59CC1121D7571E000D72C39 /* UsersStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1111D7571E000D72C39 /* UsersStory.swift */; };
-		D59CC1141D7571ED00D72C39 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1131D7571ED00D72C39 /* UsersPresenter.swift */; };
+		D59CC1141D7571ED00D72C39 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1131D7571ED00D72C39 /* UsersController.swift */; };
 		D59CC1161D75725000D72C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC1151D75725000D72C39 /* User.swift */; };
-		D5A983111D74EBBB00B0F790 /* AftermathController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9830E1D74EBBB00B0F790 /* AftermathController.swift */; };
 		D5A983121D74EBBB00B0F790 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A9830F1D74EBBB00B0F790 /* MainController.swift */; };
 		D5A983131D74EBBB00B0F790 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983101D74EBBB00B0F790 /* WelcomeController.swift */; };
 		D5A983161D74EBFF00B0F790 /* FashionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A983151D74EBFF00B0F790 /* FashionConfigurator.swift */; };
@@ -46,12 +45,11 @@
 		D59CC1041D74F7DF00D72C39 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D59CC1071D74FBAA00D72C39 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		D59CC10A1D75031400D72C39 /* PostsStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsStory.swift; sourceTree = "<group>"; };
-		D59CC10C1D75031B00D72C39 /* PostsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
+		D59CC10C1D75031B00D72C39 /* PostsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsController.swift; sourceTree = "<group>"; };
 		D59CC10E1D7504C200D72C39 /* AftermathConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftermathConfigurator.swift; sourceTree = "<group>"; };
 		D59CC1111D7571E000D72C39 /* UsersStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersStory.swift; sourceTree = "<group>"; };
-		D59CC1131D7571ED00D72C39 /* UsersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
+		D59CC1131D7571ED00D72C39 /* UsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		D59CC1151D75725000D72C39 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D5A9830E1D74EBBB00B0F790 /* AftermathController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftermathController.swift; sourceTree = "<group>"; };
 		D5A9830F1D74EBBB00B0F790 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		D5A983101D74EBBB00B0F790 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		D5A983151D74EBFF00B0F790 /* FashionConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FashionConfigurator.swift; sourceTree = "<group>"; };
@@ -144,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D59CC10A1D75031400D72C39 /* PostsStory.swift */,
-				D59CC10C1D75031B00D72C39 /* PostsPresenter.swift */,
+				D59CC10C1D75031B00D72C39 /* PostsController.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -153,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				D59CC1111D7571E000D72C39 /* UsersStory.swift */,
-				D59CC1131D7571ED00D72C39 /* UsersPresenter.swift */,
+				D59CC1131D7571ED00D72C39 /* UsersController.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -163,7 +161,6 @@
 			children = (
 				D59CC1101D7571CB00D72C39 /* Users */,
 				D59CC1091D75030B00D72C39 /* Posts */,
-				D5A9830E1D74EBBB00B0F790 /* AftermathController.swift */,
 				D5A9830F1D74EBBB00B0F790 /* MainController.swift */,
 				D5A983101D74EBBB00B0F790 /* WelcomeController.swift */,
 			);
@@ -349,10 +346,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D59CC1121D7571E000D72C39 /* UsersStory.swift in Sources */,
-				D59CC10D1D75031B00D72C39 /* PostsPresenter.swift in Sources */,
+				D59CC10D1D75031B00D72C39 /* PostsController.swift in Sources */,
 				D5A983211D74EE7500B0F790 /* SystemStylesheet.swift in Sources */,
 				D5A9831E1D74ED5500B0F790 /* MalibuConfigurator.swift in Sources */,
-				D5A983111D74EBBB00B0F790 /* AftermathController.swift in Sources */,
 				D59CC1081D74FBAA00D72C39 /* Requests.swift in Sources */,
 				D5A983121D74EBBB00B0F790 /* MainController.swift in Sources */,
 				D59CC10B1D75031400D72C39 /* PostsStory.swift in Sources */,
@@ -367,7 +363,7 @@
 				D5A983161D74EBFF00B0F790 /* FashionConfigurator.swift in Sources */,
 				D5A9831C1D74EC3300B0F790 /* Configurator.swift in Sources */,
 				D5A983181D74EC1D00B0F790 /* CompassConfigurator.swift in Sources */,
-				D59CC1141D7571ED00D72C39 /* UsersPresenter.swift in Sources */,
+				D59CC1141D7571ED00D72C39 /* UsersController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

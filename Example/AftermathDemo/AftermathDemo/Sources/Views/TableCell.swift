@@ -25,8 +25,6 @@ class TableCell: UITableViewCell, SpotConfigurable {
   // MARK: - Configuration
 
   func configure(inout item: ViewModel) {
-    //accessoryType = .None
-
     detailTextLabel?.text = item.subtitle
     textLabel?.text = item.title
     styles = item.meta("styles", "")
