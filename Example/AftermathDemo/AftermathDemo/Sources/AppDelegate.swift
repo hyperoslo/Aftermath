@@ -4,7 +4,18 @@ import Hue
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var window: UIWindow?
+  lazy var window: UIWindow? = {
+    let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    return window
+  }()
+
+  var configurators: [Configurator] = [
+    FashionConfigurator(),
+    CompassConfigurator(),
+    SpotsConfigurator(),
+    MalibuConfigurator(),
+    AftermathConfigurator()
+  ]
 
   lazy var navigationController: UINavigationController = { [unowned self] in
     let controller = UINavigationController(rootViewController: self.viewController)
@@ -18,11 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    window?.rootViewController = navigationController
-    window?.makeKeyAndVisible()
 
-    UINavigationBar.appearance().tintColor = UIColor(hex: "F57D2D")
+    window?.rootViewController = navigationController
+
+    configurators.forEach {
+      $0.configure()
+    }
+
+    window?.makeKeyAndVisible()
 
     return true
   }
