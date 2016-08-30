@@ -1,7 +1,7 @@
 import UIKit
 import Spots
 
-class UsersController: SpotsController {
+class AftermathController: SpotsController {
 
   // MARK: - View Lifecycle
 

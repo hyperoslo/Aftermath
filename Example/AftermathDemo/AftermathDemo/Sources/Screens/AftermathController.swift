@@ -1,11 +1,12 @@
 import UIKit
 import Spots
 
-class PostsController: SpotsController {
+class AftermathController: SpotsController {
 
   // MARK: - View Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .whiteColor()
   }
 }
