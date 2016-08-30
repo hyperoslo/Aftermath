@@ -1,6 +1,6 @@
 // MARK: - Reaction
 
-public struct Reaction<T: Projection> {
+public struct Reaction<T> {
 
   public typealias Progress = () -> Void
   public typealias Done = (T) -> Void
@@ -16,12 +16,12 @@ public struct Reaction<T: Projection> {
     self.fail = fail
   }
 
-  func invoke(with event: Event<T>) {
+  func invoke<U: Command where U.Result == T>(with event: Event<U>) {
     switch event {
     case .Progress:
       progress?()
-    case .Success(let projection):
-      done?(projection)
+    case .Success(let result):
+      done?(result)
     case .Error(let error):
       fail?(error)
     }
@@ -34,15 +34,16 @@ public protocol ReactionProducer {}
 
 public extension ReactionProducer {
 
-  func react<T: Projection>(reaction: Reaction<T>) {
-    Engine.sharedInstance.eventBus.listen { event in
+  func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Result>) {
+    Engine.sharedInstance.eventBus.listen(to: T.self) { event in
       reaction.invoke(with: event)
     }
   }
 
-  func react<T: Projection>(progress progress: Reaction<T>.Progress? = nil,
-             done: Reaction<T>.Done,
-             fail: Reaction<T>.Fail? = nil) {
-    react(Reaction<T>(progress: progress, done: done, fail: fail))
+  func react<T: Command>(to command: T.Type,
+             progress: Reaction<T.Result>.Progress? = nil,
+             done: Reaction<T.Result>.Done,
+             fail: Reaction<T.Result>.Fail? = nil) {
+    react(to: T.self, with: Reaction<T.Result>(progress: progress, done: done, fail: fail))
   }
 }
