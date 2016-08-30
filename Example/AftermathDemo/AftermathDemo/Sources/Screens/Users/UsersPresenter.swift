@@ -13,16 +13,20 @@ final class UsersPresenter: SpotsPresenter, ReactionProducer, CommandProducer {
   func subscribe(controller: SpotsController) {
     // removal token
     react(
+      to: UsersStory.Command.self,
       progress: {
         controller.refreshControl.beginRefreshing()
       },
-      done: { (projection: UsersStory.Projection) in
-        controller.refreshControl.endRefreshing()
-        controller.spot?.reloadIfNeeded(projection.items)
+      done: { items in
+        controller.spot?.reloadIfNeeded(items)
       },
       fail: { error in
         // Show error
-    })
+      },
+      complete: {
+        controller.refreshControl.endRefreshing()
+      }
+    )
   }
 
   func controllerWillAppear(controller: SpotsController) {

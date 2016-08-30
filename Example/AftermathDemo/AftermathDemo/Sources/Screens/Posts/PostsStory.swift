@@ -4,17 +4,13 @@ import Malibu
 
 struct PostsStory {
 
-  struct Projection: Aftermath.Projection {
-    let items: [ViewModel]
-  }
-
   struct Command: Aftermath.Command {
-    typealias ProjectionType = Projection
+    typealias Output = [ViewModel]
   }
 
   struct Handler: Aftermath.CommandHandler {
 
-    func handle(command: Command) throws -> Event<Projection> {
+    func handle(command: Command) throws -> Event<Command> {
       let request = PostsRequest()
 
       Malibu.networking("base").GET(request)
@@ -31,13 +27,13 @@ struct PostsStory {
           })
         })
         .done({ items in
-          self.publish(Event.Success(Projection(items: items)))
+          self.fulfill(items)
         })
         .fail({ error in
-          self.publish(Event.Error(error))
+          self.reject(error)
         })
 
-      return Event.Progress
+      return progress
     }
   }
 }

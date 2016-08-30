@@ -3,7 +3,7 @@ PODS:
   - AftermathCompass (0.1.0):
     - Aftermath
     - Compass
-  - Brick (0.9.0):
+  - Brick (0.9.1):
     - Sugar (~> 1.0)
     - Tailor
   - Cache (1.5.1):
@@ -25,7 +25,7 @@ PODS:
     - Sugar
     - Tailor
   - Sugar (1.2.0)
-  - Tailor (1.1.2):
+  - Tailor (1.2.1):
     - Sugar
   - When (1.0.4)
 
@@ -64,7 +64,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Aftermath: 35b56efd265a793884716f987ecfa57e5ca09877
   AftermathCompass: 7550d15924a3644574e684a3f7e53d18ada38b93
-  Brick: 7c64750d3f05bc6a79559103278269f8c1e61505
+  Brick: 8b2da311b9099c6790a38f06795f12eaa337c3bc
   Cache: 87b48b059429d3b53238533830c53941f8aa85f0
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   Compass: 5bb05fc2b873e9d5b1efda5752649b6a0a993843
@@ -75,7 +75,7 @@ SPEC CHECKSUMS:
   Malibu: 49454a9ce422ad8e230f4699a43d88264a4d7e06
   Spots: 5b9897f602978333ca03b3a1db50f8f13351e062
   Sugar: 556b623f0f8846cf08de7302701892f11d567419
-  Tailor: 135708d29cef05d8f83e61ce8c07171c8fcfc865
+  Tailor: 4078f0dd0541adb465f1ad81b1d2bdb7571d6b0e
   When: 033104df132ebfa75f4d3a9ba3e7a9865a573a1c
 
 PODFILE CHECKSUM: aebe9c158d096800aee1fa252e60da4a40f9f168
