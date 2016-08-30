@@ -52,3 +52,5 @@ class Controller: CommandProducer, ReactionProducer {
     )
   }
 }
+
+class TestReactionProducer: ReactionProducer {}

@@ -16,8 +16,7 @@ class CommandHandlerTests: XCTestCase {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.commandBus.disposeAll()
-    Engine.sharedInstance.eventBus.disposeAll()
+    Engine.sharedInstance.invalidate()
   }
 
   // MARK: - Tests
