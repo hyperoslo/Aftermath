@@ -16,7 +16,7 @@ public struct Reaction<T> {
     self.fail = fail
   }
 
-  func invoke<U: Command where U.Result == T>(with event: Event<U>) {
+  func invoke<U: Command where U.Output == T>(with event: Event<U>) {
     switch event {
     case .Progress:
       progress?()
@@ -34,16 +34,16 @@ public protocol ReactionProducer {}
 
 public extension ReactionProducer {
 
-  func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Result>) {
+  func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Output>) {
     Engine.sharedInstance.eventBus.listen(to: T.self) { event in
       reaction.invoke(with: event)
     }
   }
 
   func react<T: Command>(to command: T.Type,
-             progress: Reaction<T.Result>.Progress? = nil,
-             done: Reaction<T.Result>.Done,
-             fail: Reaction<T.Result>.Fail? = nil) {
-    react(to: T.self, with: Reaction<T.Result>(progress: progress, done: done, fail: fail))
+             progress: Reaction<T.Output>.Progress? = nil,
+             done: Reaction<T.Output>.Done,
+             fail: Reaction<T.Output>.Fail? = nil) {
+    react(to: T.self, with: Reaction<T.Output>(progress: progress, done: done, fail: fail))
   }
 }

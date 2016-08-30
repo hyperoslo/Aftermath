@@ -11,7 +11,7 @@ public protocol AnyEvent: Identifiable, ErrorEventBuilder {
 
 public enum Event<T: Command>: AnyEvent {
   case Progress
-  case Success(T.Result)
+  case Success(T.Output)
   case Error(ErrorType)
 
   // MARK: - Helpers

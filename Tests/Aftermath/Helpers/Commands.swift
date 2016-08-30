@@ -3,18 +3,18 @@
 // MARK: - Commands
 
 struct TestCommand: Command {
-  typealias Result = String
+  typealias Output = String
 }
 
 struct SubtractionCommand: Command {
-  typealias Result = Calculator
+  typealias Output = Calculator
 
   let value1: Int
   let value2: Int
 }
 
 struct AdditionCommand: Command {
-  typealias Result = Calculator
+  typealias Output = Calculator
 
   let value1: Int
   let value2: Int

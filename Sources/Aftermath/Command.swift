@@ -3,7 +3,7 @@
 public protocol AnyCommand: Identifiable, ErrorEventBuilder {}
 
 public protocol Command: AnyCommand {
-  associatedtype Result
+  associatedtype Output
 }
 
 public extension Command {
@@ -38,7 +38,7 @@ public extension CommandProducer {
 
 public extension CommandProducer where Self: ReactionProducer {
 
-  func execute<T: Command>(command: T, reaction: Reaction<T.Result>) {
+  func execute<T: Command>(command: T, reaction: Reaction<T.Output>) {
     react(to: T.self, with: reaction)
     execute(command)
   }
