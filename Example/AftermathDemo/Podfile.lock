@@ -13,7 +13,7 @@ PODS:
   - CryptoSwift (0.5.2)
   - Fashion (1.1.0):
     - Sugar
-  - Hue (1.2.0)
+  - Hue (1.3.0)
   - Imaginary (0.1.0):
     - Cache
   - Malibu (1.0.2):
@@ -52,7 +52,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AftermathCompass:
-    :commit: 85e2e0672a169dd997debcc5617004ce4902322b
+    :commit: b33e14771b7974291b34dce6f0b218343152c254
     :git: https://github.com/hyperoslo/AftermathCompass
   Cache:
     :commit: 4d7029d95a0b0a77ead2f0144b99bf6543452e3d
@@ -70,7 +70,7 @@ SPEC CHECKSUMS:
   Compass: 5bb05fc2b873e9d5b1efda5752649b6a0a993843
   CryptoSwift: c1ef79f901b86099a6fe8b3c7524cf9f3f3c8c40
   Fashion: 82f2bb05505e3aea0977a2c23f5d8692e06f12a9
-  Hue: 0705083b7aff40334033373e6293ec1215285ac2
+  Hue: b4d7f4923dd16237f9cbc1783c3c81438b4391f4
   Imaginary: 62a9ce1e6d7831ede429c8221a183f03ec2a90bc
   Malibu: 49454a9ce422ad8e230f4699a43d88264a4d7e06
   Spots: 5b9897f602978333ca03b3a1db50f8f13351e062
