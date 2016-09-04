@@ -33,6 +33,14 @@ public struct Reaction<T> {
   }
 }
 
+// MARK: - Command builder
+
+public protocol ReactionBuilder {
+  associatedtype Output
+
+  func buildReaction() throws -> Reaction<Output>
+}
+
 // MARK: - Reaction producer
 
 public protocol ReactionProducer: Identifiable, Disposer {}
