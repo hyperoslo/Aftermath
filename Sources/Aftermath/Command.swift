@@ -33,6 +33,10 @@ public extension CommandProducer {
   func execute(command: AnyCommand) {
     Engine.sharedInstance.commandBus.execute(command)
   }
+
+  func execute(builder: CommandBuilder) {
+    Engine.sharedInstance.commandBus.execute(builder)
+  }
 }
 
 public extension CommandProducer where Self: ReactionProducer {
