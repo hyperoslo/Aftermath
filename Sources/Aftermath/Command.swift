@@ -20,9 +20,8 @@ public extension Command {
 // MARK: - Command builder
 
 public protocol CommandBuilder {
-  associatedtype CommandType: Command
 
-  func buildCommand() throws -> CommandType
+  func buildCommand() throws -> AnyCommand
 }
 
 // MARK: - Command producer
