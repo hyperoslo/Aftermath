@@ -11,6 +11,7 @@ public protocol CommandDispatcher: Disposer {
   init(eventDispatcher: EventDispatcher)
   func use<T: CommandHandler>(handler: T) -> DisposalToken
   func execute(command: AnyCommand)
+  func execute(builder: CommandBuilder)
 }
 
 // MARK: - Command bus
@@ -64,6 +65,15 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
   }
 
   // MARK: - Dispatch
+
+  func execute(builder: CommandBuilder) {
+    do {
+      let command = try builder.buildCommand()
+      execute(command)
+    } catch {
+      errorHandler?.handleError(error)
+    }
+  }
 
   func execute(command: AnyCommand) {
     let middlewares = self.middlewares.reverse()

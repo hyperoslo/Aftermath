@@ -57,20 +57,6 @@ public extension ReactionProducer {
     return token
   }
 
-  func react<T: Command>(to command: T.Type,
-             progress: Reaction<T.Output>.Progress? = nil,
-             done: Reaction<T.Output>.Done,
-             fail: Reaction<T.Output>.Fail? = nil,
-             complete: Reaction<T.Output>.Complete? = nil) -> DisposalToken {
-    let reaction = Reaction<T.Output>(
-      progress: progress,
-      done: done,
-      fail: fail,
-      complete: complete)
-
-    return react(to: T.self, with: reaction)
-  }
-
   func dispose(token: DisposalToken) {
     Engine.sharedInstance.reactionDisposer.dispose(token, from: self)
   }

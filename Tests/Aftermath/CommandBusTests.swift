@@ -71,6 +71,15 @@ class CommandBusTests: XCTestCase {
     XCTAssertNotNil(executedCommand)
   }
 
+  func testExecuteBuilder() {
+    let token = commandBus.use(commandHandler)
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
+
+    commandBus.execute(TestCommandBuilder())
+    XCTAssertEqual(commandBus.listeners[token]?.status, .Issued)
+    XCTAssertNotNil(executedCommand)
+  }
+
   func testExecuteWithoutListeners() {
     let token = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)

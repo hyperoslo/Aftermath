@@ -20,6 +20,13 @@ struct AdditionCommand: Command {
   let value2: Int
 }
 
+struct TestCommandBuilder: CommandBuilder {
+
+  func buildCommand() throws -> AnyCommand {
+    return TestCommand()
+  }
+}
+
 // MARK: - Command handlers
 
 struct TestCommandHandler: CommandHandler {
