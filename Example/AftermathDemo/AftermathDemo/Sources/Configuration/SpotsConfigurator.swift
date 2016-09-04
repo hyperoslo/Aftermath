@@ -17,6 +17,6 @@ public struct SpotsConfigurator: Configurator {
       tableView.separatorStyle = .SingleLine
     }
 
-    ListSpot.defaultView = TableCell.self
+    ListSpot.register(defaultView: TableCell.self)
   }
 }

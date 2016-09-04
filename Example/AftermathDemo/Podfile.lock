@@ -18,7 +18,7 @@ PODS:
     - Cache
   - Malibu (1.0.2):
     - When
-  - Spots (2.1.2):
+  - Spots (3.0.0):
     - Brick
     - Cache
     - Hue
@@ -38,7 +38,7 @@ DEPENDENCIES:
   - Hue
   - Imaginary (from `https://github.com/hyperoslo/Imaginary`)
   - Malibu
-  - Spots
+  - Spots (from `https://github.com/hyperoslo/Spots`)
 
 EXTERNAL SOURCES:
   Aftermath:
@@ -49,6 +49,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/hyperoslo/Cache
   Imaginary:
     :git: https://github.com/hyperoslo/Imaginary
+  Spots:
+    :git: https://github.com/hyperoslo/Spots
 
 CHECKOUT OPTIONS:
   AftermathCompass:
@@ -60,6 +62,9 @@ CHECKOUT OPTIONS:
   Imaginary:
     :commit: 4ab2007614aa2397a9ce82c69771f21df3d37cdc
     :git: https://github.com/hyperoslo/Imaginary
+  Spots:
+    :commit: 15b1c1153bcdad478059d35348f9842febdb882a
+    :git: https://github.com/hyperoslo/Spots
 
 SPEC CHECKSUMS:
   Aftermath: 35b56efd265a793884716f987ecfa57e5ca09877
@@ -73,11 +78,11 @@ SPEC CHECKSUMS:
   Hue: b4d7f4923dd16237f9cbc1783c3c81438b4391f4
   Imaginary: 62a9ce1e6d7831ede429c8221a183f03ec2a90bc
   Malibu: 49454a9ce422ad8e230f4699a43d88264a4d7e06
-  Spots: 5b9897f602978333ca03b3a1db50f8f13351e062
+  Spots: fa57db661cb2c6978850e02fc3695949bde29217
   Sugar: 556b623f0f8846cf08de7302701892f11d567419
   Tailor: 4078f0dd0541adb465f1ad81b1d2bdb7571d6b0e
   When: 033104df132ebfa75f4d3a9ba3e7a9865a573a1c
 
-PODFILE CHECKSUM: aebe9c158d096800aee1fa252e60da4a40f9f168
+PODFILE CHECKSUM: 01dce0501c2b36afee0efbeee02373672d3a4a74
 
 COCOAPODS: 1.0.1
