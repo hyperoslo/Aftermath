@@ -31,7 +31,7 @@ public protocol CommandProducer {}
 
 public extension CommandProducer {
 
-  func execute<T: Command>(command: T) {
+  func execute(command: AnyCommand) {
     Engine.sharedInstance.commandBus.execute(command)
   }
 }
