@@ -6,7 +6,7 @@ target 'AftermathDemo' do
   pod 'Aftermath', path: '../../'
   pod 'Cartography'
   pod 'Hue'
-  pod 'Spots'
+  pod 'Spots', git: 'https://github.com/hyperoslo/Spots'
   pod 'Malibu'
   pod 'Fashion'
   pod 'AftermathCompass', git: 'https://github.com/hyperoslo/AftermathCompass'
