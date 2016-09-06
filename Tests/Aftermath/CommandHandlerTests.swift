@@ -25,7 +25,7 @@ class CommandHandlerTests: XCTestCase {
     var executed = false
 
     controller.react(to: TestCommand.self, with:
-      Reaction(progress: { executed = true }))
+      Reaction(wait: { executed = true }))
 
     XCTAssertFalse(executed)
     commandHandler.wait()
@@ -37,7 +37,7 @@ class CommandHandlerTests: XCTestCase {
     let output = "Data"
 
     controller.react(to: TestCommand.self, with:
-      Reaction(done: { output in result = output }))
+      Reaction(consume: { output in result = output }))
 
     XCTAssertNil(result)
     commandHandler.publish(data: output)
@@ -48,7 +48,7 @@ class CommandHandlerTests: XCTestCase {
     var resultError: ErrorType?
 
     controller.react(to: TestCommand.self, with:
-      Reaction(fail: { error in resultError = error }))
+      Reaction(rescue: { error in resultError = error }))
 
     XCTAssertNil(resultError)
     commandHandler.publish(error: TestError.Test)
@@ -59,7 +59,7 @@ class CommandHandlerTests: XCTestCase {
     var executed = false
 
     controller.react(to: TestCommand.self, with:
-      Reaction(progress: { executed = true }))
+      Reaction(wait: { executed = true } ))
 
     XCTAssertFalse(executed)
     commandHandler.publish(event: Event.Progress)

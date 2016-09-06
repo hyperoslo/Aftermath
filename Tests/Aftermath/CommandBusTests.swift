@@ -159,7 +159,7 @@ class CommandBusTests: XCTestCase {
     var reactionError: ErrorType?
 
     eventBus.listen(to: TestCommand.self) { event in
-      let reaction = Reaction<String>(fail: { error in
+      let reaction = Reaction<String>(rescue: { error in
         reactionError = error
       })
 
@@ -174,7 +174,7 @@ class CommandBusTests: XCTestCase {
     var reactionError: ErrorType?
 
     eventBus.listen(to: TestCommand.self) { event in
-      let reaction = Reaction<String>(fail: { error in
+      let reaction = Reaction<String>(rescue: { error in
         reactionError = error
       })
 

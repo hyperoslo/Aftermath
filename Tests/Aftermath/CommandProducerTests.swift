@@ -41,7 +41,7 @@ class CommandProducerTests: XCTestCase {
     var string: String?
 
     producer.execute(TestCommand(), reaction: Reaction(
-      done: { result in
+      consume: { result in
         string = result
       }))
 

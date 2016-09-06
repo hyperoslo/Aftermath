@@ -12,13 +12,13 @@ class ReactionTests: XCTestCase {
     state = nil
 
     reaction = Reaction(
-      progress: {
+      wait: {
         self.state = .Progress
       },
-      done: { result in
+      consume: { result in
         self.state = .Data
       },
-      fail: { error in
+      rescue: { error in
         self.state = .Error
       }
     )
@@ -33,15 +33,15 @@ class ReactionTests: XCTestCase {
   func testInitWithoutParameters() {
     reaction = Reaction()
 
-    XCTAssertNil(reaction.progress)
-    XCTAssertNil(reaction.done)
-    XCTAssertNil(reaction.fail)
+    XCTAssertNil(reaction.wait)
+    XCTAssertNil(reaction.consume)
+    XCTAssertNil(reaction.rescue)
   }
 
   func testInitWithParameters() {
-    XCTAssertNotNil(reaction.progress)
-    XCTAssertNotNil(reaction.done)
-    XCTAssertNotNil(reaction.fail)
+    XCTAssertNotNil(reaction.wait)
+    XCTAssertNotNil(reaction.consume)
+    XCTAssertNotNil(reaction.rescue)
   }
 
   func testInvokeWithProgress() {

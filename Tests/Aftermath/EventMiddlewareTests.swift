@@ -17,10 +17,10 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     eventBus = EventBus()
 
     reaction = Reaction(
-      done: { calculator in
+      consume: { calculator in
         self.result = calculator.result
       },
-      fail: { error in
+      rescue: { error in
         self.error = error
       }
     )

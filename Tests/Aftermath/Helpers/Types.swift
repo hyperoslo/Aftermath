@@ -36,13 +36,13 @@ class Controller: CommandProducer, ReactionProducer {
 
   init() {
     reaction = Reaction(
-      progress: {
+      wait: {
         self.state = .Progress
       },
-      done: { result in
+      consume: { result in
         self.state = .Data
       },
-      fail: { error in
+      rescue: { error in
         self.state = .Error
       }
     )
