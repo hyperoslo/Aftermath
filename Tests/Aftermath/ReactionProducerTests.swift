@@ -26,7 +26,6 @@ class ReactionProducerTests: XCTestCase {
     Engine.sharedInstance.eventBus.publish(event)
 
     XCTAssertEqual(controller.state, .Progress)
-    XCTAssertFalse(controller.completed)
   }
 
   func testReactWithSuccess() {
@@ -38,7 +37,6 @@ class ReactionProducerTests: XCTestCase {
     Engine.sharedInstance.eventBus.publish(event)
 
     XCTAssertEqual(controller.state, .Success)
-    XCTAssertTrue(controller.completed)
   }
 
   func testReactWithError() {
@@ -50,7 +48,6 @@ class ReactionProducerTests: XCTestCase {
     Engine.sharedInstance.eventBus.publish(event)
 
     XCTAssertEqual(controller.state, .Error)
-    XCTAssertTrue(controller.completed)
   }
 
   func testDispose() {
