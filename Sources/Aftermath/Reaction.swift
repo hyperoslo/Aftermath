@@ -20,7 +20,7 @@ public struct Reaction<T> {
     switch event {
     case .Progress:
       progress?()
-    case .Success(let result):
+    case .Data(let result):
       done?(result)
     case .Error(let error):
       fail?(error)

@@ -38,7 +38,7 @@ class CommandHandlerTests: XCTestCase {
 
   func testFulfill() {
     var result: String?
-    let output = "Success"
+    let output = "Data"
 
     controller.react(to: TestCommand.self, with:
       Reaction(done: { output in result = output }))

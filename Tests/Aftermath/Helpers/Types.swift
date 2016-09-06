@@ -7,7 +7,7 @@ struct Calculator {
 }
 
 enum State: Int {
-  case Progress, Success, Error
+  case Progress, Data, Error
 }
 
 enum TestError: ErrorType {
@@ -40,7 +40,7 @@ class Controller: CommandProducer, ReactionProducer {
         self.state = .Progress
       },
       done: { result in
-        self.state = .Success
+        self.state = .Data
       },
       fail: { error in
         self.state = .Error

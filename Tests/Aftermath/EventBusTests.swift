@@ -22,7 +22,7 @@ class EventBusTests: XCTestCase {
         self.state = .Progress
       },
       done: { result in
-        self.state = .Success
+        self.state = .Data
       },
       fail: { error in
         self.state = .Error

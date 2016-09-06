@@ -16,7 +16,7 @@ class ReactionTests: XCTestCase {
         self.state = .Progress
       },
       done: { result in
-        self.state = .Success
+        self.state = .Data
       },
       fail: { error in
         self.state = .Error
@@ -51,11 +51,11 @@ class ReactionTests: XCTestCase {
     XCTAssertEqual(state, .Progress)
   }
 
-  func testInvokeWithSuccess() {
-    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
+  func testInvokeWithData() {
+    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
     reaction.invoke(with: event)
 
-    XCTAssertEqual(state, .Success)
+    XCTAssertEqual(state, .Data)
   }
 
   func testInvokeWithError() {
