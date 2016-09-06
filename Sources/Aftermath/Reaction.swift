@@ -3,8 +3,8 @@
 public struct Reaction<T> {
 
   public typealias Progress = () -> Void
-  public typealias Done = (T) -> Void
-  public typealias Fail = (ErrorType) -> Void
+  public typealias Done = T -> Void
+  public typealias Fail = ErrorType -> Void
 
   public var progress: Progress?
   public var done: Done?
