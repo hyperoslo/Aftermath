@@ -57,23 +57,19 @@ public protocol CommandHandler {
 
 public extension CommandHandler {
 
-  var progress: Event<CommandType> {
-    return Event.Progress
-  }
-
   func wait() {
-    publish(progress)
+    publish(event: Event.Progress)
   }
 
-  func fulfill(output: CommandType.Output) {
-    publish(Event.Success(output))
+  func publish(data output: CommandType.Output) {
+    publish(event: Event.Data(output))
   }
 
-  func reject(error: ErrorType) {
-    publish(Event.Error(error))
+  func publish(error error: ErrorType) {
+    publish(event: Event.Error(error))
   }
 
-  func publish(event: Event<CommandType>) {
+  func publish(event event: Event<CommandType>) {
     Engine.sharedInstance.eventBus.publish(event)
   }
 }

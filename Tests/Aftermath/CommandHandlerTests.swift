@@ -21,10 +21,6 @@ class CommandHandlerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testProgress() {
-    XCTAssertTrue(commandHandler.progress.inProgress)
-  }
-
   func testWait() {
     var executed = false
 
@@ -36,7 +32,7 @@ class CommandHandlerTests: XCTestCase {
     XCTAssertTrue(executed)
   }
 
-  func testFulfill() {
+  func testPublishData() {
     var result: String?
     let output = "Data"
 
@@ -44,7 +40,7 @@ class CommandHandlerTests: XCTestCase {
       Reaction(done: { output in result = output }))
 
     XCTAssertNil(result)
-    commandHandler.fulfill(output)
+    commandHandler.publish(data: output)
     XCTAssertEqual(result, output)
   }
 
@@ -55,7 +51,7 @@ class CommandHandlerTests: XCTestCase {
       Reaction(fail: { error in resultError = error }))
 
     XCTAssertNil(resultError)
-    commandHandler.reject(TestError.Test)
+    commandHandler.publish(error: TestError.Test)
     XCTAssertTrue(resultError is TestError)
   }
 
@@ -66,7 +62,7 @@ class CommandHandlerTests: XCTestCase {
       Reaction(progress: { executed = true }))
 
     XCTAssertFalse(executed)
-    commandHandler.publish(Event.Progress)
+    commandHandler.publish(event: Event.Progress)
     XCTAssertTrue(executed)
   }
 }
