@@ -1,34 +1,29 @@
 // MARK: - Reaction
 
-public struct Reaction<T> {
+public final class Reaction<T> {
 
-  public typealias Progress = () -> Void
-  public typealias Done = (T) -> Void
-  public typealias Fail = (ErrorType) -> Void
-  public typealias Complete = () -> Void
+  public typealias Wait = () -> Void
+  public typealias Consume = T -> Void
+  public typealias Rescue = ErrorType -> Void
 
-  public var progress: Progress?
-  public var done: Done?
-  public var fail: Fail?
-  public var complete: Complete?
+  public var wait: Wait?
+  public var consume: Consume?
+  public var rescue: Rescue?
 
-  public init(progress: Progress? = nil, done: Done? = nil, fail: Fail? = nil, complete: Complete? = nil) {
-    self.progress = progress
-    self.done = done
-    self.fail = fail
-    self.complete = complete
+  public init(wait: Wait? = nil, consume: Consume? = nil, rescue: Rescue? = nil) {
+    self.wait = wait
+    self.consume = consume
+    self.rescue = rescue
   }
 
   func invoke<U: Command where U.Output == T>(with event: Event<U>) {
     switch event {
     case .Progress:
-      progress?()
-    case .Success(let result):
-      done?(result)
-      complete?()
+      wait?()
+    case .Data(let output):
+      consume?(output)
     case .Error(let error):
-      fail?(error)
-      complete?()
+      rescue?(error)
     }
   }
 }

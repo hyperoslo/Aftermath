@@ -16,18 +16,18 @@ public extension Identifiable {
 
 struct Middleware<T> {
 
-  typealias Publish = (T) throws -> Void
-  typealias PublishCombination = (Publish) throws -> Publish
+  typealias Dispatch = (T) throws -> Void
+  typealias DispatchCombination = (Dispatch) throws -> Dispatch
 
-  let intercept: (T, execute: Publish, next: Publish) throws -> Void
+  let intercept: (T, dispatch: Dispatch, next: Dispatch) throws -> Void
 
-  func compose(execute: Publish) throws -> PublishCombination {
+  func compose(execute: Dispatch) throws -> DispatchCombination {
     return try respond { next, command in
-      return try self.intercept(command, execute: execute, next: next)
+      return try self.intercept(command, dispatch: execute, next: next)
     }
   }
 
-  func respond(handle: (Publish, T) throws -> Void) throws -> PublishCombination {
+  func respond(handle: (Dispatch, T) throws -> Void) throws -> DispatchCombination {
     return { next in
       return { command in
         try handle(next, command)

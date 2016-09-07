@@ -41,7 +41,7 @@ struct TestCommandHandler: CommandHandler {
 
   func handle(command: TestCommand) throws -> Event<TestCommand> {
     callback?(command)
-    return Event.Success(result)
+    return Event.Data(result)
   }
 }
 
@@ -55,7 +55,7 @@ struct AdditionCommandHandler: CommandHandler {
 
   func handle(command: AdditionCommand) throws -> Event<AdditionCommand> {
     callback?(command)
-    return Event.Success(Calculator(result: command.value1 + command.value2))
+    return Event.Data(Calculator(result: command.value1 + command.value2))
   }
 }
 
@@ -69,7 +69,7 @@ struct SubtractionCommandHandler: CommandHandler {
 
   func handle(command: SubtractionCommand) throws -> Event<SubtractionCommand> {
     callback?(command)
-    return Event.Success(Calculator(result: command.value1 - command.value2))
+    return Event.Data(Calculator(result: command.value1 - command.value2))
   }
 }
 

@@ -34,7 +34,7 @@ struct ErrorEventMiddleware: EventMiddleware {
     }
 
     switch additionEvent {
-    case .Success:
+    case .Data:
       try publish(Event<AdditionCommand>.Error(TestError.Test))
     default:
       try next(event)

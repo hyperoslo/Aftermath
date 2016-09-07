@@ -21,30 +21,26 @@ class CommandHandlerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testProgress() {
-    XCTAssertTrue(commandHandler.progress.inProgress)
-  }
-
   func testWait() {
     var executed = false
 
     controller.react(to: TestCommand.self, with:
-      Reaction(progress: { executed = true }))
+      Reaction(wait: { executed = true }))
 
     XCTAssertFalse(executed)
     commandHandler.wait()
     XCTAssertTrue(executed)
   }
 
-  func testFulfill() {
+  func testPublishData() {
     var result: String?
-    let output = "Success"
+    let output = "Data"
 
     controller.react(to: TestCommand.self, with:
-      Reaction(done: { output in result = output }))
+      Reaction(consume: { output in result = output }))
 
     XCTAssertNil(result)
-    commandHandler.fulfill(output)
+    commandHandler.publish(data: output)
     XCTAssertEqual(result, output)
   }
 
@@ -52,10 +48,10 @@ class CommandHandlerTests: XCTestCase {
     var resultError: ErrorType?
 
     controller.react(to: TestCommand.self, with:
-      Reaction(fail: { error in resultError = error }))
+      Reaction(rescue: { error in resultError = error }))
 
     XCTAssertNil(resultError)
-    commandHandler.reject(TestError.Test)
+    commandHandler.publish(error: TestError.Test)
     XCTAssertTrue(resultError is TestError)
   }
 
@@ -63,10 +59,10 @@ class CommandHandlerTests: XCTestCase {
     var executed = false
 
     controller.react(to: TestCommand.self, with:
-      Reaction(progress: { executed = true }))
+      Reaction(wait: { executed = true } ))
 
     XCTAssertFalse(executed)
-    commandHandler.publish(Event.Progress)
+    commandHandler.publish(event: Event.Progress)
     XCTAssertTrue(executed)
   }
 }

@@ -18,16 +18,17 @@ class EventBusTests: XCTestCase {
     eventBus.errorHandler = errorHandler
 
     reaction = Reaction(
-      progress: {
+      wait: {
         self.state = .Progress
       },
-      done: { result in
-        self.state = .Success
+      consume: { result in
+        self.state = .Data
       },
-      fail: { error in
+      rescue: { error in
         self.state = .Error
         self.lastError = error
-    })
+      }
+    )
 
     listener = { event in
       self.reaction.invoke(with: event)

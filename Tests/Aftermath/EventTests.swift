@@ -14,8 +14,8 @@ class EventTests: XCTestCase {
     let progressEvent = Event<TestCommand>.Progress
     XCTAssertTrue(progressEvent.inProgress)
 
-    let successEvent = Event<TestCommand>.Success("Success")
-    XCTAssertFalse(successEvent.inProgress)
+    let dataEvent = Event<TestCommand>.Data("Data")
+    XCTAssertFalse(dataEvent.inProgress)
 
     let errorEvent = Event<TestCommand>.Error(TestError.Test)
     XCTAssertFalse(errorEvent.inProgress)
@@ -25,9 +25,9 @@ class EventTests: XCTestCase {
     let progressEvent = Event<TestCommand>.Progress
     XCTAssertNil(progressEvent.result)
 
-    let result = "Success"
-    let successEvent = Event<TestCommand>.Success(result)
-    XCTAssertEqual(successEvent.result as? String, result)
+    let result = "Data"
+    let dataEvent = Event<TestCommand>.Data(result)
+    XCTAssertEqual(dataEvent.result as? String, result)
 
     let errorEvent = Event<TestCommand>.Error(TestError.Test)
     XCTAssertNil(errorEvent.result)
@@ -37,8 +37,8 @@ class EventTests: XCTestCase {
     let progressEvent = Event<TestCommand>.Progress
     XCTAssertNil(progressEvent.error)
 
-    let successEvent = Event<TestCommand>.Success("Success")
-    XCTAssertNil(successEvent.error)
+    let dataEvent = Event<TestCommand>.Data("Data")
+    XCTAssertNil(dataEvent.error)
 
     let errorEvent = Event<TestCommand>.Error(TestError.Test)
     XCTAssertTrue(errorEvent.error is TestError)

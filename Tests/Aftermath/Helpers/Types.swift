@@ -7,7 +7,7 @@ struct Calculator {
 }
 
 enum State: Int {
-  case Progress, Success, Error
+  case Progress, Data, Error
 }
 
 enum TestError: ErrorType {
@@ -33,21 +33,17 @@ class Controller: CommandProducer, ReactionProducer {
 
   var reaction: Reaction<Calculator>!
   var state: State?
-  var completed = false
 
   init() {
     reaction = Reaction(
-      progress: {
+      wait: {
         self.state = .Progress
       },
-      done: { result in
-        self.state = .Success
+      consume: { result in
+        self.state = .Data
       },
-      fail: { error in
+      rescue: { error in
         self.state = .Error
-      },
-      complete: {
-        self.completed = true
       }
     )
   }

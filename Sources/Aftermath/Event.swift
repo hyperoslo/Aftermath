@@ -12,7 +12,7 @@ public protocol AnyEvent: Identifiable, ErrorEventBuilder {
 
 public enum Event<T: Command>: AnyEvent {
   case Progress
-  case Success(T.Output)
+  case Data(T.Output)
   case Error(ErrorType)
 
   // MARK: - Helpers
@@ -34,7 +34,7 @@ public enum Event<T: Command>: AnyEvent {
     var value: Any?
 
     switch self {
-    case .Success(let result):
+    case .Data(let result):
       value = result
     default:
       break

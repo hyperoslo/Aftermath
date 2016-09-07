@@ -17,10 +17,10 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     eventBus = EventBus()
 
     reaction = Reaction(
-      done: { calculator in
+      consume: { calculator in
         self.result = calculator.result
       },
-      fail: { error in
+      rescue: { error in
         self.error = error
       }
     )
@@ -45,7 +45,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
   func testNext() {
     var m1 = LogEventMiddleware()
     var m2 = LogEventMiddleware()
-    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
+    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
@@ -67,7 +67,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     var m1 = LogEventMiddleware()
     var m2 = ErrorEventMiddleware()
     var m3 = LogEventMiddleware()
-    let successEvent = Event<AdditionCommand>.Success(Calculator(result: 11))
+    let dataEvent = Event<AdditionCommand>.Data(Calculator(result: 11))
     let errorEvent = Event<AdditionCommand>.Error(TestError.Test)
 
     m1.callback = addMiddlewareStep(m1)
@@ -76,14 +76,14 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
 
     eventBus.middlewares = [m1, m2, m3]
     eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.publish(successEvent)
+    eventBus.publish(dataEvent)
 
     XCTAssertEqual(eventSteps.count, 6)
     XCTAssertEqual(result, 0)
     XCTAssertTrue(error is TestError)
 
-    assertMiddlewareStep(0, expected: (middleware: m1, event: successEvent))
-    assertMiddlewareStep(1, expected: (middleware: m2, event: successEvent))
+    assertMiddlewareStep(0, expected: (middleware: m1, event: dataEvent))
+    assertMiddlewareStep(1, expected: (middleware: m2, event: dataEvent))
     assertMiddlewareStep(2, expected: (middleware: m1, event: errorEvent))
     assertMiddlewareStep(3, expected: (middleware: m2, event: errorEvent))
     assertMiddlewareStep(4, expected: (middleware: m3, event: errorEvent))
@@ -94,7 +94,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     var m1 = LogEventMiddleware()
     var m2 = AbortEventMiddleware()
     var m3 = LogEventMiddleware()
-    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
+    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)

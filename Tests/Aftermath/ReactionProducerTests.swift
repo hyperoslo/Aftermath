@@ -26,19 +26,17 @@ class ReactionProducerTests: XCTestCase {
     Engine.sharedInstance.eventBus.publish(event)
 
     XCTAssertEqual(controller.state, .Progress)
-    XCTAssertFalse(controller.completed)
   }
 
-  func testReactWithSuccess() {
+  func testReactWithData() {
     controller.react(to: AdditionCommand.self, with: controller.reaction)
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
-    let event = Event<AdditionCommand>.Success(Calculator(result: 11))
+    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
     Engine.sharedInstance.eventBus.publish(event)
 
-    XCTAssertEqual(controller.state, .Success)
-    XCTAssertTrue(controller.completed)
+    XCTAssertEqual(controller.state, .Data)
   }
 
   func testReactWithError() {
@@ -50,7 +48,6 @@ class ReactionProducerTests: XCTestCase {
     Engine.sharedInstance.eventBus.publish(event)
 
     XCTAssertEqual(controller.state, .Error)
-    XCTAssertTrue(controller.completed)
   }
 
   func testDispose() {

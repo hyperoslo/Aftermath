@@ -18,7 +18,7 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     eventBus = EventBus()
     commandBus = CommandBus(eventDispatcher: eventBus)
 
-    reaction = Reaction(done: { calculator in
+    reaction = Reaction(consume: { calculator in
       self.result = calculator.result
     })
 
