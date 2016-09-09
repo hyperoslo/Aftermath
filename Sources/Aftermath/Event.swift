@@ -68,6 +68,28 @@ public extension Event {
   }
 }
 
+extension Event: CustomStringConvertible, CustomDebugStringConvertible {
+
+  public var description: String {
+    var string: String
+
+    switch self {
+    case .Progress:
+      string = "Event<\(T.self)>.Progress"
+    case .Data:
+      string = "Event<\(T.self)>.Data with \(T.Output.self)"
+    case .Error(let error):
+      string = "Event<\(T.self)>.Error with \(error)"
+    }
+
+    return string
+  }
+
+  public var debugDescription: String {
+    return description
+  }
+}
+
 // MARK: - Event middleware
 
 public typealias Publish = (AnyEvent) throws -> Void
