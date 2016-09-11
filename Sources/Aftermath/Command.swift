@@ -30,20 +30,20 @@ public protocol CommandProducer {}
 
 public extension CommandProducer {
 
-  func execute(command: AnyCommand) {
+  func execute(command command: AnyCommand) {
     Engine.sharedInstance.commandBus.execute(command)
   }
 
-  func execute(builder: CommandBuilder) {
+  func execute(builder builder: CommandBuilder) {
     Engine.sharedInstance.commandBus.execute(builder)
   }
 
-  func execute<T: Action>(action: T) {
+  func execute<T: Action>(action action: T) {
     if !Engine.sharedInstance.commandBus.contains(T.self) {
       Engine.sharedInstance.commandBus.use(action)
     }
 
-    execute(action)
+    execute(command: action)
   }
 }
 
@@ -51,7 +51,7 @@ public extension CommandProducer where Self: ReactionProducer {
 
   func execute<T: Command>(command: T, reaction: Reaction<T.Output>) {
     react(to: T.self, with: reaction)
-    execute(command)
+    execute(command: command)
   }
 }
 
