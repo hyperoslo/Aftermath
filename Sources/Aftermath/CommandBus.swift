@@ -10,6 +10,7 @@ public protocol CommandDispatcher: Disposer {
 
   init(eventDispatcher: EventDispatcher)
   func use<T: CommandHandler>(handler: T) -> DisposalToken
+  func contains<T: CommandHandler>(handler: T.Type) -> Bool
   func execute(command: AnyCommand)
   func execute(builder: CommandBuilder)
 }
@@ -41,7 +42,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
     let token = T.CommandType.identifier
 
-    if listeners[token] != nil {
+    if contains(T.self) {
       let warning = Warning.DuplicatedCommandHandler(command: T.CommandType.self)
       errorHandler?.handleError(warning)
     }
@@ -62,6 +63,11 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
     pthread_mutex_unlock(&mutex)
 
     return token
+  }
+
+  func contains<T: CommandHandler>(handler: T.Type) -> Bool {
+    let token = T.CommandType.identifier
+    return listeners[token] != nil
   }
 
   // MARK: - Dispatch
