@@ -51,6 +51,22 @@ class CommandProducerTests: XCTestCase {
     XCTAssertNotNil(executedAction)
   }
 
+  func testPublishFact() {
+    var output: String?
+    let fact = TestFact(result: result)
+    let reactionProducer = TestReactionProducer()
+
+    reactionProducer.next { (fact: TestFact) in
+      output = fact.result
+    }
+
+    XCTAssertFalse(Engine.sharedInstance.commandBus.contains(TestFact.self))
+
+    producer.publish(fact: fact)
+    XCTAssertTrue(Engine.sharedInstance.commandBus.contains(TestFact.self))
+    XCTAssertEqual(output, result)
+  }
+
   func testExecuteReaction() {
     var string: String?
 

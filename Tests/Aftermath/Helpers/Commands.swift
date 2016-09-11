@@ -44,6 +44,10 @@ struct TestAction: Action {
   }
 }
 
+struct TestFact: Fact {
+  let result: String
+}
+
 // MARK: - Command handlers
 
 struct TestCommandHandler: CommandHandler {
