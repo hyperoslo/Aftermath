@@ -37,7 +37,7 @@ class CommandProducerTests: XCTestCase {
     XCTAssertNil(executedCommand)
   }
 
-  func testDispatch() {
+  func testExecuteAction() {
     var executedAction: TestAction?
 
     let action = TestAction(result: result) { action in
