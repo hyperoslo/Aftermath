@@ -19,7 +19,7 @@ class FactProducerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testPublishFact() {
+  func testPost() {
     var output1: String?
     var output2: String?
     let reactionProducer1 = TestReactionProducer()
@@ -35,7 +35,7 @@ class FactProducerTests: XCTestCase {
 
     let fact = TestFact(result: result)
 
-    producer.publish(fact: fact)
+    producer.post(fact: fact)
     XCTAssertEqual(output1, result)
     XCTAssertEqual(output2, result)
   }

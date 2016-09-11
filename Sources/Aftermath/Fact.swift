@@ -12,7 +12,7 @@ public protocol FactProducer {}
 
 public extension FactProducer {
 
-  func publish<T: Fact>(fact fact: T) {
+  func post<T: Fact>(fact fact: T) {
     let event = Event<FactCommand<T>>.Data(fact)
     Engine.sharedInstance.eventBus.publish(event)
   }
