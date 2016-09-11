@@ -102,7 +102,11 @@ public protocol Fact: Action {
 public extension Fact {
 
   func handle(command: CommandType) throws -> Event<CommandType> {
-    return Event.Data(self as! CommandType.Output)
+    guard let output = self as? CommandType.Output else {
+      throw Error.InvalidFactType
+    }
+
+    return Event.Data(output)
   }
 }
 
