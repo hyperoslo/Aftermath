@@ -45,10 +45,6 @@ public extension CommandProducer {
 
     execute(command: action)
   }
-
-  func publish<T: Fact>(fact fact: T) {
-    execute(action: fact)
-  }
 }
 
 public extension CommandProducer where Self: ReactionProducer {
@@ -90,24 +86,6 @@ public extension CommandHandler {
 
 public protocol Action: Command, CommandHandler {
   associatedtype CommandType = Self
-}
-
-// MARK: - Fact
-
-public protocol Fact: Action {
-  associatedtype CommandType = Self
-  associatedtype Output = Self
-}
-
-public extension Fact {
-
-  func handle(command: CommandType) throws -> Event<CommandType> {
-    guard let output = self as? CommandType.Output else {
-      throw Error.InvalidFactType
-    }
-
-    return Event.Data(output)
-  }
 }
 
 // MARK: - Command middleware

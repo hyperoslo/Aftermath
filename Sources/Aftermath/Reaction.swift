@@ -52,9 +52,9 @@ public extension ReactionProducer {
     return token
   }
 
-  func next<T: Fact where T.Output == T>(consume: T -> Void) -> DisposalToken {
+  func next<T: Fact>(consume: T -> Void) -> DisposalToken {
     let reaction = Reaction<T>(consume: consume)
-    return react(to: T.self, with: reaction)
+    return react(to: FactCommand<T>.self, with: reaction)
   }
 
   func dispose(token: DisposalToken) {
