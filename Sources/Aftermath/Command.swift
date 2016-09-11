@@ -74,6 +74,12 @@ public extension CommandHandler {
   }
 }
 
+// MARK: - Action
+
+public protocol Action: Command, CommandHandler {
+  associatedtype CommandType = Self
+}
+
 // MARK: - Command middleware
 
 public typealias Execute = (AnyCommand) throws -> Void
