@@ -62,6 +62,14 @@ class CommandBusTests: XCTestCase {
     }
   }
 
+  func testContains() {
+    XCTAssertEqual(commandBus.listeners.count, 0)
+    XCTAssertFalse(commandBus.contains(TestCommandHandler.self))
+
+    commandBus.use(commandHandler)
+    XCTAssertTrue(commandBus.contains(TestCommandHandler.self))
+  }
+
   func testExecute() {
     let token = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .Pending)
