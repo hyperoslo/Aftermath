@@ -52,6 +52,11 @@ public extension ReactionProducer {
     return token
   }
 
+  func next<T: Fact>(consume: T -> Void) -> DisposalToken {
+    let reaction = Reaction<T>(consume: consume)
+    return react(to: FactCommand<T>.self, with: reaction)
+  }
+
   func dispose(token: DisposalToken) {
     Engine.sharedInstance.reactionDisposer.dispose(token, from: self)
   }

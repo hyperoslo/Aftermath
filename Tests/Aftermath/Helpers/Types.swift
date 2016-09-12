@@ -29,7 +29,7 @@ class ErrorManager: ErrorHandler {
 
 // MARK: - Reactions
 
-class Controller: CommandProducer, ReactionProducer {
+class Controller: CommandProducer, ReactionProducer, FactProducer {
 
   var reaction: Reaction<Calculator>!
   var state: State?

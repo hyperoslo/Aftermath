@@ -28,13 +28,27 @@ class CommandProducerTests: XCTestCase {
   // MARK: - Tests
 
   func testExecute() {
-    producer.execute(TestCommand())
+    producer.execute(command: TestCommand())
     XCTAssertNotNil(executedCommand)
   }
 
   func testExecuteWithAnotherCommand() {
-    producer.execute(AdditionCommand(value1: 1, value2: 3))
+    producer.execute(command: AdditionCommand(value1: 1, value2: 3))
     XCTAssertNil(executedCommand)
+  }
+
+  func testExecuteAction() {
+    var executedAction: TestAction?
+
+    let action = TestAction(result: result) { action in
+      executedAction = action
+    }
+
+    XCTAssertFalse(Engine.sharedInstance.commandBus.contains(TestAction.self))
+
+    producer.execute(action: action)
+    XCTAssertTrue(Engine.sharedInstance.commandBus.contains(TestAction.self))
+    XCTAssertNotNil(executedAction)
   }
 
   func testExecuteReaction() {

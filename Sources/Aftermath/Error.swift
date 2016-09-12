@@ -6,6 +6,7 @@ public enum Error: ErrorType, CustomStringConvertible, CustomDebugStringConverti
   case CommandDispatcherDeallocated
   case EventDispatcherDeallocated
   case InvalidCommandType
+  case InvalidFactType
   case InvalidEventType
 
   public var description: String {
@@ -18,6 +19,8 @@ public enum Error: ErrorType, CustomStringConvertible, CustomDebugStringConverti
       string = "Event dispatcher has been deallocated."
     case .InvalidCommandType:
       string = "Invalid command type."
+    case .InvalidFactType:
+      string = "Invalid fact type."
     case .InvalidEventType:
       string = "Invalid event type."
     }

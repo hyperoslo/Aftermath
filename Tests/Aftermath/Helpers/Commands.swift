@@ -27,6 +27,27 @@ struct TestCommandBuilder: CommandBuilder {
   }
 }
 
+struct TestAction: Action {
+  typealias Output = String
+
+  let result: String
+  var callback: (TestAction -> Void)?
+
+  init(result: String = "", callback: (TestAction -> Void)? = nil) {
+    self.result = result
+    self.callback = callback
+  }
+
+  func handle(command: TestAction) throws -> Event<TestAction> {
+    callback?(command)
+    return Event.Data(result)
+  }
+}
+
+struct TestFact: Fact {
+  let result: String
+}
+
 // MARK: - Command handlers
 
 struct TestCommandHandler: CommandHandler {
