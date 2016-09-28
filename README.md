@@ -32,47 +32,47 @@ of the framework:
 
 ### Command
 
-*Command* is a message with a set of instructions describing an intention to
-execute the corresponding behavior. *Command* could lead to data fetching,
+**Command** is a message with a set of instructions describing an intention to
+execute the corresponding behavior. Command could lead to data fetching,
 data mutation and any sort of sync or async operation that
 produces desirable output needed to update application/view state.
 
-Every *Command* can produce only one *Output* type.
+Every command can produce only one output type.
 
 ### Command Handler
 
-*Command Handler* layer is responsible for business logic in the application.
-The submission of a *Command* is received by a *Command Handler*, which usually
+**Command Handler** layer is responsible for business logic in the application.
+The submission of a command is received by a command handler, which usually
 performs short- or long-term operation, such as network request, database query,
-cache read/white process, etc. *Command Handler* can be sync and publish the
+cache read/white process, etc. Command handler can be sync and publish the
 result immediately. On the other hand it's the best place in the
 application to write asynchronous code.
 
-The restriction is to create only one *Command Handler* for each *Command*.
+The restriction is to create only one command handler for each command.
 
 ### Event
 
-*Command Handler* is responsible for publishing `events` that will be consumed
-by `reactions`. There are 3 types of `events`:
+**Command Handler** is responsible for publishing **events** that will be
+consumed by reactions. There are 3 types of events:
 
-- *Progress* which indicates that the operation triggered by *Command* has been
+- **Progress** which indicates that the operation triggered by command has been
 started and is in the pending state at the moment.
-- *Data* which holds the output produced by the *Command* execution
-- *Error* notifies that an error has been occurred during the *Command*
+- **Data** which holds the output produced by the command execution
+- **Error** notifies that an error has been occurred during the command
 execution
 
 ### Reaction
 
-*Reaction* responds to *Event* published by *Command Handler*. It is supposed
-to handle 3 possible *Event* types by describing the desired behavior in the
+**Reaction** responds to event published by command handler. It is supposed
+to handle 3 possible event types by describing the desired behavior in the
 each scenario:
 
-- *Wait* function reacts on *Progress* type of the *Event*
-- *Consume* function reacts on *Data* type of the *Event*.
-- *Rescue* function is a fallback for the case when *Error* type of the *Event*
+- **Wait** function reacts on `Progress` type of the event
+- **Consume** function reacts on `Data` type of the event.
+- **Rescue** function is a fallback for the case when `Error` type of the event
 has been received.
 
-Normally *Reaction* performs UI updates, but could also be used for other kinds
+Normally reaction performs UI updates, but could also be used for other kinds
 of output processing.
 
 ## Installation
@@ -91,7 +91,8 @@ To install just write into your Cartfile:
 github "hyperoslo/Aftermath"
 ```
 
-**Aftermath** can also be installed manually. Just download and drop `Sources` folders in your project.
+**Aftermath** can also be installed manually. Just download and drop `Sources`
+folders in your project.
 
 ## Author
 
@@ -106,8 +107,10 @@ sequence of commands and events from
 
 ## Contributing
 
-We would love you to contribute to **Aftermath**, check the [CONTRIBUTING](https://github.com/hyperoslo/Aftermath/blob/master/CONTRIBUTING.md) file for more info.
+We would love you to contribute to **Aftermath**, check the [CONTRIBUTING](https://github.com/hyperoslo/Aftermath/blob/master/CONTRIBUTING.md)
+file for more info.
 
 ## License
 
-**Aftermath** is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Aftermath/blob/master/LICENSE.md) file for more info.
+**Aftermath** is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Aftermath/blob/master/LICENSE.md)
+file for more info.
