@@ -42,7 +42,7 @@ public protocol ReactionProducer: Identifiable, Disposer {}
 
 public extension ReactionProducer {
 
-  func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Output>) -> DisposalToken {
+  @discardableResult func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Output>) -> DisposalToken {
     let token = Engine.sharedInstance.eventBus.listen(to: T.self) { event in
       reaction.invoke(with: event)
     }
@@ -52,7 +52,7 @@ public extension ReactionProducer {
     return token
   }
 
-  func next<T: Fact>(_ consume: @escaping (T) -> Void) -> DisposalToken {
+  @discardableResult func next<T: Fact>(_ consume: @escaping (T) -> Void) -> DisposalToken {
     let reaction = Reaction<T>(consume: consume)
     return react(to: FactCommand<T>.self, with: reaction)
   }
