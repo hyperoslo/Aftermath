@@ -37,17 +37,17 @@ class CommandBusTests: XCTestCase {
   func testUse() {
     XCTAssertEqual(commandBus.listeners.count, 0)
 
-    commandBus.use(commandHandler)
+    _ = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners.count, 1)
   }
 
   func testUseWithDuplicate() {
     XCTAssertEqual(commandBus.listeners.count, 0)
 
-    commandBus.use(commandHandler)
+    _ = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners.count, 1)
 
-    commandBus.use(commandHandler)
+    _ = commandBus.use(commandHandler)
     XCTAssertEqual(commandBus.listeners.count, 1)
 
     if let error = errorHandler.lastError as? Warning {
@@ -66,7 +66,7 @@ class CommandBusTests: XCTestCase {
     XCTAssertEqual(commandBus.listeners.count, 0)
     XCTAssertFalse(commandBus.contains(TestCommandHandler.self))
 
-    commandBus.use(commandHandler)
+    _ = commandBus.use(commandHandler)
     XCTAssertTrue(commandBus.contains(TestCommandHandler.self))
   }
 
@@ -166,7 +166,7 @@ class CommandBusTests: XCTestCase {
   func testHandleError() {
     var reactionError: Error?
 
-    eventBus.listen(to: TestCommand.self) { event in
+    _ = eventBus.listen(to: TestCommand.self) { event in
       let reaction = Reaction<String>(rescue: { error in
         reactionError = error
       })
@@ -181,7 +181,7 @@ class CommandBusTests: XCTestCase {
   func testHandleErrorWithFrameworkError() {
     var reactionError: Error?
 
-    eventBus.listen(to: TestCommand.self) { event in
+    _ = eventBus.listen(to: TestCommand.self) { event in
       let reaction = Reaction<String>(rescue: { error in
         reactionError = error
       })
@@ -189,7 +189,7 @@ class CommandBusTests: XCTestCase {
       reaction.invoke(with: event)
     }
 
-    commandBus.handleError(Aftermath.Error.invalidCommandType, on: TestCommand())
+    commandBus.handleError(Failure.invalidCommandType, on: TestCommand())
     XCTAssertNil(reactionError)
   }
 }

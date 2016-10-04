@@ -40,7 +40,7 @@ public extension CommandProducer {
 
   func execute<T: Action>(action: T) {
     if !Engine.sharedInstance.commandBus.contains(T.self) {
-      Engine.sharedInstance.commandBus.use(action)
+      Engine.sharedInstance.use(action)
     }
 
     execute(command: action)

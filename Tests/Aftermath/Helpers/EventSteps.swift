@@ -49,7 +49,7 @@ extension EventStepAsserting {
 
     switch eventSteps[index] {
     case .reaction(let reaction):
-      XCTAssertTrue(type(of: (reaction) as AnyObject) == type(of: expected))
+      XCTAssertTrue(type(of: (reaction) as Any) == type(of: expected))
     default:
       XCTFail("Not a reaction step")
     }

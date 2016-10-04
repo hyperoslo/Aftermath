@@ -37,6 +37,7 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     super.tearDown()
     Engine.sharedInstance.invalidate()
     commandBus.disposeAll()
+    eventBus.disposeAll()
   }
 
   // MARK: - Tests
@@ -49,10 +50,10 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
 
-    commandBus.middlewares = [m1, m2]
-    commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
-    eventBus.listen(to: AdditionCommand.self, listener: additionListener)
-    eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
+    _ = commandBus.middlewares = [m1, m2]
+    _ = commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
+    _ = eventBus.listen(to: AdditionCommand.self, listener: additionListener)
+    _ = eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
     commandBus.execute(command)
 
     XCTAssertEqual(commandSteps.count, 3)
@@ -75,9 +76,9 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     m3.callback = addMiddlewareStep(m3)
 
     commandBus.middlewares = [m1, m2, m3]
-    commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
-    eventBus.listen(to: AdditionCommand.self, listener: additionListener)
-    eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
+    _ = commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
+    _ = eventBus.listen(to: AdditionCommand.self, listener: additionListener)
+    _ = eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
     commandBus.execute(subCommand)
 
     XCTAssertEqual(commandSteps.count, 6)
@@ -102,9 +103,9 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     m3.callback = addMiddlewareStep(m3)
 
     commandBus.middlewares = [m1, m2, m3]
-    commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
-    eventBus.listen(to: AdditionCommand.self, listener: additionListener)
-    eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
+    _ = commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
+    _ = eventBus.listen(to: AdditionCommand.self, listener: additionListener)
+    _ = eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
     commandBus.execute(command)
 
     XCTAssertEqual(commandSteps.count, 2)

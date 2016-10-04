@@ -51,7 +51,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     m2.callback = addMiddlewareStep(m2)
 
     eventBus.middlewares = [m1, m2]
-    eventBus.listen(to: AdditionCommand.self, listener: listener)
+    _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.publish(event)
 
     XCTAssertEqual(eventSteps.count, 3)
@@ -75,7 +75,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     m3.callback = addMiddlewareStep(m3)
 
     eventBus.middlewares = [m1, m2, m3]
-    eventBus.listen(to: AdditionCommand.self, listener: listener)
+    _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.publish(dataEvent)
 
     XCTAssertEqual(eventSteps.count, 6)
@@ -101,7 +101,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     m3.callback = addMiddlewareStep(m3)
 
     eventBus.middlewares = [m1, m2, m3]
-    eventBus.listen(to: AdditionCommand.self, listener: listener)
+    _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.publish(event)
 
     XCTAssertEqual(eventSteps.count, 2)

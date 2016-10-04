@@ -9,7 +9,7 @@ public protocol CommandDispatcher: Disposer {
   var middlewares: [CommandMiddleware] { get set }
 
   init(eventDispatcher: EventDispatcher)
-  @discardableResult func use<T: CommandHandler>(_ handler: T) -> DisposalToken
+  func use<T: CommandHandler>(_ handler: T) -> DisposalToken
   func contains<T: CommandHandler>(_ handler: T.Type) -> Bool
   func execute(_ command: AnyCommand)
   func execute(_ builder: CommandBuilder)
