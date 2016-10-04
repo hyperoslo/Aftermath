@@ -22,10 +22,10 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
-    let event = Event<AdditionCommand>.Progress
+    let event = Event<AdditionCommand>.progress
     Engine.sharedInstance.eventBus.publish(event)
 
-    XCTAssertEqual(controller.state, .Progress)
+    XCTAssertEqual(controller.state, .progress)
   }
 
   func testReactWithData() {
@@ -33,10 +33,10 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
-    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
+    let event = Event<AdditionCommand>.data(Calculator(result: 11))
     Engine.sharedInstance.eventBus.publish(event)
 
-    XCTAssertEqual(controller.state, .Data)
+    XCTAssertEqual(controller.state, .data)
   }
 
   func testReactWithError() {
@@ -44,10 +44,10 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
-    let event = Event<AdditionCommand>.Error(TestError.Test)
+    let event = Event<AdditionCommand>.Error(TestError.test)
     Engine.sharedInstance.eventBus.publish(event)
 
-    XCTAssertEqual(controller.state, .Error)
+    XCTAssertEqual(controller.state, .error)
   }
 
   func testDispose() {

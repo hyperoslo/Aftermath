@@ -4,8 +4,8 @@ import XCTest
 // MARK: - Types
 
 enum CommandStep {
-  case Middleware(AnyCommand, CommandMiddleware)
-  case Handler(AnyCommand)
+  case middleware(AnyCommand, CommandMiddleware)
+  case handler(AnyCommand)
 }
 
 protocol CommandStepAsserting: class {
@@ -16,40 +16,40 @@ protocol CommandStepAsserting: class {
 
 extension CommandStepAsserting {
 
-  func addMiddlewareStep(middleware: CommandMiddleware) -> (AnyCommand) -> Void {
+  func addMiddlewareStep(_ middleware: CommandMiddleware) -> (AnyCommand) -> Void {
     return { command in
-      self.commandSteps.append(CommandStep.Middleware(command, middleware))
+      self.commandSteps.append(CommandStep.middleware(command, middleware))
     }
   }
 
-  func addHandlerStep(command: AnyCommand) {
-    self.commandSteps.append(CommandStep.Handler(command))
+  func addHandlerStep(_ command: AnyCommand) {
+    self.commandSteps.append(CommandStep.handler(command))
   }
 
-  func assertMiddlewareStep(index: Int, expected: (middleware: CommandMiddleware, command: AnyCommand)) {
+  func assertMiddlewareStep(_ index: Int, expected: (middleware: CommandMiddleware, command: AnyCommand)) {
     guard index >= 0 && index < commandSteps.count else {
       XCTFail("Invalid step index")
       return
     }
 
     switch commandSteps[index] {
-    case .Middleware(let command, let middleware):
-      XCTAssertTrue(command.dynamicType == expected.command.dynamicType)
-      XCTAssertTrue(middleware.dynamicType == expected.middleware.dynamicType)
+    case .middleware(let command, let middleware):
+      XCTAssertTrue(type(of: command) == type(of: expected.command))
+      XCTAssertTrue(type(of: middleware) == type(of: expected.middleware))
     default:
       XCTFail("Not a middleware step")
     }
   }
 
-  func assertHandlerStep(index: Int, expected: AnyCommand) {
+  func assertHandlerStep(_ index: Int, expected: AnyCommand) {
     guard index > 0 && index < commandSteps.count else {
       XCTFail("Invalid step index")
       return
     }
 
     switch commandSteps[index] {
-    case .Handler(let command):
-      XCTAssertTrue(command.dynamicType == expected.dynamicType)
+    case .handler(let command):
+      XCTAssertTrue(type(of: command) == type(of: expected))
     default:
       XCTFail("Not a command handler step")
     }

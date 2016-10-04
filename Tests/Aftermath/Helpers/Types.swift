@@ -7,11 +7,11 @@ struct Calculator {
 }
 
 enum State: Int {
-  case Progress, Data, Error
+  case progress, data, error
 }
 
-enum TestError: ErrorType {
-  case Test
+enum TestError: Error {
+  case test
 }
 
 class TestDisposer: MutexDisposer {
@@ -20,9 +20,9 @@ class TestDisposer: MutexDisposer {
 }
 
 class ErrorManager: ErrorHandler {
-  var lastError: ErrorType?
+  var lastError: Error?
 
-  func handleError(error: ErrorType) {
+  func handleError(_ error: Error) {
     self.lastError = error
   }
 }
@@ -37,13 +37,13 @@ class Controller: CommandProducer, ReactionProducer, FactProducer {
   init() {
     reaction = Reaction(
       wait: {
-        self.state = .Progress
+        self.state = .progress
       },
       consume: { result in
-        self.state = .Data
+        self.state = .data
       },
       rescue: { error in
-        self.state = .Error
+        self.state = .error
       }
     )
   }

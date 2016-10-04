@@ -45,13 +45,13 @@ class CommandHandlerTests: XCTestCase {
   }
 
   func testReject() {
-    var resultError: ErrorType?
+    var resultError: Error?
 
     controller.react(to: TestCommand.self, with:
       Reaction(rescue: { error in resultError = error }))
 
     XCTAssertNil(resultError)
-    commandHandler.publish(error: TestError.Test)
+    commandHandler.publish(error: TestError.test)
     XCTAssertTrue(resultError is TestError)
   }
 
@@ -62,7 +62,7 @@ class CommandHandlerTests: XCTestCase {
       Reaction(wait: { executed = true } ))
 
     XCTAssertFalse(executed)
-    commandHandler.publish(event: Event.Progress)
+    commandHandler.publish(event: Event.progress)
     XCTAssertTrue(executed)
   }
 }

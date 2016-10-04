@@ -4,9 +4,9 @@
 
 struct LogEventMiddleware: EventMiddleware {
 
-  var callback: (AnyEvent -> Void)?
+  var callback: ((AnyEvent) -> Void)?
 
-  func intercept(event: AnyEvent, publish: Publish, next: Publish) throws {
+  func intercept(_ event: AnyEvent, publish: Publish, next: Publish) throws {
     callback?(event)
     try next(event)
   }
@@ -14,18 +14,18 @@ struct LogEventMiddleware: EventMiddleware {
 
 struct AbortEventMiddleware: EventMiddleware {
 
-  var callback: (AnyEvent -> Void)?
+  var callback: ((AnyEvent) -> Void)?
 
-  func intercept(command: AnyEvent, publish: Publish, next: Publish) throws {
+  func intercept(_ command: AnyEvent, publish: Publish, next: Publish) throws {
     callback?(command)
   }
 }
 
 struct ErrorEventMiddleware: EventMiddleware {
 
-  var callback: (AnyEvent -> Void)?
+  var callback: ((AnyEvent) -> Void)?
 
-  func intercept(event: AnyEvent, publish: Publish, next: Publish) throws {
+  func intercept(_ event: AnyEvent, publish: Publish, next: Publish) throws {
     callback?(event)
 
     guard let additionEvent = event as? Event<AdditionCommand> else {
@@ -34,8 +34,8 @@ struct ErrorEventMiddleware: EventMiddleware {
     }
 
     switch additionEvent {
-    case .Data:
-      try publish(Event<AdditionCommand>.Error(TestError.Test))
+    case .data:
+      try publish(Event<AdditionCommand>.Error(TestError.test))
     default:
       try next(event)
     }

@@ -5,7 +5,7 @@ import Foundation
 public typealias DisposalToken = String
 
 public protocol Disposer {
-  func dispose(token: DisposalToken)
+  func dispose(_ token: DisposalToken)
   func disposeAll()
 }
 
@@ -18,9 +18,9 @@ protocol MutexDisposer: class, Disposer {
 
 extension MutexDisposer {
 
-  func dispose(token: String) {
+  func dispose(_ token: String) {
     pthread_mutex_lock(&mutex)
-    listeners.removeValueForKey(token)
+    listeners.removeValue(forKey: token)
     pthread_mutex_unlock(&mutex)
   }
 

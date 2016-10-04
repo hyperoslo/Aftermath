@@ -29,7 +29,7 @@ public class Engine {
 
   // MARK: - Command handling
 
-  public func use<T: CommandHandler>(handler: T) -> DisposalToken {
+  public func use<T: CommandHandler>(_ handler: T) -> DisposalToken {
     return commandBus.use(handler)
   }
 

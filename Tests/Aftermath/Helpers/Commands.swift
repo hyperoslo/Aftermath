@@ -31,16 +31,16 @@ struct TestAction: Action {
   typealias Output = String
 
   let result: String
-  var callback: (TestAction -> Void)?
+  var callback: ((TestAction) -> Void)?
 
-  init(result: String = "", callback: (TestAction -> Void)? = nil) {
+  init(result: String = "", callback: ((TestAction) -> Void)? = nil) {
     self.result = result
     self.callback = callback
   }
 
-  func handle(command: TestAction) throws -> Event<TestAction> {
+  func handle(_ command: TestAction) throws -> Event<TestAction> {
     callback?(command)
-    return Event.Data(result)
+    return Event.data(result)
   }
 }
 
@@ -53,44 +53,44 @@ struct TestFact: Fact {
 struct TestCommandHandler: CommandHandler {
 
   let result: String
-  var callback: (TestCommand -> Void)?
+  var callback: ((TestCommand) -> Void)?
 
-  init(result: String = "", callback: (TestCommand -> Void)? = nil) {
+  init(result: String = "", callback: ((TestCommand) -> Void)? = nil) {
     self.result = result
     self.callback = callback
   }
 
-  func handle(command: TestCommand) throws -> Event<TestCommand> {
+  func handle(_ command: TestCommand) throws -> Event<TestCommand> {
     callback?(command)
-    return Event.Data(result)
+    return Event.data(result)
   }
 }
 
 struct AdditionCommandHandler: CommandHandler {
 
-  var callback: (AnyCommand -> Void)?
+  var callback: ((AnyCommand) -> Void)?
 
-  init(result: String = "", callback: (AnyCommand -> Void)? = nil) {
+  init(result: String = "", callback: ((AnyCommand) -> Void)? = nil) {
     self.callback = callback
   }
 
-  func handle(command: AdditionCommand) throws -> Event<AdditionCommand> {
+  func handle(_ command: AdditionCommand) throws -> Event<AdditionCommand> {
     callback?(command)
-    return Event.Data(Calculator(result: command.value1 + command.value2))
+    return Event.data(Calculator(result: command.value1 + command.value2))
   }
 }
 
 struct SubtractionCommandHandler: CommandHandler {
 
-  var callback: (AnyCommand -> Void)?
+  var callback: ((AnyCommand) -> Void)?
 
-  init(result: String = "", callback: (AnyCommand -> Void)? = nil) {
+  init(result: String = "", callback: ((AnyCommand) -> Void)? = nil) {
     self.callback = callback
   }
 
-  func handle(command: SubtractionCommand) throws -> Event<SubtractionCommand> {
+  func handle(_ command: SubtractionCommand) throws -> Event<SubtractionCommand> {
     callback?(command)
-    return Event.Data(Calculator(result: command.value1 - command.value2))
+    return Event.data(Calculator(result: command.value1 - command.value2))
   }
 }
 
@@ -98,9 +98,9 @@ struct SubtractionCommandHandler: CommandHandler {
 
 struct LogCommandMiddleware: CommandMiddleware {
 
-  var callback: (AnyCommand -> Void)?
+  var callback: ((AnyCommand) -> Void)?
 
-  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
+  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws {
     callback?(command)
     try next(command)
   }
@@ -108,18 +108,18 @@ struct LogCommandMiddleware: CommandMiddleware {
 
 struct AbortCommandMiddleware: CommandMiddleware {
 
-  var callback: (AnyCommand -> Void)?
+  var callback: ((AnyCommand) -> Void)?
 
-  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
+  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws {
     callback?(command)
   }
 }
 
 struct AdditionCommandMiddleware: CommandMiddleware {
 
-  var callback: (AnyCommand -> Void)?
+  var callback: ((AnyCommand) -> Void)?
 
-  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
+  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws {
     callback?(command)
 
     switch command {

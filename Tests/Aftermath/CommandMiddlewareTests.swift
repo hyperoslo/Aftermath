@@ -7,8 +7,8 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
   var commandBus: CommandBus!
   var eventBus: EventBus!
   var reaction: Reaction<Calculator>!
-  var additionListener: (Event<AdditionCommand> -> Void)!
-  var subtractionListener: (Event<SubtractionCommand> -> Void)!
+  var additionListener: ((Event<AdditionCommand>) -> Void)!
+  var subtractionListener: ((Event<SubtractionCommand>) -> Void)!
   var result = 0
 
   override func setUp() {

@@ -6,9 +6,9 @@ class EventBusTests: XCTestCase {
   var eventBus: EventBus!
   var errorHandler: ErrorManager!
   var reaction: Reaction<Calculator>!
-  var listener: (Event<AdditionCommand> -> Void)!
+  var listener: ((Event<AdditionCommand>) -> Void)!
   var state: State?
-  var lastError: ErrorType?
+  var lastError: Error?
 
   override func setUp() {
     super.setUp()
@@ -19,13 +19,13 @@ class EventBusTests: XCTestCase {
 
     reaction = Reaction(
       wait: {
-        self.state = .Progress
+        self.state = .progress
       },
       consume: { result in
-        self.state = .Data
+        self.state = .data
       },
       rescue: { error in
-        self.state = .Error
+        self.state = .error
         self.lastError = error
       }
     )
@@ -57,24 +57,24 @@ class EventBusTests: XCTestCase {
 
   func testPublish() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
-    eventBus.publish(Event<AdditionCommand>.Progress)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Issued)
-    XCTAssertEqual(state, .Progress)
+    eventBus.publish(Event<AdditionCommand>.progress)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .issued)
+    XCTAssertEqual(state, .progress)
   }
 
   func testPublishWithoutListeners() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
-    eventBus.publish(Event<TestCommand>.Progress)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+    eventBus.publish(Event<TestCommand>.progress)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
     XCTAssertNil(state)
 
     if let error = errorHandler.lastError as? Warning {
       switch error {
-      case .NoEventListeners(let event):
+      case .noEventListeners(let event):
         XCTAssertTrue(event is Event<TestCommand>)
       default:
         XCTFail("Invalid error was thrown: \(error)")
@@ -91,24 +91,24 @@ class EventBusTests: XCTestCase {
     }
 
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
     eventBus.middlewares.append(middleware)
-    eventBus.publish(Event<AdditionCommand>.Progress)
+    eventBus.publish(Event<AdditionCommand>.progress)
 
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Issued)
-    XCTAssertEqual(state, .Progress)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .issued)
+    XCTAssertEqual(state, .progress)
     XCTAssertTrue(executed)
   }
 
   func testPerform() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
     do {
-      try eventBus.perform(Event<AdditionCommand>.Progress)
-      XCTAssertEqual(eventBus.listeners[token]?.status, .Issued)
-      XCTAssertEqual(state, .Progress)
+      try eventBus.perform(Event<AdditionCommand>.progress)
+      XCTAssertEqual(eventBus.listeners[token]?.status, .issued)
+      XCTAssertEqual(state, .progress)
     } catch {
       XCTFail("Event bus perform failed with error: \(error)")
     }
@@ -116,19 +116,19 @@ class EventBusTests: XCTestCase {
 
   func testPerformWithoutListeners() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
-    XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+    XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
     do {
-      try eventBus.perform(Event<TestCommand>.Progress)
+      try eventBus.perform(Event<TestCommand>.progress)
       XCTFail("Perform may fail with error")
     } catch {
-      XCTAssertEqual(eventBus.listeners[token]?.status, .Pending)
+      XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
       XCTAssertNil(state)
       XCTAssertNil(errorHandler.lastError)
 
       if let error = error as? Warning {
         switch error {
-        case .NoEventListeners(let event):
+        case .noEventListeners(let event):
           XCTAssertTrue(event is Event<TestCommand>)
         default:
           XCTFail("Invalid error was thrown: \(error)")
@@ -141,14 +141,14 @@ class EventBusTests: XCTestCase {
 
   func testHandleError() {
     eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.handleError(TestError.Test, on: Event<AdditionCommand>.Progress)
-    XCTAssertEqual(state, .Error)
+    eventBus.handleError(TestError.test, on: Event<AdditionCommand>.progress)
+    XCTAssertEqual(state, .error)
     XCTAssertTrue(lastError is TestError)
   }
 
   func testHandleErrorWithFrameworkError() {
     eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.handleError(Error.InvalidEventType, on: Event<AdditionCommand>.Progress)
+    eventBus.handleError(Aftermath.Error.invalidEventType, on: Event<AdditionCommand>.progress)
     XCTAssertNil(state)
     XCTAssertNil(lastError)
   }
