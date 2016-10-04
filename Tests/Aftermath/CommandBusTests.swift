@@ -34,20 +34,20 @@ class CommandBusTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testUse() {
+  func testUseHandler() {
     XCTAssertEqual(commandBus.listeners.count, 0)
 
-    _ = commandBus.use(commandHandler)
+    _ = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners.count, 1)
   }
 
-  func testUseWithDuplicate() {
+  func testUseHandlerWithDuplicate() {
     XCTAssertEqual(commandBus.listeners.count, 0)
 
-    _ = commandBus.use(commandHandler)
+    _ = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners.count, 1)
 
-    _ = commandBus.use(commandHandler)
+    _ = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners.count, 1)
 
     if let error = errorHandler.lastError as? Warning {
@@ -62,37 +62,37 @@ class CommandBusTests: XCTestCase {
     }
   }
 
-  func testContains() {
+  func testContainsHandler() {
     XCTAssertEqual(commandBus.listeners.count, 0)
-    XCTAssertFalse(commandBus.contains(TestCommandHandler.self))
+    XCTAssertFalse(commandBus.contains(handler: TestCommandHandler.self))
 
-    _ = commandBus.use(commandHandler)
-    XCTAssertTrue(commandBus.contains(TestCommandHandler.self))
+    _ = commandBus.use(handler: commandHandler)
+    XCTAssertTrue(commandBus.contains(handler: TestCommandHandler.self))
   }
 
-  func testExecute() {
-    let token = commandBus.use(commandHandler)
+  func testExecuteCommand() {
+    let token = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
 
-    commandBus.execute(TestCommand())
+    commandBus.execute(command: TestCommand())
     XCTAssertEqual(commandBus.listeners[token]?.status, .issued)
     XCTAssertNotNil(executedCommand)
   }
 
   func testExecuteBuilder() {
-    let token = commandBus.use(commandHandler)
+    let token = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
 
-    commandBus.execute(TestCommandBuilder())
+    commandBus.execute(builder: TestCommandBuilder())
     XCTAssertEqual(commandBus.listeners[token]?.status, .issued)
     XCTAssertNotNil(executedCommand)
   }
 
-  func testExecuteWithoutListeners() {
-    let token = commandBus.use(commandHandler)
+  func testExecuteCommandWithoutListeners() {
+    let token = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
 
-    commandBus.execute(AdditionCommand(value1: 1, value2: 3))
+    commandBus.execute(command: AdditionCommand(value1: 1, value2: 3))
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
     XCTAssertNil(executedCommand)
 
@@ -108,29 +108,29 @@ class CommandBusTests: XCTestCase {
     }
   }
 
-  func testExecuteWithMiddleware() {
+  func testExecuteCommandWithMiddleware() {
     var executed = false
     let middleware = LogCommandMiddleware { _ in
       executed = true
     }
 
-    let token = commandBus.use(commandHandler)
+    let token = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
 
     commandBus.middlewares.append(middleware)
-    commandBus.execute(TestCommand())
+    commandBus.execute(command: TestCommand())
 
     XCTAssertEqual(commandBus.listeners[token]?.status, .issued)
     XCTAssertNotNil(executedCommand)
     XCTAssertTrue(executed)
   }
 
-  func testPerform() {
-    let token = commandBus.use(commandHandler)
+  func testPerformCommand() {
+    let token = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
 
     do {
-      try commandBus.perform(TestCommand())
+      try commandBus.perform(command: TestCommand())
       XCTAssertEqual(commandBus.listeners[token]?.status, .issued)
       XCTAssertNotNil(executedCommand)
     } catch {
@@ -138,12 +138,12 @@ class CommandBusTests: XCTestCase {
     }
   }
 
-  func testPerformWithoutListeners() {
-    let token = commandBus.use(commandHandler)
+  func testPerformCommandWithoutListeners() {
+    let token = commandBus.use(handler: commandHandler)
     XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
 
     do {
-      try commandBus.perform(AdditionCommand(value1: 1, value2: 3))
+      try commandBus.perform(command: AdditionCommand(value1: 1, value2: 3))
       XCTFail("Perform may fail with error")
     } catch {
       XCTAssertEqual(commandBus.listeners[token]?.status, .pending)
@@ -174,7 +174,7 @@ class CommandBusTests: XCTestCase {
       reaction.invoke(with: event)
     }
 
-    commandBus.handleError(TestError.test, on: TestCommand())
+    commandBus.handle(error: TestError.test, on: TestCommand())
     XCTAssertTrue(reactionError is TestError)
   }
 
@@ -189,7 +189,7 @@ class CommandBusTests: XCTestCase {
       reaction.invoke(with: event)
     }
 
-    commandBus.handleError(Failure.invalidCommandType, on: TestCommand())
+    commandBus.handle(error: Failure.invalidCommandType, on: TestCommand())
     XCTAssertNil(reactionError)
   }
 }

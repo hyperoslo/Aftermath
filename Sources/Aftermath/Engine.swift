@@ -30,7 +30,7 @@ public class Engine {
   // MARK: - Command handling
 
   @discardableResult public func use<T: CommandHandler>(_ handler: T) -> DisposalToken {
-    return commandBus.use(handler)
+    return commandBus.use(handler: handler)
   }
 
   public func invalidate() {

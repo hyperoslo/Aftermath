@@ -98,7 +98,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
     }
 
     do {
-      try perform(type(of: event).buildErrorEvent(error))
+      try perform(type(of: event).buildEvent(fromError: error))
     } catch {}
   }
 }

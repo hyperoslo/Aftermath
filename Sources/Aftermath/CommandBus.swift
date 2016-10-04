@@ -9,10 +9,10 @@ public protocol CommandDispatcher: Disposer {
   var middlewares: [CommandMiddleware] { get set }
 
   init(eventDispatcher: EventDispatcher)
-  func use<T: CommandHandler>(_ handler: T) -> DisposalToken
-  func contains<T: CommandHandler>(_ handler: T.Type) -> Bool
-  func execute(_ command: AnyCommand)
-  func execute(_ builder: CommandBuilder)
+  func use<T: CommandHandler>(handler: T) -> DisposalToken
+  func contains<T: CommandHandler>(handler: T.Type) -> Bool
+  func execute(command: AnyCommand)
+  func execute(builder: CommandBuilder)
 }
 
 // MARK: - Command bus
@@ -37,12 +37,12 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
   // MARK: - Register
 
-  func use<T: CommandHandler>(_ handler: T) -> DisposalToken {
+  func use<T: CommandHandler>(handler: T) -> DisposalToken {
     pthread_mutex_lock(&mutex)
 
     let token = T.CommandType.identifier
 
-    if contains(T.self) {
+    if contains(handler: T.self) {
       let warning = Warning.duplicatedCommandHandler(command: T.CommandType.self)
       errorHandler?.handleError(warning)
     }
@@ -56,7 +56,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
         throw Failure.invalidCommandType
       }
 
-      let event = try handler.handle(command)
+      let event = try handler.handle(command: command)
       weakSelf.eventDispatcher.publish(event)
     }
 
@@ -65,44 +65,44 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
     return token
   }
 
-  func contains<T: CommandHandler>(_ handler: T.Type) -> Bool {
+  func contains<T: CommandHandler>(handler: T.Type) -> Bool {
     let token = T.CommandType.identifier
     return listeners[token] != nil
   }
 
   // MARK: - Dispatch
 
-  func execute(_ builder: CommandBuilder) {
+  func execute(builder: CommandBuilder) {
     do {
       let command = try builder.buildCommand()
-      execute(command)
+      execute(command: command)
     } catch {
       errorHandler?.handleError(error)
     }
   }
 
-  func execute(_ command: AnyCommand) {
+  func execute(command: AnyCommand) {
     let middlewares = self.middlewares.reversed()
 
     do {
-      let call = try middlewares.reduce({ [unowned self] command in try self.perform(command) }) {
-        [weak self] function, middleware in
-
+      let call = try middlewares.reduce({ [unowned self] command in
+        try self.perform(command: command)
+      }) { [weak self] function, middleware in
         guard let weakSelf = self else {
           throw Failure.commandDispatcherDeallocated
         }
 
-        return try middleware.compose(weakSelf.execute)(function)
+        return try middleware.compose(execute: weakSelf.execute)(function)
       }
 
       try call(command)
     } catch {
       errorHandler?.handleError(error)
-      handleError(error, on: command)
+      handle(error: error, on: command)
     }
   }
 
-  func perform(_ command: AnyCommand) throws {
+  func perform(command: AnyCommand) throws {
     pthread_mutex_lock(&mutex)
 
     guard let listener = listeners[type(of: command).identifier] else {
@@ -119,12 +119,12 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
   // MARK: - Error handling
 
-  func handleError(_ error: Error, on command: AnyCommand) {
+  func handle(error: Error, on command: AnyCommand) {
     guard !error.isFrameworkError else {
       return
     }
 
-    let errorEvent = type(of: command).buildErrorEvent(error)
+    let errorEvent = type(of: command).buildEvent(fromError: error)
     eventDispatcher.publish(errorEvent)
   }
 }

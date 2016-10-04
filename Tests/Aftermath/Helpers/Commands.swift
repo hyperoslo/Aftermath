@@ -38,7 +38,7 @@ struct TestAction: Action {
     self.callback = callback
   }
 
-  func handle(_ command: TestAction) throws -> Event<TestAction> {
+  func handle(command: TestAction) throws -> Event<TestAction> {
     callback?(command)
     return Event.data(result)
   }
@@ -60,7 +60,7 @@ struct TestCommandHandler: CommandHandler {
     self.callback = callback
   }
 
-  func handle(_ command: TestCommand) throws -> Event<TestCommand> {
+  func handle(command: TestCommand) throws -> Event<TestCommand> {
     callback?(command)
     return Event.data(result)
   }
@@ -74,7 +74,7 @@ struct AdditionCommandHandler: CommandHandler {
     self.callback = callback
   }
 
-  func handle(_ command: AdditionCommand) throws -> Event<AdditionCommand> {
+  func handle(command: AdditionCommand) throws -> Event<AdditionCommand> {
     callback?(command)
     return Event.data(Calculator(result: command.value1 + command.value2))
   }
@@ -88,7 +88,7 @@ struct SubtractionCommandHandler: CommandHandler {
     self.callback = callback
   }
 
-  func handle(_ command: SubtractionCommand) throws -> Event<SubtractionCommand> {
+  func handle(command: SubtractionCommand) throws -> Event<SubtractionCommand> {
     callback?(command)
     return Event.data(Calculator(result: command.value1 - command.value2))
   }
@@ -100,7 +100,7 @@ struct LogCommandMiddleware: CommandMiddleware {
 
   var callback: ((AnyCommand) -> Void)?
 
-  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws {
+  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
     callback?(command)
     try next(command)
   }
@@ -110,7 +110,7 @@ struct AbortCommandMiddleware: CommandMiddleware {
 
   var callback: ((AnyCommand) -> Void)?
 
-  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws {
+  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
     callback?(command)
   }
 }
@@ -119,7 +119,7 @@ struct AdditionCommandMiddleware: CommandMiddleware {
 
   var callback: ((AnyCommand) -> Void)?
 
-  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws {
+  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
     callback?(command)
 
     switch command {

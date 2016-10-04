@@ -1,7 +1,7 @@
 // MARK: - Events
 
 public protocol ErrorEventBuilder {
-  static func buildErrorEvent(_ error: Error) -> AnyEvent
+  static func buildEvent(fromError error: Error) -> AnyEvent
 }
 
 public protocol AnyEvent: Identifiable, ErrorEventBuilder {
@@ -56,7 +56,7 @@ public enum Event<T: Command>: AnyEvent {
     return value
   }
 
-  public static func buildErrorEvent(_ error: Error) -> AnyEvent {
+  public static func buildEvent(fromError error: Error) -> AnyEvent {
     return Error(error)
   }
 }

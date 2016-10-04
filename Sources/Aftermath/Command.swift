@@ -8,11 +8,11 @@ public protocol Command: AnyCommand {
 
 public extension Command {
 
-  static func buildErrorEvent(_ error: Error) -> AnyEvent {
-    return buildEvent(self, error: error)
+  static func buildEvent(fromError error: Error) -> AnyEvent {
+    return buildEvent(of: self, fromError: error)
   }
 
-  fileprivate static func buildEvent<T: Command>(_ type: T.Type, error: Error) -> AnyEvent {
+  fileprivate static func buildEvent<T: Command>(of type: T.Type, fromError error: Error) -> AnyEvent {
     return Event<T>.Error(error)
   }
 }
@@ -31,15 +31,15 @@ public protocol CommandProducer {}
 public extension CommandProducer {
 
   func execute(command: AnyCommand) {
-    Engine.sharedInstance.commandBus.execute(command)
+    Engine.sharedInstance.commandBus.execute(command: command)
   }
 
   func execute(builder: CommandBuilder) {
-    Engine.sharedInstance.commandBus.execute(builder)
+    Engine.sharedInstance.commandBus.execute(builder: builder)
   }
 
   func execute<T: Action>(action: T) {
-    if !Engine.sharedInstance.commandBus.contains(T.self) {
+    if !Engine.sharedInstance.commandBus.contains(handler: T.self) {
       Engine.sharedInstance.use(action)
     }
 
@@ -49,7 +49,7 @@ public extension CommandProducer {
 
 public extension CommandProducer where Self: ReactionProducer {
 
-  func execute<T: Command>(_ command: T, reaction: Reaction<T.Output>) {
+  func execute<T: Command>(command: T, reaction: Reaction<T.Output>) {
     react(to: T.self, with: reaction)
     execute(command: command)
   }
@@ -60,7 +60,7 @@ public extension CommandProducer where Self: ReactionProducer {
 public protocol CommandHandler {
   associatedtype CommandType: Command
 
-  func handle(_ command: CommandType) throws -> Event<CommandType>
+  func handle(command: CommandType) throws -> Event<CommandType>
 }
 
 public extension CommandHandler {
@@ -95,13 +95,13 @@ public typealias ExecuteCombination = (@escaping Execute) throws -> Execute
 
 public protocol CommandMiddleware {
 
-  func intercept(_ command: AnyCommand, execute: Execute, next: Execute) throws
-  func compose(_ execute: @escaping Execute) throws -> ExecuteCombination
+  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws
+  func compose(execute: @escaping Execute) throws -> ExecuteCombination
 }
 
 public extension CommandMiddleware {
 
-  func compose(_ execute: @escaping Execute) throws -> ExecuteCombination {
+  func compose(execute: @escaping Execute) throws -> ExecuteCombination {
     return try Middleware(intercept: intercept).compose(execute)
   }
 }

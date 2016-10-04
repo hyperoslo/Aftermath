@@ -44,17 +44,17 @@ class CommandProducerTests: XCTestCase {
       executedAction = action
     }
 
-    XCTAssertFalse(Engine.sharedInstance.commandBus.contains(TestAction.self))
+    XCTAssertFalse(Engine.sharedInstance.commandBus.contains(handler: TestAction.self))
 
     producer.execute(action: action)
-    XCTAssertTrue(Engine.sharedInstance.commandBus.contains(TestAction.self))
+    XCTAssertTrue(Engine.sharedInstance.commandBus.contains(handler: TestAction.self))
     XCTAssertNotNil(executedAction)
   }
 
   func testExecuteReaction() {
     var string: String?
 
-    producer.execute(TestCommand(), reaction: Reaction(
+    producer.execute(command: TestCommand(), reaction: Reaction(
       consume: { result in
         string = result
       }))
