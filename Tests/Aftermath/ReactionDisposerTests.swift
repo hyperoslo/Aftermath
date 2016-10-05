@@ -25,7 +25,7 @@ class ReactionDisposerTests: XCTestCase {
     XCTAssertTrue(disposer.tokens.isEmpty)
   }
 
-  func testAppendToken() {
+  func testAppendTokenFromProducer() {
     disposer.append(token: "token1", from: producer)
     XCTAssertEqual(disposer.tokens.count, 1)
     XCTAssertEqual(disposer.tokens[Controller.identifier]?.count, 1)
@@ -44,7 +44,7 @@ class ReactionDisposerTests: XCTestCase {
     XCTAssertEqual(disposer.tokens[TestReactionProducer.identifier]?.count, 1)
   }
 
-  func testDisposeToken() {
+  func testDisposeTokenFromProducer() {
     disposer.append(token: "token1", from: producer)
     disposer.append(token: "token2", from: producer)
     disposer.dispose(token: "token1", from: producer)

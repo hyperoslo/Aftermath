@@ -44,21 +44,21 @@ class ReactionTests: XCTestCase {
     XCTAssertNotNil(reaction.rescue)
   }
 
-  func testInvokeWithProgress() {
+  func testInvokeWithProgressEvent() {
     let event = Event<AdditionCommand>.progress
     reaction.invoke(with: event)
 
     XCTAssertEqual(state, .progress)
   }
 
-  func testInvokeWithData() {
+  func testInvokeWithDataEvent() {
     let event = Event<AdditionCommand>.data(Calculator(result: 11))
     reaction.invoke(with: event)
 
     XCTAssertEqual(state, .data)
   }
 
-  func testInvokeWithError() {
+  func testInvokeWithErrorEvent() {
     let event = Event<AdditionCommand>.error(TestError.test)
     reaction.invoke(with: event)
 

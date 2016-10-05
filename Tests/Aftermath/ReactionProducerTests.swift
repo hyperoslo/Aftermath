@@ -17,7 +17,7 @@ class ReactionProducerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testReactWithProgress() {
+  func testReactToWithProgress() {
     controller.react(to: AdditionCommand.self, with: controller.reaction)
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
@@ -28,7 +28,7 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual(controller.state, .progress)
   }
 
-  func testReactWithData() {
+  func testReactToWithData() {
     controller.react(to: AdditionCommand.self, with: controller.reaction)
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
@@ -39,7 +39,7 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual(controller.state, .data)
   }
 
-  func testReactWithError() {
+  func testReactToWithError() {
     controller.react(to: AdditionCommand.self, with: controller.reaction)
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)

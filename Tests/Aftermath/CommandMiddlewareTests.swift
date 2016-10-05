@@ -64,7 +64,7 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     assertHandlerStep(2, expected: command)
   }
 
-  func testExecute() {
+  func testExecuteCommand() {
     var m1 = LogCommandMiddleware()
     var m2 = AdditionCommandMiddleware()
     var m3 = LogCommandMiddleware()

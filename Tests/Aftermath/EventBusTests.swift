@@ -45,7 +45,7 @@ class EventBusTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testListen() {
+  func testListenTo() {
     XCTAssertEqual(eventBus.listeners.count, 0)
 
     _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
@@ -139,14 +139,14 @@ class EventBusTests: XCTestCase {
     }
   }
 
-  func testHandleError() {
+  func testHandleErrorOnEvent() {
     _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
     _ = eventBus.handle(error: TestError.test, on: Event<AdditionCommand>.progress)
     XCTAssertEqual(state, .error)
     XCTAssertTrue(lastError is TestError)
   }
 
-  func testHandleErrorWithFrameworkError() {
+  func testHandleErrorOnEventWithFrameworkError() {
     _ =  eventBus.listen(to: AdditionCommand.self, listener: listener)
     eventBus.handle(error: Failure.invalidEventType, on: Event<AdditionCommand>.progress)
     XCTAssertNil(state)

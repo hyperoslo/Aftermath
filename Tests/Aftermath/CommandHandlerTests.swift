@@ -44,7 +44,7 @@ class CommandHandlerTests: XCTestCase {
     XCTAssertEqual(result, output)
   }
 
-  func testReject() {
+  func testPublishError() {
     var resultError: Error?
 
     controller.react(to: TestCommand.self, with:
@@ -55,7 +55,7 @@ class CommandHandlerTests: XCTestCase {
     XCTAssertTrue(resultError is TestError)
   }
 
-  func testPublish() {
+  func testPublishEvent() {
     var executed = false
 
     controller.react(to: TestCommand.self, with:

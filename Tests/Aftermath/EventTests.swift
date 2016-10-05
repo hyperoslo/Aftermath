@@ -5,7 +5,7 @@ class EventTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testBuildErrorEvent() {
+  func testBuildEventFromError() {
     let errorEvent = Event<TestCommand>.buildEvent(fromError: TestError.test)
     XCTAssertTrue(errorEvent is Event<TestCommand>)
   }

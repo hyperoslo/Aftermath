@@ -27,12 +27,12 @@ class CommandProducerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testExecute() {
+  func testExecuteCommand() {
     producer.execute(command: TestCommand())
     XCTAssertNotNil(executedCommand)
   }
 
-  func testExecuteWithAnotherCommand() {
+  func testExecuteCommandWithNoHandler() {
     producer.execute(command: AdditionCommand(value1: 1, value2: 3))
     XCTAssertNil(executedCommand)
   }
@@ -51,7 +51,7 @@ class CommandProducerTests: XCTestCase {
     XCTAssertNotNil(executedAction)
   }
 
-  func testExecuteReaction() {
+  func testExecuteCommandWithReaction() {
     var string: String?
 
     producer.execute(command: TestCommand(), reaction: Reaction(

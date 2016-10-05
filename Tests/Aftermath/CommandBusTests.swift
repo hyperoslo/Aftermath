@@ -163,7 +163,7 @@ class CommandBusTests: XCTestCase {
     }
   }
 
-  func testHandleError() {
+  func testHandleErrorOnCommand() {
     var reactionError: Error?
 
     _ = eventBus.listen(to: TestCommand.self) { event in
@@ -178,7 +178,7 @@ class CommandBusTests: XCTestCase {
     XCTAssertTrue(reactionError is TestError)
   }
 
-  func testHandleErrorWithFrameworkError() {
+  func testHandleErrorOnCommandWithFrameworkError() {
     var reactionError: Error?
 
     _ = eventBus.listen(to: TestCommand.self) { event in
