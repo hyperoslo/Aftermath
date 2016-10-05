@@ -55,20 +55,20 @@ class EventBusTests: XCTestCase {
     XCTAssertEqual(eventBus.listeners.count, 2)
   }
 
-  func testPublish() {
+  func testPublishEvent() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
     XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
-    eventBus.publish(Event<AdditionCommand>.progress)
+    eventBus.publish(event: Event<AdditionCommand>.progress)
     XCTAssertEqual(eventBus.listeners[token]?.status, .issued)
     XCTAssertEqual(state, .progress)
   }
 
-  func testPublishWithoutListeners() {
+  func testPublishEventWithoutListeners() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
     XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
-    eventBus.publish(Event<TestCommand>.progress)
+    eventBus.publish(event: Event<TestCommand>.progress)
     XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
     XCTAssertNil(state)
 
@@ -84,7 +84,7 @@ class EventBusTests: XCTestCase {
     }
   }
 
-  func testPublishWithMiddleware() {
+  func testPublishEventWithMiddleware() {
     var executed = false
     let middleware = LogEventMiddleware { _ in
       executed = true
@@ -94,19 +94,19 @@ class EventBusTests: XCTestCase {
     XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
     eventBus.middlewares.append(middleware)
-    eventBus.publish(Event<AdditionCommand>.progress)
+    eventBus.publish(event: Event<AdditionCommand>.progress)
 
     XCTAssertEqual(eventBus.listeners[token]?.status, .issued)
     XCTAssertEqual(state, .progress)
     XCTAssertTrue(executed)
   }
 
-  func testPerform() {
+  func testPerformEvent() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
     XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
     do {
-      try eventBus.perform(Event<AdditionCommand>.progress)
+      try eventBus.perform(event: Event<AdditionCommand>.progress)
       XCTAssertEqual(eventBus.listeners[token]?.status, .issued)
       XCTAssertEqual(state, .progress)
     } catch {
@@ -114,12 +114,12 @@ class EventBusTests: XCTestCase {
     }
   }
 
-  func testPerformWithoutListeners() {
+  func testPerformEventWithoutListeners() {
     let token = eventBus.listen(to: AdditionCommand.self, listener: listener)
     XCTAssertEqual(eventBus.listeners[token]?.status, .pending)
 
     do {
-      try eventBus.perform(Event<TestCommand>.progress)
+      try eventBus.perform(event: Event<TestCommand>.progress)
       XCTFail("Perform may fail with error")
     } catch {
       XCTAssertEqual(eventBus.listeners[token]?.status, .pending)

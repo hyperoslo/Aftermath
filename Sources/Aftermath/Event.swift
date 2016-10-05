@@ -13,7 +13,7 @@ public protocol AnyEvent: Identifiable, ErrorEventBuilder {
 public enum Event<T: Command>: AnyEvent {
   case progress
   case data(T.Output)
-  case Error(Error)
+  case error(Error)
 
   // MARK: - Helpers
 
@@ -47,7 +47,7 @@ public enum Event<T: Command>: AnyEvent {
     var value: Error?
 
     switch self {
-    case .Error(let error):
+    case .error(let error):
       value = error
     default:
       break
@@ -57,7 +57,7 @@ public enum Event<T: Command>: AnyEvent {
   }
 
   public static func buildEvent(fromError error: Error) -> AnyEvent {
-    return Error(error)
+    return Event.error(error)
   }
 }
 
@@ -78,7 +78,7 @@ extension Event: CustomStringConvertible, CustomDebugStringConvertible {
       string = "Event<\(T.self)>.Progress"
     case .data:
       string = "Event<\(T.self)>.Data with \(T.Output.self)"
-    case .Error(let error):
+    case .error(let error):
       string = "Event<\(T.self)>.Error with \(error)"
     }
 
@@ -97,13 +97,13 @@ public typealias PublishCombination = (@escaping Publish) throws -> Publish
 
 public protocol EventMiddleware {
 
-  func intercept(_ event: AnyEvent, publish: Publish, next: Publish) throws
-  func compose(_ publish: @escaping Publish) throws -> PublishCombination
+  func intercept(event: AnyEvent, publish: Publish, next: Publish) throws
+  func compose(publish: @escaping Publish) throws -> PublishCombination
 }
 
 public extension EventMiddleware {
 
-  func compose(_ publish: @escaping Publish) throws -> PublishCombination {
+  func compose(publish: @escaping Publish) throws -> PublishCombination {
     return try Middleware(intercept: intercept).compose(publish)
   }
 }

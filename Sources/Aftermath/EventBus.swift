@@ -7,7 +7,7 @@ public protocol EventDispatcher: Disposer {
   var errorHandler: ErrorHandler? { get set }
   var middlewares: [EventMiddleware] { get set }
 
-  func publish(_ event: AnyEvent)
+  func publish(event: AnyEvent)
   func listen<T: Command>(to command: T.Type, listener: @escaping (Event<T>) -> Void) -> DisposalToken
 }
 
@@ -50,28 +50,30 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
   // MARK: - Dispatch
 
-  func publish(_ event: AnyEvent) {
+  func publish(event: AnyEvent) {
     let middlewares = self.middlewares.reversed()
 
     do {
-      let call = try middlewares.reduce({ [unowned self] event in try self.perform(event) }) {
+      let call = try middlewares.reduce({ [unowned self] event in
+        try self.perform(event: event)
+      }) {
         [weak self] function, middleware in
 
         guard let weakSelf = self else {
           throw Failure.eventDispatcherDeallocated
         }
 
-        return try middleware.compose(weakSelf.publish)(function)
+        return try middleware.compose(publish: weakSelf.publish)(function)
       }
 
       try call(event)
     } catch {
-      errorHandler?.handleError(error)
+      errorHandler?.handle(error: error)
       handleError(error, on: event)
     }
   }
 
-  func perform(_ event: AnyEvent) throws {
+  func perform(event: AnyEvent) throws {
     pthread_mutex_lock(&mutex)
 
     let subscribers = listeners.values.filter({ $0.identifier == type(of: event).identifier })
@@ -98,7 +100,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
     }
 
     do {
-      try perform(type(of: event).buildEvent(fromError: error))
+      try perform(event: type(of: event).buildEvent(fromError: error))
     } catch {}
   }
 }

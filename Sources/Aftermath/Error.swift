@@ -1,6 +1,8 @@
 public protocol ErrorHandler {
-  func handleError(_ error: Error)
+  func handle(error: Error)
 }
+
+// MARK: - Failure
 
 public enum Failure: Error, CustomStringConvertible, CustomDebugStringConvertible {
   case commandDispatcherDeallocated
@@ -33,6 +35,8 @@ public enum Failure: Error, CustomStringConvertible, CustomDebugStringConvertibl
   }
 }
 
+// MARK: - Warning
+
 public enum Warning: Error, CustomStringConvertible, CustomDebugStringConvertible {
   case noCommandHandlers(command: AnyCommand)
   case noEventListeners(event: AnyEvent)
@@ -57,6 +61,8 @@ public enum Warning: Error, CustomStringConvertible, CustomDebugStringConvertibl
     return description
   }
 }
+
+// MARK: - Error extension
 
 extension Error {
 

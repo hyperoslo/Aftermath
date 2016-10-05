@@ -40,10 +40,10 @@ class EngineTests: XCTestCase {
     XCTAssertEqual(engine.eventBus.middlewares.count, 3)
   }
 
-  func testUse() {
+  func testUseHandler() {
     XCTAssertEqual((engine.commandBus as? CommandBus)?.listeners.count, 0)
 
-    engine.use(TestCommandHandler())
+    engine.use(handler: TestCommandHandler())
     XCTAssertEqual((engine.commandBus as? CommandBus)?.listeners.count, 1)
   }
 }

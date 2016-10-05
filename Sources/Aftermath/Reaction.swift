@@ -22,7 +22,7 @@ public final class Reaction<T> {
       wait?()
     case .data(let output):
       consume?(output)
-    case .Error(let error):
+    case .error(let error):
       rescue?(error)
     }
   }
@@ -57,8 +57,8 @@ public extension ReactionProducer {
     return react(to: FactCommand<T>.self, with: reaction)
   }
 
-  func dispose(_ token: DisposalToken) {
-    Engine.sharedInstance.reactionDisposer.dispose(token, from: self)
+  func dispose(token: DisposalToken) {
+    Engine.sharedInstance.reactionDisposer.dispose(token: token, from: self)
   }
 
   func disposeAll() {

@@ -13,7 +13,7 @@ public extension Command {
   }
 
   fileprivate static func buildEvent<T: Command>(of type: T.Type, fromError error: Error) -> AnyEvent {
-    return Event<T>.Error(error)
+    return Event<T>.error(error)
   }
 }
 
@@ -40,7 +40,7 @@ public extension CommandProducer {
 
   func execute<T: Action>(action: T) {
     if !Engine.sharedInstance.commandBus.contains(handler: T.self) {
-      Engine.sharedInstance.use(action)
+      Engine.sharedInstance.use(handler: action)
     }
 
     execute(command: action)
@@ -74,11 +74,11 @@ public extension CommandHandler {
   }
 
   func publish(error: Error) {
-    publish(event: Event.Error(error))
+    publish(event: Event.error(error))
   }
 
   func publish(event: Event<CommandType>) {
-    Engine.sharedInstance.eventBus.publish(event)
+    Engine.sharedInstance.eventBus.publish(event: event)
   }
 }
 

@@ -14,6 +14,6 @@ public extension FactProducer {
 
   func post<T: Fact>(fact: T) {
     let event = Event<FactCommand<T>>.data(fact)
-    Engine.sharedInstance.eventBus.publish(event)
+    Engine.sharedInstance.eventBus.publish(event: event)
   }
 }

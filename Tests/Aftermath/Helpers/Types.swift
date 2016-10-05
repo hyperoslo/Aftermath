@@ -22,7 +22,7 @@ class TestDisposer: MutexDisposer {
 class ErrorManager: ErrorHandler {
   var lastError: Error?
 
-  func handleError(_ error: Error) {
+  func handle(error: Error) {
     self.lastError = error
   }
 }

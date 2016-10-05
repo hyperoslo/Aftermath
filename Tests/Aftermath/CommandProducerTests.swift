@@ -17,7 +17,7 @@ class CommandProducerTests: XCTestCase {
       self.executedCommand = executedCommand
     }
 
-    Engine.sharedInstance.use(commandHandler)
+    Engine.sharedInstance.use(handler: commandHandler)
   }
 
   override func tearDown() {

@@ -31,7 +31,7 @@ final class ReactionDisposer {
 
   // MARK: - Disposer
 
-  func dispose(_ token: DisposalToken, from producer: ReactionProducer) {
+  func dispose(token: DisposalToken, from producer: ReactionProducer) {
     let key = type(of: producer).identifier
 
     guard let index = tokens[key]?.index(of: token) else {
@@ -44,7 +44,7 @@ final class ReactionDisposer {
       tokens.removeValue(forKey: key)
     }
 
-    eventBus.dispose(token)
+    eventBus.dispose(token: token)
   }
 
   func disposeAll(from producer: ReactionProducer) {
@@ -55,7 +55,7 @@ final class ReactionDisposer {
     }
 
     for token in tokens {
-      eventBus.dispose(token)
+      eventBus.dispose(token: token)
     }
   }
 

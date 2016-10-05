@@ -44,7 +44,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
     if contains(handler: T.self) {
       let warning = Warning.duplicatedCommandHandler(command: T.CommandType.self)
-      errorHandler?.handleError(warning)
+      errorHandler?.handle(error: warning)
     }
 
     listeners[token] = Listener(identifier: token) { [weak self] command in
@@ -57,7 +57,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
       }
 
       let event = try handler.handle(command: command)
-      weakSelf.eventDispatcher.publish(event)
+      weakSelf.eventDispatcher.publish(event: event)
     }
 
     pthread_mutex_unlock(&mutex)
@@ -77,7 +77,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
       let command = try builder.buildCommand()
       execute(command: command)
     } catch {
-      errorHandler?.handleError(error)
+      errorHandler?.handle(error: error)
     }
   }
 
@@ -97,7 +97,7 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
 
       try call(command)
     } catch {
-      errorHandler?.handleError(error)
+      errorHandler?.handle(error: error)
       handle(error: error, on: command)
     }
   }
@@ -125,6 +125,6 @@ final class CommandBus: CommandDispatcher, MutexDisposer {
     }
 
     let errorEvent = type(of: command).buildEvent(fromError: error)
-    eventDispatcher.publish(errorEvent)
+    eventDispatcher.publish(event: errorEvent)
   }
 }

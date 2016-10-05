@@ -23,7 +23,7 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
     let event = Event<AdditionCommand>.progress
-    Engine.sharedInstance.eventBus.publish(event)
+    Engine.sharedInstance.eventBus.publish(event: event)
 
     XCTAssertEqual(controller.state, .progress)
   }
@@ -34,7 +34,7 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
     let event = Event<AdditionCommand>.data(Calculator(result: 11))
-    Engine.sharedInstance.eventBus.publish(event)
+    Engine.sharedInstance.eventBus.publish(event: event)
 
     XCTAssertEqual(controller.state, .data)
   }
@@ -44,18 +44,18 @@ class ReactionProducerTests: XCTestCase {
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
-    let event = Event<AdditionCommand>.Error(TestError.test)
-    Engine.sharedInstance.eventBus.publish(event)
+    let event = Event<AdditionCommand>.error(TestError.test)
+    Engine.sharedInstance.eventBus.publish(event: event)
 
     XCTAssertEqual(controller.state, .error)
   }
 
-  func testDispose() {
+  func testDisposeToken() {
     let token = controller.react(to: AdditionCommand.self, with: controller.reaction)
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 1)
     XCTAssertEqual(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier]?.count, 1)
 
-    controller.dispose(token)
+    controller.dispose(token: token)
     XCTAssertEqual((Engine.sharedInstance.eventBus as? EventBus)?.listeners.count, 0)
     XCTAssertNil(Engine.sharedInstance.reactionDisposer.tokens[Controller.identifier])
   }

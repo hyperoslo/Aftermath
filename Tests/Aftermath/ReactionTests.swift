@@ -59,7 +59,7 @@ class ReactionTests: XCTestCase {
   }
 
   func testInvokeWithError() {
-    let event = Event<AdditionCommand>.Error(TestError.test)
+    let event = Event<AdditionCommand>.error(TestError.test)
     reaction.invoke(with: event)
 
     XCTAssertEqual(state, .error)
