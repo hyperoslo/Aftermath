@@ -141,14 +141,14 @@ class EventBusTests: XCTestCase {
 
   func testHandleError() {
     _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
-    _ = eventBus.handleError(TestError.test, on: Event<AdditionCommand>.progress)
+    _ = eventBus.handle(error: TestError.test, on: Event<AdditionCommand>.progress)
     XCTAssertEqual(state, .error)
     XCTAssertTrue(lastError is TestError)
   }
 
   func testHandleErrorWithFrameworkError() {
     _ =  eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.handleError(Failure.invalidEventType, on: Event<AdditionCommand>.progress)
+    eventBus.handle(error: Failure.invalidEventType, on: Event<AdditionCommand>.progress)
     XCTAssertNil(state)
     XCTAssertNil(lastError)
   }

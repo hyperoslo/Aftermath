@@ -69,7 +69,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
       try call(event)
     } catch {
       errorHandler?.handle(error: error)
-      handleError(error, on: event)
+      handle(error: error, on: event)
     }
   }
 
@@ -94,7 +94,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
   // MARK: - Error handling
 
-  func handleError(_ error: Error, on event: AnyEvent) {
+  func handle(error: Error, on event: AnyEvent) {
     guard !error.isFrameworkError else {
       return
     }
