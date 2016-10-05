@@ -25,6 +25,7 @@ struct NoteUpdateStory {
   struct Handler: Aftermath.CommandHandler {
 
     func handle(command: Command) throws -> Event<Command> {
+      // Make network request to patch data.
       let request = Request(command: command)
 
       Malibu.networking("base").PATCH(request)

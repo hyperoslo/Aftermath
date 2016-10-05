@@ -25,6 +25,7 @@
 		D574B13E1DA58FC70048AB15 /* NoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1391DA58FC70048AB15 /* NoteDetailController.swift */; };
 		D574B13F1DA58FC70048AB15 /* NoteDetailStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B13A1DA58FC70048AB15 /* NoteDetailStory.swift */; };
 		D574B1401DA58FC70048AB15 /* NoteUpdateStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B13B1DA58FC70048AB15 /* NoteUpdateStory.swift */; };
+		D574B1421DA591440048AB15 /* PayloadStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1411DA591440048AB15 /* PayloadStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D574B1391DA58FC70048AB15 /* NoteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailController.swift; sourceTree = "<group>"; };
 		D574B13A1DA58FC70048AB15 /* NoteDetailStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailStory.swift; sourceTree = "<group>"; };
 		D574B13B1DA58FC70048AB15 /* NoteUpdateStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteUpdateStory.swift; sourceTree = "<group>"; };
+		D574B1411DA591440048AB15 /* PayloadStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadStorage.swift; sourceTree = "<group>"; };
 		D5C7F7401C3BC9CE008CDDBA /* AftermathNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AftermathNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA43453E3874149AFE2D9834 /* Pods_AftermathNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 			children = (
 				D574B1111DA58D7F0048AB15 /* UITableViewCell+Extensions.swift */,
 				D574B1121DA58D7F0048AB15 /* UIViewController+Extensions.swift */,
+				D574B1411DA591440048AB15 /* PayloadStorage.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				D574B1331DA58D7F0048AB15 /* MainStylesheet.swift in Sources */,
 				D574B13D1DA58FC70048AB15 /* NoteListStory.swift in Sources */,
 				D574B1281DA58D7F0048AB15 /* FashionConfigurator.swift in Sources */,
+				D574B1421DA591440048AB15 /* PayloadStorage.swift in Sources */,
 				D574B1291DA58D7F0048AB15 /* MalibuConfigurator.swift in Sources */,
 				D574B13E1DA58FC70048AB15 /* NoteDetailController.swift in Sources */,
 			);

@@ -19,6 +19,7 @@ struct NoteDetailStory {
   struct Handler: Aftermath.CommandHandler {
 
     func handle(command: Command) throws -> Event<Command> {
+      // Make network request to fetch data.
       let request = Request(command: command)
 
       Malibu.networking("base").GET(request)
