@@ -102,6 +102,6 @@ public protocol CommandMiddleware {
 public extension CommandMiddleware {
 
   func compose(execute: @escaping Execute) throws -> ExecuteCombination {
-    return try Middleware(intercept: intercept).compose(execute)
+    return try Middleware(intercept: intercept).compose(execute: execute)
   }
 }

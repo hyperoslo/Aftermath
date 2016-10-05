@@ -47,7 +47,7 @@ public extension ReactionProducer {
       reaction.invoke(with: event)
     }
 
-    Engine.sharedInstance.reactionDisposer.append(token, from: self)
+    Engine.sharedInstance.reactionDisposer.append(token: token, from: self)
 
     return token
   }

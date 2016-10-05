@@ -17,7 +17,7 @@ final class ReactionDisposer {
 
   // MARK: - Tokens
 
-  func append(_ token: DisposalToken, from producer: ReactionProducer) {
+  func append(token: DisposalToken, from producer: ReactionProducer) {
     let key = type(of: producer).identifier
 
     if tokens[key] == nil {

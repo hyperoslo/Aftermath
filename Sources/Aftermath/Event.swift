@@ -104,6 +104,6 @@ public protocol EventMiddleware {
 public extension EventMiddleware {
 
   func compose(publish: @escaping Publish) throws -> PublishCombination {
-    return try Middleware(intercept: intercept).compose(publish)
+    return try Middleware(intercept: intercept).compose(execute: publish)
   }
 }
