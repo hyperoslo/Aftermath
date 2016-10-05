@@ -1,9 +1,9 @@
 import UIKit
 import Aftermath
 
-class PostsController: UITableViewController, CommandProducer, ReactionProducer {
+class NoteListController: UITableViewController, CommandProducer, ReactionProducer {
 
-  var posts = [Post]()
+  var notes = [Note]()
 
   deinit {
     // Don't forget to dispose all reaction tokens.
@@ -14,35 +14,38 @@ class PostsController: UITableViewController, CommandProducer, ReactionProducer 
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    title = "Aftermath"
+    view.stylize(Styles.Content)
     setupTableView()
 
     // Register reaction listener
-    react(to: PostsStory.Command.self, with: Reaction(
+    react(to: NoteListStory.Command.self, with: Reaction(
       wait: { [weak self] in
         self?.refreshControl?.beginRefreshing()
       },
-      consume: { [weak self] posts in
-        self?.posts = posts
+      consume: { [weak self] notes in
+        self?.notes = notes
         self?.tableView.reloadData()
         self?.refreshControl?.endRefreshing()
       },
       rescue: { [weak self] error in
         self?.refreshControl?.endRefreshing()
-        print(error)
+        self?.showAlert(message: (error as NSError).description)
       }))
   }
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
 
-    // Execute command to load a list of posts.
-    execute(command: PostsStory.Command())
+    // Execute command to load a list of notes.
+    execute(command: NoteListStory.Command())
   }
 
   // MARK: - Configuration
 
   func setupTableView() {
-    tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
+    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
     refreshControl = UIRefreshControl()
     refreshControl?.addTarget(self, action: #selector(refreshData(_:)), forControlEvents: .ValueChanged)
   }
@@ -54,20 +57,18 @@ class PostsController: UITableViewController, CommandProducer, ReactionProducer 
   }
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let count = posts.count
+    let count = notes.count
     tableView.backgroundView?.hidden = count > 0
 
     return count
   }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(TableCell.identifier, forIndexPath: indexPath)
-    let post = posts[indexPath.item]
+    let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.identifier, forIndexPath: indexPath)
+    let note = notes[indexPath.item]
 
-    if let cell = cell as? TableCell {
-      cell.textLabel?.text = post.title.capitalizedString
-      cell.detailTextLabel?.text = "User ID: \(post.userId)"
-    }
+    cell.textLabel?.text = note.title.capitalizedString
+    cell.detailTextLabel?.text = "Note ID: \(note.id)"
 
     return cell
   }
@@ -81,8 +82,8 @@ class PostsController: UITableViewController, CommandProducer, ReactionProducer 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-    let post = posts[indexPath.row]
-    let controller = PostController(id: post.id)
+    let note = notes[indexPath.row]
+    let controller = NoteDetailController(id: note.id)
 
     navigationController?.pushViewController(controller, animated: true)
   }
@@ -90,6 +91,6 @@ class PostsController: UITableViewController, CommandProducer, ReactionProducer 
   // MARK: - Actions
 
   func refreshData(refreshControl: UIRefreshControl) {
-    execute(command: PostsStory.Command())
+    execute(command: NoteListStory.Command())
   }
 }

@@ -1,23 +1,27 @@
 import Aftermath
 import Malibu
 
-struct PostsStory {
+struct NoteListStory {
 
   struct Command: Aftermath.Command {
-    typealias Output = [Post]
+    typealias Output = [Note]
+  }
+
+  struct Request: GETRequestable {
+    var message = Message(resource: "posts")
   }
 
   struct Handler: Aftermath.CommandHandler {
 
     func handle(command: Command) throws -> Event<Command> {
-      let request = PostsRequest()
+      let request = Request()
 
       Malibu.networking("base").GET(request)
         .validate()
         .toJSONArray()
-        .then({ array -> [Post] in try array.map({ try Post($0) }) })
-        .done({ posts in
-          self.publish(data: posts)
+        .then({ array -> [Note] in try array.map({ try Note($0) }) })
+        .done({ notes in
+          self.publish(data: notes)
         })
         .fail({ error in
           self.publish(error: error)

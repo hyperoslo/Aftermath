@@ -2,7 +2,7 @@ import Foundation
 import Tailor
 import Sugar
 
-struct Post: SafeMappable {
+struct Note: SafeMappable {
 
   let id: Int
   let userId: Int

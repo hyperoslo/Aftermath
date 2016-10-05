@@ -1,5 +1,4 @@
 import UIKit
-import Hue
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return controller
     }()
 
-  lazy var mainController: PostsController = {
-    let controller = PostsController()
+  lazy var mainController: NoteListController = {
+    let controller = NoteListController()
     return controller
   }()
 
