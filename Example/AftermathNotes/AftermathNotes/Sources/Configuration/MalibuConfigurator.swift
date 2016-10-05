@@ -7,7 +7,10 @@ public struct MalibuConfigurator: Configurator {
     Malibu.logger.level = .Verbose
 
     let networking = Networking(baseURLString: "http://jsonplaceholder.typicode.com/")
-    networking.additionalHeaders = { ["Accept" : "application/json"] }
+
+    networking.additionalHeaders = {
+      ["Accept" : "application/json"]
+    }
 
     Malibu.register("base", networking: networking)
   }

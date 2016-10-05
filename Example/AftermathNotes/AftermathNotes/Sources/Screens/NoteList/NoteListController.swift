@@ -64,7 +64,8 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
   }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.identifier, forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.identifier,
+                                                           forIndexPath: indexPath)
     let note = notes[indexPath.item]
 
     cell.textLabel?.text = note.title.capitalizedString

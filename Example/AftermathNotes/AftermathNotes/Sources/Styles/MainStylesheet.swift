@@ -1,13 +1,10 @@
 import UIKit
 import Fashion
 
-enum Styles: String {
+enum Styles: String, StringConvertible {
   case Content
   case NoteDetailTitleLabel
   case NoteDetailTextView
-}
-
-extension Styles: StringConvertible {
 
   var string: String {
     return rawValue

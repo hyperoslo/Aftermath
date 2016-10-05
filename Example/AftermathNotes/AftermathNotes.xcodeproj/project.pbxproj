@@ -138,16 +138,8 @@
 			children = (
 				D574B1381DA58FC70048AB15 /* NoteDetail */,
 				D574B1351DA58FC70048AB15 /* NoteList */,
-				D574B11E1DA58D7F0048AB15 /* Stories */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		D574B11E1DA58D7F0048AB15 /* Stories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Stories;
 			sourceTree = "<group>";
 		};
 		D574B11F1DA58D7F0048AB15 /* Styles */ = {
