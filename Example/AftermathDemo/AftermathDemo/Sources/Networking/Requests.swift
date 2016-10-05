@@ -4,6 +4,10 @@ struct PostsRequest: GETRequestable {
   var message = Message(resource: "posts")
 }
 
-struct UsersRequest: GETRequestable {
-  var message = Message(resource: "users")
+struct PostRequest: GETRequestable {
+  var message: Message
+
+  init(id: Int) {
+    message = Message(resource: "posts/\(id)")
+  }
 }

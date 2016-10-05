@@ -1,11 +1,10 @@
 import Aftermath
-import Brick
 import Malibu
 
 struct UsersStory {
 
   struct Command: Aftermath.Command {
-    typealias Output = [ViewModel]
+    typealias Output = [User]
   }
 
   struct Handler: Aftermath.CommandHandler {
@@ -17,23 +16,14 @@ struct UsersStory {
         .validate()
         .toJSONArray()
         .then({ array -> [User] in try array.map({ try User($0) }) })
-        .then({ users -> [ViewModel] in
-          return users.map({ user in
-            ViewModel(
-              identifier: user.id,
-              title: user.name.capitalizedString,
-              subtitle: "Email: \(user.email)",
-              action: "users:\(user.id)")
-          })
-        })
-        .done({ items in
-          self.fulfill(items)
+        .done({ users in
+          self.publish(data: users)
         })
         .fail({ error in
-          self.reject(error)
+          self.publish(error: error)
         })
 
-      return progress
+      return Event.Progress
     }
   }
 }
