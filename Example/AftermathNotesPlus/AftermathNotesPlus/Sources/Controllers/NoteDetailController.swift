@@ -2,7 +2,9 @@ import UIKit
 import Aftermath
 
 class NoteDetailController: UIViewController, CommandProducer, ReactionProducer {
+
   let id: Int
+  var loaded = false
 
   var note: Note? {
     didSet {
@@ -83,9 +85,15 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     let reaction = Reaction<Note>(
       consume: { [weak self] note in
         self?.note = note
+
+        if self?.loaded == true {
+          self?.showAlert(title: "Yay!", message: "Note is saved.")
+        }
+
+        self?.loaded = true
       },
       rescue: { [weak self] error in
-        self?.showAlert(message: (error as NSError).description)
+        self?.showErrorAlert(error)
       })
 
     react(to: DetailCommand<NoteFeature>.self, with: reaction)

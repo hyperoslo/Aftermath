@@ -16,23 +16,9 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
     super.viewDidLoad()
 
     title = "Aftermath"
-    view.stylize(Styles.Content)
+    view.stylize(MainStylesheet.Style.Content)
     setupTableView()
-
-    // Register reaction listener
-    react(to: NoteListStory.Command.self, with: Reaction(
-      wait: { [weak self] in
-        self?.refreshControl?.beginRefreshing()
-      },
-      consume: { [weak self] notes in
-        self?.notes = notes
-        self?.tableView.reloadData()
-        self?.refreshControl?.endRefreshing()
-      },
-      rescue: { [weak self] error in
-        self?.refreshControl?.endRefreshing()
-        self?.showAlert(message: (error as NSError).description)
-      }))
+    setupReactions()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -48,6 +34,31 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
     tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
     refreshControl = UIRefreshControl()
     refreshControl?.addTarget(self, action: #selector(refreshData(_:)), forControlEvents: .ValueChanged)
+  }
+
+  // MARK: - Reactions
+
+  func setupReactions() {
+    // React to note events
+    react(to: NoteListStory.Command.self, with: Reaction(
+      wait: { [weak self] in
+        self?.refreshControl?.beginRefreshing()
+      },
+      consume: { [weak self] notes in
+        self?.notes = notes
+        self?.tableView.reloadData()
+        self?.refreshControl?.endRefreshing()
+      },
+      rescue: { [weak self] error in
+        self?.refreshControl?.endRefreshing()
+        self?.showErrorAlert(error)
+      }))
+  }
+
+  // MARK: - Actions
+
+  func refreshData(refreshControl: UIRefreshControl) {
+    execute(command: NoteListStory.Command())
   }
 
   // MARK: - UITableViewDataSource
@@ -87,11 +98,5 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
     let controller = NoteDetailController(id: note.id)
 
     navigationController?.pushViewController(controller, animated: true)
-  }
-
-  // MARK: - Actions
-
-  func refreshData(refreshControl: UIRefreshControl) {
-    execute(command: NoteListStory.Command())
   }
 }

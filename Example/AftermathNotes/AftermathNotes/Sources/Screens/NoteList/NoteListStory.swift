@@ -3,13 +3,19 @@ import Malibu
 
 struct NoteListStory {
 
+  // MARK: - Command
+
   struct Command: Aftermath.Command {
     typealias Output = [Note]
   }
 
+  // MARK: - Request
+
   struct Request: GETRequestable {
     var message = Message(resource: "posts")
   }
+
+  // MARK: - Command handler
 
   class Handler: Aftermath.CommandHandler {
 

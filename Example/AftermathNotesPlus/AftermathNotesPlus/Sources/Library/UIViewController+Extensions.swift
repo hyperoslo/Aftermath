@@ -2,9 +2,9 @@ import UIKit
 
 extension UIViewController {
 
-  func showAlert(message message: String) {
+  func showAlert(title title: String, message: String) {
     let alertController = UIAlertController(
-      title: "Oops!",
+      title: title,
       message: message,
       preferredStyle: .Alert)
 
@@ -14,5 +14,9 @@ extension UIViewController {
       handler: nil))
 
     presentViewController(alertController, animated: true, completion: nil)
+  }
+
+  func showErrorAlert(error: ErrorType) {
+    showAlert(title: "Oops!", message: (error as NSError).description)
   }
 }

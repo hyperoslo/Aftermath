@@ -3,10 +3,14 @@ import Malibu
 
 struct NoteDetailStory {
 
+  // MARK: - Command
+
   struct Command: Aftermath.Command {
     typealias Output = Note
     let id: Int
   }
+
+  // MARK: - Command
 
   struct Request: GETRequestable {
     var message: Message
@@ -15,6 +19,8 @@ struct NoteDetailStory {
       message = Message(resource: "posts/\(command.id)")
     }
   }
+
+  // MARK: - Command handler
 
   struct Handler: Aftermath.CommandHandler {
 

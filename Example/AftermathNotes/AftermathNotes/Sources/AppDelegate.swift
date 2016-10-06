@@ -9,8 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }()
 
   var configurators: [Configurator] = [
+    // Use Fashion to share and reuse UI styles.
     FashionConfigurator(),
+    // Use Malibu for networking.
     MalibuConfigurator(),
+    // Use Aftermath to establish command-event flow in the app.
     AftermathConfigurator()
   ]
 
@@ -23,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let controller = NoteListController()
     return controller
   }()
+
+  // MARK: - Application lifecycle
 
   func application(application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

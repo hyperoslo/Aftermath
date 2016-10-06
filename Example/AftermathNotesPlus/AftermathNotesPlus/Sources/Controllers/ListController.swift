@@ -60,7 +60,7 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
       },
       rescue: { [weak self] error in
         self?.refreshControl?.endRefreshing()
-        self?.showAlert(message: (error as NSError).description)
+        self?.showAlert(title: "Oops!", message: (error as NSError).description)
       }))
 
     // React to update event
@@ -76,7 +76,7 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
         self?.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       },
       rescue: { [weak self] error in
-        self?.showAlert(message: (error as NSError).description)
+        self?.showErrorAlert(error)
       }))
 
     // React to delete event
@@ -91,7 +91,7 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
         self?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       },
       rescue: { [weak self] error in
-        self?.showAlert(message: (error as NSError).description)
+        self?.showErrorAlert(error)
       }))
   }
 

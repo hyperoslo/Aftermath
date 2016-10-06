@@ -4,8 +4,8 @@ public struct FashionConfigurator: Configurator {
 
   public func configure() {
     let stylesheets: [Stylesheet] = [
-      SystemStylesheet(),
-      MainStylesheet()
+      MainStylesheet(),
+      NoteStylesheet()
     ]
 
     Fashion.register(stylesheets)

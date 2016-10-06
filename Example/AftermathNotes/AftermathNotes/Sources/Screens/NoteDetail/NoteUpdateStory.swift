@@ -3,12 +3,16 @@ import Malibu
 
 struct NoteUpdateStory {
 
+  // MARK: - Command
+
   struct Command: Aftermath.Command {
     typealias Output = Note
     let id: Int
     let title: String
     let body: String
   }
+
+  // MARK: - Request
 
   struct Request: PATCHRequestable {
     var message: Message
@@ -21,6 +25,8 @@ struct NoteUpdateStory {
       ]
     }
   }
+
+  // MARK: - Command handler
 
   struct Handler: Aftermath.CommandHandler {
 

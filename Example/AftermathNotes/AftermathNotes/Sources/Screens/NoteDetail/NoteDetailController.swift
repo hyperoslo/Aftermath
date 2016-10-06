@@ -4,14 +4,15 @@ import Aftermath
 class NoteDetailController: UIViewController, CommandProducer, ReactionProducer {
 
   let id: Int
+  var loaded = false
 
   lazy var saveButton: UIBarButtonItem = UIBarButtonItem(
     barButtonSystemItem: .Save,
     target: self,
     action: #selector(saveButtonDidPress))
 
-  lazy var titleLabel: UILabel = UILabel(styles: Styles.NoteDetailTitleLabel)
-  lazy var textView: UITextView = UITextView(styles: Styles.NoteDetailTextView)
+  lazy var titleLabel: UILabel = UILabel(styles: NoteStylesheet.Style.DetailTitleLabel)
+  lazy var textView: UITextView = UITextView(styles: NoteStylesheet.Style.DetailTextView)
 
   // MARK: - Initialization
 
@@ -35,7 +36,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     super.viewDidLoad()
 
     title = "Note"
-    view.stylize(Styles.Content)
+    view.stylize(MainStylesheet.Style.Content)
     navigationItem.rightBarButtonItem = saveButton
 
     [titleLabel, textView].forEach {
@@ -43,19 +44,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     }
 
     setupConstrains()
-
-    // Register reaction listeners
-    let reaction = Reaction<Note>(
-      consume: { [weak self] note in
-        self?.titleLabel.text = note.title.capitalizedString
-        self?.textView.text = note.body.capitalizedString
-      },
-      rescue: { [weak self] error in
-        self?.showAlert(message: (error as NSError).description)
-      })
-
-    react(to: NoteDetailStory.Command.self, with: reaction)
-    react(to: NoteUpdateStory.Command.self, with: reaction)
+    setupReactions()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -76,6 +65,29 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     textView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 15).active = true
     textView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -15).active = true
     textView.heightAnchor.constraintEqualToConstant(200).active = true
+  }
+
+  // MARK: - Reactions
+
+  func setupReactions() {
+    // Register reaction listeners
+    let reaction = Reaction<Note>(
+      consume: { [weak self] note in
+        self?.titleLabel.text = note.title.capitalizedString
+        self?.textView.text = note.body.capitalizedString
+
+        if self?.loaded == true {
+          self?.showAlert(title: "Yay!", message: "Note is saved.")
+        }
+
+        self?.loaded = true
+      },
+      rescue: { [weak self] error in
+        self?.showErrorAlert(error)
+      })
+
+    react(to: NoteDetailStory.Command.self, with: reaction)
+    react(to: NoteUpdateStory.Command.self, with: reaction)
   }
 
   // MARK: - Actions
