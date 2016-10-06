@@ -75,6 +75,132 @@ has been received.
 Normally reaction performs UI updates, but could also be used for other kinds
 of output processing.
 
+## The flow
+
+## Command execution
+
+The first step is to declare a command. Let's say we want to fetch a list of
+books from some untrusted resource and correct typos in titles and author names.
+
+```swift
+// This is our model we are going to work with.
+struct Book {
+  let id: Int
+  let title: String
+  let author: String
+}
+
+struct BookListCommand: Command {
+  // Result of this command will be a list of books.
+  typealias Output = [Book]
+}
+
+struct BookUpdateCommand: Command {
+  // Result of this command will be an updated book.
+  typealias Output = Book
+
+  // Let's pass the entire model to the command to simplify this example.
+  // Ideally we wouldn't do that because a command is supposed to be as simple
+  // as possible, only with attributes that are needed for handler.
+  let book: Book
+}
+```
+
+In order to execute a command you have to conform to `CommandProducer` protocol:
+
+```swift
+class BookListController: UITableViewController, CommandProducer {
+
+  // Fetch a list of books.
+  func load() {
+    execute(command: BookListCommand())
+  }
+
+  // Update a single book with corrected title and/or author name.
+  func update(book: Book) {
+    execute(command: BookUpdateCommand(book: book))
+  }
+}
+```
+
+## Command handling
+
+```swift
+```
+
+## Reacting to events
+
+```swift
+```
+
+## Extra
+
+## Action
+
+**Action** is a variation of command that handles itself. It's a possibility to
+simplify the code when command itself or business logic are super tiny. There
+is no need to register action, it will be automatically added to the list of
+active command handlers on the fly, when it's executed as a command.
+
+```swift
+import Sugar
+
+struct WelcomeAction: Action {
+  typealias Output = String
+
+  let userId: String
+
+  func handle(command: WelcomeAction) throws -> Event<WelcomeAction> {
+    fetchUser(id: userId) { user in
+      self.publish(data: "Hello \(user.name)")
+    }
+    return Event.Progress
+  }
+}
+
+// ...
+execute(WelcomeAction(userId: 11))
+```
+
+## Fact
+
+**Fact** works like notification with no async operations involved. It could
+be used when there is no need to have a handler and generate an output, fact is
+already an output itself and the only thing you want to do is notify all
+subscribers that something happened in the system and they will react
+accordingly. In this sense it's closer to a type-safe alternative to
+`NSNotification`
+
+```swift
+struct LoginFact: Fact {
+  let username: String
+}
+
+class ProfileController: UIViewController, ReactionProducer {
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    next { (fact: LoginFact) in
+      title = fact.username
+    }
+  }
+}
+
+struct AuthService: FactProducer {
+  func login() {
+    // ...
+    let fact = LoginFact(username: "John Doe")
+    post(fact: fact)  
+  }
+}
+```
+
+## Middleware
+
+```swift
+```
+
 ## Installation
 
 **Aftermath** is available through [CocoaPods](http://cocoapods.org). To install

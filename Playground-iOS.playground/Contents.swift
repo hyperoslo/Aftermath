@@ -19,13 +19,15 @@ struct Book {
   let author: String
 }
 
-// Start by creating a command which has an output set to be a list of books.
+// Start by creating a command that has an output set to be a list of books.
 
 struct BooksCommand: Command {
   typealias Output = [Book]
 }
 
 // Command is an intention that needs to be translated into action by handler.
+// Command handler is responsible for publishing events to notify about
+// results of operation that it performs.
 
 struct BooksCommandHandler: CommandHandler {
 
