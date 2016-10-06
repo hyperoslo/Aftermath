@@ -20,8 +20,8 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     target: self,
     action: #selector(saveButtonDidPress))
 
-  lazy var titleLabel: UILabel = UILabel(styles: Styles.NoteDetailTitleLabel)
-  lazy var textView: UITextView = UITextView(styles: Styles.NoteDetailTextView)
+  lazy var titleLabel: UILabel = UILabel(styles: NoteStylesheet.Style.DetailTitleLabel)
+  lazy var textView: UITextView = UITextView(styles: NoteStylesheet.Style.DetailTextView)
 
   // MARK: - Initialization
 
@@ -45,7 +45,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     super.viewDidLoad()
 
     title = "Note"
-    view.stylize(Styles.Content)
+    view.stylize(MainStylesheet.Style.Content)
     navigationItem.rightBarButtonItem = saveButton
 
     [titleLabel, textView].forEach {

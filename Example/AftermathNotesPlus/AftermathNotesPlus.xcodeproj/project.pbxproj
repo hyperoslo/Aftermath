@@ -18,8 +18,8 @@
 		D5FFAA381DA5A8C300B2807C /* PayloadStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA1E1DA5A8C300B2807C /* PayloadStorage.swift */; };
 		D5FFAA3A1DA5A8C300B2807C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA201DA5A8C300B2807C /* UIViewController+Extensions.swift */; };
 		D5FFAA3B1DA5A8C300B2807C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA221DA5A8C300B2807C /* Note.swift */; };
-		D5FFAA431DA5A8C300B2807C /* MainStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA2E1DA5A8C300B2807C /* MainStylesheet.swift */; };
-		D5FFAA441DA5A8C300B2807C /* SystemStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA2F1DA5A8C300B2807C /* SystemStylesheet.swift */; };
+		D5FFAA431DA5A8C300B2807C /* NoteStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA2E1DA5A8C300B2807C /* NoteStylesheet.swift */; };
+		D5FFAA441DA5A8C300B2807C /* MainStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA2F1DA5A8C300B2807C /* MainStylesheet.swift */; };
 		D5FFAA461DA5A9A300B2807C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA451DA5A9A300B2807C /* Todo.swift */; };
 		D5FFAA521DA5B23100B2807C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA511DA5B23100B2807C /* TableCell.swift */; };
 		D5FFAA661DA64FE400B2807C /* DetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA621DA64FE400B2807C /* DetailFeature.swift */; };
@@ -33,6 +33,10 @@
 		D5FFAA791DA6664F00B2807C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA751DA6664F00B2807C /* MainController.swift */; };
 		D5FFAA7D1DA666A900B2807C /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA7B1DA666A900B2807C /* ListController.swift */; };
 		D5FFAA7E1DA666A900B2807C /* NoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA7C1DA666A900B2807C /* NoteDetailController.swift */; };
+		D5FFAA801DA6675000B2807C /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA7F1DA6675000B2807C /* ProfileController.swift */; };
+		D5FFAA821DA6689D00B2807C /* ProfileStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA811DA6689D00B2807C /* ProfileStylesheet.swift */; };
+		D5FFAA841DA6692400B2807C /* StyleConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA831DA6692400B2807C /* StyleConvertible.swift */; };
+		D5FFAA861DA66C5700B2807C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA851DA66C5700B2807C /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +54,8 @@
 		D5FFAA1E1DA5A8C300B2807C /* PayloadStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadStorage.swift; sourceTree = "<group>"; };
 		D5FFAA201DA5A8C300B2807C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		D5FFAA221DA5A8C300B2807C /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		D5FFAA2E1DA5A8C300B2807C /* MainStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStylesheet.swift; sourceTree = "<group>"; };
-		D5FFAA2F1DA5A8C300B2807C /* SystemStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemStylesheet.swift; sourceTree = "<group>"; };
+		D5FFAA2E1DA5A8C300B2807C /* NoteStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteStylesheet.swift; sourceTree = "<group>"; };
+		D5FFAA2F1DA5A8C300B2807C /* MainStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStylesheet.swift; sourceTree = "<group>"; };
 		D5FFAA451DA5A9A300B2807C /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D5FFAA511DA5B23100B2807C /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		D5FFAA621DA64FE400B2807C /* DetailFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailFeature.swift; sourceTree = "<group>"; };
@@ -65,6 +69,10 @@
 		D5FFAA751DA6664F00B2807C /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		D5FFAA7B1DA666A900B2807C /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		D5FFAA7C1DA666A900B2807C /* NoteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailController.swift; sourceTree = "<group>"; };
+		D5FFAA7F1DA6675000B2807C /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		D5FFAA811DA6689D00B2807C /* ProfileStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStylesheet.swift; sourceTree = "<group>"; };
+		D5FFAA831DA6692400B2807C /* StyleConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleConvertible.swift; sourceTree = "<group>"; };
+		D5FFAA851DA66C5700B2807C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E043D4E2DF469EC2234FCCF7 /* Pods-AftermathNotesPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotesPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +173,7 @@
 			children = (
 				D5FFAA1E1DA5A8C300B2807C /* PayloadStorage.swift */,
 				D5FFAA201DA5A8C300B2807C /* UIViewController+Extensions.swift */,
+				D5FFAA831DA6692400B2807C /* StyleConvertible.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 				D5FFAA221DA5A8C300B2807C /* Note.swift */,
 				D5FFAA451DA5A9A300B2807C /* Todo.swift */,
 				D5FFAA6E1DA65D2A00B2807C /* Entity.swift */,
+				D5FFAA851DA66C5700B2807C /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,8 +192,9 @@
 		D5FFAA2D1DA5A8C300B2807C /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				D5FFAA2E1DA5A8C300B2807C /* MainStylesheet.swift */,
-				D5FFAA2F1DA5A8C300B2807C /* SystemStylesheet.swift */,
+				D5FFAA2E1DA5A8C300B2807C /* NoteStylesheet.swift */,
+				D5FFAA2F1DA5A8C300B2807C /* MainStylesheet.swift */,
+				D5FFAA811DA6689D00B2807C /* ProfileStylesheet.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -224,6 +235,7 @@
 				D5FFAA7B1DA666A900B2807C /* ListController.swift */,
 				D5FFAA751DA6664F00B2807C /* MainController.swift */,
 				D5FFAA7C1DA666A900B2807C /* NoteDetailController.swift */,
+				D5FFAA7F1DA6675000B2807C /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -357,21 +369,25 @@
 				D5FFAA521DA5B23100B2807C /* TableCell.swift in Sources */,
 				D5FFAA6D1DA64FF700B2807C /* TodoFeature.swift in Sources */,
 				D5FFAA661DA64FE400B2807C /* DetailFeature.swift in Sources */,
+				D5FFAA821DA6689D00B2807C /* ProfileStylesheet.swift in Sources */,
 				D5FFAA341DA5A8C300B2807C /* AftermathConfigurator.swift in Sources */,
 				D5FFAA7D1DA666A900B2807C /* ListController.swift in Sources */,
 				D5FFAA361DA5A8C300B2807C /* FashionConfigurator.swift in Sources */,
 				D5FFAA461DA5A9A300B2807C /* Todo.swift in Sources */,
 				D5FFAA6B1DA64FEE00B2807C /* NoteFeature.swift in Sources */,
-				D5FFAA441DA5A8C300B2807C /* SystemStylesheet.swift in Sources */,
+				D5FFAA441DA5A8C300B2807C /* MainStylesheet.swift in Sources */,
 				D5FFAA7E1DA666A900B2807C /* NoteDetailController.swift in Sources */,
 				D5FFAA3A1DA5A8C300B2807C /* UIViewController+Extensions.swift in Sources */,
 				D5FFAA691DA64FE400B2807C /* RESTFeature.swift in Sources */,
 				D5FFAA3B1DA5A8C300B2807C /* Note.swift in Sources */,
-				D5FFAA431DA5A8C300B2807C /* MainStylesheet.swift in Sources */,
+				D5FFAA431DA5A8C300B2807C /* NoteStylesheet.swift in Sources */,
 				D5FFAA381DA5A8C300B2807C /* PayloadStorage.swift in Sources */,
 				D5FFAA791DA6664F00B2807C /* MainController.swift in Sources */,
 				D5FFAA6F1DA65D2A00B2807C /* Entity.swift in Sources */,
 				D5FFAA371DA5A8C300B2807C /* MalibuConfigurator.swift in Sources */,
+				D5FFAA801DA6675000B2807C /* ProfileController.swift in Sources */,
+				D5FFAA861DA66C5700B2807C /* Profile.swift in Sources */,
+				D5FFAA841DA6692400B2807C /* StyleConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

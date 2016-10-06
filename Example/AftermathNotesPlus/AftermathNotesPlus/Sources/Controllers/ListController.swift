@@ -26,7 +26,6 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
     super.viewDidLoad()
 
     title = "Aftermath"
-    view.stylize(Styles.Content)
     setupTableView()
     setupReactions()
   }

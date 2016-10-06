@@ -5,7 +5,8 @@ class MainController: UITabBarController {
   lazy var noteListController: UINavigationController = {
     let controller = ListController(feature: NoteFeature())
     let navigationController = UINavigationController(rootViewController: controller)
-    controller.view.stylize(Styles.Content)
+    controller.view.stylize(MainStylesheet.Style.Content)
+    controller.title = "Notes"
     controller.tabBarItem.title = "Notes"
     controller.tabBarItem.image = UIImage(named: "tabNotes")
 
@@ -15,9 +16,20 @@ class MainController: UITabBarController {
   lazy var todoListController: UINavigationController = {
     let controller = ListController(feature: TodoFeature())
     let navigationController = UINavigationController(rootViewController: controller)
-    controller.view.stylize(Styles.Content)
+    controller.view.stylize(MainStylesheet.Style.Content)
     controller.tabBarItem.title = "Todos"
+    controller.title = "Todos"
     controller.tabBarItem.image = UIImage(named: "tabTodos")
+
+    return navigationController
+  }()
+
+  lazy var profileController: UINavigationController = {
+    let controller = ProfileController()
+    let navigationController = UINavigationController(rootViewController: controller)
+    controller.tabBarItem.title = "Profile"
+    controller.title = "Profile"
+    controller.tabBarItem.image = UIImage(named: "tabProfile")
 
     return navigationController
   }()
@@ -28,7 +40,7 @@ class MainController: UITabBarController {
     super.viewDidLoad()
 
     title = "Aftermath"
-    view.stylize(Styles.Content)
+    view.stylize(MainStylesheet.Style.Content)
     configureTabBar()
   }
 
@@ -37,7 +49,8 @@ class MainController: UITabBarController {
   func configureTabBar() {
     viewControllers = [
       noteListController,
-      todoListController
+      todoListController,
+      profileController
     ]
 
     selectedIndex = 0
