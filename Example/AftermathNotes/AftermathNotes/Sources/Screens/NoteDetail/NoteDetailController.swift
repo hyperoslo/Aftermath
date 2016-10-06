@@ -74,7 +74,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     let reaction = Reaction<Note>(
       consume: { [weak self] note in
         self?.titleLabel.text = note.title.capitalizedString
-        self?.textView.text = note.body.capitalizedString
+        self?.textView.text = note.body
 
         if self?.loaded == true {
           self?.showAlert(title: "Yay!", message: "Note is saved.")

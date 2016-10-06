@@ -13,7 +13,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
       }
 
       titleLabel.text = note.title.capitalizedString
-      textView.text = note.body.capitalizedString
+      textView.text = note.body
     }
   }
 
