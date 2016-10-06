@@ -94,7 +94,7 @@ github "hyperoslo/Aftermath"
 **Aftermath** can also be installed manually. Just download and drop `Sources`
 folders in your project.
 
-# Extensions
+## Extensions
 
 This repository aims to be the core implementation of framework, but there are
 also a range of extensions that integrate **Aftermath** with other libraries
@@ -115,7 +115,7 @@ framework. It comes with custom reactions and injectable behaviors that move
 code reusability to the next level and make your application even more
 decoupled and flexible.
 
-# Examples
+## Examples
 
 - [iOS Playground](https://github.com/hyperoslo/Aftermath/blob/master/Playground-iOS.playground/Content.swift)
 uses live view of interactive playground to show how to fetch data from network
@@ -135,7 +135,7 @@ to reuse view controllers and RESTful network requests.
 
 Hyper Interaktiv AS, ios@hyper.no
 
-# Influences
+## Influences
 
 **Aftermath** is inspired by the idea of unidirectional data flow in
 [Flux](https://facebook.github.io/flux/) and utilizes some concepts like
