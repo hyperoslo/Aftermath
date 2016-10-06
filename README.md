@@ -23,7 +23,7 @@ concerns, reduce code dependencies and make data flow more predictable.
 ## Core components
 
 The following diagram demonstrates a simplified version of the flow
-in **Aftermath** architecture and defines 4 main components which form the core
+in **Aftermath** architecture and defines 4 main components that form the core
 of the framework:
 
 <div align="center">
@@ -55,9 +55,9 @@ The restriction is to create only one command handler for each command.
 **Command Handler** is responsible for publishing **events** that will be
 consumed by reactions. There are 3 types of events:
 
-- **Progress** which indicates that the operation triggered by command has been
+- **Progress** event indicates that the operation triggered by command has been
 started and is in the pending state at the moment.
-- **Data** which holds the output produced by the command execution
+- **Data** event holds the output produced by the command execution
 - **Error** notifies that an error has been occurred during the command
 execution
 
@@ -93,6 +93,43 @@ github "hyperoslo/Aftermath"
 
 **Aftermath** can also be installed manually. Just download and drop `Sources`
 folders in your project.
+
+# Extensions
+
+This repository aims to be the core implementation of framework, but there are
+also a range of extensions that integrate **Aftermath** with other libraries
+and extend it with more features:
+
+- [AftermathTools](https://github.com/hyperoslo/AftermathTools) is a set of
+development tools for **Aftermath** where you can find additional helpers,
+useful command and event middleware for logging, error handling, etc.
+
+- [AftermathCompass](https://github.com/hyperoslo/AftermathCompass) is a
+message-driven routing system built on top of **Aftermath** and
+[Compass](https://github.com/hyperoslo/Compass).
+
+- [AftermathSpots](https://github.com/hyperoslo/AftermathSpots) is made to
+improve development routines of building component-based UIs using
+[Spots](https://github.com/hyperoslo/Spots) cross-platform view controller
+framework. It comes with custom reactions and injectable behaviors that move
+code reusability to the next level and make your application even more
+decoupled and flexible.
+
+# Examples
+
+- [iOS Playground](https://github.com/hyperoslo/Aftermath/blob/master/Playground-iOS.playground/Content.swift)
+uses live view of interactive playground to show how to fetch data from network
+and display it in the `UITableView`.
+
+- [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
+is a simple application that demonstrates how to setup networking stack and
+data cache layer using **Aftermath**. It uses the concept of `stories` to group
+related types and make the `command -> event` flow more readable.
+
+- [AftermathNotesPlus](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
+is a more advanced example that extends [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
+demo. It plays with generics and introduces the concept of `features` in order
+to reuse view controllers and RESTful network requests.
 
 ## Author
 
