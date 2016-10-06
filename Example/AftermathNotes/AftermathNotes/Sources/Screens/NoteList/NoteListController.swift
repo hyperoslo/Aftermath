@@ -23,9 +23,7 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-
-    // Execute command to load a list of notes.
-    execute(command: NoteListStory.Command())
+    refreshData()
   }
 
   // MARK: - Configuration
@@ -33,7 +31,7 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
   func setupTableView() {
     tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: #selector(refreshData(_:)), forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: .ValueChanged)
   }
 
   // MARK: - Reactions
@@ -57,7 +55,8 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
 
   // MARK: - Actions
 
-  func refreshData(refreshControl: UIRefreshControl) {
+  func refreshData() {
+    // Execute command to load a list of notes.
     execute(command: NoteListStory.Command())
   }
 

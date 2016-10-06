@@ -32,9 +32,7 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-
-    // Execute command to load a list of models.
-    execute(command: ListCommand<Feature>())
+    refreshData()
   }
 
   // MARK: - Configuration
@@ -42,7 +40,7 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
   func setupTableView() {
     tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: #selector(refreshData(_:)), forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: .ValueChanged)
   }
 
   // MARK: - Reactions
@@ -97,7 +95,8 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
 
   // MARK: - Actions
 
-  func refreshData(refreshControl: UIRefreshControl) {
+  func refreshData() {
+    // Execute command to load a list of models.
     execute(command: ListCommand<Feature>())
   }
 
