@@ -15,7 +15,6 @@
 		D574B1271DA58D7F0048AB15 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B10D1DA58D7F0048AB15 /* Configurator.swift */; };
 		D574B1281DA58D7F0048AB15 /* FashionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B10E1DA58D7F0048AB15 /* FashionConfigurator.swift */; };
 		D574B1291DA58D7F0048AB15 /* MalibuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B10F1DA58D7F0048AB15 /* MalibuConfigurator.swift */; };
-		D574B12A1DA58D7F0048AB15 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1111DA58D7F0048AB15 /* UITableViewCell+Extensions.swift */; };
 		D574B12B1DA58D7F0048AB15 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1121DA58D7F0048AB15 /* UIViewController+Extensions.swift */; };
 		D574B12C1DA58D7F0048AB15 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1141DA58D7F0048AB15 /* Note.swift */; };
 		D574B1331DA58D7F0048AB15 /* MainStylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1201DA58D7F0048AB15 /* MainStylesheet.swift */; };
@@ -26,6 +25,7 @@
 		D574B13F1DA58FC70048AB15 /* NoteDetailStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B13A1DA58FC70048AB15 /* NoteDetailStory.swift */; };
 		D574B1401DA58FC70048AB15 /* NoteUpdateStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B13B1DA58FC70048AB15 /* NoteUpdateStory.swift */; };
 		D574B1421DA591440048AB15 /* PayloadStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B1411DA591440048AB15 /* PayloadStorage.swift */; };
+		D5FFAA551DA5B36400B2807C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA541DA5B36400B2807C /* TableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,6 @@
 		D574B10D1DA58D7F0048AB15 /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		D574B10E1DA58D7F0048AB15 /* FashionConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FashionConfigurator.swift; sourceTree = "<group>"; };
 		D574B10F1DA58D7F0048AB15 /* MalibuConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalibuConfigurator.swift; sourceTree = "<group>"; };
-		D574B1111DA58D7F0048AB15 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		D574B1121DA58D7F0048AB15 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		D574B1141DA58D7F0048AB15 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		D574B1201DA58D7F0048AB15 /* MainStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStylesheet.swift; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		D574B13B1DA58FC70048AB15 /* NoteUpdateStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteUpdateStory.swift; sourceTree = "<group>"; };
 		D574B1411DA591440048AB15 /* PayloadStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadStorage.swift; sourceTree = "<group>"; };
 		D5C7F7401C3BC9CE008CDDBA /* AftermathNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AftermathNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5FFAA541DA5B36400B2807C /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		FA43453E3874149AFE2D9834 /* Pods_AftermathNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +97,7 @@
 		D574B1091DA58D7F0048AB15 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D5FFAA531DA5B36400B2807C /* Views */,
 				D574B10A1DA58D7F0048AB15 /* AppDelegate.swift */,
 				D574B10B1DA58D7F0048AB15 /* Configuration */,
 				D574B1101DA58D7F0048AB15 /* Library */,
@@ -121,7 +122,6 @@
 		D574B1101DA58D7F0048AB15 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				D574B1111DA58D7F0048AB15 /* UITableViewCell+Extensions.swift */,
 				D574B1121DA58D7F0048AB15 /* UIViewController+Extensions.swift */,
 				D574B1411DA591440048AB15 /* PayloadStorage.swift */,
 			);
@@ -189,6 +189,14 @@
 				D5C7F7401C3BC9CE008CDDBA /* AftermathNotes.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D5FFAA531DA5B36400B2807C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5FFAA541DA5B36400B2807C /* TableCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E1B37568C2FA5DE5EF25EE4F /* Frameworks */ = {
@@ -326,7 +334,6 @@
 				D574B1341DA58D7F0048AB15 /* SystemStylesheet.swift in Sources */,
 				D574B1251DA58D7F0048AB15 /* AppDelegate.swift in Sources */,
 				D574B1271DA58D7F0048AB15 /* Configurator.swift in Sources */,
-				D574B12A1DA58D7F0048AB15 /* UITableViewCell+Extensions.swift in Sources */,
 				D574B12C1DA58D7F0048AB15 /* Note.swift in Sources */,
 				D574B12B1DA58D7F0048AB15 /* UIViewController+Extensions.swift in Sources */,
 				D574B1261DA58D7F0048AB15 /* AftermathConfigurator.swift in Sources */,
@@ -335,6 +342,7 @@
 				D574B1281DA58D7F0048AB15 /* FashionConfigurator.swift in Sources */,
 				D574B1421DA591440048AB15 /* PayloadStorage.swift in Sources */,
 				D574B1291DA58D7F0048AB15 /* MalibuConfigurator.swift in Sources */,
+				D5FFAA551DA5B36400B2807C /* TableCell.swift in Sources */,
 				D574B13E1DA58FC70048AB15 /* NoteDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

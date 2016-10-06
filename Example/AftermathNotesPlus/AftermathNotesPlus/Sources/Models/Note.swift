@@ -1,13 +1,11 @@
-import Foundation
 import Tailor
 import Aftermath
 
-struct Note: SafeMappable, Identifiable {
-
+struct Note: Entity {
   let id: Int
   let userId: Int
-  let title: String
-  let body: String
+  var title: String
+  var body: String
 
   init(_ map: JSONDictionary) throws {
     id = try <-map.property("id")

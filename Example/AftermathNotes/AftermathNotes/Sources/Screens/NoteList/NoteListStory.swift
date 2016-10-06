@@ -27,7 +27,7 @@ struct NoteListStory {
     }
 
     func loadLocalData() {
-      PayloadStorage.sharedInstance.load(.Notes) { array in
+      PayloadStorage.sharedInstance.load(Note.identifier) { array in
         guard let array = array where !self.isFetched else {
           return
         }
@@ -48,7 +48,7 @@ struct NoteListStory {
         .validate()
         .toJSONArray()
         .then({ array -> [Note] in
-          PayloadStorage.sharedInstance.save(array: array, with: .Notes)
+          PayloadStorage.sharedInstance.save(array: array, with: Note.identifier)
           return try array.map({
             try Note($0)
           })

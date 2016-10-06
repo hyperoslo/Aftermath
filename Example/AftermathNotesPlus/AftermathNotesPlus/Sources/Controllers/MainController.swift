@@ -2,22 +2,22 @@ import UIKit
 
 class MainController: UITabBarController {
 
-  lazy var postsController: UINavigationController = {
-    let controller = PostsController()
+  lazy var noteListController: UINavigationController = {
+    let controller = ListController(feature: NoteFeature())
     let navigationController = UINavigationController(rootViewController: controller)
     controller.view.stylize(Styles.Content)
-    controller.tabBarItem.title = "Wall"
-    controller.tabBarItem.image = UIImage(named: "tabPosts")
+    controller.tabBarItem.title = "Notes"
+    controller.tabBarItem.image = UIImage(named: "tabNotes")
 
     return navigationController
   }()
 
-  lazy var usersController: UINavigationController = {
-    let controller = UsersController()
+  lazy var todoListController: UINavigationController = {
+    let controller = ListController(feature: TodoFeature())
     let navigationController = UINavigationController(rootViewController: controller)
     controller.view.stylize(Styles.Content)
-    controller.tabBarItem.title = "Users"
-    controller.tabBarItem.image = UIImage(named: "tabUsers")
+    controller.tabBarItem.title = "Todos"
+    controller.tabBarItem.image = UIImage(named: "tabTodos")
 
     return navigationController
   }()
@@ -26,6 +26,8 @@ class MainController: UITabBarController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    title = "Aftermath"
     view.stylize(Styles.Content)
     configureTabBar()
   }
@@ -34,8 +36,8 @@ class MainController: UITabBarController {
 
   func configureTabBar() {
     viewControllers = [
-      postsController,
-      usersController
+      noteListController,
+      todoListController
     ]
 
     selectedIndex = 0

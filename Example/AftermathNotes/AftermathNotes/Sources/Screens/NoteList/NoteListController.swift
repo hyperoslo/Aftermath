@@ -45,7 +45,7 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
   // MARK: - Configuration
 
   func setupTableView() {
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
+    tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
     refreshControl = UIRefreshControl()
     refreshControl?.addTarget(self, action: #selector(refreshData(_:)), forControlEvents: .ValueChanged)
   }
@@ -64,7 +64,7 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
   }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.identifier,
+    let cell = tableView.dequeueReusableCellWithIdentifier(TableCell.identifier,
                                                            forIndexPath: indexPath)
     let note = notes[indexPath.item]
 
