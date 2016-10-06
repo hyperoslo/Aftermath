@@ -81,6 +81,8 @@ of output processing.
 
 The first step is to declare a command. Let's say we want to fetch a list of
 books from some untrusted resource and correct typos in titles and author names.
+Your command type has to conform to `Aftermath.Command` protocol and the
+`Output` must be implicitly specified:
 
 ```swift
 // This is our model we are going to work with.
@@ -109,7 +111,7 @@ struct BookUpdateCommand: Command {
 In order to execute a command you have to conform to `CommandProducer` protocol:
 
 ```swift
-class BookListController: UITableViewController, CommandProducer {
+class ViewController: UITableViewController, CommandProducer {
 
   // Fetch a list of books.
   func load() {
@@ -125,12 +127,70 @@ class BookListController: UITableViewController, CommandProducer {
 
 ## Command handling
 
+Command is an intention that needs to be translated into action by handler.
+Command handler is responsible for publishing events to notify about results of
+the operation it performs. Command handler type has to conform to
+`Aftermath.CommandHandler` protocol that needs to know about the command type
+it will work with:
+
 ```swift
+struct BookListCommandHandler: CommandHandler {
+
+  func handle(command: BookListCommand) throws -> Event<BooksCommand> {
+    // Start network request to fetch data.
+    fetchBooks { books, error in
+      if let error = error {
+        // Publish error.
+        self.publish(error: error)
+        return
+      }
+
+      // Publish fetched data.
+      self.publish(data: books)
+    }
+
+    // Load data from local database/cache.
+    let localBooks = loadLocalBooks()
+
+    // If the list is empty let the listeners know that operation is in the process.
+    return Book.list.isEmpty ? Event.Progress : Event.Data(localBooks)
+  }
+}
 ```
 
 ## Reacting to events
 
+The last step, but not the least, is to react to events published by command
+handlers. Just conform to `ReactionProducer` protocol, implement reaction
+behavior and you're ready to go:
+
 ```swift
+class ViewController: UITableViewController, CommandProducer, ReactionProducer {
+
+  var books = [Book]()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    // React to events.
+    react(to: BookListCommand.self, with: Reaction(
+      wait: { [weak self] in
+        // Wait for results to come.
+        self?.refreshControl?.beginRefreshing()
+      },
+      consume: { [weak self] books in
+        // We're lucky, there are some books to display.
+        self?.books = books
+        self?.refreshControl?.endRefreshing()
+        self?.tableView.reloadData()
+      },
+      rescue: { [weak self] error in
+        // Well, seems like something went wrong.
+        self?.refreshControl?.endRefreshing()
+        print(error)
+    }))
+  }
+}
 ```
 
 ## Extra
@@ -158,8 +218,14 @@ struct WelcomeAction: Action {
   }
 }
 
-// ...
-execute(WelcomeAction(userId: 11))
+// Execute action
+
+struct WelcomeManager: CommandProducer {
+
+  func salute() {
+    execute(WelcomeAction(userId: 11))
+  }
+}
 ```
 
 ## Fact
@@ -181,6 +247,7 @@ class ProfileController: UIViewController, ReactionProducer {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    // React
     next { (fact: LoginFact) in
       title = fact.username
     }
@@ -189,8 +256,8 @@ class ProfileController: UIViewController, ReactionProducer {
 
 struct AuthService: FactProducer {
   func login() {
-    // ...
     let fact = LoginFact(username: "John Doe")
+    // Publish
     post(fact: fact)  
   }
 }

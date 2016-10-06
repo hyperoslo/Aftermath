@@ -27,7 +27,7 @@ struct BooksCommand: Command {
 
 // Command is an intention that needs to be translated into action by handler.
 // Command handler is responsible for publishing events to notify about
-// results of operation that it performs.
+// results of the operation it performs.
 
 struct BooksCommandHandler: CommandHandler {
 
@@ -45,12 +45,12 @@ struct BooksCommandHandler: CommandHandler {
     // Load data from local database/cache.
     let localBooks = Book.list
 
-    // If the list is empty let the listeners know that operation is in the process
+    // If the list is empty let the listeners know that operation is in the process.
     return Book.list.isEmpty ? Event.Progress : Event.Data(localBooks)
   }
 }
 
-// Every command handler needs to be registered on Aftermath Engine
+// Every command handler needs to be registered on Aftermath Engine.
 
 Engine.sharedInstance.use(BooksCommandHandler())
 
@@ -69,18 +69,18 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
     refreshControl = UIRefreshControl()
     refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: .ValueChanged)
 
-    // Reac on events
+    // React to events.
     react(to: BooksCommand.self, with: Reaction(
-      wait: {
-        self.refreshControl?.beginRefreshing()
+      wait: { [weak self] in
+        self?.refreshControl?.beginRefreshing()
       },
-      consume: { books in
-        self.books = books
-        self.refreshControl?.endRefreshing()
-        self.tableView.reloadData()
+      consume: { [weak self] books in
+        self?.books = books
+        self?.refreshControl?.endRefreshing()
+        self?.tableView.reloadData()
       },
-      rescue: { error in
-        self.refreshControl?.endRefreshing()
+      rescue: { [weak self] error in
+        self?.refreshControl?.endRefreshing()
         print(error)
     }))
   }
