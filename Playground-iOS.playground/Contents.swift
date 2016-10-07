@@ -25,8 +25,8 @@ struct BooksCommand: Command {
   typealias Output = [Book]
 }
 
-// Command is an intention that needs to be translated into action by handler.
-// Command handler is responsible for publishing events to notify about
+// Command is an intention that needs to be translated into an action by handler.
+// The command handler is responsible for publishing events to notify about
 // results of the operation it performs.
 
 struct BooksCommandHandler: CommandHandler {

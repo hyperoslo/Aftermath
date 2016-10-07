@@ -96,7 +96,7 @@ of output processing.
 
 ### Command execution
 
-The first step is to declare a command. Your command type has to conform to
+The first step is to declare a command. Your command type has to conform to the
 `Aftermath.Command` protocol and the `Output` type must be implicitly specified.
 
 Let's say we want to fetch a list of books from some untrusted resource and
@@ -126,8 +126,8 @@ struct BookUpdateCommand: Command {
 }
 ```
 
-**Note** that any type can play a role of `Output`, so if we want to add a date
-to our `BookUpdateCommand` it could look like the following:
+**Note** that any type can play the role of `Output`, so if we want to add a
+date to our `BookUpdateCommand` it could look like the following:
 
 ```swift
 typealias Output = (Book, NSDate)
@@ -152,10 +152,10 @@ class ViewController: UITableViewController, CommandProducer {
 
 ### Command handling
 
-Command is an intention that needs to be translated into action by handler.
-Command handler is responsible for publishing events to notify about results of
-the operation it performs. Command handler type has to conform to
-`Aftermath.CommandHandler` protocol that needs to know about the command type
+Command is an intention that needs to be translated into an action by a handler.
+The command handler is responsible for publishing events to notify about results of
+the operation it performs. The command handlers type has to conform to
+`Aftermath.CommandHandler` protocol, that needs to know about the command type
 it will work with:
 
 ```swift
@@ -192,7 +192,7 @@ Engine.sharedInstance.use(BookListCommandHandler())
 
 ### Reacting to events
 
-The last step, but not the least, is to react to events published by command
+The last step, but not the least, is to react to events published by the command
 handlers. Just conform to `ReactionProducer` protocol, implement reaction
 behavior and you're ready to go:
 
@@ -282,9 +282,9 @@ struct WelcomeManager: CommandProducer {
 
 ### Fact
 
-**Fact** works like notification with no async operations involved. It could
-be used when there is no need to have a handler and generate an output. Fact is
-already an output itself, so the only thing you want to do is notify all
+**Fact** works like notification, with no async operations involved. It can
+be used when there is no need for a handler to generate an output. Fact is an
+output itself, so the only thing you want to do is notify all
 subscribers that something happened in the system, and they will react
 accordingly. In this sense it's closer to a type-safe alternative to
 `NSNotification`.
@@ -318,8 +318,8 @@ struct AuthService: FactProducer {
 
 ### Middleware
 
-**Middleware** is a layer where commands and events could be intercepted before
-the moment they reach listeners. It means you can modify/cancel/extend the
+**Middleware** is a layer where commands and events can be intercepted before
+they reach their listeners. It means you can modify/cancel/extend the
 executed command in **Command Middleware**, or do appropriate operation in
 **Event Middleware** before the published event is received by its reactions.
 It's handy for logging, crash reporting, aborting particular commands or
@@ -412,9 +412,10 @@ Engine.sharedInstance.invalidate()
 
 ### Stories
 
-Naming is hard. I doesn't seem right to have names like `BookListCommand`,
-`BookListCommandHandler` and `BookListWhatever` in the project. Here comes the
-idea of stories that group related types and make the flow more concrete:
+Naming is hard. It doesn't feel right to have names like `BookListCommand`,
+`BookListCommandHandler` and `BookListWhatever`, does it? If you agree, then
+you can work around this issue by introducing a new idea into the mix.
+You can group all related types into stories, which make the flow more concrete.
 
 ```swift
 struct BookListStory {
@@ -429,7 +430,7 @@ struct BookListStory {
 }
 ```
 
-In this sense it's close to user stories used in agile software development
+In this sense, it's close to user stories used in agile software development
 methodologies.
 
 You can find more detailed example in [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/Aftermath)
@@ -500,7 +501,7 @@ demo project.
 
 ## Summary
 
-We believe that in iOS applications in most of the cases there is no real need
+We believe that in iOS applications, in most of the cases, there is no real need
 for single global state (single source of truth) or multiple sub-states
 distributed between stores. Data is stored on disc in local persistence layer,
 such as database and cache, or it's fetched from network. Then this content,
