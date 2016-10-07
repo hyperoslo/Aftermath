@@ -62,6 +62,11 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
   let reuseIdentifier = "book"
   var books = [Book]()
 
+  deinit {
+    // Don't forget to dispose all reaction tokens.
+    disposeAll()
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.registerClass(UITableViewCell.self,

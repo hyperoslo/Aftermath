@@ -77,7 +77,7 @@ of output processing.
 
 ## The flow
 
-## Command execution
+### Command execution
 
 The first step is to declare a command. Let's say we want to fetch a list of
 books from some untrusted resource and correct typos in titles and author names.
@@ -125,7 +125,7 @@ class ViewController: UITableViewController, CommandProducer {
 }
 ```
 
-## Command handling
+### Command handling
 
 Command is an intention that needs to be translated into action by handler.
 Command handler is responsible for publishing events to notify about results of
@@ -158,7 +158,13 @@ struct BookListCommandHandler: CommandHandler {
 }
 ```
 
-## Reacting to events
+Every command handler needs to be registered on [Aftermath Engine](#engine).
+
+```swift
+Engine.sharedInstance.use(BookListCommandHandler())
+```
+
+### Reacting to events
 
 The last step, but not the least, is to react to events published by command
 handlers. Just conform to `ReactionProducer` protocol, implement reaction
@@ -168,6 +174,11 @@ behavior and you're ready to go:
 class ViewController: UITableViewController, CommandProducer, ReactionProducer {
 
   var books = [Book]()
+
+  deinit {
+    // Don't forget to dispose all reaction tokens.
+    disposeAll()
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -193,9 +204,22 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
 }
 ```
 
+**It's important** to dispose all reaction tokens when your `ReactionProducer`
+instance is about to be deallocated or reaction needs to be unsubscribed from
+event.
+
+```swift
+// Disposes all reaction tokens for the current `ReactionProducer`.
+disposeAll()
+
+// Disposes a specified reaction token.
+let token = react(to: BookListCommand.self, with: reaction)
+dispose(token: token)
+```
+
 ## Extra
 
-## Action
+### Action
 
 **Action** is a variation of command that handles itself. It's a possibility to
 simplify the code when command itself or business logic are super tiny. There
@@ -228,7 +252,7 @@ struct WelcomeManager: CommandProducer {
 }
 ```
 
-## Fact
+### Fact
 
 **Fact** works like notification with no async operations involved. It could
 be used when there is no need to have a handler and generate an output, fact is
@@ -263,10 +287,126 @@ struct AuthService: FactProducer {
 }
 ```
 
-## Middleware
+### Any types
+
+`AnyCommand` and `AnyEvent` are special protocols that every `Command` or
+`Event` conform to. They are used mostly in [middleware](#middleware) to
+workaround restrictions with `associatedtype` in Swift protocols.
+
+### Middleware
+
+**Middleware** is a layer where commands and events could be intercepted before
+the moment they reach listeners. It means you can modify/cancel/extend the
+executed command in **Command Middleware**, or do appropriate operation in
+**Event Middleware** before the published event is received by its reactions.
+It's handy for logging, crash reporting, aborting particular commands and
+events, etc.
 
 ```swift
+// Command middleware
+struct ErrorCommandMiddleware: CommandMiddleware {
+
+  func intercept(command: AnyCommand, execute: Execute, next: Execute) throws {
+    do {
+      // Don't forget to call `next` to invoke the next function in the chain.
+      try next(command)
+    } catch {
+      print("Command failed with error -> \(command)")
+      throw error
+    }
+  }
+}
+
+Engine.sharedInstance.pipeCommands(through: [ErrorCommandMiddleware()])
+
+// Event middleware
+struct LogEventMiddleware: EventMiddleware {
+
+  // Don't forget to call `next` to invoke the next function in the chain.
+  func intercept(event: AnyEvent, publish: Publish, next: Publish) throws {
+    print("Event published -> \(event)")
+    try next(event)
+  }
+}
+
+Engine.sharedInstance.pipeEvents(through: [LogEventMiddleware()])
 ```
+
+**It's important** to call `next` to invoke the next function in the chain while
+building your custom middleware.
+
+## Engine
+
+**Engine** in the main entry point for **Aftermath** configuration:
+
+- Register command handlers:
+
+```swift
+Engine.sharedInstance.use(BookListCommandHandler())
+```
+
+- Add command and event middleware:
+
+```swift
+// Commands
+Engine.sharedInstance.pipeCommands(through: [LogCommandMiddleware(), ErrorCommandMiddleware()])
+// Events
+Engine.sharedInstance.pipeEvents(through: [LogEventMiddleware(), ErrorEventMiddleware()])
+```
+
+- Set global error handler to catch all unexpected errors and framework
+warnings:
+
+```swift
+struct EngineErrorHandler: ErrorHandler {
+
+  func handleError(error: ErrorType) {
+    if let error = error as? Error {
+      print("Engine error -> \(error)")
+    } else if let warning = error as? Warning {
+      print("Engine warning -> \(warning)")
+    } else {
+      print("Unknown error -> \(error)")
+    }
+  }
+}
+
+Engine.sharedInstance.errorHandler = EngineErrorHandler()
+```
+
+- Dispose all registered command handlers and event listeners (reactions):
+
+```swift
+Engine.sharedInstance.invalidate()
+```
+
+## Summary
+
+We believe that in iOS applications in most of the cases there is no real need
+for single global state (single source of truth) or multiple sub-states
+distributed between stores. Data is stored on disc in local persistence layer,
+such as database and cache, or fetched from network. Then this content,
+assembled piece by piece from different sources, is translated into the
+"view state", which is readable by the view to render it on the screen. This
+"view state" is kept in memory and valid at a given instant in time until we
+switch the context and the current view is deallocated. Keeping that in mind,
+it makes more sense to dispose the "view state" together with the view it
+belongs to, rather than retain no longer used replication in any sort of global
+state. It should be enough to restore a state by re-playing previous events
+from the history.
+
+**Advantages of Aftermath**
+
+- Separation of concerns
+- Code reusability
+- Unidirectional data flow
+- Type safety
+
+**Disadvantages of **Aftermath**
+
+- No state
+- Async command handler could confuse the flow
+- Focusing on command output instead of actual data
 
 ## Installation
 
@@ -286,6 +426,22 @@ github "hyperoslo/Aftermath"
 
 **Aftermath** can also be installed manually. Just download and drop `Sources`
 folders in your project.
+
+## Examples
+
+- [iOS Playground](https://github.com/hyperoslo/Aftermath/blob/master/Playground-iOS.playground/Content.swift)
+uses live view of interactive playground to show how to fetch data from network
+and display it in the `UITableView`.
+
+- [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
+is a simple application that demonstrates how to setup networking stack and
+data cache layer using **Aftermath**. It uses the concept of `stories` to group
+related types and make the `command -> event` flow more readable.
+
+- [AftermathNotesPlus](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
+is a more advanced example that extends [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
+demo. It plays with generics and introduces the concept of `features` in order
+to reuse view controllers and RESTful network requests.
 
 ## Extensions
 
@@ -308,21 +464,20 @@ framework. It comes with custom reactions and injectable behaviors that move
 code reusability to the next level and make your application even more
 decoupled and flexible.
 
-## Examples
+## Alternatives
 
-- [iOS Playground](https://github.com/hyperoslo/Aftermath/blob/master/Playground-iOS.playground/Content.swift)
-uses live view of interactive playground to show how to fetch data from network
-and display it in the `UITableView`.
+Still not sure about state management? Yeah, it's not that easy to find a
+silver bullet for all occasions and cover all scenarios. The are some links
+that for further reading and research:
 
-- [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
-is a simple application that demonstrates how to setup networking stack and
-data cache layer using **Aftermath**. It uses the concept of `stories` to group
-related types and make the `command -> event` flow more readable.
+- [ReSwift](https://github.com/ReSwift/ReSwift) - Unidirectional Data Flow in
+Swift, inspired by Redux.
 
-- [AftermathNotesPlus](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
-is a more advanced example that extends [AftermathNotes](https://github.com/hyperoslo/Aftermath/blob/master/Example/AftermathNotes)
-demo. It plays with generics and introduces the concept of `features` in order
-to reuse view controllers and RESTful network requests.
+- [SwiftFlux](https://github.com/yonekawa/SwiftFlux) - A type-safe Flux
+implementation in Swift.
+
+- [fantastic-ios-architecture](https://github.com/onmyway133/fantastic-ios-architecture)
+- A list of resources related to iOS architecture topic.
 
 ## Author
 
