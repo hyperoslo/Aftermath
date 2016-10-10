@@ -597,7 +597,7 @@ there are some links for further reading and research:
 Swift, inspired by [Redux](http://redux.js.org).
 
 - [SwiftFlux](https://github.com/yonekawa/SwiftFlux) - A type-safe
-[Flux](https://facebook.github.io/flux/)) implementation in Swift.
+[Flux](https://facebook.github.io/flux/) implementation in Swift.
 
 - [fantastic-ios-architecture](https://github.com/onmyway133/fantastic-ios-architecture) -
 A list of resources related to iOS architecture topic.
