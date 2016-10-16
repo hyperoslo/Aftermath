@@ -549,6 +549,10 @@ history.
 - Focusing on command output instead of actual data
 - Async command handler could confuse the flow
 
+**P.S.** Even though **Aftermath** is a stateless framework at the moment, we
+have plans to introduce some sort of optional store(s) for better state
+management. It might be a new feature in v2, keep watching.
+
 ## Installation
 
 **Aftermath** is available through [CocoaPods](http://cocoapods.org). To install
