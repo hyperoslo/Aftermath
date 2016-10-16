@@ -20,12 +20,11 @@ MVVM or MVP approaches. Utilizing the ideas behind
 and [Flux](https://facebook.github.io/flux/) patterns it helps to separate
 concerns, reduce code dependencies and make data flow more predictable.
 
-The following diagram demonstrates a simplified version of the flow
-in **Aftermath** architecture and defines 4 main components that form the core
-of the framework:
+The following diagram demonstrates the data flow in **Aftermath** architecture
+in details:
 
 <div align="center">
-<img src="https://github.com/hyperoslo/Aftermath/blob/master/Images/diagram1.png" />
+<img src="https://github.com/hyperoslo/Aftermath/blob/master/Images/detailed_flow.png" />
 </div><br/>
 
 ## Table of Contents
@@ -93,6 +92,13 @@ Normally reaction performs UI updates, but could also be used for other kinds
 of output processing.
 
 ## The flow
+
+Taking 4 core components described before, we can build a simplified version
+of the data flow:
+
+<div align="center">
+<img src="https://github.com/hyperoslo/Aftermath/blob/master/Images/simplified_flow.png" />
+</div><br/>
 
 ### Command execution
 
@@ -319,9 +325,22 @@ struct AuthService: FactProducer {
 ### Middleware
 
 **Middleware** is a layer where commands and events can be intercepted before
-they reach their listeners. It means you can modify/cancel/extend the
-executed command in **Command Middleware**, or do appropriate operation in
-**Event Middleware** before the published event is received by its reactions.
+they reach their listeners.
+
+It means you can modify/cancel/extend the executed command in
+**Command Middleware** before it reaches the command handler:
+
+<div align="center">
+<img src="https://github.com/hyperoslo/Aftermath/blob/master/Images/command_middleware.png" />
+</div><br/>
+
+Or you can do appropriate operation in **Event Middleware** before the
+published event is received by its reactions.
+
+<div align="center">
+<img src="https://github.com/hyperoslo/Aftermath/blob/master/Images/event_middleware.png" />
+</div><br/>
+
 It's handy for logging, crash reporting, aborting particular commands or
 events, etc.
 
