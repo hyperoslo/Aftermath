@@ -328,7 +328,7 @@ struct AuthService: FactProducer {
 they reach their listeners.
 
 It means you can modify/cancel/extend the executed command in
-**Command Middleware** before it reaches the command handler:
+**Command Middleware** before it's processed by the command handler:
 
 <div align="center">
 <img src="https://github.com/hyperoslo/Aftermath/blob/master/Images/command_middleware.png" />
