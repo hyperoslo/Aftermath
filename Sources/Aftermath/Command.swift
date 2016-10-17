@@ -31,16 +31,16 @@ public protocol CommandProducer {}
 public extension CommandProducer {
 
   func execute(command: AnyCommand) {
-    Engine.sharedInstance.commandBus.execute(command: command)
+    Engine.shared.commandBus.execute(command: command)
   }
 
   func execute(builder: CommandBuilder) {
-    Engine.sharedInstance.commandBus.execute(builder: builder)
+    Engine.shared.commandBus.execute(builder: builder)
   }
 
   func execute<T: Action>(action: T) {
-    if !Engine.sharedInstance.commandBus.contains(handler: T.self) {
-      Engine.sharedInstance.use(handler: action)
+    if !Engine.shared.commandBus.contains(handler: T.self) {
+      Engine.shared.use(handler: action)
     }
 
     execute(command: action)
@@ -78,7 +78,7 @@ public extension CommandHandler {
   }
 
   func publish(event: Event<CommandType>) {
-    Engine.sharedInstance.eventBus.publish(event: event)
+    Engine.shared.eventBus.publish(event: event)
   }
 }
 

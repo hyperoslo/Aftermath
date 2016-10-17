@@ -17,12 +17,12 @@ class CommandProducerTests: XCTestCase {
       self.executedCommand = executedCommand
     }
 
-    Engine.sharedInstance.use(handler: commandHandler)
+    Engine.shared.use(handler: commandHandler)
   }
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
   }
 
   // MARK: - Tests
@@ -44,10 +44,10 @@ class CommandProducerTests: XCTestCase {
       executedAction = action
     }
 
-    XCTAssertFalse(Engine.sharedInstance.commandBus.contains(handler: TestAction.self))
+    XCTAssertFalse(Engine.shared.commandBus.contains(handler: TestAction.self))
 
     producer.execute(action: action)
-    XCTAssertTrue(Engine.sharedInstance.commandBus.contains(handler: TestAction.self))
+    XCTAssertTrue(Engine.shared.commandBus.contains(handler: TestAction.self))
     XCTAssertNotNil(executedAction)
   }
 

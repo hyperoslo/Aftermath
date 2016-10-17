@@ -11,12 +11,12 @@ class CommandHandlerTests: XCTestCase {
 
     commandHandler = TestCommandHandler()
     controller = Controller()
-    Engine.sharedInstance.use(handler: commandHandler)
+    Engine.shared.use(handler: commandHandler)
   }
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
   }
 
   // MARK: - Tests

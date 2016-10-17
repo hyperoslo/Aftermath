@@ -42,12 +42,13 @@ public protocol ReactionProducer: Identifiable, Disposer {}
 
 public extension ReactionProducer {
 
-  @discardableResult func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Output>) -> DisposalToken {
-    let token = Engine.sharedInstance.eventBus.listen(to: T.self) { event in
+  @discardableResult func react<T: Command>(to command: T.Type,
+                                with reaction: Reaction<T.Output>) -> DisposalToken {
+    let token = Engine.shared.eventBus.listen(to: T.self) { event in
       reaction.invoke(with: event)
     }
 
-    Engine.sharedInstance.reactionDisposer.append(token: token, from: self)
+    Engine.shared.reactionDisposer.append(token: token, from: self)
 
     return token
   }
@@ -58,10 +59,10 @@ public extension ReactionProducer {
   }
 
   func dispose(token: DisposalToken) {
-    Engine.sharedInstance.reactionDisposer.dispose(token: token, from: self)
+    Engine.shared.reactionDisposer.dispose(token: token, from: self)
   }
 
   func disposeAll() {
-    Engine.sharedInstance.reactionDisposer.disposeAll(from: self)
+    Engine.shared.reactionDisposer.disposeAll(from: self)
   }
 }

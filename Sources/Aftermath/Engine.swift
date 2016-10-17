@@ -1,6 +1,6 @@
 public class Engine {
 
-  public static let sharedInstance = Engine()
+  public static let shared = Engine()
 
   lazy var commandBus: CommandDispatcher = CommandBus(eventDispatcher: self.eventBus)
   var eventBus: EventDispatcher = EventBus()

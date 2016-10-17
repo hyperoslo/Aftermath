@@ -36,7 +36,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
     eventBus.disposeAll()
   }
 

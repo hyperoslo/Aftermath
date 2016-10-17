@@ -14,7 +14,7 @@ class FactProducerTests: XCTestCase {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
   }
 
   // MARK: - Tests

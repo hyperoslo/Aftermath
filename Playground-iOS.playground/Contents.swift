@@ -51,7 +51,7 @@ struct BooksCommandHandler: CommandHandler {
 
 // Every command handler needs to be registered on Aftermath Engine.
 
-Engine.sharedInstance.use(handler: BooksCommandHandler())
+Engine.shared.use(handler: BooksCommandHandler())
 
 // Every action needs a reaction.
 // Let's make a controller that executes a command and reacts on output events.

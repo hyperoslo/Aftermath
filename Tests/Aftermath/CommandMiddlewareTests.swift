@@ -35,7 +35,7 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
     commandBus.disposeAll()
     eventBus.disposeAll()
   }
