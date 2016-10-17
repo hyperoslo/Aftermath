@@ -16,12 +16,12 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
     super.viewDidLoad()
 
     title = "Aftermath"
-    view.stylize(MainStylesheet.Style.Content)
+    view.stylize(MainStylesheet.Style.content)
     setupTableView()
     setupReactions()
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     refreshData()
   }
@@ -29,9 +29,9 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
   // MARK: - Configuration
 
   func setupTableView() {
-    tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
+    tableView.register(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
   }
 
   // MARK: - Reactions
@@ -49,7 +49,7 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
       },
       rescue: { [weak self] error in
         self?.refreshControl?.endRefreshing()
-        self?.showErrorAlert(error)
+        self?.showAlert(error: error)
       }))
   }
 
@@ -62,23 +62,22 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
 
   // MARK: - UITableViewDataSource
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let count = notes.count
-    tableView.backgroundView?.hidden = count > 0
+    tableView.backgroundView?.isHidden = count > 0
 
     return count
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(TableCell.identifier,
-                                                           forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier, for: indexPath)
     let note = notes[indexPath.item]
 
-    cell.textLabel?.text = note.title.capitalizedString
+    cell.textLabel?.text = note.title.capitalized
     cell.detailTextLabel?.text = "Note ID: \(note.id)"
 
     return cell
@@ -86,12 +85,12 @@ class NoteListController: UITableViewController, CommandProducer, ReactionProduc
 
   // MARK: - UITableViewDelegate
 
-  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 64
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
 
     let note = notes[indexPath.row]
     let controller = NoteDetailController(id: note.id)

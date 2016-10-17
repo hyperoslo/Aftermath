@@ -3,10 +3,10 @@ import Malibu
 public struct MalibuConfigurator: Configurator {
 
   public func configure() {
-    Malibu.mode = .Regular
-    Malibu.logger.level = .Verbose
+    Malibu.mode = .regular
+    Malibu.logger.level = .verbose
 
-    let networking = Networking(baseURLString: "http://jsonplaceholder.typicode.com/")
+    let networking = Networking(baseUrl: "http://jsonplaceholder.typicode.com/")
 
     networking.additionalHeaders = {
       ["Accept" : "application/json"]

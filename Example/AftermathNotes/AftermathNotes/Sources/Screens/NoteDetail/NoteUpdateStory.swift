@@ -36,7 +36,7 @@ struct NoteUpdateStory {
 
       Malibu.networking("base").PATCH(request)
         .validate()
-        .toJSONDictionary()
+        .toJsonDictionary()
         .then({ try Note($0) })
         .done({ note in
           self.publish(data: note)
@@ -45,7 +45,7 @@ struct NoteUpdateStory {
           self.publish(error: error)
         })
 
-      return Event.Progress
+      return Event.progress
     }
   }
 }
