@@ -1,7 +1,6 @@
 import Foundation
 @testable import Aftermath
 
-
 struct Calculator {
   let result: Int
 }

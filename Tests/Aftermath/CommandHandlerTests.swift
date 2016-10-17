@@ -59,7 +59,10 @@ class CommandHandlerTests: XCTestCase {
     var executed = false
 
     controller.react(to: TestCommand.self, with:
-      Reaction(wait: { executed = true } ))
+      Reaction(wait: {
+        executed = true
+      }
+    ))
 
     XCTAssertFalse(executed)
     commandHandler.publish(event: Event.progress)
