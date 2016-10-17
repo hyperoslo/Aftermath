@@ -5,7 +5,7 @@ typealias JsonArray = [JsonDictionary]
 
 struct PayloadStorage {
 
-  static let sharedInstance = PayloadStorage()
+  static let shared = PayloadStorage()
 
   let cache = Cache<JSON>(name: "AftermathPayloadCache")
 

@@ -49,7 +49,7 @@ class ListCommandHandler<Feature: RESTFeature>: Aftermath.CommandHandler {
   }
 
   func loadLocalData() {
-    PayloadStorage.sharedInstance.load(key: Feature.Model.identifier) { array in
+    PayloadStorage.shared.load(key: Feature.Model.identifier) { array in
       guard let array = array, !self.isFetched else {
         return
       }
@@ -70,7 +70,7 @@ class ListCommandHandler<Feature: RESTFeature>: Aftermath.CommandHandler {
       .validate()
       .toJsonArray()
       .then({ array -> [Feature.Model] in
-        PayloadStorage.sharedInstance.save(array: array, with: Feature.Model.identifier)
+        PayloadStorage.shared.save(array: array, with: Feature.Model.identifier)
         return try array.map({
           try Feature.Model($0)
         })
