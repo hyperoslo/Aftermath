@@ -4,25 +4,25 @@ import Fashion
 struct MainStylesheet: Stylesheet {
 
   enum Style: String, StyleConvertible {
-    case Content
+    case content
   }
 
   func define() {
-    UIApplication.sharedApplication().statusBarStyle = .Default
+    UIApplication.shared.statusBarStyle = .default
 
     // Shared styles
 
     share { (window: UIWindow) in
-      window.backgroundColor = UIColor.whiteColor()
+      window.backgroundColor = UIColor.white
     }
 
     share { (navigationBar: UINavigationBar) in
-      navigationBar.translucent = true
-      navigationBar.barTintColor = UIColor.whiteColor()
+      navigationBar.isTranslucent = true
+      navigationBar.barTintColor = UIColor.white
     }
 
     share { (tabBar: UITabBar) in
-      tabBar.translucent = true
+      tabBar.isTranslucent = true
     }
 
     share { (tableView: UITableView) in
@@ -31,14 +31,14 @@ struct MainStylesheet: Stylesheet {
 
     share { (cell: UITableViewCell) in
       let selectionView = UIView()
-      selectionView.backgroundColor = UIColor.lightTextColor()
+      selectionView.backgroundColor = UIColor.lightText
       cell.selectedBackgroundView = selectionView
     }
 
     // Custom styles
 
-    register(Style.Content) { (view: UIView) in
-      view.backgroundColor = UIColor.whiteColor()
+    register(Style.content) { (view: UIView) in
+      view.backgroundColor = UIColor.white
     }
   }
 }

@@ -10,8 +10,8 @@ struct TodoFeature: ListFeature, DeleteFeature, CommandProducer {
   var resource = "todos"
 
   func render(model: Todo, on cell: UITableViewCell) {
-    cell.textLabel?.text = model.title.capitalizedString
-    cell.accessoryType = model.completed ? .Checkmark : .None
+    cell.textLabel?.text = model.title.capitalized
+    cell.accessoryType = model.completed ? .checkmark : .none
   }
 
   func select(model: Todo, controller: UITableViewController) {

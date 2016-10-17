@@ -3,8 +3,8 @@ import Aftermath
 
 class ProfileController: UIViewController, CommandProducer, ReactionProducer {
 
-  lazy var notesCountLabel: UILabel = UILabel(styles: ProfileStylesheet.Style.NotesCountLabel)
-  lazy var todosCountLabel: UILabel = UILabel(styles: ProfileStylesheet.Style.TodosCountLabel)
+  lazy var notesCountLabel: UILabel = UILabel(styles: ProfileStylesheet.Style.notesCountLabel)
+  lazy var todosCountLabel: UILabel = UILabel(styles: ProfileStylesheet.Style.todosCountLabel)
 
   var profile: Profile {
     didSet {
@@ -34,7 +34,7 @@ class ProfileController: UIViewController, CommandProducer, ReactionProducer {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.stylize(MainStylesheet.Style.Content)
+    view.stylize(MainStylesheet.Style.content)
     updateText()
 
     [notesCountLabel, todosCountLabel].forEach {
@@ -47,13 +47,13 @@ class ProfileController: UIViewController, CommandProducer, ReactionProducer {
   // MARK: - Layout
 
   func setupConstrains() {
-    notesCountLabel.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 84).active = true
-    notesCountLabel.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 20).active = true
-    notesCountLabel.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -20).active = true
+    notesCountLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 84).isActive = true
+    notesCountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+    notesCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 
-    todosCountLabel.topAnchor.constraintEqualToAnchor(notesCountLabel.bottomAnchor, constant: 20).active = true
-    todosCountLabel.leadingAnchor.constraintEqualToAnchor(notesCountLabel.leadingAnchor).active = true
-    todosCountLabel.trailingAnchor.constraintEqualToAnchor(notesCountLabel.trailingAnchor).active = true
+    todosCountLabel.topAnchor.constraint(equalTo: notesCountLabel.bottomAnchor, constant: 20).isActive = true
+    todosCountLabel.leadingAnchor.constraint(equalTo: notesCountLabel.leadingAnchor).isActive = true
+    todosCountLabel.trailingAnchor.constraint(equalTo: notesCountLabel.trailingAnchor).isActive = true
   }
 
   // MARK: - Reactions

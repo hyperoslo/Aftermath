@@ -3,24 +3,24 @@ import Fashion
 struct ProfileStylesheet: Stylesheet {
 
   enum Style: String, StyleConvertible {
-    case NotesCountLabel
-    case TodosCountLabel
+    case notesCountLabel
+    case todosCountLabel
   }
 
   func define() {
     // Custom styles
 
-    register(Style.NotesCountLabel) { (label: UILabel) in
+    register(Style.notesCountLabel) { (label: UILabel) in
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.textColor = UIColor.blackColor()
-      label.font = UIFont.systemFontOfSize(16)
+      label.textColor = UIColor.black
+      label.font = UIFont.systemFont(ofSize: 16)
       label.numberOfLines = 1
     }
 
-    register(Style.TodosCountLabel) { (label: UILabel) in
+    register(Style.todosCountLabel) { (label: UILabel) in
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.textColor = UIColor.blackColor()
-      label.font = UIFont.systemFontOfSize(16)
+      label.textColor = UIColor.black
+      label.font = UIFont.systemFont(ofSize: 16)
       label.numberOfLines = 1
     }
   }

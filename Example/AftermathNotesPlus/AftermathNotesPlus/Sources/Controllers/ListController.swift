@@ -1,7 +1,7 @@
 import UIKit
 import Aftermath
 
-typealias ListControllerFeature = protocol<ListFeature, UpdateFeature, DeleteFeature>
+typealias ListControllerFeature = ListFeature & UpdateFeature & DeleteFeature
 
 class ListController<Feature: ListControllerFeature>: UITableViewController, CommandProducer, ReactionProducer {
 
@@ -13,6 +13,10 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
   required init(feature: Feature) {
     self.feature = feature
     super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   deinit {
@@ -30,7 +34,7 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
     setupReactions()
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     refreshData()
   }
@@ -38,9 +42,9 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
   // MARK: - Configuration
 
   func setupTableView() {
-    tableView.registerClass(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
+    tableView.register(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
   }
 
   // MARK: - Reactions
@@ -64,32 +68,32 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
     // React to update event
     react(to: UpdateCommand<Feature>.self, with: Reaction(
       consume: { [weak self] model in
-        guard let row = self?.models.indexOf({ $0.id == model.id }) else {
+        guard let row = self?.models.index(where: { $0.id == model.id }) else {
           return
         }
 
-        let indexPath = NSIndexPath(forRow: row, inSection: 0)
+        let indexPath = IndexPath(row: row, section: 0)
 
         self?.models[row] = model
-        self?.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
       },
       rescue: { [weak self] error in
-        self?.showErrorAlert(error)
+        self?.showAlert(error: error)
       }))
 
     // React to delete event
     react(to: DeleteCommand<Feature>.self, with: Reaction(
       consume: { [weak self] id in
-        guard let row = self?.models.indexOf({ $0.id == id }) else {
+        guard let row = self?.models.index(where: { $0.id == id }) else {
           return
         }
 
-        let indexPath = NSIndexPath(forRow: row, inSection: 0)
-        self?.models.removeAtIndex(row)
-        self?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        let indexPath = IndexPath(row: row, section: 0)
+        self?.models.remove(at: row)
+        self?.tableView.deleteRows(at: [indexPath], with: .automatic)
       },
       rescue: { [weak self] error in
-        self?.showErrorAlert(error)
+        self?.showAlert(error: error)
       }))
   }
 
@@ -102,48 +106,48 @@ class ListController<Feature: ListControllerFeature>: UITableViewController, Com
 
   // MARK: - UITableViewDataSource
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let count = models.count
-    tableView.backgroundView?.hidden = count > 0
+    tableView.backgroundView?.isHidden = count > 0
 
     return count
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(TableCell.identifier,
-                                                           forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier,
+                                                           for: indexPath)
     let model = models[indexPath.item]
-    feature.render(model, on: cell)
+    feature.render(model: model, on: cell)
 
     return cell
   }
 
   // MARK: - UITableViewDelegate
 
-  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 64
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
 
     let model = models[indexPath.row]
-    feature.select(model, controller: self)
+    feature.select(model: model, controller: self)
   }
 
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+  override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     return true
   }
 
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
-                          forRowAtIndexPath indexPath: NSIndexPath) {
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                          forRowAt indexPath: IndexPath) {
     let model = models[indexPath.item]
 
-    if editingStyle == UITableViewCellEditingStyle.Delete {
+    if editingStyle == UITableViewCellEditingStyle.delete {
       execute(command: DeleteCommand<Feature>(id: model.id))
     }
   }

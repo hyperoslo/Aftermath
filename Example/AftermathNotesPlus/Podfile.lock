@@ -1,38 +1,35 @@
 PODS:
-  - Aftermath (0.1.0)
-  - Cache (1.5.1):
+  - Aftermath (1.0.0)
+  - Cache (2.0.0):
     - CryptoSwift
-  - CryptoSwift (0.5.2)
-  - Fashion (1.1.0):
-    - Sugar
-  - Malibu (1.3.0):
-    - When (= 1.0.4)
-  - Sugar (1.2.0)
-  - Tailor (1.3.0)
-  - When (1.0.4)
+  - CryptoSwift (0.6.1)
+  - Fashion (2.0.0)
+  - Malibu (2.0.0):
+    - When (~> 2.0)
+  - Tailor (2.0.1)
+  - When (2.0.0)
 
 DEPENDENCIES:
   - Aftermath (from `../../`)
-  - Cache (= 1.5.1)
-  - CryptoSwift (= 0.5.2)
-  - Fashion (= 1.1.0)
-  - Malibu (= 1.3.0)
-  - Tailor (= 1.3.0)
+  - Cache
+  - CryptoSwift
+  - Fashion
+  - Malibu
+  - Tailor
 
 EXTERNAL SOURCES:
   Aftermath:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Aftermath: 35b56efd265a793884716f987ecfa57e5ca09877
-  Cache: 87b48b059429d3b53238533830c53941f8aa85f0
-  CryptoSwift: c1ef79f901b86099a6fe8b3c7524cf9f3f3c8c40
-  Fashion: 82f2bb05505e3aea0977a2c23f5d8692e06f12a9
-  Malibu: ee3c26922cca9c5be989b584fb5a561f3fc686a4
-  Sugar: 556b623f0f8846cf08de7302701892f11d567419
-  Tailor: 71fac74a4f14abcd13a10bf07bbe69d5ac746f58
-  When: 033104df132ebfa75f4d3a9ba3e7a9865a573a1c
+  Aftermath: a5b44337e973c786ee12b0520541911beac94b0e
+  Cache: 86c7a082ce5a734df15a103581d81d29002a171e
+  CryptoSwift: abdbc1bf32c89117c6b403810a7b30f742d86e68
+  Fashion: f5cd202dcd048edd35217349527ac446d0853cd7
+  Malibu: d697d750eba061696ddafa097b6cb325ba6037f7
+  Tailor: faa9ec5be402056be8ec67c0e461f00251d19191
+  When: 3df626af4891607ea7dd3f46a451176c5642c528
 
-PODFILE CHECKSUM: 9f890914dc2e9f494f71c7a860061d2b258bbc1e
+PODFILE CHECKSUM: a5287489b9a3485edf32fcae7bc127935afb62fd
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.0.rc.3

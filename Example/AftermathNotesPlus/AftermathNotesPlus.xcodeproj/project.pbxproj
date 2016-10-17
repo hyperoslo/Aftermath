@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BBC390010C5A9DA0A21CD72C /* Pods_AftermathNotesPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54ED12209E27CF791578907F /* Pods_AftermathNotesPlus.framework */; };
+		43D9BE03F869AACEDC1D92AC /* Pods_AftermathNotesPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8D141B7F92A1CD88C0C0EC /* Pods_AftermathNotesPlus.framework */; };
 		D5FFAA301DA5A8C300B2807C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5FFAA111DA5A8C300B2807C /* LaunchScreen.storyboard */; };
 		D5FFAA321DA5A8C300B2807C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5FFAA151DA5A8C300B2807C /* Assets.xcassets */; };
 		D5FFAA331DA5A8C300B2807C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFAA171DA5A8C300B2807C /* AppDelegate.swift */; };
@@ -40,8 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		54ED12209E27CF791578907F /* Pods_AftermathNotesPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathNotesPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64BD10F9AD6D0A2A26DF912F /* Pods-AftermathNotesPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotesPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		0E8D141B7F92A1CD88C0C0EC /* Pods_AftermathNotesPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathNotesPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36B7884E86DD1FB61019DD16 /* Pods-AftermathNotesPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotesPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		C041845FA4C51590360DB0FF /* Pods-AftermathNotesPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotesPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus.release.xcconfig"; sourceTree = "<group>"; };
 		D5C7F7401C3BC9CE008CDDBA /* AftermathNotesPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AftermathNotesPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FFAA121DA5A8C300B2807C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5FFAA131DA5A8C300B2807C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		D5FFAA811DA6689D00B2807C /* ProfileStylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStylesheet.swift; sourceTree = "<group>"; };
 		D5FFAA831DA6692400B2807C /* StyleConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleConvertible.swift; sourceTree = "<group>"; };
 		D5FFAA851DA66C5700B2807C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		E043D4E2DF469EC2234FCCF7 /* Pods-AftermathNotesPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotesPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,28 +81,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC390010C5A9DA0A21CD72C /* Pods_AftermathNotesPlus.framework in Frameworks */,
+				43D9BE03F869AACEDC1D92AC /* Pods_AftermathNotesPlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		57075F0E7025338C7659ACDB /* Pods */ = {
+		99EB484F452B61CD8E2C6D1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				64BD10F9AD6D0A2A26DF912F /* Pods-AftermathNotesPlus.debug.xcconfig */,
-				E043D4E2DF469EC2234FCCF7 /* Pods-AftermathNotesPlus.release.xcconfig */,
+				36B7884E86DD1FB61019DD16 /* Pods-AftermathNotesPlus.debug.xcconfig */,
+				C041845FA4C51590360DB0FF /* Pods-AftermathNotesPlus.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		B12B79015F0E3CBB95068A04 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				54ED12209E27CF791578907F /* Pods_AftermathNotesPlus.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D5C7F7371C3BC9CE008CDDBA = {
@@ -110,8 +102,8 @@
 			children = (
 				D5FFAA101DA5A8C300B2807C /* AftermathNotesPlus */,
 				D5C7F7411C3BC9CE008CDDBA /* Products */,
-				57075F0E7025338C7659ACDB /* Pods */,
-				B12B79015F0E3CBB95068A04 /* Frameworks */,
+				99EB484F452B61CD8E2C6D1B /* Pods */,
+				E17EB4C554353185F0209EDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,6 +232,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		E17EB4C554353185F0209EDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E8D141B7F92A1CD88C0C0EC /* Pods_AftermathNotesPlus.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,12 +247,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "AftermathNotesPlus" */;
 			buildPhases = (
-				91320C5B6E6B656D68578372 /* [CP] Check Pods Manifest.lock */,
+				1F7502F1795878FD53FE31BF /* [CP] Check Pods Manifest.lock */,
 				D5C7F73C1C3BC9CE008CDDBA /* Sources */,
 				D5C7F73D1C3BC9CE008CDDBA /* Frameworks */,
 				D5C7F73E1C3BC9CE008CDDBA /* Resources */,
-				0D8169841A9AEC8330D30F45 /* [CP] Embed Pods Frameworks */,
-				802993A3916765EF54DF3511 /* [CP] Copy Pods Resources */,
+				3EAA94D683B057D26D6518AF /* [CP] Embed Pods Frameworks */,
+				25523214709E07BA2809C0D7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,11 +270,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hyper Interaktiv AS";
 				TargetAttributes = {
 					D5C7F73F1C3BC9CE008CDDBA = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -309,22 +310,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D8169841A9AEC8330D30F45 /* [CP] Embed Pods Frameworks */ = {
+		1F7502F1795878FD53FE31BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		802993A3916765EF54DF3511 /* [CP] Copy Pods Resources */ = {
+		25523214709E07BA2809C0D7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -339,19 +340,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		91320C5B6E6B656D68578372 /* [CP] Check Pods Manifest.lock */ = {
+		3EAA94D683B057D26D6518AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathNotesPlus/Pods-AftermathNotesPlus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -418,8 +419,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -446,6 +449,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -462,8 +466,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -482,31 +488,37 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		D5C7F7531C3BC9CE008CDDBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64BD10F9AD6D0A2A26DF912F /* Pods-AftermathNotesPlus.debug.xcconfig */;
+			baseConfigurationReference = 36B7884E86DD1FB61019DD16 /* Pods-AftermathNotesPlus.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AftermathNotesPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathNotesPlus;
 				PRODUCT_NAME = AftermathNotesPlus;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		D5C7F7541C3BC9CE008CDDBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E043D4E2DF469EC2234FCCF7 /* Pods-AftermathNotesPlus.release.xcconfig */;
+			baseConfigurationReference = C041845FA4C51590360DB0FF /* Pods-AftermathNotesPlus.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AftermathNotesPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathNotesPlus;
 				PRODUCT_NAME = AftermathNotesPlus;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
