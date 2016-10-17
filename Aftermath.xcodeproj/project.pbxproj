@@ -89,6 +89,29 @@
 		D59CC11E1D76145600D72C39 /* ReactionDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Aftermath.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Aftermath.framework */; };
+		D5F169C11DB57F9200577F7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58092821DB57A5D00270BBB /* Aftermath.framework */; };
+		D5F169C71DB5800900577F7C /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45F1D6B9CEB00EDD4A8 /* Commands.swift */; };
+		D5F169C81DB5800900577F7C /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4601D6B9CEB00EDD4A8 /* Events.swift */; };
+		D5F169C91DB5800900577F7C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4611D6B9CEB00EDD4A8 /* Types.swift */; };
+		D5F169CA1DB5800900577F7C /* CommandSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462EA1D6BA9C300E0C876 /* CommandSteps.swift */; };
+		D5F169CB1DB5800900577F7C /* EventSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462ED1D6BABA900E0C876 /* EventSteps.swift */; };
+		D5F169CC1DB5800900577F7C /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462B71D6BA3A800E0C876 /* EventBusTests.swift */; };
+		D5F169CD1DB5800900577F7C /* ListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462B81D6BA3A800E0C876 /* ListenerTests.swift */; };
+		D5F169CE1DB5800900577F7C /* MutexDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462B91D6BA3A800E0C876 /* MutexDisposerTests.swift */; };
+		D5F169CF1DB5800900577F7C /* CommandBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462BA1D6BA3A800E0C876 /* CommandBusTests.swift */; };
+		D5F169D01DB5800900577F7C /* CommandHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4581D6B9CEB00EDD4A8 /* CommandHandlerTests.swift */; };
+		D5F169D11DB5800900577F7C /* CommandMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F01D6BAE3300E0C876 /* CommandMiddlewareTests.swift */; };
+		D5F169D21DB5800900577F7C /* CommandProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4591D6B9CEB00EDD4A8 /* CommandProducerTests.swift */; };
+		D5F169D31DB5800900577F7C /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45A1D6B9CEB00EDD4A8 /* CommandTests.swift */; };
+		D5F169D41DB5800900577F7C /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45B1D6B9CEB00EDD4A8 /* EngineTests.swift */; };
+		D5F169D51DB5800900577F7C /* ErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45C1D6B9CEB00EDD4A8 /* ErrorTests.swift */; };
+		D5F169D61DB5800900577F7C /* EventMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57462F31D6BB63300E0C876 /* EventMiddlewareTests.swift */; };
+		D5F169D71DB5800900577F7C /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45D1D6B9CEB00EDD4A8 /* EventTests.swift */; };
+		D5F169D81DB5800900577F7C /* FactProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57A57521D85F9B200F78661 /* FactProducerTests.swift */; };
+		D5F169D91DB5800900577F7C /* IdentifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4621D6B9CEB00EDD4A8 /* IdentifiableTests.swift */; };
+		D5F169DA1DB5800900577F7C /* ReactionProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4631D6B9CEB00EDD4A8 /* ReactionProducerTests.swift */; };
+		D5F169DB1DB5800900577F7C /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4641D6B9CEB00EDD4A8 /* ReactionTests.swift */; };
+		D5F169DC1DB5800900577F7C /* ReactionDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +128,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D5C6293F1C3A7FAA007F7B7C;
 			remoteInfo = "Aftermath-Mac";
+		};
+		D5F169C21DB57F9200577F7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5B2E8961C3A780C00C0327D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D58092811DB57A5D00270BBB;
+			remoteInfo = "Aftermath-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -154,6 +184,7 @@
 		D5B2E8A91C3A780C00C0327D /* Aftermath-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Aftermath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Aftermath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-Mac-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5F169BC1DB57F9200577F7C /* Aftermath-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +222,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5C6294A1C3A7FAA007F7B7C /* Aftermath.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5F169B91DB57F9200577F7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5F169C11DB57F9200577F7C /* Aftermath.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +324,7 @@
 				D5C629401C3A7FAA007F7B7C /* Aftermath.framework */,
 				D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */,
 				D58092821DB57A5D00270BBB /* Aftermath.framework */,
+				D5F169BC1DB57F9200577F7C /* Aftermath-tvOS-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -426,13 +466,31 @@
 			productReference = D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D5F169BB1DB57F9200577F7C /* Aftermath-tvOS-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5F169C41DB57F9200577F7C /* Build configuration list for PBXNativeTarget "Aftermath-tvOS-Tests" */;
+			buildPhases = (
+				D5F169B81DB57F9200577F7C /* Sources */,
+				D5F169B91DB57F9200577F7C /* Frameworks */,
+				D5F169BA1DB57F9200577F7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D5F169C31DB57F9200577F7C /* PBXTargetDependency */,
+			);
+			name = "Aftermath-tvOS-Tests";
+			productName = AftermathTests;
+			productReference = D5F169BC1DB57F9200577F7C /* Aftermath-tvOS-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D5B2E8961C3A780C00C0327D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hyper Interaktiv AS";
 				TargetAttributes = {
@@ -454,6 +512,10 @@
 						CreatedOnToolsVersion = 7.2;
 						LastSwiftMigration = 0800;
 					};
+					D5F169BB1DB57F9200577F7C = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = D5B2E8991C3A780C00C0327D /* Build configuration list for PBXProject "Aftermath" */;
@@ -473,6 +535,7 @@
 				D58092811DB57A5D00270BBB /* Aftermath-tvOS */,
 				D5B2E8A81C3A780C00C0327D /* Aftermath-iOS-Tests */,
 				D5C629481C3A7FAA007F7B7C /* Aftermath-Mac-Tests */,
+				D5F169BB1DB57F9200577F7C /* Aftermath-tvOS-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -507,6 +570,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D5C629471C3A7FAA007F7B7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5F169BA1DB57F9200577F7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -676,6 +746,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D5F169B81DB57F9200577F7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5F169CB1DB5800900577F7C /* EventSteps.swift in Sources */,
+				D5F169D71DB5800900577F7C /* EventTests.swift in Sources */,
+				D5F169CF1DB5800900577F7C /* CommandBusTests.swift in Sources */,
+				D5F169C91DB5800900577F7C /* Types.swift in Sources */,
+				D5F169DB1DB5800900577F7C /* ReactionTests.swift in Sources */,
+				D5F169D21DB5800900577F7C /* CommandProducerTests.swift in Sources */,
+				D5F169CE1DB5800900577F7C /* MutexDisposerTests.swift in Sources */,
+				D5F169DC1DB5800900577F7C /* ReactionDisposerTests.swift in Sources */,
+				D5F169DA1DB5800900577F7C /* ReactionProducerTests.swift in Sources */,
+				D5F169CD1DB5800900577F7C /* ListenerTests.swift in Sources */,
+				D5F169C81DB5800900577F7C /* Events.swift in Sources */,
+				D5F169D11DB5800900577F7C /* CommandMiddlewareTests.swift in Sources */,
+				D5F169D61DB5800900577F7C /* EventMiddlewareTests.swift in Sources */,
+				D5F169D51DB5800900577F7C /* ErrorTests.swift in Sources */,
+				D5F169D01DB5800900577F7C /* CommandHandlerTests.swift in Sources */,
+				D5F169CC1DB5800900577F7C /* EventBusTests.swift in Sources */,
+				D5F169C71DB5800900577F7C /* Commands.swift in Sources */,
+				D5F169D31DB5800900577F7C /* CommandTests.swift in Sources */,
+				D5F169D81DB5800900577F7C /* FactProducerTests.swift in Sources */,
+				D5F169CA1DB5800900577F7C /* CommandSteps.swift in Sources */,
+				D5F169D91DB5800900577F7C /* IdentifiableTests.swift in Sources */,
+				D5F169D41DB5800900577F7C /* EngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -688,6 +787,11 @@
 			isa = PBXTargetDependency;
 			target = D5C6293F1C3A7FAA007F7B7C /* Aftermath-Mac */;
 			targetProxy = D5C6294B1C3A7FAA007F7B7C /* PBXContainerItemProxy */;
+		};
+		D5F169C31DB57F9200577F7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D58092811DB57A5D00270BBB /* Aftermath-tvOS */;
+			targetProxy = D5F169C21DB57F9200577F7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -984,6 +1088,39 @@
 			};
 			name = Release;
 		};
+		D5F169C51DB57F9200577F7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Project/Info-Tests-tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		D5F169C61DB57F9200577F7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Project/Info-Tests-tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1040,6 +1177,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D5F169C41DB57F9200577F7C /* Build configuration list for PBXNativeTarget "Aftermath-tvOS-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5F169C51DB57F9200577F7C /* Debug */,
+				D5F169C61DB57F9200577F7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
