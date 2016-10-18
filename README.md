@@ -3,7 +3,7 @@
 [![CI Status](http://img.shields.io/travis/hyperoslo/Aftermath.svg?style=flat)](https://travis-ci.org/hyperoslo/Aftermath)
 [![Version](https://img.shields.io/cocoapods/v/Aftermath.svg?style=flat)](http://cocoadocs.org/docsets/Aftermath)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Swift](https://img.shields.io/badge/%20in-swift%202.2-orange.svg)
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 [![License](https://img.shields.io/cocoapods/l/Aftermath.svg?style=flat)](http://cocoadocs.org/docsets/Aftermath)
 [![Platform](https://img.shields.io/cocoapods/p/Aftermath.svg?style=flat)](http://cocoadocs.org/docsets/Aftermath)
 
@@ -71,10 +71,10 @@ The restriction is to create only one command handler per command.
 Command Handler is responsible for publishing **events** that will be
 consumed by reactions. There are 3 types of events:
 
-- `Progress` event indicates that the operation triggered by command has been
+- `progress` event indicates that the operation triggered by command has been
 started and is in the pending state at the moment.
-- `Data` event holds the output produced by the command execution.
-- `Error` notifies that an error has been occurred during the command
+- `data` event holds the output produced by the command execution.
+- `error` notifies that an error has been occurred during the command
 execution.
 
 ### Reaction
@@ -83,9 +83,9 @@ execution.
 to handle 3 possible event types by describing the desired behavior in the
 each scenario:
 
-- `Wait` function reacts on `Progress` type of the event
-- `Consume` function reacts on `Data` type of the event.
-- `Rescue` function is a fallback for the case when `Error` event has been
+- `wait` function reacts on `progress` type of the event
+- `consume` function reacts on `data` type of the event.
+- `rescue` function is a fallback for the case when `error` event has been
 received.
 
 Normally reaction performs UI updates, but could also be used for other kinds
@@ -136,7 +136,7 @@ struct BookUpdateCommand: Command {
 date to our `BookUpdateCommand` it could look like the following:
 
 ```swift
-typealias Output = (Book, NSDate)
+typealias Output = (Book, Date)
 ```
 
 In order to execute a command you have to conform to `CommandProducer` protocol:
@@ -184,7 +184,7 @@ struct BookListCommandHandler: CommandHandler {
     let localBooks = loadLocalBooks()
 
     // If the list is empty let the listeners know that operation is in the process.
-    return Book.list.isEmpty ? Event.Progress : Event.Data(localBooks)
+    return Book.list.isEmpty ? Event.progress : Event.data(localBooks)
   }
 }
 ```
@@ -193,7 +193,7 @@ struct BookListCommandHandler: CommandHandler {
 [Aftermath Engine](#engine).
 
 ```swift
-Engine.sharedInstance.use(BookListCommandHandler())
+Engine.shared.use(handler: BookListCommandHandler())
 ```
 
 ### Reacting to events
@@ -272,7 +272,7 @@ struct WelcomeAction: Action {
     fetchUser(id: userId) { user in
       self.publish(data: "Hello \(user.name)")
     }
-    return Event.Progress
+    return Event.progress
   }
 }
 
@@ -281,7 +281,7 @@ struct WelcomeAction: Action {
 struct WelcomeManager: CommandProducer {
 
   func salute() {
-    execute(WelcomeAction(userId: 11))
+    execute(action: WelcomeAction(userId: 11))
   }
 }
 ```
@@ -293,7 +293,7 @@ be used when there is no need for a handler to generate an output. Fact is an
 output itself, so the only thing you want to do is notify all
 subscribers that something happened in the system, and they will react
 accordingly. In this sense it's closer to a type-safe alternative to
-`NSNotification`.
+`Notification`.
 
 ```swift
 struct LoginFact: Fact {
@@ -359,7 +359,7 @@ struct ErrorCommandMiddleware: CommandMiddleware {
   }
 }
 
-Engine.sharedInstance.pipeCommands(through: [ErrorCommandMiddleware()])
+Engine.shared.pipeCommands(through: [ErrorCommandMiddleware()])
 
 // Event middleware
 struct LogEventMiddleware: EventMiddleware {
@@ -371,7 +371,7 @@ struct LogEventMiddleware: EventMiddleware {
   }
 }
 
-Engine.sharedInstance.pipeEvents(through: [LogEventMiddleware()])
+Engine.shared.pipeEvents(through: [LogEventMiddleware()])
 ```
 
 **Note** that it's necessary to call `next` to invoke the next function in the
@@ -389,16 +389,16 @@ workaround restrictions of working with Swift generic protocols that have
 - Register command handlers:
 
 ```swift
-Engine.sharedInstance.use(BookListCommandHandler())
+Engine.shared.use(handler: BookListCommandHandler())
 ```
 
 - Add command and event middleware:
 
 ```swift
 // Commands
-Engine.sharedInstance.pipeCommands(through: [LogCommandMiddleware(), ErrorCommandMiddleware()])
+Engine.shared.pipeCommands(through: [LogCommandMiddleware(), ErrorCommandMiddleware()])
 // Events
-Engine.sharedInstance.pipeEvents(through: [LogEventMiddleware(), ErrorEventMiddleware()])
+Engine.shared.pipeEvents(through: [LogEventMiddleware(), ErrorEventMiddleware()])
 ```
 
 - Set global error handler to catch all unexpected errors and framework
@@ -407,8 +407,8 @@ warnings:
 ```swift
 struct EngineErrorHandler: ErrorHandler {
 
-  func handleError(error: ErrorType) {
-    if let error = error as? Error {
+  func handleError(error: Error) {
+    if let error = error as? Failure {
       print("Engine error -> \(error)")
     } else if let warning = error as? Warning {
       print("Engine warning -> \(warning)")
@@ -418,13 +418,13 @@ struct EngineErrorHandler: ErrorHandler {
   }
 }
 
-Engine.sharedInstance.errorHandler = EngineErrorHandler()
+Engine.shared.errorHandler = EngineErrorHandler()
 ```
 
 - Dispose all registered command handlers and event listeners (reactions):
 
 ```swift
-Engine.sharedInstance.invalidate()
+Engine.shared.invalidate()
 ```
 
 ## Life hacks
@@ -498,7 +498,7 @@ struct DetailCommandHandler<Feature: DetailFeature>: Aftermath.CommandHandler {
       }
     }
 
-    return Event.Progress
+    return Event.progress
   }
 }
 

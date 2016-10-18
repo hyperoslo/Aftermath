@@ -1,19 +1,19 @@
 // MARK: - Events
 
 public protocol ErrorEventBuilder {
-  static func buildErrorEvent(error: ErrorType) -> AnyEvent
+  static func buildEvent(fromError error: Error) -> AnyEvent
 }
 
 public protocol AnyEvent: Identifiable, ErrorEventBuilder {
   var inProgress: Bool { get }
   var result: Any? { get }
-  var error: ErrorType? { get }
+  var error: Error? { get }
 }
 
 public enum Event<T: Command>: AnyEvent {
-  case Progress
-  case Data(T.Output)
-  case Error(ErrorType)
+  case progress
+  case data(T.Output)
+  case error(Error)
 
   // MARK: - Helpers
 
@@ -21,7 +21,7 @@ public enum Event<T: Command>: AnyEvent {
     var value = false
 
     switch self {
-    case .Progress:
+    case .progress:
       value = true
     default:
       break
@@ -34,7 +34,7 @@ public enum Event<T: Command>: AnyEvent {
     var value: Any?
 
     switch self {
-    case .Data(let result):
+    case .data(let result):
       value = result
     default:
       break
@@ -43,11 +43,11 @@ public enum Event<T: Command>: AnyEvent {
     return value
   }
 
-  public var error: ErrorType? {
-    var value: ErrorType?
+  public var error: Error? {
+    var value: Error?
 
     switch self {
-    case .Error(let error):
+    case .error(let error):
       value = error
     default:
       break
@@ -56,8 +56,8 @@ public enum Event<T: Command>: AnyEvent {
     return value
   }
 
-  public static func buildErrorEvent(error: ErrorType) -> AnyEvent {
-    return Error(error)
+  public static func buildEvent(fromError error: Error) -> AnyEvent {
+    return Event.error(error)
   }
 }
 
@@ -74,11 +74,11 @@ extension Event: CustomStringConvertible, CustomDebugStringConvertible {
     var string: String
 
     switch self {
-    case .Progress:
+    case .progress:
       string = "Event<\(T.self)>.Progress"
-    case .Data:
+    case .data:
       string = "Event<\(T.self)>.Data with \(T.Output.self)"
-    case .Error(let error):
+    case .error(let error):
       string = "Event<\(T.self)>.Error with \(error)"
     }
 
@@ -93,17 +93,17 @@ extension Event: CustomStringConvertible, CustomDebugStringConvertible {
 // MARK: - Event middleware
 
 public typealias Publish = (AnyEvent) throws -> Void
-public typealias PublishCombination = (Publish) throws -> Publish
+public typealias PublishCombination = (@escaping Publish) throws -> Publish
 
 public protocol EventMiddleware {
 
   func intercept(event: AnyEvent, publish: Publish, next: Publish) throws
-  func compose(publish: Publish) throws -> PublishCombination
+  func compose(publish: @escaping Publish) throws -> PublishCombination
 }
 
 public extension EventMiddleware {
 
-  func compose(publish: Publish) throws -> PublishCombination {
-    return try Middleware(intercept: intercept).compose(publish)
+  func compose(publish: @escaping Publish) throws -> PublishCombination {
+    return try Middleware(intercept: intercept).compose(execute: publish)
   }
 }

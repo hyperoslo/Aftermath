@@ -3,8 +3,8 @@
 public final class Reaction<T> {
 
   public typealias Wait = () -> Void
-  public typealias Consume = T -> Void
-  public typealias Rescue = ErrorType -> Void
+  public typealias Consume = (T) -> Void
+  public typealias Rescue = (Error) -> Void
 
   public var wait: Wait?
   public var consume: Consume?
@@ -16,13 +16,13 @@ public final class Reaction<T> {
     self.rescue = rescue
   }
 
-  func invoke<U: Command where U.Output == T>(with event: Event<U>) {
+  func invoke<U: Command>(with event: Event<U>) where U.Output == T {
     switch event {
-    case .Progress:
+    case .progress:
       wait?()
-    case .Data(let output):
+    case .data(let output):
       consume?(output)
-    case .Error(let error):
+    case .error(let error):
       rescue?(error)
     }
   }
@@ -42,26 +42,27 @@ public protocol ReactionProducer: Identifiable, Disposer {}
 
 public extension ReactionProducer {
 
-  func react<T: Command>(to command: T.Type, with reaction: Reaction<T.Output>) -> DisposalToken {
-    let token = Engine.sharedInstance.eventBus.listen(to: T.self) { event in
+  @discardableResult func react<T: Command>(to command: T.Type,
+                                with reaction: Reaction<T.Output>) -> DisposalToken {
+    let token = Engine.shared.eventBus.listen(to: T.self) { event in
       reaction.invoke(with: event)
     }
 
-    Engine.sharedInstance.reactionDisposer.append(token, from: self)
+    Engine.shared.reactionDisposer.append(token: token, from: self)
 
     return token
   }
 
-  func next<T: Fact>(consume: T -> Void) -> DisposalToken {
+  @discardableResult func next<T: Fact>(_ consume: @escaping (T) -> Void) -> DisposalToken {
     let reaction = Reaction<T>(consume: consume)
     return react(to: FactCommand<T>.self, with: reaction)
   }
 
   func dispose(token: DisposalToken) {
-    Engine.sharedInstance.reactionDisposer.dispose(token, from: self)
+    Engine.shared.reactionDisposer.dispose(token: token, from: self)
   }
 
   func disposeAll() {
-    Engine.sharedInstance.reactionDisposer.disposeAll(from: self)
+    Engine.shared.reactionDisposer.disposeAll(from: self)
   }
 }

@@ -20,7 +20,7 @@ extension MutexDisposer {
 
   func dispose(token: String) {
     pthread_mutex_lock(&mutex)
-    listeners.removeValueForKey(token)
+    listeners.removeValue(forKey: token)
     pthread_mutex_unlock(&mutex)
   }
 

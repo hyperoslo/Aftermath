@@ -45,12 +45,12 @@ class ListCommandHandler<Feature: RESTFeature>: Aftermath.CommandHandler {
     isFetched = false
     refresh()
 
-    return Event.Progress
+    return Event.progress
   }
 
   func loadLocalData() {
-    PayloadStorage.sharedInstance.load(Feature.Model.identifier) { array in
-      guard let array = array where !self.isFetched else {
+    PayloadStorage.shared.load(key: Feature.Model.identifier) { array in
+      guard let array = array, !self.isFetched else {
         return
       }
 
@@ -68,9 +68,9 @@ class ListCommandHandler<Feature: RESTFeature>: Aftermath.CommandHandler {
 
     Malibu.networking("base").GET(request)
       .validate()
-      .toJSONArray()
+      .toJsonArray()
       .then({ array -> [Feature.Model] in
-        PayloadStorage.sharedInstance.save(array: array, with: Feature.Model.identifier)
+        PayloadStorage.shared.save(array: array, with: Feature.Model.identifier)
         return try array.map({
           try Feature.Model($0)
         })

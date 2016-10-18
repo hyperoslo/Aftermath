@@ -8,6 +8,6 @@ public struct FashionConfigurator: Configurator {
       NoteStylesheet()
     ]
 
-    Fashion.register(stylesheets)
+    Fashion.register(stylesheets: stylesheets)
   }
 }

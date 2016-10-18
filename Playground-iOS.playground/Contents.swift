@@ -1,7 +1,7 @@
 // Aftermath iOS Playground
 
 import UIKit
-import XCPlayground
+import PlaygroundSupport
 import Aftermath
 
 // Let's say we want to fetch a list of models.
@@ -34,8 +34,7 @@ struct BooksCommandHandler: CommandHandler {
   func handle(command: BooksCommand) throws -> Event<BooksCommand> {
     // Start network request to fetch data.
     // Here we simulate it with 2 seconds delay.
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue()) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
       var books = Book.list
       books.append(Book(title: "The Crying of Lot 49", author: "Thomas Pynchon"))
 
@@ -46,13 +45,13 @@ struct BooksCommandHandler: CommandHandler {
     let localBooks = Book.list
 
     // If the list is empty let the listeners know that operation is in the process.
-    return Book.list.isEmpty ? Event.Progress : Event.Data(localBooks)
+    return Book.list.isEmpty ? Event.progress : Event.data(localBooks)
   }
 }
 
 // Every command handler needs to be registered on Aftermath Engine.
 
-Engine.sharedInstance.use(BooksCommandHandler())
+Engine.shared.use(handler: BooksCommandHandler())
 
 // Every action needs a reaction.
 // Let's make a controller that executes a command and reacts on output events.
@@ -69,10 +68,9 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView.registerClass(UITableViewCell.self,
-                            forCellReuseIdentifier: reuseIdentifier)
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
     // React to events.
     react(to: BooksCommand.self, with: Reaction(
@@ -90,7 +88,7 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
     }))
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     refreshData()
   }
@@ -101,14 +99,15 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
 
   // MARK: - Table view
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+  override func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int{
     return books.count
   }
 
-  override func tableView(tableView: UITableView,
-                          cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(
-      reuseIdentifier, forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: reuseIdentifier, for: indexPath)
     let book = self.books[indexPath.row]
     cell.textLabel?.text = "\(book.author) - \(book.title)"
 
@@ -117,4 +116,4 @@ class ViewController: UITableViewController, CommandProducer, ReactionProducer {
 }
 
 var controller = ViewController()
-XCPlaygroundPage.currentPage.liveView = controller.view
+PlaygroundPage.current.liveView = controller.view

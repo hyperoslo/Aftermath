@@ -9,7 +9,7 @@ struct NoteFeature: ListFeature, DetailFeature, DeleteFeature {
   var resource = "posts"
 
   func render(model: Note, on cell: UITableViewCell) {
-    cell.textLabel?.text = model.title.capitalizedString
+    cell.textLabel?.text = model.title.capitalized
     cell.detailTextLabel?.text = "Note ID: \(model.id)"
   }
 

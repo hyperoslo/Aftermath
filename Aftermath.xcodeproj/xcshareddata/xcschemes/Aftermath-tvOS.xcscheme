@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
+               BlueprintIdentifier = "D58092811DB57A5D00270BBB"
                BuildableName = "Aftermath.framework"
-               BlueprintName = "Aftermath-iOS"
+               BlueprintName = "Aftermath-tvOS"
                ReferencedContainer = "container:Aftermath.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D5B2E8A81C3A780C00C0327D"
-               BuildableName = "Aftermath-iOS-Tests.xctest"
-               BlueprintName = "Aftermath-iOS-Tests"
+               BlueprintIdentifier = "D5F169BB1DB57F9200577F7C"
+               BuildableName = "Aftermath-tvOS-Tests.xctest"
+               BlueprintName = "Aftermath-tvOS-Tests"
                ReferencedContainer = "container:Aftermath.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
+            BlueprintIdentifier = "D58092811DB57A5D00270BBB"
             BuildableName = "Aftermath.framework"
-            BlueprintName = "Aftermath-iOS"
+            BlueprintName = "Aftermath-tvOS"
             ReferencedContainer = "container:Aftermath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
+            BlueprintIdentifier = "D58092811DB57A5D00270BBB"
             BuildableName = "Aftermath.framework"
-            BlueprintName = "Aftermath-iOS"
+            BlueprintName = "Aftermath-tvOS"
             ReferencedContainer = "container:Aftermath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
+            BlueprintIdentifier = "D58092811DB57A5D00270BBB"
             BuildableName = "Aftermath.framework"
-            BlueprintName = "Aftermath-iOS"
+            BlueprintName = "Aftermath-tvOS"
             ReferencedContainer = "container:Aftermath.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

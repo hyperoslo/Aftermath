@@ -6,9 +6,9 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
   var eventSteps: [EventStep] = []
   var eventBus: EventBus!
   var reaction: Reaction<Calculator>!
-  var listener: (Event<AdditionCommand> -> Void)!
+  var listener: ((Event<AdditionCommand>) -> Void)!
   var result = 0
-  var error: ErrorType?
+  var error: Error?
 
   override func setUp() {
     super.setUp()
@@ -36,7 +36,7 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
     eventBus.disposeAll()
   }
 
@@ -45,14 +45,14 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
   func testNext() {
     var m1 = LogEventMiddleware()
     var m2 = LogEventMiddleware()
-    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
+    let event = Event<AdditionCommand>.data(Calculator(result: 11))
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
 
     eventBus.middlewares = [m1, m2]
-    eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.publish(event)
+    _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
+    eventBus.publish(event: event)
 
     XCTAssertEqual(eventSteps.count, 3)
     XCTAssertEqual(result, 11)
@@ -63,20 +63,20 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     assertReactionStep(2, expected: event)
   }
 
-  func testPublish() {
+  func testPublishEvent() {
     var m1 = LogEventMiddleware()
     var m2 = ErrorEventMiddleware()
     var m3 = LogEventMiddleware()
-    let dataEvent = Event<AdditionCommand>.Data(Calculator(result: 11))
-    let errorEvent = Event<AdditionCommand>.Error(TestError.Test)
+    let dataEvent = Event<AdditionCommand>.data(Calculator(result: 11))
+    let errorEvent = Event<AdditionCommand>.error(TestError.test)
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
     m3.callback = addMiddlewareStep(m3)
 
     eventBus.middlewares = [m1, m2, m3]
-    eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.publish(dataEvent)
+    _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
+    eventBus.publish(event: dataEvent)
 
     XCTAssertEqual(eventSteps.count, 6)
     XCTAssertEqual(result, 0)
@@ -94,15 +94,15 @@ class EventMiddlewareTests: XCTestCase, EventStepAsserting {
     var m1 = LogEventMiddleware()
     var m2 = AbortEventMiddleware()
     var m3 = LogEventMiddleware()
-    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
+    let event = Event<AdditionCommand>.data(Calculator(result: 11))
 
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
     m3.callback = addMiddlewareStep(m3)
 
     eventBus.middlewares = [m1, m2, m3]
-    eventBus.listen(to: AdditionCommand.self, listener: listener)
-    eventBus.publish(event)
+    _ = eventBus.listen(to: AdditionCommand.self, listener: listener)
+    eventBus.publish(event: event)
 
     XCTAssertEqual(eventSteps.count, 2)
     XCTAssertEqual(result, 0)

@@ -11,12 +11,12 @@ class CommandHandlerTests: XCTestCase {
 
     commandHandler = TestCommandHandler()
     controller = Controller()
-    Engine.sharedInstance.use(commandHandler)
+    Engine.shared.use(handler: commandHandler)
   }
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
   }
 
   // MARK: - Tests
@@ -44,25 +44,28 @@ class CommandHandlerTests: XCTestCase {
     XCTAssertEqual(result, output)
   }
 
-  func testReject() {
-    var resultError: ErrorType?
+  func testPublishError() {
+    var resultError: Error?
 
     controller.react(to: TestCommand.self, with:
       Reaction(rescue: { error in resultError = error }))
 
     XCTAssertNil(resultError)
-    commandHandler.publish(error: TestError.Test)
+    commandHandler.publish(error: TestError.test)
     XCTAssertTrue(resultError is TestError)
   }
 
-  func testPublish() {
+  func testPublishEvent() {
     var executed = false
 
     controller.react(to: TestCommand.self, with:
-      Reaction(wait: { executed = true } ))
+      Reaction(wait: {
+        executed = true
+      }
+    ))
 
     XCTAssertFalse(executed)
-    commandHandler.publish(event: Event.Progress)
+    commandHandler.publish(event: Event.progress)
     XCTAssertTrue(executed)
   }
 }

@@ -16,7 +16,7 @@ class EngineTests: XCTestCase {
     XCTAssertNil(engine.errorHandler)
   }
 
-  func testPipeCommands() {
+  func testPipeCommandsThrough() {
     XCTAssertTrue(engine.commandBus.middlewares.isEmpty)
 
     engine.pipeCommands(through: [
@@ -28,7 +28,7 @@ class EngineTests: XCTestCase {
     XCTAssertEqual(engine.commandBus.middlewares.count, 3)
   }
 
-  func testPipeEvents() {
+  func testPipeEventsThrough() {
     XCTAssertTrue(engine.eventBus.middlewares.isEmpty)
 
     engine.pipeEvents(through: [
@@ -40,10 +40,10 @@ class EngineTests: XCTestCase {
     XCTAssertEqual(engine.eventBus.middlewares.count, 3)
   }
 
-  func testUse() {
+  func testUseHandler() {
     XCTAssertEqual((engine.commandBus as? CommandBus)?.listeners.count, 0)
 
-    engine.use(TestCommandHandler())
+    engine.use(handler: TestCommandHandler())
     XCTAssertEqual((engine.commandBus as? CommandBus)?.listeners.count, 1)
   }
 }

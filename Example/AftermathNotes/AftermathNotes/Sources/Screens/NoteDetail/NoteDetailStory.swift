@@ -30,7 +30,7 @@ struct NoteDetailStory {
 
       Malibu.networking("base").GET(request)
         .validate()
-        .toJSONDictionary()
+        .toJsonDictionary()
         .then({ try Note($0) })
         .done({ note in
           self.publish(data: note)
@@ -39,7 +39,7 @@ struct NoteDetailStory {
           self.publish(error: error)
         })
 
-      return Event.Progress
+      return Event.progress
     }
   }
 }

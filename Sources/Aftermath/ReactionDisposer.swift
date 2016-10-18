@@ -18,7 +18,7 @@ final class ReactionDisposer {
   // MARK: - Tokens
 
   func append(token: DisposalToken, from producer: ReactionProducer) {
-    let key = producer.dynamicType.identifier
+    let key = type(of: producer).identifier
 
     if tokens[key] == nil {
       tokens[key] = []
@@ -32,30 +32,30 @@ final class ReactionDisposer {
   // MARK: - Disposer
 
   func dispose(token: DisposalToken, from producer: ReactionProducer) {
-    let key = producer.dynamicType.identifier
+    let key = type(of: producer).identifier
 
-    guard let index = tokens[key]?.indexOf(token) else {
+    guard let index = tokens[key]?.index(of: token) else {
       return
     }
 
-    tokens[key]?.removeAtIndex(index)
+    tokens[key]?.remove(at: index)
 
     if tokens[key]?.isEmpty == true {
-      tokens.removeValueForKey(key)
+      tokens.removeValue(forKey: key)
     }
 
-    eventBus.dispose(token)
+    eventBus.dispose(token: token)
   }
 
   func disposeAll(from producer: ReactionProducer) {
-    let key = producer.dynamicType.identifier
+    let key = type(of: producer).identifier
 
-    guard let tokens = tokens.removeValueForKey(key) else {
+    guard let tokens = tokens.removeValue(forKey: key) else {
       return
     }
 
     for token in tokens {
-      eventBus.dispose(token)
+      eventBus.dispose(token: token)
     }
   }
 

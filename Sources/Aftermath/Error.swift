@@ -1,27 +1,29 @@
 public protocol ErrorHandler {
-  func handleError(error: ErrorType)
+  func handle(error: Error)
 }
 
-public enum Error: ErrorType, CustomStringConvertible, CustomDebugStringConvertible {
-  case CommandDispatcherDeallocated
-  case EventDispatcherDeallocated
-  case InvalidCommandType
-  case InvalidFactType
-  case InvalidEventType
+// MARK: - Failure
+
+public enum Failure: Error, CustomStringConvertible, CustomDebugStringConvertible {
+  case commandDispatcherDeallocated
+  case eventDispatcherDeallocated
+  case invalidCommandType
+  case invalidFactType
+  case invalidEventType
 
   public var description: String {
     let string: String
 
     switch self {
-    case .CommandDispatcherDeallocated:
+    case .commandDispatcherDeallocated:
       string = "Command dispatcher has been deallocated."
-    case .EventDispatcherDeallocated:
+    case .eventDispatcherDeallocated:
       string = "Event dispatcher has been deallocated."
-    case .InvalidCommandType:
+    case .invalidCommandType:
       string = "Invalid command type."
-    case .InvalidFactType:
+    case .invalidFactType:
       string = "Invalid fact type."
-    case .InvalidEventType:
+    case .invalidEventType:
       string = "Invalid event type."
     }
 
@@ -33,20 +35,22 @@ public enum Error: ErrorType, CustomStringConvertible, CustomDebugStringConverti
   }
 }
 
-public enum Warning: ErrorType, CustomStringConvertible, CustomDebugStringConvertible {
-  case NoCommandHandlers(command: AnyCommand)
-  case NoEventListeners(event: AnyEvent)
-  case DuplicatedCommandHandler(command: AnyCommand.Type)
+// MARK: - Warning
+
+public enum Warning: Error, CustomStringConvertible, CustomDebugStringConvertible {
+  case noCommandHandlers(command: AnyCommand)
+  case noEventListeners(event: AnyEvent)
+  case duplicatedCommandHandler(command: AnyCommand.Type)
 
   public var description: String {
     let string: String
 
     switch self {
-    case .NoCommandHandlers(let command):
+    case .noCommandHandlers(let command):
       string = "No command handler registered for command: \(command)."
-    case .NoEventListeners(let event):
+    case .noEventListeners(let event):
       string = "No event listeners registered for event: \(event)."
-    case .DuplicatedCommandHandler(let commandType):
+    case .duplicatedCommandHandler(let commandType):
       string = "Previously registered handler has been overridden for command: \(commandType)"
     }
 
@@ -58,9 +62,11 @@ public enum Warning: ErrorType, CustomStringConvertible, CustomDebugStringConver
   }
 }
 
-extension ErrorType {
+// MARK: - Error extension
+
+extension Error {
 
   var isFrameworkError: Bool {
-    return (self is Error) || (self is Warning)
+    return (self is Failure) || (self is Warning)
   }
 }

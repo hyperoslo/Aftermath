@@ -8,7 +8,7 @@ public protocol EventDispatcher: Disposer {
   var middlewares: [EventMiddleware] { get set }
 
   func publish(event: AnyEvent)
-  func listen<T: Command>(to command: T.Type, listener: Event<T> -> Void) -> DisposalToken
+  func listen<T: Command>(to command: T.Type, listener: @escaping (Event<T>) -> Void) -> DisposalToken
 }
 
 // MARK: - Event bus
@@ -21,7 +21,7 @@ final class EventBus: EventDispatcher, MutexDisposer {
   var mutex = pthread_mutex_t()
 
   var newToken: String {
-    return NSUUID().UUIDString
+    return UUID().uuidString
   }
 
   deinit {
@@ -30,14 +30,14 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
   // MARK: - Register
 
-  func listen<T: Command>(to command: T.Type, listener: Event<T> -> Void) -> DisposalToken {
+  func listen<T: Command>(to command: T.Type, listener: @escaping (Event<T>) -> Void) -> DisposalToken {
     pthread_mutex_lock(&mutex)
 
     let token = newToken
 
     listeners[token] = Listener(identifier: T.identifier) { event in
       guard let event = event as? Event<T> else {
-        throw Error.InvalidEventType
+        throw Failure.invalidEventType
       }
 
       listener(event)
@@ -51,40 +51,42 @@ final class EventBus: EventDispatcher, MutexDisposer {
   // MARK: - Dispatch
 
   func publish(event: AnyEvent) {
-    let middlewares = self.middlewares.reverse()
+    let middlewares = self.middlewares.reversed()
 
     do {
-      let call = try middlewares.reduce({ [unowned self] event in try self.perform(event) }) {
+      let call = try middlewares.reduce({ [unowned self] event in
+        try self.perform(event: event)
+      }) {
         [weak self] function, middleware in
 
         guard let weakSelf = self else {
-          throw Error.EventDispatcherDeallocated
+          throw Failure.eventDispatcherDeallocated
         }
 
-        return try middleware.compose(weakSelf.publish)(function)
+        return try middleware.compose(publish: weakSelf.publish)(function)
       }
 
       try call(event)
     } catch {
-      errorHandler?.handleError(error)
-      handleError(error, on: event)
+      errorHandler?.handle(error: error)
+      handle(error: error, on: event)
     }
   }
 
   func perform(event: AnyEvent) throws {
     pthread_mutex_lock(&mutex)
 
-    let subscribers = listeners.values.filter({ $0.identifier == event.dynamicType.identifier })
+    let subscribers = listeners.values.filter({ $0.identifier == type(of: event).identifier })
 
     if subscribers.isEmpty {
       pthread_mutex_unlock(&mutex)
-      throw Warning.NoEventListeners(event: event)
+      throw Warning.noEventListeners(event: event)
     }
 
     for subscriber in subscribers {
-      subscriber.status = .Pending
+      subscriber.status = .pending
       try subscriber.callback(event)
-      subscriber.status = .Issued
+      subscriber.status = .issued
     }
 
     pthread_mutex_unlock(&mutex)
@@ -92,13 +94,13 @@ final class EventBus: EventDispatcher, MutexDisposer {
 
   // MARK: - Error handling
 
-  func handleError(error: ErrorType, on event: AnyEvent) {
+  func handle(error: Error, on event: AnyEvent) {
     guard !error.isFrameworkError else {
       return
     }
 
     do {
-      try perform(event.dynamicType.buildErrorEvent(error))
+      try perform(event: type(of: event).buildEvent(fromError: error))
     } catch {}
   }
 }

@@ -13,11 +13,11 @@ class MutextDisposerTests: XCTestCase {
 
   // MARK: - Tests
 
-  func testDispose() {
+  func testDisposeToken() {
     XCTAssertEqual(disposer.listeners.count, 0)
     disposer.listeners[token] = Listener(identifier: "id", callback: { _ in })
     XCTAssertEqual(disposer.listeners.count, 1)
-    disposer.dispose(token)
+    disposer.dispose(token: token)
     XCTAssertEqual(disposer.listeners.count, 0)
   }
 

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Aftermath"
   s.summary          = "Stateless message-driven micro-framework in Swift."
-  s.version          = "0.5.0"
+  s.version          = "1.0.0"
   s.homepage         = "https://github.com/hyperoslo/Aftermath"
   s.license          = 'MIT'
   s.author           = {
@@ -23,4 +23,6 @@ Pod::Spec.new do |s|
   s.osx.source_files = 'Sources/**/*'
 
   s.frameworks = 'Foundation'
+
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 end

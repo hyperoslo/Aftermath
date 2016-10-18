@@ -4,9 +4,9 @@ platform :ios, '8.0'
 
 target 'AftermathNotesPlus' do
   pod 'Aftermath', path: '../../'
-  pod 'Malibu', '1.3.0'
-  pod 'Tailor', '1.3.0'
-  pod 'Fashion', '1.1.0'
-  pod 'Cache', '1.5.1'
-  pod 'CryptoSwift', '0.5.2'
+  pod 'Malibu'
+  pod 'Tailor'
+  pod 'Fashion'
+  pod 'Cache'
+  pod 'CryptoSwift'
 end

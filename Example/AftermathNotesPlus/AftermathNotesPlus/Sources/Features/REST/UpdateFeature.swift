@@ -33,7 +33,7 @@ class UpdateCommandHandler<Feature: UpdateFeature>: Aftermath.CommandHandler {
 
     Malibu.networking("base").PATCH(request)
       .validate()
-      .toJSONDictionary()
+      .toJsonDictionary()
       .then({ try Feature.Model($0) })
       .done({ model in
         self.publish(data: model)
@@ -42,6 +42,6 @@ class UpdateCommandHandler<Feature: UpdateFeature>: Aftermath.CommandHandler {
         self.publish(error: error)
       })
 
-    return Event.Progress
+    return Event.progress
   }
 }

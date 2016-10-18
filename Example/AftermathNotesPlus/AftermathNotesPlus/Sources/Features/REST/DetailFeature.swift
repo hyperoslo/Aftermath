@@ -41,7 +41,7 @@ class DetailCommandHandler<Feature: DetailFeature>: Aftermath.CommandHandler {
 
     Malibu.networking("base").GET(request)
       .validate()
-      .toJSONDictionary()
+      .toJsonDictionary()
       .then({ try Feature.Model($0) })
       .done({ note in
         self.publish(data: note)
@@ -50,6 +50,6 @@ class DetailCommandHandler<Feature: DetailFeature>: Aftermath.CommandHandler {
         self.publish(error: error)
       })
 
-    return Event.Progress
+    return Event.progress
   }
 }

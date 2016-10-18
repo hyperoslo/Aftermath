@@ -1,6 +1,6 @@
 public class Engine {
 
-  public static let sharedInstance = Engine()
+  public static let shared = Engine()
 
   lazy var commandBus: CommandDispatcher = CommandBus(eventDispatcher: self.eventBus)
   var eventBus: EventDispatcher = EventBus()
@@ -29,8 +29,8 @@ public class Engine {
 
   // MARK: - Command handling
 
-  public func use<T: CommandHandler>(handler: T) -> DisposalToken {
-    return commandBus.use(handler)
+  @discardableResult public func use<T: CommandHandler>(handler: T) -> DisposalToken {
+    return commandBus.use(handler: handler)
   }
 
   public func invalidate() {

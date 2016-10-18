@@ -12,13 +12,13 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
         return
       }
 
-      titleLabel.text = note.title.capitalizedString
+      titleLabel.text = note.title.capitalized
       textView.text = note.body
     }
   }
 
   lazy var saveButton: UIBarButtonItem = UIBarButtonItem(
-    barButtonSystemItem: .Save,
+    barButtonSystemItem: .save,
     target: self,
     action: #selector(saveButtonDidPress))
 
@@ -47,7 +47,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     super.viewDidLoad()
 
     title = "Note"
-    view.stylize(MainStylesheet.Style.Content)
+    view.stylize(MainStylesheet.Style.content)
     navigationItem.rightBarButtonItem = saveButton
 
     [titleLabel, textView].forEach {
@@ -58,7 +58,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
     setupReactions()
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     // Execute command to load a single note.
@@ -68,14 +68,14 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
   // MARK: - Layout
 
   func setupConstrains() {
-    titleLabel.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 84).active = true
-    titleLabel.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 20).active = true
-    titleLabel.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -20).active = true
+    titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 84).isActive = true
+    titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+    titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 
-    textView.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor).active = true
-    textView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 15).active = true
-    textView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -15).active = true
-    textView.heightAnchor.constraintEqualToConstant(200).active = true
+    textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+    textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
+    textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+    textView.heightAnchor.constraint(equalToConstant: 200).isActive = true
   }
 
   // MARK: - Reactions
@@ -93,7 +93,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
         self?.loaded = true
       },
       rescue: { [weak self] error in
-        self?.showErrorAlert(error)
+        self?.showAlert(error: error)
       })
 
     react(to: DetailCommand<NoteFeature>.self, with: reaction)
@@ -103,7 +103,7 @@ class NoteDetailController: UIViewController, CommandProducer, ReactionProducer 
   // MARK: - Actions
 
   func saveButtonDidPress() {
-    guard var note = note, let title = titleLabel.text, body = textView.text else {
+    guard var note = note, let title = titleLabel.text, let body = textView.text else {
       return
     }
 

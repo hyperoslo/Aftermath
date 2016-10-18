@@ -7,8 +7,8 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
   var commandBus: CommandBus!
   var eventBus: EventBus!
   var reaction: Reaction<Calculator>!
-  var additionListener: (Event<AdditionCommand> -> Void)!
-  var subtractionListener: (Event<SubtractionCommand> -> Void)!
+  var additionListener: ((Event<AdditionCommand>) -> Void)!
+  var subtractionListener: ((Event<SubtractionCommand>) -> Void)!
   var result = 0
 
   override func setUp() {
@@ -35,8 +35,9 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
     commandBus.disposeAll()
+    eventBus.disposeAll()
   }
 
   // MARK: - Tests
@@ -49,11 +50,11 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     m1.callback = addMiddlewareStep(m1)
     m2.callback = addMiddlewareStep(m2)
 
-    commandBus.middlewares = [m1, m2]
-    commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
-    eventBus.listen(to: AdditionCommand.self, listener: additionListener)
-    eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
-    commandBus.execute(command)
+    _ = commandBus.middlewares = [m1, m2]
+    _ = commandBus.use(handler: AdditionCommandHandler(callback: addHandlerStep))
+    _ = eventBus.listen(to: AdditionCommand.self, listener: additionListener)
+    _ = eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
+    commandBus.execute(command: command)
 
     XCTAssertEqual(commandSteps.count, 3)
     XCTAssertEqual(result, 3)
@@ -63,7 +64,7 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     assertHandlerStep(2, expected: command)
   }
 
-  func testExecute() {
+  func testExecuteCommand() {
     var m1 = LogCommandMiddleware()
     var m2 = AdditionCommandMiddleware()
     var m3 = LogCommandMiddleware()
@@ -75,10 +76,10 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     m3.callback = addMiddlewareStep(m3)
 
     commandBus.middlewares = [m1, m2, m3]
-    commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
-    eventBus.listen(to: AdditionCommand.self, listener: additionListener)
-    eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
-    commandBus.execute(subCommand)
+    _ = commandBus.use(handler: AdditionCommandHandler(callback: addHandlerStep))
+    _ = eventBus.listen(to: AdditionCommand.self, listener: additionListener)
+    _ = eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
+    commandBus.execute(command: subCommand)
 
     XCTAssertEqual(commandSteps.count, 6)
     XCTAssertEqual(result, 3)
@@ -102,10 +103,10 @@ class CommandMiddlewareTests: XCTestCase, CommandStepAsserting {
     m3.callback = addMiddlewareStep(m3)
 
     commandBus.middlewares = [m1, m2, m3]
-    commandBus.use(AdditionCommandHandler(callback: addHandlerStep))
-    eventBus.listen(to: AdditionCommand.self, listener: additionListener)
-    eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
-    commandBus.execute(command)
+    _ = commandBus.use(handler: AdditionCommandHandler(callback: addHandlerStep))
+    _ = eventBus.listen(to: AdditionCommand.self, listener: additionListener)
+    _ = eventBus.listen(to: SubtractionCommand.self, listener: subtractionListener)
+    commandBus.execute(command: command)
 
     XCTAssertEqual(commandSteps.count, 2)
     XCTAssertEqual(result, 0)

@@ -7,7 +7,7 @@ struct Note: Entity {
   var title: String
   var body: String
 
-  init(_ map: JSONDictionary) throws {
+  init(_ map: JsonDictionary) throws {
     id = try <-map.property("id")
     userId = try <-map.property("userId")
     title = try <-map.property("title")

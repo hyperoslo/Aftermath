@@ -17,22 +17,22 @@ class CommandProducerTests: XCTestCase {
       self.executedCommand = executedCommand
     }
 
-    Engine.sharedInstance.use(commandHandler)
+    Engine.shared.use(handler: commandHandler)
   }
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
   }
 
   // MARK: - Tests
 
-  func testExecute() {
+  func testExecuteCommand() {
     producer.execute(command: TestCommand())
     XCTAssertNotNil(executedCommand)
   }
 
-  func testExecuteWithAnotherCommand() {
+  func testExecuteCommandWithNoHandler() {
     producer.execute(command: AdditionCommand(value1: 1, value2: 3))
     XCTAssertNil(executedCommand)
   }
@@ -44,17 +44,17 @@ class CommandProducerTests: XCTestCase {
       executedAction = action
     }
 
-    XCTAssertFalse(Engine.sharedInstance.commandBus.contains(TestAction.self))
+    XCTAssertFalse(Engine.shared.commandBus.contains(handler: TestAction.self))
 
     producer.execute(action: action)
-    XCTAssertTrue(Engine.sharedInstance.commandBus.contains(TestAction.self))
+    XCTAssertTrue(Engine.shared.commandBus.contains(handler: TestAction.self))
     XCTAssertNotNil(executedAction)
   }
 
-  func testExecuteReaction() {
+  func testExecuteCommandWithReaction() {
     var string: String?
 
-    producer.execute(TestCommand(), reaction: Reaction(
+    producer.execute(command: TestCommand(), reaction: Reaction(
       consume: { result in
         string = result
       }))

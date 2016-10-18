@@ -13,13 +13,13 @@ class ReactionTests: XCTestCase {
 
     reaction = Reaction(
       wait: {
-        self.state = .Progress
+        self.state = .progress
       },
       consume: { result in
-        self.state = .Data
+        self.state = .data
       },
       rescue: { error in
-        self.state = .Error
+        self.state = .error
       }
     )
   }
@@ -44,24 +44,24 @@ class ReactionTests: XCTestCase {
     XCTAssertNotNil(reaction.rescue)
   }
 
-  func testInvokeWithProgress() {
-    let event = Event<AdditionCommand>.Progress
+  func testInvokeWithProgressEvent() {
+    let event = Event<AdditionCommand>.progress
     reaction.invoke(with: event)
 
-    XCTAssertEqual(state, .Progress)
+    XCTAssertEqual(state, .progress)
   }
 
-  func testInvokeWithData() {
-    let event = Event<AdditionCommand>.Data(Calculator(result: 11))
+  func testInvokeWithDataEvent() {
+    let event = Event<AdditionCommand>.data(Calculator(result: 11))
     reaction.invoke(with: event)
 
-    XCTAssertEqual(state, .Data)
+    XCTAssertEqual(state, .data)
   }
 
-  func testInvokeWithError() {
-    let event = Event<AdditionCommand>.Error(TestError.Test)
+  func testInvokeWithErrorEvent() {
+    let event = Event<AdditionCommand>.error(TestError.test)
     reaction.invoke(with: event)
 
-    XCTAssertEqual(state, .Error)
+    XCTAssertEqual(state, .error)
   }
 }

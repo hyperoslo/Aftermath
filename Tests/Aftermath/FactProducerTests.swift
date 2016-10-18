@@ -14,12 +14,12 @@ class FactProducerTests: XCTestCase {
 
   override func tearDown() {
     super.tearDown()
-    Engine.sharedInstance.invalidate()
+    Engine.shared.invalidate()
   }
 
   // MARK: - Tests
 
-  func testPost() {
+  func testPostFact() {
     var output1: String?
     var output2: String?
     let reactionProducer1 = TestReactionProducer()

@@ -5,7 +5,7 @@ class MainController: UITabBarController {
   lazy var noteListController: UINavigationController = {
     let controller = ListController(feature: NoteFeature())
     let navigationController = UINavigationController(rootViewController: controller)
-    controller.view.stylize(MainStylesheet.Style.Content)
+    controller.view.stylize(MainStylesheet.Style.content)
     controller.title = "Notes"
     controller.tabBarItem.title = "Notes"
     controller.tabBarItem.image = UIImage(named: "tabNotes")
@@ -16,7 +16,7 @@ class MainController: UITabBarController {
   lazy var todoListController: UINavigationController = {
     let controller = ListController(feature: TodoFeature())
     let navigationController = UINavigationController(rootViewController: controller)
-    controller.view.stylize(MainStylesheet.Style.Content)
+    controller.view.stylize(MainStylesheet.Style.content)
     controller.tabBarItem.title = "Todos"
     controller.title = "Todos"
     controller.tabBarItem.image = UIImage(named: "tabTodos")
@@ -40,7 +40,7 @@ class MainController: UITabBarController {
     super.viewDidLoad()
 
     title = "Aftermath"
-    view.stylize(MainStylesheet.Style.Content)
+    view.stylize(MainStylesheet.Style.content)
     configureTabBar()
   }
 

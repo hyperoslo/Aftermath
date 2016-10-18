@@ -48,6 +48,6 @@ class DeleteCommandHandler<Feature: DeleteFeature>: Aftermath.CommandHandler {
         self.publish(error: error)
       })
 
-    return Event.Progress
+    return Event.progress
   }
 }

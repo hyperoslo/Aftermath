@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3FE49F93959D110B12E68E38 /* Pods_AftermathNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA43453E3874149AFE2D9834 /* Pods_AftermathNotes.framework */; };
+		A100C2FBECEF7C394EB37185 /* Pods_AftermathNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E65E24E17FB99383FEF23F68 /* Pods_AftermathNotes.framework */; };
 		D574B1221DA58D7F0048AB15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D574B1041DA58D7F0048AB15 /* LaunchScreen.storyboard */; };
 		D574B1241DA58D7F0048AB15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D574B1081DA58D7F0048AB15 /* Assets.xcassets */; };
 		D574B1251DA58D7F0048AB15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574B10A1DA58D7F0048AB15 /* AppDelegate.swift */; };
@@ -30,8 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D64333F61A0AE46B82B9538 /* Pods-AftermathNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes.release.xcconfig"; sourceTree = "<group>"; };
-		8E852DF96B53023DADCB8994 /* Pods-AftermathNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes.debug.xcconfig"; sourceTree = "<group>"; };
+		036866B18C3E201334B8C6BF /* Pods-AftermathNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes.debug.xcconfig"; sourceTree = "<group>"; };
+		9EDCC1ED7A1C860A0E87BEBF /* Pods-AftermathNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AftermathNotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes.release.xcconfig"; sourceTree = "<group>"; };
 		D574B1051DA58D7F0048AB15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D574B1061DA58D7F0048AB15 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D574B1081DA58D7F0048AB15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		D5C7F7401C3BC9CE008CDDBA /* AftermathNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AftermathNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FFAA541DA5B36400B2807C /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		D5FFAA871DA67D3A00B2807C /* StyleConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleConvertible.swift; sourceTree = "<group>"; };
-		FA43453E3874149AFE2D9834 /* Pods_AftermathNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E65E24E17FB99383FEF23F68 /* Pods_AftermathNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AftermathNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,20 +61,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE49F93959D110B12E68E38 /* Pods_AftermathNotes.framework in Frameworks */,
+				A100C2FBECEF7C394EB37185 /* Pods_AftermathNotes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		274576BAB76A2CF9BFD29FAA /* Pods */ = {
+		B13D32515699B0B677F0D7B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8E852DF96B53023DADCB8994 /* Pods-AftermathNotes.debug.xcconfig */,
-				2D64333F61A0AE46B82B9538 /* Pods-AftermathNotes.release.xcconfig */,
+				E65E24E17FB99383FEF23F68 /* Pods_AftermathNotes.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D574B1031DA58D7F0048AB15 /* AftermathNotes */ = {
@@ -181,8 +180,8 @@
 			children = (
 				D574B1031DA58D7F0048AB15 /* AftermathNotes */,
 				D5C7F7411C3BC9CE008CDDBA /* Products */,
-				274576BAB76A2CF9BFD29FAA /* Pods */,
-				E1B37568C2FA5DE5EF25EE4F /* Frameworks */,
+				E3DC723C434259C03387974B /* Pods */,
+				B13D32515699B0B677F0D7B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -202,12 +201,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E1B37568C2FA5DE5EF25EE4F /* Frameworks */ = {
+		E3DC723C434259C03387974B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FA43453E3874149AFE2D9834 /* Pods_AftermathNotes.framework */,
+				036866B18C3E201334B8C6BF /* Pods-AftermathNotes.debug.xcconfig */,
+				9EDCC1ED7A1C860A0E87BEBF /* Pods-AftermathNotes.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,12 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "AftermathNotes" */;
 			buildPhases = (
-				98CC419F91F6042C5B941B42 /* [CP] Check Pods Manifest.lock */,
+				AF47BAE148854E5892496D36 /* [CP] Check Pods Manifest.lock */,
 				D5C7F73C1C3BC9CE008CDDBA /* Sources */,
 				D5C7F73D1C3BC9CE008CDDBA /* Frameworks */,
 				D5C7F73E1C3BC9CE008CDDBA /* Resources */,
-				84A61122F3DAAF4651166517 /* [CP] Embed Pods Frameworks */,
-				068CA04C5A38C390DE7DE3D8 /* [CP] Copy Pods Resources */,
+				E96CA72799B25C129CFC4850 /* [CP] Embed Pods Frameworks */,
+				73B5FB564D9EA0650D4F0471 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,11 +240,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hyper Interaktiv AS";
 				TargetAttributes = {
 					D5C7F73F1C3BC9CE008CDDBA = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -279,7 +280,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		068CA04C5A38C390DE7DE3D8 /* [CP] Copy Pods Resources */ = {
+		73B5FB564D9EA0650D4F0471 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -294,22 +295,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		84A61122F3DAAF4651166517 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98CC419F91F6042C5B941B42 /* [CP] Check Pods Manifest.lock */ = {
+		AF47BAE148854E5892496D36 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,6 +308,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E96CA72799B25C129CFC4850 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AftermathNotes/Pods-AftermathNotes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -378,8 +379,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -406,6 +409,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -422,8 +426,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -442,31 +448,37 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		D5C7F7531C3BC9CE008CDDBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E852DF96B53023DADCB8994 /* Pods-AftermathNotes.debug.xcconfig */;
+			baseConfigurationReference = 036866B18C3E201334B8C6BF /* Pods-AftermathNotes.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AftermathNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathNotes;
 				PRODUCT_NAME = AftermathNotes;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		D5C7F7541C3BC9CE008CDDBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D64333F61A0AE46B82B9538 /* Pods-AftermathNotes.release.xcconfig */;
+			baseConfigurationReference = 9EDCC1ED7A1C860A0E87BEBF /* Pods-AftermathNotes.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AftermathNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.AftermathNotes;
 				PRODUCT_NAME = AftermathNotes;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

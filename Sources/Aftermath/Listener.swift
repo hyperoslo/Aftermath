@@ -1,15 +1,15 @@
 class Listener {
 
   enum Status {
-    case Pending
-    case Issued
+    case pending
+    case issued
   }
 
   let identifier: String
   let callback: (Any) throws -> Void
-  var status = Status.Pending
+  var status = Status.pending
 
-  init(identifier: String, callback: (Any) throws -> Void) {
+  init(identifier: String, callback: @escaping (Any) throws -> Void) {
     self.identifier = identifier
     self.callback = callback
   }

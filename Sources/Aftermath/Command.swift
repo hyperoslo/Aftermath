@@ -8,12 +8,12 @@ public protocol Command: AnyCommand {
 
 public extension Command {
 
-  static func buildErrorEvent(error: ErrorType) -> AnyEvent {
-    return buildEvent(self, error: error)
+  static func buildEvent(fromError error: Error) -> AnyEvent {
+    return buildEvent(of: self, fromError: error)
   }
 
-  private static func buildEvent<T: Command>(type: T.Type, error: ErrorType) -> AnyEvent {
-    return Event<T>.Error(error)
+  fileprivate static func buildEvent<T: Command>(of type: T.Type, fromError error: Error) -> AnyEvent {
+    return Event<T>.error(error)
   }
 }
 
@@ -30,17 +30,17 @@ public protocol CommandProducer {}
 
 public extension CommandProducer {
 
-  func execute(command command: AnyCommand) {
-    Engine.sharedInstance.commandBus.execute(command)
+  func execute(command: AnyCommand) {
+    Engine.shared.commandBus.execute(command: command)
   }
 
-  func execute(builder builder: CommandBuilder) {
-    Engine.sharedInstance.commandBus.execute(builder)
+  func execute(builder: CommandBuilder) {
+    Engine.shared.commandBus.execute(builder: builder)
   }
 
-  func execute<T: Action>(action action: T) {
-    if !Engine.sharedInstance.commandBus.contains(T.self) {
-      Engine.sharedInstance.commandBus.use(action)
+  func execute<T: Action>(action: T) {
+    if !Engine.shared.commandBus.contains(handler: T.self) {
+      Engine.shared.use(handler: action)
     }
 
     execute(command: action)
@@ -66,19 +66,19 @@ public protocol CommandHandler {
 public extension CommandHandler {
 
   func wait() {
-    publish(event: Event.Progress)
+    publish(event: Event.progress)
   }
 
   func publish(data output: CommandType.Output) {
-    publish(event: Event.Data(output))
+    publish(event: Event.data(output))
   }
 
-  func publish(error error: ErrorType) {
-    publish(event: Event.Error(error))
+  func publish(error: Error) {
+    publish(event: Event.error(error))
   }
 
-  func publish(event event: Event<CommandType>) {
-    Engine.sharedInstance.eventBus.publish(event)
+  func publish(event: Event<CommandType>) {
+    Engine.shared.eventBus.publish(event: event)
   }
 }
 
@@ -91,17 +91,17 @@ public protocol Action: Command, CommandHandler {
 // MARK: - Command middleware
 
 public typealias Execute = (AnyCommand) throws -> Void
-public typealias ExecuteCombination = (Execute) throws -> Execute
+public typealias ExecuteCombination = (@escaping Execute) throws -> Execute
 
 public protocol CommandMiddleware {
 
   func intercept(command: AnyCommand, execute: Execute, next: Execute) throws
-  func compose(execute: Execute) throws -> ExecuteCombination
+  func compose(execute: @escaping Execute) throws -> ExecuteCombination
 }
 
 public extension CommandMiddleware {
 
-  func compose(execute: Execute) throws -> ExecuteCombination {
-    return try Middleware(intercept: intercept).compose(execute)
+  func compose(execute: @escaping Execute) throws -> ExecuteCombination {
+    return try Middleware(intercept: intercept).compose(execute: execute)
   }
 }

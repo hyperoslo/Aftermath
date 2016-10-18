@@ -8,6 +8,6 @@ protocol StyleConvertible: StringConvertible, Identifiable {
 extension StyleConvertible {
 
   var string: String {
-    return "\(self.dynamicType.identifier).\(rawValue)"
+    return "\(type(of: self).identifier).\(rawValue)"
   }
 }

@@ -9,6 +9,6 @@ public struct FashionConfigurator: Configurator {
       ProfileStylesheet()
     ]
 
-    Fashion.register(stylesheets)
+    Fashion.register(stylesheets: stylesheets)
   }
 }
