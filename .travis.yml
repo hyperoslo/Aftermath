@@ -9,3 +9,5 @@ script:
   - xcodebuild test -project Aftermath.xcodeproj -scheme Aftermath-Mac -sdk macosx
 notifications:
   email: false
+after_success:
+- bash <(curl -s https://codecov.io/bash)
