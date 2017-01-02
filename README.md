@@ -34,6 +34,7 @@ in details:
 * [Extra](#extra)
 * [Engine](#engine)
 * [Life hacks](#life-hacks)
+* [Tools](#tools)
 * [Summary](#summary)
 * [Installation](#installation)
 * [Examples](#examples)
@@ -553,6 +554,18 @@ history.
 have plans to introduce some sort of optional store(s) for better state
 management. It might be a new feature in v2, keep watching.
 
+## Tools
+
+- **Aftermath** comes with a set of development tools, such as additional
+helpers, useful command and event middleware for logging, error handling, etc.
+
+```swift
+// Commands
+Engine.sharedInstance.pipeCommands(through: [LogCommandMiddleware(), ErrorCommandMiddleware()])
+// Events
+Engine.sharedInstance.pipeEvents(through: [LogEventMiddleware(), ErrorEventMiddleware()])
+```
+
 ## Installation
 
 **Aftermath** is available through [CocoaPods](http://cocoapods.org). To install
@@ -593,10 +606,6 @@ in order to reuse view controllers and RESTful network requests.
 This repository aims to be the core implementation of framework, but there are
 also a range of extensions that integrate **Aftermath** with other libraries
 and extend it with more features:
-
-- [AftermathTools](https://github.com/hyperoslo/AftermathTools) is a set of
-development tools for **Aftermath** where you can find additional helpers,
-useful command and event middleware for logging, error handling, etc.
 
 - [AftermathCompass](https://github.com/hyperoslo/AftermathCompass) is a
 message-driven routing system built on top of **Aftermath** and

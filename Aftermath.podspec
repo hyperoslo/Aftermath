@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Aftermath"
   s.summary          = "Stateless message-driven micro-framework in Swift."
-  s.version          = "1.0.0"
+  s.version          = "1.1.0"
   s.homepage         = "https://github.com/hyperoslo/Aftermath"
   s.license          = 'MIT'
   s.author           = {
