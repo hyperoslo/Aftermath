@@ -89,6 +89,45 @@
 		D59CC11E1D76145600D72C39 /* ReactionDisposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59CC11C1D76145600D72C39 /* ReactionDisposerTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Aftermath.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Aftermath.framework */; };
+		D5CC93401E1A63E5008A20BE /* ToolHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC933F1E1A63E5008A20BE /* ToolHelpers.swift */; };
+		D5CC93411E1A63E5008A20BE /* ToolHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC933F1E1A63E5008A20BE /* ToolHelpers.swift */; };
+		D5CC93421E1A63E5008A20BE /* ToolHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC933F1E1A63E5008A20BE /* ToolHelpers.swift */; };
+		D5CC93441E1A6535008A20BE /* EngineErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93431E1A6535008A20BE /* EngineErrorHandler.swift */; };
+		D5CC93451E1A6535008A20BE /* EngineErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93431E1A6535008A20BE /* EngineErrorHandler.swift */; };
+		D5CC93461E1A6535008A20BE /* EngineErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93431E1A6535008A20BE /* EngineErrorHandler.swift */; };
+		D5CC93541E1A65C4008A20BE /* AbortCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93481E1A65C4008A20BE /* AbortCommandMiddleware.swift */; };
+		D5CC93551E1A65C4008A20BE /* AbortCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93481E1A65C4008A20BE /* AbortCommandMiddleware.swift */; };
+		D5CC93561E1A65C4008A20BE /* AbortCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93481E1A65C4008A20BE /* AbortCommandMiddleware.swift */; };
+		D5CC93571E1A65C4008A20BE /* AsyncCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93491E1A65C4008A20BE /* AsyncCommandMiddleware.swift */; };
+		D5CC93581E1A65C4008A20BE /* AsyncCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93491E1A65C4008A20BE /* AsyncCommandMiddleware.swift */; };
+		D5CC93591E1A65C4008A20BE /* AsyncCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93491E1A65C4008A20BE /* AsyncCommandMiddleware.swift */; };
+		D5CC935A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift */; };
+		D5CC935B1E1A65C4008A20BE /* ErrorCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift */; };
+		D5CC935C1E1A65C4008A20BE /* ErrorCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift */; };
+		D5CC935D1E1A65C4008A20BE /* FailCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934B1E1A65C4008A20BE /* FailCommandMiddleware.swift */; };
+		D5CC935E1E1A65C4008A20BE /* FailCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934B1E1A65C4008A20BE /* FailCommandMiddleware.swift */; };
+		D5CC935F1E1A65C4008A20BE /* FailCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934B1E1A65C4008A20BE /* FailCommandMiddleware.swift */; };
+		D5CC93601E1A65C4008A20BE /* LogCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934C1E1A65C4008A20BE /* LogCommandMiddleware.swift */; };
+		D5CC93611E1A65C4008A20BE /* LogCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934C1E1A65C4008A20BE /* LogCommandMiddleware.swift */; };
+		D5CC93621E1A65C4008A20BE /* LogCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934C1E1A65C4008A20BE /* LogCommandMiddleware.swift */; };
+		D5CC93631E1A65C4008A20BE /* SilenceCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934D1E1A65C4008A20BE /* SilenceCommandMiddleware.swift */; };
+		D5CC93641E1A65C4008A20BE /* SilenceCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934D1E1A65C4008A20BE /* SilenceCommandMiddleware.swift */; };
+		D5CC93651E1A65C4008A20BE /* SilenceCommandMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934D1E1A65C4008A20BE /* SilenceCommandMiddleware.swift */; };
+		D5CC93661E1A65C4008A20BE /* AbortEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934F1E1A65C4008A20BE /* AbortEventMiddleware.swift */; };
+		D5CC93671E1A65C4008A20BE /* AbortEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934F1E1A65C4008A20BE /* AbortEventMiddleware.swift */; };
+		D5CC93681E1A65C4008A20BE /* AbortEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC934F1E1A65C4008A20BE /* AbortEventMiddleware.swift */; };
+		D5CC93691E1A65C4008A20BE /* ErrorEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93501E1A65C4008A20BE /* ErrorEventMiddleware.swift */; };
+		D5CC936A1E1A65C4008A20BE /* ErrorEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93501E1A65C4008A20BE /* ErrorEventMiddleware.swift */; };
+		D5CC936B1E1A65C4008A20BE /* ErrorEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93501E1A65C4008A20BE /* ErrorEventMiddleware.swift */; };
+		D5CC936C1E1A65C4008A20BE /* FailEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93511E1A65C4008A20BE /* FailEventMiddleware.swift */; };
+		D5CC936D1E1A65C4008A20BE /* FailEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93511E1A65C4008A20BE /* FailEventMiddleware.swift */; };
+		D5CC936E1E1A65C4008A20BE /* FailEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93511E1A65C4008A20BE /* FailEventMiddleware.swift */; };
+		D5CC936F1E1A65C4008A20BE /* LogEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93521E1A65C4008A20BE /* LogEventMiddleware.swift */; };
+		D5CC93701E1A65C4008A20BE /* LogEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93521E1A65C4008A20BE /* LogEventMiddleware.swift */; };
+		D5CC93711E1A65C4008A20BE /* LogEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93521E1A65C4008A20BE /* LogEventMiddleware.swift */; };
+		D5CC93721E1A65C4008A20BE /* SilenceEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93531E1A65C4008A20BE /* SilenceEventMiddleware.swift */; };
+		D5CC93731E1A65C4008A20BE /* SilenceEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93531E1A65C4008A20BE /* SilenceEventMiddleware.swift */; };
+		D5CC93741E1A65C4008A20BE /* SilenceEventMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC93531E1A65C4008A20BE /* SilenceEventMiddleware.swift */; };
 		D5F169C11DB57F9200577F7C /* Aftermath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58092821DB57A5D00270BBB /* Aftermath.framework */; };
 		D5F169C71DB5800900577F7C /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C45F1D6B9CEB00EDD4A8 /* Commands.swift */; };
 		D5F169C81DB5800900577F7C /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579C4601D6B9CEB00EDD4A8 /* Events.swift */; };
@@ -184,6 +223,19 @@
 		D5B2E8A91C3A780C00C0327D /* Aftermath-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* Aftermath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Aftermath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629491C3A7FAA007F7B7C /* Aftermath-Mac-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-Mac-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5CC933F1E1A63E5008A20BE /* ToolHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolHelpers.swift; sourceTree = "<group>"; };
+		D5CC93431E1A6535008A20BE /* EngineErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineErrorHandler.swift; sourceTree = "<group>"; };
+		D5CC93481E1A65C4008A20BE /* AbortCommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbortCommandMiddleware.swift; sourceTree = "<group>"; };
+		D5CC93491E1A65C4008A20BE /* AsyncCommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncCommandMiddleware.swift; sourceTree = "<group>"; };
+		D5CC934A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCommandMiddleware.swift; sourceTree = "<group>"; };
+		D5CC934B1E1A65C4008A20BE /* FailCommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailCommandMiddleware.swift; sourceTree = "<group>"; };
+		D5CC934C1E1A65C4008A20BE /* LogCommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCommandMiddleware.swift; sourceTree = "<group>"; };
+		D5CC934D1E1A65C4008A20BE /* SilenceCommandMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SilenceCommandMiddleware.swift; sourceTree = "<group>"; };
+		D5CC934F1E1A65C4008A20BE /* AbortEventMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbortEventMiddleware.swift; sourceTree = "<group>"; };
+		D5CC93501E1A65C4008A20BE /* ErrorEventMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEventMiddleware.swift; sourceTree = "<group>"; };
+		D5CC93511E1A65C4008A20BE /* FailEventMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailEventMiddleware.swift; sourceTree = "<group>"; };
+		D5CC93521E1A65C4008A20BE /* LogEventMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventMiddleware.swift; sourceTree = "<group>"; };
+		D5CC93531E1A65C4008A20BE /* SilenceEventMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SilenceEventMiddleware.swift; sourceTree = "<group>"; };
 		D5F169BC1DB57F9200577F7C /* Aftermath-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aftermath-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -251,6 +303,7 @@
 		D57462981D6BA37D00E0C876 /* Aftermath */ = {
 			isa = PBXGroup;
 			children = (
+				D5CC933E1E1A635D008A20BE /* Tools */,
 				D57462991D6BA37D00E0C876 /* Command.swift */,
 				D574629A1D6BA37D00E0C876 /* CommandBus.swift */,
 				D574629B1D6BA37D00E0C876 /* Disposer.swift */,
@@ -344,6 +397,42 @@
 			);
 			name = Tests;
 			path = AftermathTests;
+			sourceTree = "<group>";
+		};
+		D5CC933E1E1A635D008A20BE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D5CC93471E1A65C4008A20BE /* CommandMiddleware */,
+				D5CC934E1E1A65C4008A20BE /* EventMiddleware */,
+				D5CC933F1E1A63E5008A20BE /* ToolHelpers.swift */,
+				D5CC93431E1A6535008A20BE /* EngineErrorHandler.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D5CC93471E1A65C4008A20BE /* CommandMiddleware */ = {
+			isa = PBXGroup;
+			children = (
+				D5CC93481E1A65C4008A20BE /* AbortCommandMiddleware.swift */,
+				D5CC93491E1A65C4008A20BE /* AsyncCommandMiddleware.swift */,
+				D5CC934A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift */,
+				D5CC934B1E1A65C4008A20BE /* FailCommandMiddleware.swift */,
+				D5CC934C1E1A65C4008A20BE /* LogCommandMiddleware.swift */,
+				D5CC934D1E1A65C4008A20BE /* SilenceCommandMiddleware.swift */,
+			);
+			path = CommandMiddleware;
+			sourceTree = "<group>";
+		};
+		D5CC934E1E1A65C4008A20BE /* EventMiddleware */ = {
+			isa = PBXGroup;
+			children = (
+				D5CC934F1E1A65C4008A20BE /* AbortEventMiddleware.swift */,
+				D5CC93501E1A65C4008A20BE /* ErrorEventMiddleware.swift */,
+				D5CC93511E1A65C4008A20BE /* FailEventMiddleware.swift */,
+				D5CC93521E1A65C4008A20BE /* LogEventMiddleware.swift */,
+				D5CC93531E1A65C4008A20BE /* SilenceEventMiddleware.swift */,
+			);
+			path = EventMiddleware;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -636,16 +725,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D580928D1DB57AD700270BBB /* CommandBus.swift in Sources */,
+				D5CC93741E1A65C4008A20BE /* SilenceEventMiddleware.swift in Sources */,
+				D5CC936B1E1A65C4008A20BE /* ErrorEventMiddleware.swift in Sources */,
+				D5CC935F1E1A65C4008A20BE /* FailCommandMiddleware.swift in Sources */,
 				D580928F1DB57AD700270BBB /* Engine.swift in Sources */,
+				D5CC93591E1A65C4008A20BE /* AsyncCommandMiddleware.swift in Sources */,
+				D5CC93711E1A65C4008A20BE /* LogEventMiddleware.swift in Sources */,
 				D580928E1DB57AD700270BBB /* Disposer.swift in Sources */,
 				D58092971DB57AD700270BBB /* ReactionDisposer.swift in Sources */,
+				D5CC935C1E1A65C4008A20BE /* ErrorCommandMiddleware.swift in Sources */,
 				D58092931DB57AD700270BBB /* Fact.swift in Sources */,
+				D5CC93681E1A65C4008A20BE /* AbortEventMiddleware.swift in Sources */,
+				D5CC93461E1A6535008A20BE /* EngineErrorHandler.swift in Sources */,
+				D5CC93651E1A65C4008A20BE /* SilenceCommandMiddleware.swift in Sources */,
 				D58092941DB57AD700270BBB /* Helpers.swift in Sources */,
+				D5CC93421E1A63E5008A20BE /* ToolHelpers.swift in Sources */,
 				D58092961DB57AD700270BBB /* Reaction.swift in Sources */,
+				D5CC93621E1A65C4008A20BE /* LogCommandMiddleware.swift in Sources */,
 				D58092901DB57AD700270BBB /* Error.swift in Sources */,
 				D58092911DB57AD700270BBB /* Event.swift in Sources */,
+				D5CC936E1E1A65C4008A20BE /* FailEventMiddleware.swift in Sources */,
 				D58092921DB57AD700270BBB /* EventBus.swift in Sources */,
 				D580928C1DB57AD700270BBB /* Command.swift in Sources */,
+				D5CC93561E1A65C4008A20BE /* AbortCommandMiddleware.swift in Sources */,
 				D58092951DB57AD700270BBB /* Listener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,16 +757,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D57462A41D6BA37D00E0C876 /* CommandBus.swift in Sources */,
+				D5CC93721E1A65C4008A20BE /* SilenceEventMiddleware.swift in Sources */,
+				D5CC93691E1A65C4008A20BE /* ErrorEventMiddleware.swift in Sources */,
+				D5CC935D1E1A65C4008A20BE /* FailCommandMiddleware.swift in Sources */,
 				D57462AB1D6BA37D00E0C876 /* Listener.swift in Sources */,
+				D5CC93571E1A65C4008A20BE /* AsyncCommandMiddleware.swift in Sources */,
+				D5CC936F1E1A65C4008A20BE /* LogEventMiddleware.swift in Sources */,
 				D57462A61D6BA37D00E0C876 /* Engine.swift in Sources */,
 				D57462A51D6BA37D00E0C876 /* Disposer.swift in Sources */,
+				D5CC935A1E1A65C4008A20BE /* ErrorCommandMiddleware.swift in Sources */,
 				D57462AA1D6BA37D00E0C876 /* Helpers.swift in Sources */,
+				D5CC93661E1A65C4008A20BE /* AbortEventMiddleware.swift in Sources */,
+				D5CC93441E1A6535008A20BE /* EngineErrorHandler.swift in Sources */,
+				D5CC93631E1A65C4008A20BE /* SilenceCommandMiddleware.swift in Sources */,
 				D57462A71D6BA37D00E0C876 /* Error.swift in Sources */,
+				D5CC93401E1A63E5008A20BE /* ToolHelpers.swift in Sources */,
 				D57462AC1D6BA37D00E0C876 /* Reaction.swift in Sources */,
+				D5CC93601E1A65C4008A20BE /* LogCommandMiddleware.swift in Sources */,
 				D57A57561D85FAC500F78661 /* Fact.swift in Sources */,
 				D57462A81D6BA37D00E0C876 /* Event.swift in Sources */,
+				D5CC936C1E1A65C4008A20BE /* FailEventMiddleware.swift in Sources */,
 				D57462A91D6BA37D00E0C876 /* EventBus.swift in Sources */,
 				D57462A31D6BA37D00E0C876 /* Command.swift in Sources */,
+				D5CC93541E1A65C4008A20BE /* AbortCommandMiddleware.swift in Sources */,
 				D59CC11A1D76141400D72C39 /* ReactionDisposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,16 +818,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D57462AE1D6BA38600E0C876 /* CommandBus.swift in Sources */,
+				D5CC93731E1A65C4008A20BE /* SilenceEventMiddleware.swift in Sources */,
+				D5CC936A1E1A65C4008A20BE /* ErrorEventMiddleware.swift in Sources */,
+				D5CC935E1E1A65C4008A20BE /* FailCommandMiddleware.swift in Sources */,
 				D57462B51D6BA38600E0C876 /* Listener.swift in Sources */,
+				D5CC93581E1A65C4008A20BE /* AsyncCommandMiddleware.swift in Sources */,
+				D5CC93701E1A65C4008A20BE /* LogEventMiddleware.swift in Sources */,
 				D57462B01D6BA38600E0C876 /* Engine.swift in Sources */,
 				D57462AF1D6BA38600E0C876 /* Disposer.swift in Sources */,
+				D5CC935B1E1A65C4008A20BE /* ErrorCommandMiddleware.swift in Sources */,
 				D57462B41D6BA38600E0C876 /* Helpers.swift in Sources */,
+				D5CC93671E1A65C4008A20BE /* AbortEventMiddleware.swift in Sources */,
+				D5CC93451E1A6535008A20BE /* EngineErrorHandler.swift in Sources */,
+				D5CC93641E1A65C4008A20BE /* SilenceCommandMiddleware.swift in Sources */,
 				D57462B11D6BA38600E0C876 /* Error.swift in Sources */,
+				D5CC93411E1A63E5008A20BE /* ToolHelpers.swift in Sources */,
 				D57462B61D6BA38600E0C876 /* Reaction.swift in Sources */,
+				D5CC93611E1A65C4008A20BE /* LogCommandMiddleware.swift in Sources */,
 				D57A57571D85FAC500F78661 /* Fact.swift in Sources */,
 				D57462B21D6BA38600E0C876 /* Event.swift in Sources */,
+				D5CC936D1E1A65C4008A20BE /* FailEventMiddleware.swift in Sources */,
 				D57462B31D6BA38600E0C876 /* EventBus.swift in Sources */,
 				D57462AD1D6BA38600E0C876 /* Command.swift in Sources */,
+				D5CC93551E1A65C4008A20BE /* AbortCommandMiddleware.swift in Sources */,
 				D59CC11B1D76142400D72C39 /* ReactionDisposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1185,6 +1313,7 @@
 				D5F169C61DB57F9200577F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
