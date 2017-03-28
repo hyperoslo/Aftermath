@@ -1,4 +1,4 @@
-⚠️ ** DEPRECATED, NO LONGER MAINTAINED **
+⚠️ **DEPRECATED, NO LONGER MAINTAINED**
 
 ![Aftermath](https://github.com/hyperoslo/Aftermath/blob/master/Images/cover.png)
 
