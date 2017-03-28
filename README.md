@@ -1,3 +1,5 @@
+** ⚠️ DEPRECATED, NO LONGER MAINTAINED **
+
 ![Aftermath](https://github.com/hyperoslo/Aftermath/blob/master/Images/cover.png)
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Aftermath.svg?style=flat)](https://travis-ci.org/hyperoslo/Aftermath)
